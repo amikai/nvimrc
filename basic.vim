@@ -48,6 +48,11 @@ set clipboard+=unnamedplus
 " Set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=7
 
+" Maximum width of text that is being inserted (TODO)
+" set textwidth=80
+" set breakindent
+" set formatoptions=
+
 
 " visual autocomplete for command menu
 set wildmenu
