@@ -196,8 +196,8 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close current buffer
-
 nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
+nnoremap <silent> <leader>qt :tabclose<cr>
 " Close all the buffers
 noremap <leader>ba :bufdo bd<cr>
 
@@ -208,13 +208,16 @@ noremap ]b :bnext<cr>
 noremap [b :bprevious<cr>
 
 " Managing tabs
-noremap <leader>nt :tabnew<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tc :tabclose<cr>
-noremap <leader>tm :tabmove
-noremap <leader>tn :tabnext
-noremap <leader>th :tabprev<cr>
-noremap <leader>tl :tabnext<cr>
+" noremap <leader>nt :tabnew<cr>
+" noremap <leader>to :tabonly<cr>
+" noremap <leader>tc :tabclose<cr>
+" noremap <leader>tm :tabmove
+" noremap <leader>tn :tabnext
+" noremap <leader>th :tabprev<cr>
+" noremap <leader>tl :tabnext<cr>
+noremap <leader>t :tabnew<cr>
+noremap ]t :tabnext<cr>
+noremap [t :tabprev<cr>
 
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
