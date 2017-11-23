@@ -196,14 +196,16 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close current buffer
-map <leader>bd :bd<cr>
 
+nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
 " Close all the buffers
 noremap <leader>ba :bufdo bd<cr>
 
 " Move between buffer
-noremap <leader>l :bnext<cr>
-noremap <leader>h :bprevious<cr>
+" noremap <leader>l :bnext<cr>
+" noremap <leader>h :bprevious<cr>
+noremap ]b :bnext<cr>
+noremap [b :bprevious<cr>
 
 " Managing tabs
 noremap <leader>nt :tabnew<cr>
