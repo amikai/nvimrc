@@ -50,6 +50,9 @@ Plug 'tpope/vim-fugitive'
 "  ack (TODO: to be set)
 Plug 'mileszs/ack.vim'
 
+" denite (TODO: to be set)
+Plug 'Shougo/denite.nvim'
+
 call plug#end()
 
 " color scheme {{{
