@@ -50,6 +50,9 @@ Plug 'tpope/vim-fugitive'
 " denite (TODO: to be set)
 Plug 'Shougo/denite.nvim'
 
+" vim-cursorword
+Plug 'itchyny/vim-cursorword'
+
 call plug#end()
 
 " color scheme {{{
@@ -126,6 +129,21 @@ set undofile
 set undodir=$HOME/.config/nvim/undo
 " }}}
 
+
+" YCM {{{
+" let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_cache_omnifunc=0
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_server_python_interpreter='/usr/bin/python2'
+
+nnoremap ygt :YcmCompleter GetType<cr>
+" after use folling command you can C-o to go back.
+nnoremap gd :YcmCompleter GoToDeclaration<cr>
+nnoremap ge :YcmCompleter GoToDefinition<cr>
+" }}}
+
+
 " denite {{{
 noremap [denite-leader] <Nop>
 nmap ; [denite-leader]
@@ -195,3 +213,4 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ 'tags', 'cscope*'])
 
 " }}}
+
