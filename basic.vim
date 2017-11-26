@@ -30,6 +30,9 @@ set path+=**
 nnoremap j gj
 nnoremap k gk
 
+nnoremap J 5j
+nnoremap K 5k
+
 nnoremap H ^
 nnoremap L $
 
