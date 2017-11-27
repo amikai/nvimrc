@@ -254,3 +254,21 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => cscope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+    set cscopeprg=/usr/bin/cscope
+    set cscopetagorder=1
+    set nocscopetag
+    set nocscopeverbose
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
