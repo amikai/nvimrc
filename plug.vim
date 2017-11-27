@@ -97,3 +97,54 @@ noremap <leader>tj :TagbarOpen j<cr>
 set undofile
 set undodir=$HOME/.config/nvim/undo
 " }}}
+
+" denite {{{
+noremap [denite-leader] <Nop>
+nmap ; [denite-leader]
+
+
+call denite#custom#option('_', {
+    \ 'prompt': 'λ:',
+    \ 'winheight': 10,
+    \ 'updatetime': 1,
+    \ 'auto_resize': 1,
+    \ 'source_names': 'short',
+    \ 'empty': 0,
+    \ 'auto-resume': 1,
+    \ 'auto-accel': 1,
+    \})
+"   'vertical_preview': 1, " use it when needed
+
+
+
+" TODO: Denite outline and ctags setting
+"
+" ctrlp
+nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
+
+" search in this file (create buffer name called search)
+nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+" search globally - search recursively from project root (auto-preview is slowly)
+nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
+" search current word
+nnoremap <silent> [denite-leader]* :<C-u>DeniteCursorWord grep -mode=normal -buffer-name=search line<CR><C-R><C-W><CR>
+
+" denite-key mapping
+call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>')
+call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
+call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
+
+call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
+call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
+call denite#custom#map('normal', "vs", '<denite:do_action:vsplit>')
+call denite#custom#map('normal', "sp", '<denite:do_action:split>')
+
+" customize ignore globs
+call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy','matcher_ignore_globs'])
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ [
+      \ '.git/', 'build/', '__pycache__/',
+      \ 'images/', '*.o', '*.make',
+      \ '*.min.*',
+      \ 'img/', 'fonts/'])
+" }}}
