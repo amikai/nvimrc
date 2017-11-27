@@ -33,6 +33,10 @@ autocmd BufRead * normal zz
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
 
 nnoremap j gj
 nnoremap k gk
