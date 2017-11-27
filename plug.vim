@@ -47,9 +47,6 @@ Plug 'simnalamburt/vim-mundo'
 "  fugitive (TODO: to be set)
 Plug 'tpope/vim-fugitive'
 
-"  ack (TODO: to be set)
-Plug 'mileszs/ack.vim'
-
 " denite (TODO: to be set)
 Plug 'Shougo/denite.nvim'
 
