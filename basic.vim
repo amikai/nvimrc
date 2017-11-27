@@ -44,7 +44,7 @@ nnoremap H ^
 nnoremap L $
 
 " set esc to noh highlight
-nnorema <esc> <esc>:noh<return><esc>
+nnoremap <esc> <esc>:noh<return><esc>
 inoremap <esc> <esc>:noh<return><esc>
 
 " copy paste
