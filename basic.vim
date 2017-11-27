@@ -47,6 +47,9 @@ nnoremap L $
 nnoremap <esc> <esc>:noh<return><esc>
 inoremap <esc> <esc>:noh<return><esc>
 
+" map U to redo
+noremap U :redo<cr>
+
 " copy paste
 set clipboard+=unnamedplus
 
