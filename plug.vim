@@ -140,11 +140,16 @@ call denite#custom#map('normal', "vs", '<denite:do_action:vsplit>')
 call denite#custom#map('normal', "sp", '<denite:do_action:split>')
 
 " customize ignore globs
+call denite#custom#source('grep', 'matchers', ['matcher_ignore_globs'])
+call denite#custom#source('line', 'matchers', ['matcher_ignore_globs'])
 call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy','matcher_ignore_globs'])
+
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [
       \ '.git/', 'build/', '__pycache__/',
       \ 'images/', '*.o', '*.make',
       \ '*.min.*',
-      \ 'img/', 'fonts/'])
+      \ 'img/', 'fonts/',
+      \ 'tags', 'cscope*'])
+
 " }}}
