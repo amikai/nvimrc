@@ -22,6 +22,13 @@ command W w !sudo tee % > /dev/null
 
 set path+=**
 
+" Remember cursor position between vim sessions
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+    " center buffer around cursor when opening files
+autocmd BufRead * normal zz
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
