@@ -63,7 +63,38 @@ colorscheme gruvbox
 
 " airline {{{
 let g:airline#extensions#tabline#enabled = 1
-let g:neosolarized_contrast = "high"
+
+" show the airline_tab type is tab or buffer (top right)
+let g:airline#extensions#tabline#show_tab_type = 1
+
+" close symbol (top right)
+let g:airline#extensions#tabline#close_symbol = 'X'
+
+" enable displaying buffers with a single tab 
+" it mean airline_tab type is buffer
+let g:airline#extensions#tabline#show_buffers = 1
+" Show the buffer order with a single tab
+" convient to use <leader>n to switch buffer
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" if airline_tab type is tab
+" convient to use <leader>n to switch tap
+let g:airline#extensions#tabline#tab_nr_type = 1 
+
+" disable show split information on top right
+let g:airline#extensions#tabline#show_splits = 0
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+
 " }}}
 
 " NERDTree {{{
