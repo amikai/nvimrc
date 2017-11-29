@@ -156,6 +156,10 @@ nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-resize
 nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
 " search current word
 nnoremap <silent> [denite-leader]* :<C-u>DeniteCursorWord grep -mode=normal -buffer-name=search line<CR><C-R><C-W><CR>
+" make the buffer named search not quit after the action is excuted
+call denite#custom#option('search', {
+    \ 'quit': 0,
+    \})
 
 " denite-key mapping
 call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>')
