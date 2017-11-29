@@ -154,8 +154,8 @@ nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
 nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
 " search globally - search recursively from project root (auto-preview is slowly)
 nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
-" search current word
-nnoremap <silent> [denite-leader]* :<C-u>DeniteCursorWord grep -mode=normal -buffer-name=search line<CR><C-R><C-W><CR>
+" search current word in the file
+nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search -auto-highlight line<CR><C-R><C-W><CR>
 " make the buffer named search not quit after the action is excuted
 call denite#custom#option('search', {
     \ 'quit': 0,
