@@ -151,7 +151,7 @@ call denite#custom#option('_', {
 nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
 
 " search in this file (create buffer name called search)
-nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-resize line<CR>
+nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
 " search globally - search recursively from project root (auto-preview is slowly)
 nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
 " search current word
