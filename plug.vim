@@ -138,7 +138,6 @@ call denite#custom#option('_', {
     \ 'auto_resize': 1,
     \ 'source_names': 'short',
     \ 'empty': 0,
-    \ 'auto-resume': 1,
     \ 'auto-accel': 1,
     \})
 "   'vertical_preview': 1, " use it when needed
