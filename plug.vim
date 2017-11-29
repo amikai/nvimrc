@@ -176,7 +176,7 @@ call denite#custom#map('normal', "<C-k>", '<denite:wincmd:k>')
 call denite#custom#map('normal', "<C-l>", '<denite:wincmd:l>')
 " customize ignore globs
 call denite#custom#source('grep', 'matchers', ['matcher_ignore_globs'])
-call denite#custom#source('line', 'matchers', ['matcher_ignore_globs'])
+call denite#custom#source('line', 'matchers', ['matcher_ignore_globs', 'matcher_regexp'])
 call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy','matcher_ignore_globs'])
 
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
