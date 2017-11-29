@@ -156,6 +156,8 @@ nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highli
 nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
 " search current word in the file
 nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search -auto-highlight line<CR><C-R><C-W><CR>
+" search current word globally 
+nnoremap <silent> [denite-leader]gc :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search grep<CR><C-R><C-W><CR>
 " make the buffer named search not quit after the action is excuted
 call denite#custom#option('search', {
     \ 'quit': 0,
