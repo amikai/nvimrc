@@ -152,6 +152,9 @@ nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
 " list all buffer
 nnoremap <silent> [denite-leader]b :<C-u>Denite -mode=normal buffer<CR>
 
+" 
+nnoremap <silent> [denite-leader]r :<C-u>Denite -buffer-name=search -resume -mode=normal<CR>
+
 " search in this file (create buffer name called search)
 nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
 " search globally - search recursively from project root (auto-preview is slowly)
