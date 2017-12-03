@@ -123,7 +123,7 @@ set matchtime=1
 
 
 " show special character
-set listchars=eol:¬,tab:▸\ ,trail:.,
+set list listchars=eol:¬,tab:▸\ ,trail:.
 
 
 "highlight current line
