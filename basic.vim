@@ -178,6 +178,8 @@ set smarttab "Be smart when using tab
 " for makefile
 autocmd FileType make setlocal noexpandtab
 
+" for nasm
+au BufRead,BufNewFile *.asm set filetype=nasm
 
 set autoindent
 set smartindent
