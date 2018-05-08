@@ -50,9 +50,6 @@ Plug 'tpope/vim-fugitive'
 " denite (TODO: to be set)
 Plug 'Shougo/denite.nvim'
 
-" vim-cursorword
-Plug 'itchyny/vim-cursorword'
-
 call plug#end()
 
 " color scheme {{{
