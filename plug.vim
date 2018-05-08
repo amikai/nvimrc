@@ -56,6 +56,9 @@ Plug 'itchyny/vim-cursorword'
 " cscope
 Plug 'ronakg/quickr-cscope.vim'
 
+" for kernerl coding style
+Plug 'vivien/vim-linux-coding-style'
+
 call plug#end()
 
 " color scheme {{{
@@ -144,6 +147,11 @@ nmap <C-\>i <plug>(quickr_cscope_includes)
 nmap <C-\>t <plug>(quickr_cscope_text)
 nmap <C-\>e <plug>(quickr_cscope_egrep)
 nmap <C-\>d <plug>(quickr_cscope_functions)
+" }}}
+
+
+" vim-linux-coding-style {{{
+nnoremap <silent> <leader>a :LinuxCodingStyle<cr>
 " }}}
 
 " denite {{{
