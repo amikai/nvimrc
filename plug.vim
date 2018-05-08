@@ -53,6 +53,9 @@ Plug 'Shougo/denite.nvim'
 " vim-cursorword
 Plug 'itchyny/vim-cursorword'
 
+" cscope
+Plug 'ronakg/quickr-cscope.vim'
+
 call plug#end()
 
 " color scheme {{{
@@ -129,20 +132,19 @@ set undofile
 set undodir=$HOME/.config/nvim/undo
 " }}}
 
-
-" YCM {{{
-" let g:ycm_global_ycm_extra_conf='~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_min_num_of_chars_for_completion=2
-let g:ycm_cache_omnifunc=0
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_server_python_interpreter='/usr/bin/python2'
-
-nnoremap ygt :YcmCompleter GetType<cr>
-" after use folling command you can C-o to go back.
-nnoremap gd :YcmCompleter GoToDeclaration<cr>
-nnoremap ge :YcmCompleter GoToDefinition<cr>
+" quickr-cscope {{{
+" disable default key mapping
+let g:quickr_cscope_keymaps = 0
+let g:quickr_cscope_use_qf_g = 1
+nmap <C-\>s <plug>(quickr_cscope_symbols)
+nmap <C-\>g <plug>(quickr_cscope_global)
+nmap <C-\>c <plug>(quickr_cscope_callers)
+nmap <C-\>f <plug>(quickr_cscope_files)
+nmap <C-\>i <plug>(quickr_cscope_includes)
+nmap <C-\>t <plug>(quickr_cscope_text)
+nmap <C-\>e <plug>(quickr_cscope_egrep)
+nmap <C-\>d <plug>(quickr_cscope_functions)
 " }}}
-
 
 " denite {{{
 noremap [denite-leader] <Nop>
