@@ -22,20 +22,37 @@ command W w !sudo tee % > /dev/null
 
 set path+=**
 
+" Remember cursor position between vim sessions
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+    " center buffer around cursor when opening files
+autocmd BufRead * normal zz
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
 
 nnoremap j gj
 nnoremap k gk
+
+nnoremap J 5j
+nnoremap K 5k
 
 nnoremap H ^
 nnoremap L $
 
 " set esc to noh highlight
-nnorema <esc> <esc>:noh<return><esc>
+nnoremap <esc> <esc>:noh<return><esc>
 inoremap <esc> <esc>:noh<return><esc>
+
+" map U to redo
+noremap U :redo<cr>
 
 " copy paste
 set clipboard+=unnamedplus
@@ -47,6 +64,11 @@ set clipboard+=unnamedplus
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=7
+
+" Maximum width of text that is being inserted (TODO)
+" set textwidth=80
+" set breakindent
+" set formatoptions=
 
 
 " visual autocomplete for command menu
@@ -101,7 +123,7 @@ set matchtime=1
 
 
 " show special character
-set listchars=eol:¬,tab:▸\ ,trail:.,
+set list listchars=eol:¬,tab:▸\ ,trail:.
 
 
 "highlight current line
@@ -156,6 +178,8 @@ set smarttab "Be smart when using tab
 " for makefile
 autocmd FileType make setlocal noexpandtab
 
+" for nasm
+au BufRead,BufNewFile *.asm set filetype=nasm
 
 set autoindent
 set smartindent
@@ -191,23 +215,42 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close current buffer
-map <leader>bd :bd<cr>
-
+nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
+nnoremap <silent> <leader>qt :tabclose<cr>
 " Close all the buffers
 noremap <leader>ba :bufdo bd<cr>
 
 " Move between buffer
-noremap <leader>l :bnext<cr>
-noremap <leader>h :bprevious<cr>
+" noremap <leader>l :bnext<cr>
+" noremap <leader>h :bprevious<cr>
+noremap ]b :bnext<cr>
+noremap [b :bprevious<cr>
 
 " Managing tabs
-noremap <leader>nt :tabnew<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tc :tabclose<cr>
-noremap <leader>tm :tabmove
-noremap <leader>tn :tabnext
-noremap <leader>th :tabprev<cr>
-noremap <leader>tl :tabnext<cr>
+" noremap <leader>nt :tabnew<cr>
+" noremap <leader>to :tabonly<cr>
+" noremap <leader>tc :tabclose<cr>
+" noremap <leader>tm :tabmove
+" noremap <leader>tn :tabnext
+" noremap <leader>th :tabprev<cr>
+" noremap <leader>tl :tabnext<cr>
+noremap <leader>t :tabnew<cr>
+noremap ]t :tabnext<cr>
+noremap [t :tabprev<cr>
 
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => command line mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" command line mode work like shell
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
