@@ -50,6 +50,18 @@ Plug 'tpope/vim-fugitive'
 " denite (TODO: to be set)
 Plug 'Shougo/denite.nvim'
 
+" vim-cursorword
+Plug 'itchyny/vim-cursorword'
+
+" cscope
+Plug 'ronakg/quickr-cscope.vim'
+
+" for kernerl coding style
+Plug 'vivien/vim-linux-coding-style'
+
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 call plug#end()
 
 " color scheme {{{
@@ -126,6 +138,47 @@ set undofile
 set undodir=$HOME/.config/nvim/undo
 " }}}
 
+" quickr-cscope {{{
+" disable default key mapping
+let g:quickr_cscope_keymaps = 0
+let g:quickr_cscope_use_qf_g = 1
+nmap <C-\>s <plug>(quickr_cscope_symbols)
+nmap <C-\>g <plug>(quickr_cscope_global)
+nmap <C-\>c <plug>(quickr_cscope_callers)
+nmap <C-\>f <plug>(quickr_cscope_files)
+nmap <C-\>i <plug>(quickr_cscope_includes)
+nmap <C-\>t <plug>(quickr_cscope_text)
+nmap <C-\>e <plug>(quickr_cscope_egrep)
+nmap <C-\>d <plug>(quickr_cscope_functions)
+" }}}
+
+
+" vim-linux-coding-style {{{
+nnoremap <silent> <leader>a :LinuxCodingStyle<cr>
+" }}}
+
+" deoplete {{{
+let g:deoplete#enable_at_startup = 1
+
+call deoplete#custom#option({
+    \ 'auto_complete_delay': 200,
+    \ 'max_list': 20,
+    \ })
+
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_',
+            \ 'disabled_syntaxes', ['Comment', 'String'])
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" set sources
+call deoplete#custom#option('sources', {
+    \ '_': ['buffer'],
+    \ 'c': ['buffer', 'tag'],
+    \})
+
+" }}}
+
 " denite {{{
 noremap [denite-leader] <Nop>
 nmap ; [denite-leader]
@@ -195,3 +248,4 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ 'tags', 'cscope*'])
 
 " }}}
+
