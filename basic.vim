@@ -62,6 +62,11 @@ set clipboard+=unnamedplus
 xnoremap c "xc
 nnoremap c "xc
 
+" After block yank and paste, move cursor to the end of operated text and don't override register
+vnoremap y y`]
+vnoremap p "_dP`]
+nnoremap p p`]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
