@@ -1,9 +1,7 @@
-
 call plug#begin('~/.config/nvim/plugged')
 
 " color scheme
 Plug 'morhetz/gruvbox'  
-Plug 'cocopon/iceberg.vim'
 
 " indent line
 Plug 'Yggdroot/indentLine'
@@ -11,18 +9,6 @@ Plug 'Yggdroot/indentLine'
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" easymotion
-Plug 'easymotion/vim-easymotion'
-
-" tagbar 
-" use universal-ctag is better
-Plug 'majutsushi/tagbar'
-" automatically update tags files
-" This will only work on projects that after ctags -R
-" (TODO: to be set)
-Plug 'craigemery/vim-autotag'
-" Plug 'jsfaint/gen_tags.vim'
 
 " file navigator
 Plug 'scrooloose/nerdtree'
@@ -44,8 +30,8 @@ Plug 'Chiel92/vim-autoformat'
 " undo tree (TODO: To be set)
 Plug 'simnalamburt/vim-mundo'
 
-"  fugitive (TODO: to be set)
-Plug 'tpope/vim-fugitive'
+" gina (TODO: to be set)
+Plug 'lambdalisue/gina.vim'
 
 " denite (TODO: to be set)
 Plug 'Shougo/denite.nvim'
@@ -55,9 +41,7 @@ call plug#end()
 " color scheme {{{
 set bg=dark
 " set termguicolors
-"let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
-"colorscheme iceberg
 
 " }}}
 
