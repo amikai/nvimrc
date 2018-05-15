@@ -224,7 +224,6 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close current buffer
-nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
 nnoremap <silent> <leader>qt :tabclose<cr>
 " Close all the buffers
 noremap <leader>ba :bufdo bd<cr>

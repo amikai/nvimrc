@@ -15,6 +15,9 @@ Plug 'scrooloose/nerdtree'
 " nerdtree-git-plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" for buffer/window deletion
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+
 " auto-pair
 Plug 'jiangmiao/auto-pairs'
 
@@ -95,6 +98,10 @@ let NERDTreeDirArrows = 1
 
 " }}}
 
+" Sayonara {{{
+nnoremap <silent> <leader>c :Sayonara!<CR>
+nnoremap <silent> <leader>q :Sayonara<CR>
+" }}}
 " Rainbow Parentheses Improved {{{
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 " }}}
