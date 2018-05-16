@@ -58,6 +58,15 @@ noremap U :redo<cr>
 set clipboard+=unnamedplus
 
 
+" Don't yank to default register when changing something
+xnoremap c "xc
+nnoremap c "xc
+
+" After block yank and paste, move cursor to the end of operated text and don't override register
+vnoremap y y`]
+vnoremap p "_dP`]
+nnoremap p p`]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,7 +224,6 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close current buffer
-nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
 nnoremap <silent> <leader>qt :tabclose<cr>
 " Close all the buffers
 noremap <leader>ba :bufdo bd<cr>
@@ -241,6 +249,12 @@ noremap [t :tabprev<cr>
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
+" When jump to next match also center screen
+" Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
+nnoremap <silent> n :norm! nzz<CR>
+nnoremap <silent> N :norm! Nzz<CR>
+vnoremap <silent> n :norm! nzz<CR>
+vnoremap <silent> N :norm! Nzz<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => command line mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
