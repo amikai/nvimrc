@@ -29,7 +29,7 @@ install_vim_plug() {
 }
 
 install_vim_plugin() {
-    nvim +PlugInstall +qa
+    nvim +PlugInstall +qa >/dev/null 2>&1
     success "install vim-plugin"
 }
 
