@@ -147,7 +147,8 @@ set foldcolumn=1
 " Use a popup menu to show the possible completions
 set completeopt-=preview
 
-
+" Use tab to choose condidate in pop up menu
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
