@@ -168,6 +168,8 @@ call deoplete#custom#option('sources', {
     \ 'c': ['buffer', 'tag'],
     \})
 
+" press enter to close pop up menu
+inoremap <expr><cr> deoplete#close_popup()
 " }}}
 
 " denite {{{
