@@ -15,6 +15,9 @@ Plug 'scrooloose/nerdtree'
 " nerdtree-git-plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" tagbar
+Plug 'majutsushi/tagbar'	
+
 " for buffer/window deletion
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
