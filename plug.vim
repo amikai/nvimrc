@@ -171,8 +171,8 @@ call deoplete#custom#option('sources', {
     \ 'c': ['buffer', 'tag'],
     \})
 
-" press enter to close pop up menu
-inoremap <expr><cr> deoplete#close_popup()
+" press enter to close pop up menu or make newline
+inoremap <expr><cr> (pumvisible() ? deoplete#close_popup() : "\<cr>")
 " }}}
 
 " denite {{{
