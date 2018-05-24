@@ -1,2 +1,2 @@
-source ~/.config/nvim/nvimrc/basic.vim
-source ~/.config/nvim/nvimrc/plug.vim
+source ~/.config/nvim/basic.vim
+source ~/.config/nvim/dein_plug.vim
