@@ -10,8 +10,7 @@ set history=500
 set autoread
 
 " Enable filetype plugins
-filetype indent on
-filetype plugin on
+filetype indent plugin on
 inoremap jk <esc>
 
 let mapleader=","

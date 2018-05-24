@@ -1,0 +1,56 @@
+[[plugins]]
+repo = 'mhinz/vim-sayonara'
+on_cmd = 'Sayonara'
+hook_add = '''
+    nnoremap <silent> <leader>c :Sayonara!<CR>
+    nnoremap <silent> <leader>q :Sayonara<CR>
+'''
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+depends = ['nerdtree-git-plugin']
+on_cmd = 'NERDTreeToggle'
+hook_add =  '''
+    noremap <F5> :NERDTreeToggle<cr>
+    " Open file navigator by default
+    
+    let NERDTreeMinimalUI = 1
+    let NERDTreeDirArrows = 1
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'	
+on_cmd = 'TagbarToggle' 
+hook_add = '''
+    noremap <F8> :TagbarToggle<cr>
+'''
+
+
+[[plugins]]
+repo = 'Chiel92/vim-autoformat'
+on_cmd = 'Autoformat'
+
+[[plugins]]
+repo = 'vivien/vim-linux-coding-style'
+on_cmd = 'LinuxCodingStyle'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_event = 'InsertEnter'
+hook_add = '''
+    let g:AutoPairsFlyMode = 1
+'''
+
+[[plugins]]
+repo = 'ronakg/quickr-cscope.vim'
+on_cmd = ['cs', 'cscope']
+# quickr-cscope
+# deoplete
+
+

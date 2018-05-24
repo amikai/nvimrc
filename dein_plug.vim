@@ -19,12 +19,15 @@ if !dein#load_state(s:dein_dir)
 endif
 
 call dein#begin(s:dein_dir, expand('<sfile>'))
-  call dein#add('Shougo/dein.vim')
-  call dein#add('roxma/nvim-yarp')
-
+  call dein#load_toml(expand('~/.config/nvim/plugins.toml'), {'lazy': 0})
+  call dein#load_toml(expand('~/.config/nvim/plugins_lazy.toml'), {'lazy': 1})
+  
 call dein#end()
 call dein#save_state()
 
 if has('vim_starting') && dein#check_install()
     call dein#install()
 endif
+
+filetype plugin indent on
+syntax enable
