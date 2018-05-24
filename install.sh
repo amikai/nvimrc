@@ -16,7 +16,7 @@ fail () {
 
 install_nvim_folder() {
     [ "$(ls -A $vimrc_path)" ] && fail "$vimrc_path is exist, please backup and delete it." 
-    git clone https://github.com/amikai/nvimrc.git "$vimrc_path/nvim"
+    git clone https://github.com/amikai/nvimrc.git "$vimrc_path"
     success "install nvim folder"
 }
 
