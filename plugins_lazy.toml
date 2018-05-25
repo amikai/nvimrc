@@ -51,8 +51,6 @@ hook_add = '''
 [[plugins]]
 repo = 'ronakg/quickr-cscope.vim'
 on_cmd = ['cs', 'cscope']
-# quickr-cscope
-# deoplete
 
 
 [[plugins]]
