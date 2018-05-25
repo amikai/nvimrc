@@ -8,6 +8,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+on_path = 'gina://' 
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
