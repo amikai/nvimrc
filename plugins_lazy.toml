@@ -54,3 +54,6 @@ on_cmd = ['cs', 'cscope']
 # deoplete
 
 
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
