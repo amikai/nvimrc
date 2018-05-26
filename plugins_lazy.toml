@@ -30,6 +30,26 @@ repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle' 
 hook_add = '''
     noremap <F8> :TagbarToggle<cr>
+
+    filetype plugin indent on
+    syntax enable
+'''
+
+
+[[plugins]]
+repo = 'ronakg/quickr-cscope.vim'
+on_cmd = 'cs'
+hook_add = '''
+    let g:quickr_cscope_keymaps = 0
+    let g:quickr_cscope_use_qf_g = 1
+    nmap <C-\>s <plug>(quickr_cscope_symbols)
+    nmap <C-\>g <plug>(quickr_cscope_global)
+    nmap <C-\>c <plug>(quickr_cscope_callers)
+    nmap <C-\>f <plug>(quickr_cscope_files)
+    nmap <C-\>i <plug>(quickr_cscope_includes)
+    nmap <C-\>t <plug>(quickr_cscope_text)
+    nmap <C-\>e <plug>(quickr_cscope_egrep)
+    nmap <C-\>d <plug>(quickr_cscope_functions)
 '''
 
 
@@ -49,22 +69,30 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'ronakg/quickr-cscope.vim'
-on_cmd = ['cs', 'cscope']
-hook_add = '''
-    let g:quickr_cscope_keymaps = 0
-    let g:quickr_cscope_use_qf_g = 1
-    nmap <C-\>s <plug>(quickr_cscope_symbols)
-    nmap <C-\>g <plug>(quickr_cscope_global)
-    nmap <C-\>c <plug>(quickr_cscope_callers)
-    nmap <C-\>f <plug>(quickr_cscope_files)
-    nmap <C-\>i <plug>(quickr_cscope_includes)
-    nmap <C-\>t <plug>(quickr_cscope_text)
-    nmap <C-\>e <plug>(quickr_cscope_egrep)
-    nmap <C-\>d <plug>(quickr_cscope_functions)
-'''
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
 
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_source = '''
+    let g:deoplete#enable_at_startup = 1
+    inoremap <expr><cr> (pumvisible() ? deoplete#close_popup() : "\<cr>")
+
+    call deoplete#custom#option({
+    \ 'auto_complete_delay': 200,
+    \ 'max_list': 20,
+    \ })
+
+    " Disable the candidates in Comment/String syntaxes.
+    call deoplete#custom#source('_',
+    \ 'disabled_syntaxes', ['Comment', 'String'])
+
+    call deoplete#custom#option('sources', {
+    \ '_': ['buffer'],
+    \ 'c': ['buffer', 'tag'],
+    \})
+'''
+
+

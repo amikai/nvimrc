@@ -69,29 +69,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_add = '''
-    let g:deoplete#enable_at_startup = 1
-    inoremap <expr><cr> (pumvisible() ? deoplete#close_popup() : "\<cr>")
-
-    call deoplete#custom#option({
-    \ 'auto_complete_delay': 200,
-    \ 'max_list': 20,
-    \ })
-
-    " Disable the candidates in Comment/String syntaxes.
-    call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
-
-    call deoplete#custom#option('sources', {
-    \ '_': ['buffer'],
-    \ 'c': ['buffer', 'tag'],
-    \})
-'''
-
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
     noremap [denite-leader] <Nop>
