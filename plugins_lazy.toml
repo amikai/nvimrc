@@ -96,3 +96,9 @@ hook_source = '''
 '''
 
 
+[[plugins]]
+repo = 'simnalamburt/vim-mundo'
+on_cmd = 'MundoToggle'
+hook_add = '''
+    noremap <F6> :MundoToggle<cr>
+'''

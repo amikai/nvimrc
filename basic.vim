@@ -189,6 +189,8 @@ set nobackup
 set nowb
 set noswapfile
 
+set undofile
+set undodir=$HOME/.config/nvim/undo
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
