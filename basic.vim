@@ -3,12 +3,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if !exists("g:python_host_prog")
-    let g:python_host_prog = '/usr/bin/python'
+    " echo -n for trimming newline
+    let g:python_host_prog = system('echo -n "$(which python)"')
 endif
 
 if !exists("g:python3_host_prog")
-    let g:python3_host_prog = '/usr/bin/python3.6'
-
+    " echo -n for trimming newline
+    let g:python3_host_prog = system('echo -n "$(which python3)"')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
