@@ -76,25 +76,36 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
-hook_source = '''
+hook_add = '''
     let g:deoplete#enable_at_startup = 1
+'''
+hook_source = '''
     inoremap <expr><cr> (pumvisible() ? deoplete#close_popup() : "\<cr>")
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
     call deoplete#custom#option({
     \ 'auto_complete_delay': 200,
-    \ 'max_list': 20,
     \ })
 
     " Disable the candidates in Comment/String syntaxes.
     call deoplete#custom#source('_',
     \ 'disabled_syntaxes', ['Comment', 'String'])
 
+    " Use mathcer_head instead of fuzzy
+    call deoplete#custom#source('_', 'matchers', ['matcher_head'])
+
     call deoplete#custom#option('sources', {
     \ '_': ['buffer'],
-    \ 'c': ['buffer', 'tag'],
+    \ 'c': ['buffer', 'tag', 'member']
     \})
+ 
+    " Change the source mark
+    call deoplete#custom#source('buffer', 'mark', 'buf')
+    call deoplete#custom#source('tag', 'mark', 'tag')
+    call deoplete#custom#source('member', 'mark', 'mem')
 '''
-
 
 [[plugins]]
 repo = 'simnalamburt/vim-mundo'

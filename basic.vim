@@ -161,7 +161,6 @@ set foldcolumn=1
 set completeopt-=preview
 
 " Use tab to choose condidate in pop up menu
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
