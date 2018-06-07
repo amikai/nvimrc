@@ -87,6 +87,7 @@ hook_source = '''
 
     call deoplete#custom#option({
     \ 'auto_complete_delay': 200,
+    \ 'ignore_case': v:false,
     \ })
 
     " Disable the candidates in Comment/String syntaxes.
