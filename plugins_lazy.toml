@@ -35,24 +35,6 @@ hook_add = '''
     syntax enable
 '''
 
-
-[[plugins]]
-repo = 'ronakg/quickr-cscope.vim'
-on_cmd = 'cs'
-hook_add = '''
-    let g:quickr_cscope_keymaps = 0
-    let g:quickr_cscope_use_qf_g = 1
-    nmap <C-\>s <plug>(quickr_cscope_symbols)
-    nmap <C-\>g <plug>(quickr_cscope_global)
-    nmap <C-\>c <plug>(quickr_cscope_callers)
-    nmap <C-\>f <plug>(quickr_cscope_files)
-    nmap <C-\>i <plug>(quickr_cscope_includes)
-    nmap <C-\>t <plug>(quickr_cscope_text)
-    nmap <C-\>e <plug>(quickr_cscope_egrep)
-    nmap <C-\>d <plug>(quickr_cscope_functions)
-'''
-
-
 [[plugins]]
 repo = 'Chiel92/vim-autoformat'
 on_cmd = 'Autoformat'

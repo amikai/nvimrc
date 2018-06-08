@@ -65,6 +65,9 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
 # gen_tags support deoplete source
+hook_add = '''
+    let  g:gen_tags#gtags_default_map = 1
+'''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
