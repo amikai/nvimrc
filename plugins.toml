@@ -143,3 +143,6 @@ hook_source = '''
           \ 'tags', 'cscope*'])
     
 '''
+
+[[plugins]]
+repo = 'artur-shaik/vim-javacomplete2'
