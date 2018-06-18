@@ -44,6 +44,8 @@ hook_add = '''
     nmap <leader>9 <Plug>AirlineSelectTab9
 '''
 
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
 
 
 [[plugins]]
