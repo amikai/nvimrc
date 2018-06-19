@@ -172,6 +172,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 syntax on
 
 set t_Co=256
+set termguicolors
 
 " Set utf8 as standard enconding
 set encoding=utf-8
