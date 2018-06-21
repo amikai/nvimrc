@@ -4,29 +4,11 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
-    " set bg=dark
-    " colorscheme gruvbox
-'''
-
-[[plugins]]
-repo = 'dracula/vim'
-hook_add = '''
-    syntax on
-    colorscheme dracula
-'''
-
-[[plugins]]
-repo = 'tomasr/molokai'
-hook_add = '''
-    " let g:rehash256 = 1
-    " colorscheme molokai
-'''
-
-[[plugins]]
-repo = 'sickill/vim-monokai'
-hook_add = '''
-    " set bg=dark
-    " colorscheme monokai
+    let g:gruvbox_termcolors=256
+    let g:gruvbox_contrast_dark="hard"
+    let g:gruvbox_vert_split="bg0"
+    set bg=dark
+    colorscheme gruvbox
 '''
 
 [[plugins]]
