@@ -77,6 +77,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
     noremap [denite-leader] <Nop>

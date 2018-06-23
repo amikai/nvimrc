@@ -241,28 +241,27 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
-" Close current buffer
+" Close current tab
 nnoremap <silent> <leader>qt :tabclose<cr>
+
+" Use vim-sayonara plugin
+" <leader>q => Close current buffer and window
+" <leader>c => Close current buffer
+
+
 " Close all the buffers
 noremap <leader>ba :bufdo bd<cr>
 
+
 " Move between buffer
-" noremap <leader>l :bnext<cr>
-" noremap <leader>h :bprevious<cr>
-noremap ]b :bnext<cr>
-noremap [b :bprevious<cr>
+" Use tpope/vim-unimpaired replace below
+" noremap ]b :bnext<cr>
+" noremap [b :bprevious<cr>
 
 " Managing tabs
-" noremap <leader>nt :tabnew<cr>
-" noremap <leader>to :tabonly<cr>
-" noremap <leader>tc :tabclose<cr>
-" noremap <leader>tm :tabmove
-" noremap <leader>tn :tabnext
-" noremap <leader>th :tabprev<cr>
-" noremap <leader>tl :tabnext<cr>
 noremap <leader>t :tabnew<cr>
-noremap ]t :tabnext<cr>
-noremap [t :tabprev<cr>
+" gt => :tabnext
+" gT => :tabprevious
 
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
