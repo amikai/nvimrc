@@ -54,6 +54,10 @@ hook_add = '''
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -84,6 +88,7 @@ hook_source = '''
     \ '_': ['buffer'],
     \ 'c': ['buffer', 'tag', 'member'],
     \ 'java': ['buffer', 'javacomplete2', 'member']
+    \ 'vim': ['vim','buffer']
     \})
  
     " Change the source mark
