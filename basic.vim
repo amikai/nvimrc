@@ -26,6 +26,7 @@ set autoread
 " Enable filetype plugins
 filetype indent plugin on
 inoremap jk <esc>
+tnoremap <esc> <C-\><C-n>
 
 let mapleader=","
 let g:mapleader=","
