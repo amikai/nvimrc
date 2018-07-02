@@ -87,7 +87,7 @@ hook_source = '''
     call deoplete#custom#option('sources', {
     \ '_': ['buffer'],
     \ 'c': ['buffer', 'tag', 'member'],
-    \ 'java': ['buffer', 'javacomplete2', 'member']
+    \ 'java': ['buffer', 'javacomplete2', 'member'],
     \ 'vim': ['vim','buffer']
     \})
  
