@@ -61,7 +61,6 @@ on_ft = 'vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['CompleteParameter.vim']
 on_event = 'InsertEnter'
 hook_add = '''
     let g:deoplete#enable_at_startup = 1
@@ -107,6 +106,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'tenfyzhong/CompleteParameter.vim'
+depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'simnalamburt/vim-mundo'
