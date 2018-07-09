@@ -12,7 +12,6 @@ on_path = 'gina://'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
-depends = ['nerdtree-git-plugin']
 on_cmd = 'NERDTreeToggle'
 hook_add =  '''
     noremap <F5> :NERDTreeToggle<cr>
@@ -24,6 +23,7 @@ hook_add =  '''
 
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['nerdtree']
 
 [[plugins]]
 repo = 'majutsushi/tagbar'	
