@@ -81,3 +81,6 @@ repo = 'tpope/vim-unimpaired'
 
 [[plugins]]
 repo = 'artur-shaik/vim-javacomplete2'
+
+[[plugins]]
+repo = 'roxma/vim-paste-easy'
