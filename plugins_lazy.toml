@@ -210,10 +210,9 @@ on_ft = 'rust'
 hook_add = '''
     set hidden
 
-    let g:racer_cmd = "/Users/amikai/.cargo/bin/racer"
+    let g:racer_cmd = system('echo -n "$(which racer)"')
     let g:racer_experimental_completer = 1
 '''
-#     let g:racer_cmd = system('echo -n "$(which racer)"')
 hook_source = '''
     au FileType rust nmap gd <Plug>(rust-def)
     au FileType rust nmap gs <Plug>(rust-def-split)
