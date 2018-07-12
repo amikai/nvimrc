@@ -87,7 +87,8 @@ hook_source = '''
     \ '_': ['buffer'],
     \ 'c': ['buffer', 'tag', 'member'],
     \ 'java': ['buffer', 'javacomplete2', 'member'],
-    \ 'vim': ['vim','buffer']
+    \ 'vim': ['vim','buffer'],
+    \ 'rust': ['racer', 'buffer', 'member']
     \})
  
     " Change the source mark
@@ -191,3 +192,21 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-scriptease'
 on_ft = 'vim'
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = 'rust'
+hook_add = '''
+    set hidden
+
+    let g:racer_cmd = "/Users/amikai/.cargo/bin/racer"
+    let g:racer_experimental_completer = 1
+'''
+#     let g:racer_cmd = system('echo -n "$(which racer)"')
+hook_source = '''
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
+'''
+
