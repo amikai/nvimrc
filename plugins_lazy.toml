@@ -70,6 +70,7 @@ hook_source = '''
     " <S-TAB>: completion back.
     inoremap <expr><C-g>       deoplete#refresh()
     inoremap <expr><C-e>       deoplete#cancel_popup()
+    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
     inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
     inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
