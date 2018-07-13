@@ -117,10 +117,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'tenfyzhong/CompleteParameter.vim'
-depends = ['deoplete.nvim']
-
-[[plugins]]
 repo = 'simnalamburt/vim-mundo'
 on_cmd = 'MundoToggle'
 hook_add = '''
