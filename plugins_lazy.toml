@@ -220,3 +220,22 @@ hook_source = '''
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
 
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_source = '''
+  imap <silent>L     <Plug>(neosnippet_jump_or_expand)
+  smap <silent>L     <Plug>(neosnippet_jump_or_expand)
+  xmap <silent>L     <Plug>(neosnippet_expand_target)
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_completed_snippet = 1
+  let g:neosnippet#expand_word_boundary = 1
+  " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
+  let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
+  autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
