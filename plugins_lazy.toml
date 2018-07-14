@@ -97,7 +97,6 @@ hook_source = '''
     call deoplete#custom#option('sources', {
     \ '_': ['buffer'],
     \ 'c': ['buffer', 'tag', 'member'],
-    \ 'java': ['buffer', 'javacomplete2', 'member'],
     \ 'vim': ['vim','buffer'],
     \ 'rust': ['racer', 'buffer', 'member']
     \})
@@ -106,15 +105,6 @@ hook_source = '''
     call deoplete#custom#source('buffer', 'mark', 'buf')
     call deoplete#custom#source('tag', 'mark', 'tag')
     call deoplete#custom#source('member', 'mark', 'mem')
-    call deoplete#custom#source('javacomplete2', 'mark', 'jc')
-
-    let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-    let g:deoplete#omni#input_patterns.java = [
-        \'[^. \t0-9]\.\w*',
-        \'[^. \t0-9]\->\w*',
-        \'[^. \t0-9]\::\w*',
-        \]
-'''
 
 [[plugins]]
 repo = 'simnalamburt/vim-mundo'
