@@ -98,13 +98,22 @@ hook_source = '''
     \ '_': ['buffer'],
     \ 'c': ['buffer', 'tag', 'member'],
     \ 'vim': ['vim','buffer'],
-    \ 'rust': ['racer', 'buffer', 'member']
+    \ 'rust': ['racer', 'buffer', 'member'],
+    \ 'go' :['omni', 'buffer', 'member', 'file']
     \})
  
     " Change the source mark
     call deoplete#custom#source('buffer', 'mark', 'buf')
     call deoplete#custom#source('tag', 'mark', 'tag')
     call deoplete#custom#source('member', 'mark', 'mem')
+    call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'go' : '[^.[:digit:] *\t]\.'
+        \})
+
+    call deoplete#custom#source('omni', 'functions', {
+        \ 'go':  'go#complete#Complete',
+        \})
+'''
 
 [[plugins]]
 repo = 'simnalamburt/vim-mundo'
@@ -133,7 +142,7 @@ hook_add = '''
     " search in this file (create buffer name called search)
     nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
     " search globally - search recursively from project root (auto-preview is slowly)
-    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
+    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -resume -mode=normal grep<CR>
     " search current word in the file
     nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search -auto-highlight line<CR><C-R><C-W><CR>
     " search current word globally 
