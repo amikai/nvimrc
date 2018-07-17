@@ -99,7 +99,8 @@ hook_source = '''
     \ 'c': ['buffer', 'tag', 'member'],
     \ 'vim': ['vim','buffer'],
     \ 'rust': ['racer', 'buffer', 'member'],
-    \ 'go' :['omni', 'buffer', 'member', 'file']
+    \ 'go' :['omni', 'buffer', 'member', 'file'],
+    \ 'python' :['jedi', 'buffer', 'member', 'file']
     \})
  
     " Change the source mark
@@ -243,3 +244,8 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
+on_ft = 'python'
