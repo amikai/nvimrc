@@ -47,7 +47,7 @@ on_cmd = 'LinuxCodingStyle'
 repo = 'jiangmiao/auto-pairs'
 on_event = 'InsertEnter'
 hook_add = '''
-    let g:AutoPairsFlyMode = 1
+    let g:AutoPairsFlyMode = 0
 '''
 
 [[plugins]]
