@@ -131,6 +131,7 @@ set whichwrap+=<,>,h,l
 " search
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+set inccommand=split    " show the effect of :s, :sm, and :sno command
 
 
 " Don't redraw while executing macros (good performance config)
