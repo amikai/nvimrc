@@ -19,6 +19,10 @@ if !dein#load_state(s:dein_dir)
 endif
 
 call dein#begin(s:dein_dir, expand('<sfile>'))
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
   call dein#load_toml(expand('~/.config/nvim/plugins.toml'), {'lazy': 0})
   call dein#load_toml(expand('~/.config/nvim/plugins_lazy.toml'), {'lazy': 1})
   
