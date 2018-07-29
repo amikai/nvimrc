@@ -80,4 +80,3 @@ hook_add = '''
 repo = 'tpope/vim-unimpaired'
 
 [[plugins]]
-repo = 'roxma/vim-paste-easy'
