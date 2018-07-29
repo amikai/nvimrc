@@ -38,6 +38,10 @@ hook_add = '''
 [[plugins]]
 repo = 'Chiel92/vim-autoformat'
 on_cmd = 'Autoformat'
+hook_add = '''
+    noremap <F8> :Autoformat<cr>
+    let g:formatters_python = ['autopep8']
+'''
 
 [[plugins]]
 repo = 'vivien/vim-linux-coding-style'
