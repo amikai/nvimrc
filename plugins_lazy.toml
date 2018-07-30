@@ -39,7 +39,7 @@ hook_add = '''
 repo = 'Chiel92/vim-autoformat'
 on_cmd = 'Autoformat'
 hook_add = '''
-    noremap <F8> :Autoformat<cr>
+    noremap <F3> :Autoformat<cr>
     let g:formatters_python = ['autopep8']
 '''
 
