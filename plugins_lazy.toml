@@ -41,6 +41,7 @@ on_cmd = 'Autoformat'
 hook_add = '''
     noremap <F3> :Autoformat<cr>
     let g:formatters_python = ['autopep8']
+    let g:formatters_rust = ['rustfmt']
 '''
 
 [[plugins]]
