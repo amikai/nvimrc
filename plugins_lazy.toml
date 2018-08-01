@@ -253,3 +253,7 @@ on_ft = 'go'
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim']
 on_ft = 'python'
+
+[[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
