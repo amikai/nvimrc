@@ -240,7 +240,6 @@ hook_source = '''
   let g:neosnippet#expand_word_boundary = 1
   " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
   let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
-  autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
 '''
 
 [[plugins]]
