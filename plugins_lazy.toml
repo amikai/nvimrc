@@ -257,3 +257,7 @@ on_ft = 'python'
 [[plugins]]
 repo = 'StanAngeloff/php.vim'
 on_ft = 'php'
+
+[[plugins]]
+repo = 'vim-scripts/matchit.zip'
+on_ft = ['html', 'vim', 'xml']
