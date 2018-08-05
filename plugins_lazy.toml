@@ -105,7 +105,8 @@ hook_source = '''
     \ 'vim': ['vim','buffer'],
     \ 'rust': ['racer', 'buffer', 'member'],
     \ 'go' :['omni', 'buffer', 'member', 'file'],
-    \ 'python' :['jedi', 'buffer', 'member', 'file']
+    \ 'python' :['jedi', 'buffer', 'member', 'file'],
+    \ 'php' :['omni', 'buffer', 'member', 'file']
     \})
  
     " Change the source mark
@@ -118,6 +119,7 @@ hook_source = '''
 
     call deoplete#custom#source('omni', 'functions', {
         \ 'go':  'go#complete#Complete',
+        \ 'php': 'phpactor#Complete'
         \})
 '''
 
@@ -256,6 +258,10 @@ on_ft = 'python'
 
 [[plugins]]
 repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
+
+[[plugins]]
+repo = 'phpactor/phpactor'
 on_ft = 'php'
 
 [[plugins]]
