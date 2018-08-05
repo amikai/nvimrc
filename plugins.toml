@@ -92,3 +92,6 @@ hook_add = '''
     let g:ale_set_quickfix = 1
 
 '''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
