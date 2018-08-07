@@ -106,7 +106,7 @@ hook_source = '''
     \ 'rust': ['racer', 'buffer', 'member'],
     \ 'go' :['omni', 'buffer', 'member', 'file'],
     \ 'python' :['jedi', 'buffer', 'member', 'file'],
-    \ 'php' :['omni', 'buffer', 'member', 'file']
+    \ 'php' :['phpactor', 'buffer', 'member', 'file'],
     \})
  
     " Change the source mark
@@ -118,8 +118,7 @@ hook_source = '''
         \})
 
     call deoplete#custom#source('omni', 'functions', {
-        \ 'go':  'go#complete#Complete',
-        \ 'php': 'phpactor#Complete'
+        \ 'go':  'go#complete#Complete'
         \})
 '''
 
@@ -262,6 +261,12 @@ on_ft = 'php'
 
 [[plugins]]
 repo = 'phpactor/phpactor'
+build = 'composer install'
+on_ft = 'php'
+
+[[plugins]]
+repo = 'kristijanhusak/deoplete-phpactor''
+depends = ['deoplete.nvim']
 on_ft = 'php'
 
 [[plugins]]
