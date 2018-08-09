@@ -265,7 +265,7 @@ build = 'composer install'
 on_ft = 'php'
 
 [[plugins]]
-repo = 'kristijanhusak/deoplete-phpactor''
+repo = 'kristijanhusak/deoplete-phpactor'
 depends = ['deoplete.nvim']
 on_ft = 'php'
 
