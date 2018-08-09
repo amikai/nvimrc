@@ -131,6 +131,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+hook_source = 'source ~/.config/nvim/config/denite.vim'
 hook_add = '''
     noremap [denite-leader] <Nop>
     nmap ; [denite-leader]
@@ -144,63 +145,18 @@ hook_add = '''
     nnoremap <silent> [denite-leader]b :<C-u>Denite -mode=normal buffer<CR>
     
     " 
-    nnoremap <silent> [denite-leader]r :<C-u>Denite -buffer-name=search -resume -mode=normal<CR>
+    nnoremap <silent> [denite-leader]r :<C-u>Denite -refresh -resume -mode=normal -buffer-name=search<CR>
     
     " search in this file (create buffer name called search)
     nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
     " search globally - search recursively from project root (auto-preview is slowly)
-    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -resume -mode=normal grep<CR>
+    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
     " search current word in the file
     nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search -auto-highlight line<CR><C-R><C-W><CR>
     " search current word globally 
     nnoremap <silent> [denite-leader]gc :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search grep<CR><C-R><C-W><CR>
     " list register 
     nnoremap <silent> [denite-leader]re :<C-u>Denite -mode=normal -buffer-name=list_reg register<CR>
-'''
-hook_source = '''
-    call denite#custom#option('_', {
-        \ 'prompt': 'λ:',
-        \ 'winheight': 10,
-        \ 'updatetime': 1,
-        \ 'auto_resize': 1,
-        \ 'source_names': 'short',
-        \ 'empty': 0,
-        \ 'auto-accel': 1,
-        \})
-    "   'vertical_preview': 1, " use it when needed
-    
-    
-    
-    call denite#custom#option('search', {
-        \ 'quit': 0,
-        \})
-    
-    " denite-key mapping
-    call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>')
-    call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
-    call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
-    
-    call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
-    call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
-    call denite#custom#map('normal', "vs", '<denite:do_action:vsplit>')
-    call denite#custom#map('normal', "sp", '<denite:do_action:split>')
-    call denite#custom#map('normal', "<C-h>", '<denite:wincmd:h>')
-    call denite#custom#map('normal', "<C-j>", '<denite:wincmd:j>')
-    call denite#custom#map('normal', "<C-k>", '<denite:wincmd:k>')
-    call denite#custom#map('normal', "<C-l>", '<denite:wincmd:l>')
-    " customize ignore globs
-    call denite#custom#source('grep', 'matchers', ['matcher_ignore_globs'])
-    call denite#custom#source('line', 'matchers', ['matcher_ignore_globs', 'matcher_regexp'])
-    call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy','matcher_ignore_globs'])
-    
-    call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-          \ [
-          \ '.git/', 'build/', '__pycache__/',
-          \ 'images/', '*.o', '*.make',
-          \ '*.min.*',
-          \ 'img/', 'fonts/',
-          \ 'tags', 'cscope*'])
-    
 '''
 
 [[plugins]]
