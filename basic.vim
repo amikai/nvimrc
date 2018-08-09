@@ -284,3 +284,7 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
+augroup MyAutoCmd
+    autocmd!
+    autocmd CursorHold *? syntax sync minlines=300
+augroup END

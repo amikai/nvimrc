@@ -70,57 +70,7 @@ on_event = 'InsertEnter'
 hook_add = '''
     let g:deoplete#enable_at_startup = 1
 '''
-hook_source = '''
-    inoremap <expr><cr> (pumvisible() ? deoplete#close_popup() : "\<cr>")
-    " <S-TAB>: completion back.
-    inoremap <expr><C-g>       deoplete#refresh()
-    inoremap <expr><C-e>       deoplete#cancel_popup()
-    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-    inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
-
-    call deoplete#custom#option({
-    \ 'auto_complete_delay': 200,
-    \ 'ignore_case': v:false,
-    \ 'auto_complete': v:false,
-    \ })
-
-    " Disable the candidates in Comment/String syntaxes.
-    call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
-
-    " Use mathcer_head instead of fuzzy
-    call deoplete#custom#source('_', 'matchers', ['matcher_head'])
-
-    call deoplete#custom#option('sources', {
-    \ '_': ['buffer'],
-    \ 'c': ['buffer', 'tag', 'member'],
-    \ 'vim': ['vim','buffer'],
-    \ 'rust': ['racer', 'buffer', 'member'],
-    \ 'go' :['omni', 'buffer', 'member', 'file'],
-    \ 'python' :['jedi', 'buffer', 'member', 'file'],
-    \ 'php' :['phpactor', 'buffer', 'member', 'file'],
-    \})
- 
-    " Change the source mark
-    call deoplete#custom#source('buffer', 'mark', 'buf')
-    call deoplete#custom#source('tag', 'mark', 'tag')
-    call deoplete#custom#source('member', 'mark', 'mem')
-    call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'go' : '[^.[:digit:] *\t]\.'
-        \})
-
-    call deoplete#custom#source('omni', 'functions', {
-        \ 'go':  'go#complete#Complete'
-        \})
-'''
+hook_source = 'source ~/.config/nvim/config/deoplete.vim'
 
 [[plugins]]
 repo = 'simnalamburt/vim-mundo'
