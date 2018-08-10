@@ -1,3 +1,64 @@
+# language setting {{{
+# golang {{{
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+# }}}
+# python {{{
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
+on_ft = 'python'
+# }}}
+# php {{{
+[[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
+
+[[plugins]]
+repo = 'phpactor/phpactor'
+build = 'composer install'
+on_ft = 'php'
+
+[[plugins]]
+repo = 'kristijanhusak/deoplete-phpactor'
+depends = ['deoplete.nvim']
+on_ft = 'php'
+# }}}
+# toml {{{
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+# }}}
+# vim {{{
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+# }}}
+# rust {{{
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = 'rust'
+hook_add = '''
+    set hidden
+
+    let g:racer_cmd = system('echo -n "$(which racer)"')
+    let g:racer_experimental_completer = 1
+'''
+hook_source = '''
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
+'''
+# }}}
+# }}}
+
+# vim-sayonara (sane buffer/window deletion) {{{
 [[plugins]]
 repo = 'mhinz/vim-sayonara'
 on_cmd = 'Sayonara'
@@ -9,7 +70,21 @@ hook_add = '''
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
+# }}}
 
+# vim-scriptease {{{
+[[plugins]]
+repo = 'tpope/vim-scriptease'
+on_ft = 'vim'
+# }}}
+
+# matchit (% enhancement) {{{
+[[plugins]]
+repo = 'vim-scripts/matchit.zip'
+on_ft = ['html', 'vim', 'xml']
+# }}}
+
+# nerdtree (file explorer) {{{
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 on_cmd = 'NERDTreeToggle'
@@ -24,17 +99,35 @@ hook_add =  '''
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
 depends = ['nerdtree']
+# }}}
 
+# tagbar (display tags in window) {{{
 [[plugins]]
 repo = 'majutsushi/tagbar'	
 on_cmd = 'TagbarToggle' 
 hook_add = '''
     noremap <F8> :TagbarToggle<cr>
-
     filetype plugin indent on
     syntax enable
 '''
+# }}}
 
+# auto-pairs {{{
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_event = 'InsertEnter'
+hook_add = '''
+    let g:AutoPairsFlyMode = 0
+'''
+# }}}
+
+# linux coding style {{{
+[[plugins]]
+repo = 'vivien/vim-linux-coding-style'
+on_cmd = 'LinuxCodingStyle'
+# }}}
+
+# vim-autoformat (code formatter) {{{
 [[plugins]]
 repo = 'Chiel92/vim-autoformat'
 on_cmd = 'Autoformat'
@@ -43,27 +136,46 @@ hook_add = '''
     let g:formatters_python = ['autopep8']
     let g:formatters_rust = ['rustfmt']
 '''
+# }}}
 
+# vim-mundo (undo tree) {{{
 [[plugins]]
-repo = 'vivien/vim-linux-coding-style'
-on_cmd = 'LinuxCodingStyle'
-
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
-on_event = 'InsertCharPre'
+repo = 'simnalamburt/vim-mundo'
+on_cmd = 'MundoToggle'
 hook_add = '''
-    let g:AutoPairsFlyMode = 0
+    noremap <F6> :MundoToggle<cr>
 '''
+# }}}
+
+# vim-gitgutter (show git diff and stages/undoes hunks) {{{
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_if = "isdirectory(getcwd().'/.git/')" # has .git folder
+# }}}
+
+# neosnippet (snippet) {{{
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_source = '''
+  imap <silent>L     <Plug>(neosnippet_jump_or_expand)
+  smap <silent>L     <Plug>(neosnippet_jump_or_expand)
+  xmap <silent>L     <Plug>(neosnippet_expand_target)
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_completed_snippet = 1
+  let g:neosnippet#expand_word_boundary = 1
+  " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
+  let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
+    autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
+'''
+# }}}
 
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = 'vim'
-
-
+# deoplete (autocomplete) {{{
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
@@ -71,14 +183,9 @@ hook_add = '''
     let g:deoplete#enable_at_startup = 1
 '''
 hook_source = 'source ~/.config/nvim/config/deoplete.vim'
+# }}}
 
-[[plugins]]
-repo = 'simnalamburt/vim-mundo'
-on_cmd = 'MundoToggle'
-hook_add = '''
-    noremap <F6> :MundoToggle<cr>
-'''
-
+# denite {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_source = 'source ~/.config/nvim/config/denite.vim'
@@ -108,74 +215,7 @@ hook_add = '''
     " list register 
     nnoremap <silent> [denite-leader]re :<C-u>Denite -mode=normal -buffer-name=list_reg register<CR>
 '''
+#  }}}
 
-[[plugins]]
-repo = 'tpope/vim-scriptease'
-on_ft = 'vim'
 
-[[plugins]]
-repo = 'rust-lang/rust.vim'
-on_ft = 'rust'
-
-[[plugins]]
-repo = 'racer-rust/vim-racer'
-on_ft = 'rust'
-hook_add = '''
-    set hidden
-
-    let g:racer_cmd = system('echo -n "$(which racer)"')
-    let g:racer_experimental_completer = 1
-'''
-hook_source = '''
-    au FileType rust nmap gd <Plug>(rust-def)
-    au FileType rust nmap gs <Plug>(rust-def-split)
-    au FileType rust nmap gx <Plug>(rust-def-vertical)
-    au FileType rust nmap <leader>gd <Plug>(rust-doc)
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-hook_source = '''
-  imap <silent>L     <Plug>(neosnippet_jump_or_expand)
-  smap <silent>L     <Plug>(neosnippet_jump_or_expand)
-  xmap <silent>L     <Plug>(neosnippet_expand_target)
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  let g:neosnippet#enable_completed_snippet = 1
-  let g:neosnippet#expand_word_boundary = 1
-  " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
-  let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
-    autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-depends = ['deoplete.nvim']
-on_ft = 'python'
-
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'phpactor/phpactor'
-build = 'composer install'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'kristijanhusak/deoplete-phpactor'
-depends = ['deoplete.nvim']
-on_ft = 'php'
-
-[[plugins]]
-repo = 'vim-scripts/matchit.zip'
-on_ft = ['html', 'vim', 'xml']
+# " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
