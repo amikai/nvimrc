@@ -66,7 +66,9 @@ hook_add = '''
     nnoremap <silent> <leader>c :Sayonara!<CR>
     nnoremap <silent> <leader>q :Sayonara<CR>
 '''
+# }}}
 
+# Gina {{{
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
@@ -171,7 +173,7 @@ hook_source = '''
   let g:neosnippet#expand_word_boundary = 1
   " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
   let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
-    autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
+  autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
 '''
 # }}}
 
@@ -182,13 +184,13 @@ on_event = 'InsertEnter'
 hook_add = '''
     let g:deoplete#enable_at_startup = 1
 '''
-hook_source = 'source ~/.config/nvim/config/deoplete.vim'
+hook_source = "exe 'source' $nvimrc.'/config/deoplete.vim'"
 # }}}
 
 # denite {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-hook_source = 'source ~/.config/nvim/config/denite.vim'
+hook_source = "exe 'source' $nvimrc.'/config/denite.vim'"
 hook_add = '''
     noremap [denite-leader] <Nop>
     nmap ; [denite-leader]
