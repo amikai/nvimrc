@@ -22,6 +22,7 @@ install_nvim_folder() {
 
 install_plugin() {
     nvim +qa
+    nvim +UpdateRemotePlugins +qa
     success "install plugin"
 }
 
