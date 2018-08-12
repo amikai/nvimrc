@@ -1,6 +1,7 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# colorscheme {{{
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
@@ -10,7 +11,9 @@ hook_add = '''
     set bg=dark
     colorscheme gruvbox
 '''
+# }}}
 
+# vim-airline (status and tabline) {{{
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
@@ -46,39 +49,51 @@ hook_add = '''
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
 '''
+# }}}
 
+# tcomment_vim (comment) {{{
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
+# }}}
 
-
+# vim-cursorword (underline the word under the cursor) {{{
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
+# }}}
 
+# indentine (display indentions levels) {{{
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+# }}}
 
+# rainbow (rainbow parenthethese) {{{
 [[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
     let g:rainbow_active = 1 
 '''
+# }}}
 
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
+# vim dispatch (async build and test) {{{
 [[plugins]]
 repo = 'tpope/vim-dispatch'
+# }}}
 
+# gen_tags (ctags/gtags) {{{
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
 # gen_tags support deoplete source
 hook_add = '''
     let  g:gen_tags#gtags_default_map = 1
 '''
+# }}}
 
+# vim-unimpaired (pairs of handy bracket mappings) {{{
 [[plugins]]
 repo = 'tpope/vim-unimpaired'
+# }}}
 
+# ale (async lint engine) {{{
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
@@ -90,8 +105,18 @@ hook_add = '''
     \}
     let g:ale_set_loclist = 0
     let g:ale_set_quickfix = 1
-
 '''
+# }}}
 
+# vim-surround (delte change and add surroundings) {{{
 [[plugins]]
 repo = 'tpope/vim-surround'
+# }}}
+
+# cpsm matcher {{{
+[[plugins]]
+repo = 'nixprime/cpsm'
+build = 'sh -c "PY3=ON ./install.sh"'
+# }}}
+
+# " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

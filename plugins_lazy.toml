@@ -1,212 +1,41 @@
+# language setting {{{
+# golang {{{
 [[plugins]]
-repo = 'mhinz/vim-sayonara'
-on_cmd = 'Sayonara'
-hook_add = '''
-    nnoremap <silent> <leader>c :Sayonara!<CR>
-    nnoremap <silent> <leader>q :Sayonara<CR>
-'''
-
+repo = 'fatih/vim-go'
+on_ft = 'go'
+# }}}
+# python {{{
 [[plugins]]
-repo = 'lambdalisue/gina.vim'
-on_cmd = 'Gina'
-
+repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
+on_ft = 'python'
+# }}}
+# php {{{
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-on_cmd = 'NERDTreeToggle'
-hook_add =  '''
-    noremap <F5> :NERDTreeToggle<cr>
-    " Open file navigator by default
-    
-    let NERDTreeMinimalUI = 1
-    let NERDTreeDirArrows = 1
-'''
+repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-depends = ['nerdtree']
+repo = 'phpactor/phpactor'
+build = 'composer install'
+on_ft = 'php'
 
 [[plugins]]
-repo = 'majutsushi/tagbar'	
-on_cmd = 'TagbarToggle' 
-hook_add = '''
-    noremap <F8> :TagbarToggle<cr>
-
-    filetype plugin indent on
-    syntax enable
-'''
-
-[[plugins]]
-repo = 'Chiel92/vim-autoformat'
-on_cmd = 'Autoformat'
-hook_add = '''
-    noremap <F3> :Autoformat<cr>
-    let g:formatters_python = ['autopep8']
-    let g:formatters_rust = ['rustfmt']
-'''
-
-[[plugins]]
-repo = 'vivien/vim-linux-coding-style'
-on_cmd = 'LinuxCodingStyle'
-
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
-on_event = 'InsertCharPre'
-hook_add = '''
-    let g:AutoPairsFlyMode = 0
-'''
-
+repo = 'kristijanhusak/deoplete-phpactor'
+depends = ['deoplete.nvim']
+on_ft = 'php'
+# }}}
+# toml {{{
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
-
+# }}}
+# vim {{{
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
-
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_add = '''
-    let g:deoplete#enable_at_startup = 1
-'''
-hook_source = '''
-    inoremap <expr><cr> (pumvisible() ? deoplete#close_popup() : "\<cr>")
-    " <S-TAB>: completion back.
-    inoremap <expr><C-g>       deoplete#refresh()
-    inoremap <expr><C-e>       deoplete#cancel_popup()
-    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-    inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
-
-    call deoplete#custom#option({
-    \ 'auto_complete_delay': 200,
-    \ 'ignore_case': v:false,
-    \ 'auto_complete': v:false,
-    \ })
-
-    " Disable the candidates in Comment/String syntaxes.
-    call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
-
-    " Use mathcer_head instead of fuzzy
-    call deoplete#custom#source('_', 'matchers', ['matcher_head'])
-
-    call deoplete#custom#option('sources', {
-    \ '_': ['buffer'],
-    \ 'c': ['buffer', 'tag', 'member'],
-    \ 'vim': ['vim','buffer'],
-    \ 'rust': ['racer', 'buffer', 'member'],
-    \ 'go' :['omni', 'buffer', 'member', 'file'],
-    \ 'python' :['jedi', 'buffer', 'member', 'file'],
-    \ 'php' :['phpactor', 'buffer', 'member', 'file'],
-    \})
- 
-    " Change the source mark
-    call deoplete#custom#source('buffer', 'mark', 'buf')
-    call deoplete#custom#source('tag', 'mark', 'tag')
-    call deoplete#custom#source('member', 'mark', 'mem')
-    call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'go' : '[^.[:digit:] *\t]\.'
-        \})
-
-    call deoplete#custom#source('omni', 'functions', {
-        \ 'go':  'go#complete#Complete'
-        \})
-'''
-
-[[plugins]]
-repo = 'simnalamburt/vim-mundo'
-on_cmd = 'MundoToggle'
-hook_add = '''
-    noremap <F6> :MundoToggle<cr>
-'''
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-    noremap [denite-leader] <Nop>
-    nmap ; [denite-leader]
-    
-    " TODO: Denite outline and ctags setting
-    "
-    " ctrlp
-    nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
-    
-    " list all buffer
-    nnoremap <silent> [denite-leader]b :<C-u>Denite -mode=normal buffer<CR>
-    
-    " 
-    nnoremap <silent> [denite-leader]r :<C-u>Denite -buffer-name=search -resume -mode=normal<CR>
-    
-    " search in this file (create buffer name called search)
-    nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
-    " search globally - search recursively from project root (auto-preview is slowly)
-    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -resume -mode=normal grep<CR>
-    " search current word in the file
-    nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search -auto-highlight line<CR><C-R><C-W><CR>
-    " search current word globally 
-    nnoremap <silent> [denite-leader]gc :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search grep<CR><C-R><C-W><CR>
-    " list register 
-    nnoremap <silent> [denite-leader]re :<C-u>Denite -mode=normal -buffer-name=list_reg register<CR>
-'''
-hook_source = '''
-    call denite#custom#option('_', {
-        \ 'prompt': 'λ:',
-        \ 'winheight': 10,
-        \ 'updatetime': 1,
-        \ 'auto_resize': 1,
-        \ 'source_names': 'short',
-        \ 'empty': 0,
-        \ 'auto-accel': 1,
-        \})
-    "   'vertical_preview': 1, " use it when needed
-    
-    
-    
-    call denite#custom#option('search', {
-        \ 'quit': 0,
-        \})
-    
-    " denite-key mapping
-    call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>')
-    call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
-    call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
-    
-    call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
-    call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
-    call denite#custom#map('normal', "vs", '<denite:do_action:vsplit>')
-    call denite#custom#map('normal', "sp", '<denite:do_action:split>')
-    call denite#custom#map('normal', "<C-h>", '<denite:wincmd:h>')
-    call denite#custom#map('normal', "<C-j>", '<denite:wincmd:j>')
-    call denite#custom#map('normal', "<C-k>", '<denite:wincmd:k>')
-    call denite#custom#map('normal', "<C-l>", '<denite:wincmd:l>')
-    " customize ignore globs
-    call denite#custom#source('grep', 'matchers', ['matcher_ignore_globs'])
-    call denite#custom#source('line', 'matchers', ['matcher_ignore_globs', 'matcher_regexp'])
-    call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy','matcher_ignore_globs'])
-    
-    call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-          \ [
-          \ '.git/', 'build/', '__pycache__/',
-          \ 'images/', '*.o', '*.make',
-          \ '*.min.*',
-          \ 'img/', 'fonts/',
-          \ 'tags', 'cscope*'])
-    
-'''
-
-[[plugins]]
-repo = 'tpope/vim-scriptease'
-on_ft = 'vim'
-
+# }}}
+# rust {{{
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
@@ -226,6 +55,109 @@ hook_source = '''
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
+# }}}
+# }}}
+
+# vim-sayonara (sane buffer/window deletion) {{{
+[[plugins]]
+repo = 'mhinz/vim-sayonara'
+on_cmd = 'Sayonara'
+hook_add = '''
+    nnoremap <silent> <leader>c :Sayonara!<CR>
+    nnoremap <silent> <leader>q :Sayonara<CR>
+'''
+# }}}
+
+# Gina {{{
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
+on_cmd = 'Gina'
+# }}}
+
+# vim-scriptease {{{
+[[plugins]]
+repo = 'tpope/vim-scriptease'
+on_ft = 'vim'
+# }}}
+
+# matchit (% enhancement) {{{
+[[plugins]]
+repo = 'vim-scripts/matchit.zip'
+on_ft = ['html', 'vim', 'xml']
+# }}}
+
+# nerdtree (file explorer) {{{
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+on_cmd = 'NERDTreeToggle'
+hook_add =  '''
+    noremap <F5> :NERDTreeToggle<cr>
+    " Open file navigator by default
+    
+    let NERDTreeMinimalUI = 1
+    let NERDTreeDirArrows = 1
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['nerdtree']
+# }}}
+
+# tagbar (display tags in window) {{{
+[[plugins]]
+repo = 'majutsushi/tagbar'	
+on_cmd = 'TagbarToggle' 
+hook_add = '''
+    noremap <F8> :TagbarToggle<cr>
+    filetype plugin indent on
+    syntax enable
+'''
+# }}}
+
+# auto-pairs {{{
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_event = 'InsertEnter'
+hook_add = '''
+    let g:AutoPairsFlyMode = 0
+'''
+# }}}
+
+# linux coding style {{{
+[[plugins]]
+repo = 'vivien/vim-linux-coding-style'
+on_cmd = 'LinuxCodingStyle'
+# }}}
+
+# vim-autoformat (code formatter) {{{
+[[plugins]]
+repo = 'Chiel92/vim-autoformat'
+on_cmd = 'Autoformat'
+hook_add = '''
+    noremap <F3> :Autoformat<cr>
+    let g:formatters_python = ['autopep8']
+    let g:formatters_rust = ['rustfmt']
+'''
+# }}}
+
+# vim-mundo (undo tree) {{{
+[[plugins]]
+repo = 'simnalamburt/vim-mundo'
+on_cmd = 'MundoToggle'
+hook_add = '''
+    noremap <F6> :MundoToggle<cr>
+'''
+# }}}
+
+# vim-gitgutter (show git diff and stages/undoes hunks) {{{
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_if = "isdirectory(getcwd().'/.git/')" # has .git folder
+# }}}
+
+# neosnippet (snippet) {{{
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -241,34 +173,51 @@ hook_source = '''
   let g:neosnippet#expand_word_boundary = 1
   " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
   let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
+  autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
 '''
+# }}}
 
+# deoplete (autocomplete) {{{
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_add = '''
+    let g:deoplete#enable_at_startup = 1
+'''
+hook_source = "exe 'source' $nvimrc.'/config/deoplete.vim'"
+# }}}
 
+# denite {{{
 [[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
+repo = 'Shougo/denite.nvim'
+hook_source = "exe 'source' $nvimrc.'/config/denite.vim'"
+hook_add = '''
+    noremap [denite-leader] <Nop>
+    nmap ; [denite-leader]
+    
+    " TODO: Denite outline and ctags setting
+    "
+    " ctrlp
+    nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
+    
+    " list all buffer
+    nnoremap <silent> [denite-leader]b :<C-u>Denite -mode=normal buffer<CR>
+    
+    " 
+    nnoremap <silent> [denite-leader]r :<C-u>Denite -refresh -resume -mode=normal -buffer-name=search<CR>
+    
+    " search in this file (create buffer name called search)
+    nnoremap <silent> [denite-leader]/ :<C-u>Denite -buffer-name=search -auto-highlight  -auto-resize line<CR>
+    " search globally - search recursively from project root (auto-preview is slowly)
+    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search -mode=normal grep<CR>
+    " search current word in the file
+    nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search -auto-highlight line<CR><C-R><C-W><CR>
+    " search current word globally 
+    nnoremap <silent> [denite-leader]gc :<C-u>DeniteCursorWord  -mode=normal -buffer-name=search grep<CR><C-R><C-W><CR>
+    " list register 
+    nnoremap <silent> [denite-leader]re :<C-u>Denite -mode=normal -buffer-name=list_reg register<CR>
+'''
+#  }}}
 
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-depends = ['deoplete.nvim']
-on_ft = 'python'
 
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'phpactor/phpactor'
-build = 'composer install'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'kristijanhusak/deoplete-phpactor'
-depends = ['deoplete.nvim']
-on_ft = 'php'
-
-[[plugins]]
-repo = 'vim-scripts/matchit.zip'
-on_ft = ['html', 'vim', 'xml']
+# " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

@@ -1,4 +1,4 @@
-let s:dein_dir = expand('~/.config/nvim/dein')
+let s:dein_dir = expand($nvimrc.'/dein')
 
 if &runtimepath !~# '/dein.vim'
     let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -23,9 +23,8 @@ call dein#begin(s:dein_dir, expand('<sfile>'))
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
     endif
-  call dein#load_toml(expand('~/.config/nvim/plugins.toml'), {'lazy': 0})
-  call dein#load_toml(expand('~/.config/nvim/plugins_lazy.toml'), {'lazy': 1})
-  
+    call dein#load_toml(expand($nvimrc.'/plugins.toml'), {'lazy': 0})
+    call dein#load_toml(expand($nvimrc.'/plugins_lazy.toml'), {'lazy': 1})
 call dein#end()
 call dein#save_state()
 
@@ -35,3 +34,5 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+" vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

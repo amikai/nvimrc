@@ -1,2 +1,3 @@
-source ~/.config/nvim/basic.vim
-source ~/.config/nvim/dein_plug.vim
+let $nvimrc=fnamemodify('<sfile>', ':p:h')
+exe "source" $nvimrc."/basic.vim"
+exe "source" $nvimrc."/dein_plug.vim"
