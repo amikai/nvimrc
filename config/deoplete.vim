@@ -23,7 +23,7 @@ call deoplete#custom#source('_', 'converters', [
             \ 'converter_auto_delimiter',
             \ ])
 
-call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " }}}
 
 " Sources setting "{{{
