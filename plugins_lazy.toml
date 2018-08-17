@@ -56,6 +56,11 @@ hook_source = '''
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
 # }}}
+# javascript {{{
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+# }}}
 # }}}
 
 # apathy {{{
