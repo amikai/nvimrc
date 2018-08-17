@@ -190,6 +190,7 @@ hook_source = "exe 'source' $nvimrc.'/config/deoplete.vim'"
 # denite {{{
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
 hook_source = "exe 'source' $nvimrc.'/config/denite.vim'"
 hook_add = '''
     noremap [denite-leader] <Nop>
