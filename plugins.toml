@@ -9,7 +9,14 @@ hook_add = '''
     let g:gruvbox_contrast_dark="hard"
     let g:gruvbox_vert_split="bg0"
     set bg=dark
-    colorscheme gruvbox
+'''
+
+[[plugins]]
+repo = 'kristijanhusak/vim-hybrid-material'
+hook_add = '''
+    let g:airline_theme = "hybrid"
+    autocmd MyAutoCmd VimEnter * nested colorscheme hybrid_material
+    set bg=dark
 '''
 # }}}
 
