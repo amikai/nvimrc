@@ -218,7 +218,13 @@ hook_add = '''
     " list register 
     nnoremap <silent> [denite-leader]re :<C-u>Denite -mode=normal -buffer-name=list_reg register<CR>
 '''
-#  }}}
+#  file mru source {{{ 
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_source = 'denite.nvim'
+# }}}
+
+# }}}
 
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
