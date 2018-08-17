@@ -58,6 +58,12 @@ hook_source = '''
 # }}}
 # }}}
 
+# apathy {{{
+[[plugins]]
+repo = 'tpope/vim-apathy'
+on_ft = ['c', 'go']
+# }}}
+
 # vim-sayonara (sane buffer/window deletion) {{{
 [[plugins]]
 repo = 'mhinz/vim-sayonara'
