@@ -128,4 +128,15 @@ repo = 'nixprime/cpsm'
 build = 'sh -c "PY3=ON ./install.sh"'
 # }}}
 
+# context_filetype (context filetype library for Vim script) {{{
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+# }}}
+
+# vim-precious (auto change filetype in code block) {{{
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+# }}}
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
