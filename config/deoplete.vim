@@ -58,7 +58,7 @@ call deoplete#custom#source('file', 'mark', '📄 ')
 call deoplete#custom#source('tag', 'mark', '⌦')
 call deoplete#custom#source('omni', 'mark', '⊙')
 call deoplete#custom#source('member', 'mark', '∙')
-call deoplete#custom#source('arround', 'mark', '↺')
+call deoplete#custom#source('around', 'mark', '↺')
 
 call deoplete#custom#source('neosnippet',    'mark', '⌘')
 call deoplete#custom#source('racer', 'mark', '⚡')
