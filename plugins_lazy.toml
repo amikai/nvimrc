@@ -66,6 +66,11 @@ hook_source = '''
 repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
 # }}}
+# c {{{
+[[plugins]]
+repo = 'justinmk/vim-syntax-extra'
+on_ft = ['c', 'lex', 'yacc']
+# }}}
 # }}}
 
 # apathy {{{
