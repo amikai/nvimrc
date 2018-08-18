@@ -35,7 +35,7 @@ call deoplete#custom#source('_',
 " Use mathcer_head instead of fuzzy
 
 call deoplete#custom#option('sources', {
-            \ '_': ['buffer'],
+            \ '_': ['around','buffer', 'syntax'],
             \ 'c': ['buffer', 'tag', 'member'],
             \ 'vim': ['vim','buffer'],
             \ 'rust': ['racer', 'buffer', 'member'],
@@ -65,6 +65,7 @@ call deoplete#custom#source('racer', 'mark', '⚡')
 call deoplete#custom#source('jedi', 'mark', '⚡')
 call deoplete#custom#source('phpactor', 'mark', '⚡')
 call deoplete#custom#source('vim', 'mark', '⚡')
+call deoplete#custom#source('syntax', 'mark', '♯')
 
 " }}}
 
