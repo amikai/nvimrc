@@ -1,4 +1,9 @@
 # language setting {{{
+# all {{{
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_source = 'deoplete.nvim'
+# }}}
 # golang {{{
 [[plugins]]
 repo = 'fatih/vim-go'
