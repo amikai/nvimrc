@@ -23,3 +23,13 @@ function! vimrc#colors_random() abort
     call vimrc#colors(l:schemes_list[l:ran])
     echo 'color scheme: '.l:schemes_list[l:ran]
 endfunction
+
+function! vimrc#show_function_key() abort
+    let l:msg =  "<F3> autoformat | ".
+                \"<F5> nerdtree | ".
+                \"<F6> undotree | ".
+                \"<F7> random colorscheme | ".
+                \"<F8> tagbar | ".
+                \"<F12> show msg"
+    echo l:msg
+endfunction
