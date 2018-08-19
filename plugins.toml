@@ -2,23 +2,81 @@
 repo = 'Shougo/dein.vim'
 
 # colorscheme {{{
+# gruvbox {{{
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
+    " need to set background
     let g:gruvbox_termcolors=256
     let g:gruvbox_contrast_dark="hard"
     let g:gruvbox_vert_split="bg0"
-    set bg=dark
+    autocmd MyAutoCmd ColorScheme gruvbox :AirlineTheme gruvbox
 '''
-
+# }}}
+# vim-hybrid-material {{{
 [[plugins]]
 repo = 'kristijanhusak/vim-hybrid-material'
 hook_add = '''
-    let g:airline_theme = "hybrid"
-    autocmd MyAutoCmd VimEnter * nested colorscheme hybrid_material
-    set bg=dark
+    autocmd MyAutoCmd ColorScheme hybrid-material :AirlineTheme hybrid
 '''
 # }}}
+# jellybeans {{{
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme jellybeans :AirlineTheme jellybeans
+'''
+# }}}}
+# onedark {{{
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme onedark :AirlineTheme onedark
+'''
+# }}}
+# one {{{
+[[plugins]]
+repo = 'rakr/vim-one'
+hook_add = '''
+    " need to set background
+'''
+# }}}
+# nord {{{
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme nord :AirlineTheme nord
+'''
+# }}}
+# deus {{{
+[[plugins]]
+repo = 'ajmwagar/vim-deus'
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme deus :AirlineTheme deus
+'''
+# }}}
+# falcon {{{
+[[plugins]]
+repo = 'fenetikm/falcon' 
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme falcon :AirlineTheme falcon
+'''
+# }}}
+# nova {{{
+[[plugins]]
+repo = 'trevordmiller/nova-vim'
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme nova :AirlineTheme nova
+'''
+# }}}
+# minimalist {{{
+[[plugins]]
+repo = 'dikiaap/minimalist'
+hook_add = '''
+    autocmd MyAutoCmd ColorScheme minimalist :AirlineTheme minimalist
+'''
+# }}}
+#j }}}
 
 # vim-airline (status and tabline) {{{
 [[plugins]]
