@@ -31,8 +31,4 @@ call dein#save_state()
 if has('vim_starting') && dein#check_install()
     call dein#install()
 endif
-
-filetype plugin indent on
-syntax enable
-
 " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
