@@ -287,4 +287,6 @@ cnoremap <M-f> <S-Right>
 augroup MyAutoCmd
     autocmd!
     autocmd CursorHold *? syntax sync minlines=300
+    autocmd VimEnter * call vimrc#colors_random()
 augroup END
+nnoremap <silent><F7> :call vimrc#colors_random()<cr><cr>
