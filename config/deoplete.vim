@@ -8,6 +8,7 @@ call deoplete#custom#option({
             \ 'auto_complete_delay': 200,
             \ 'ignore_case': v:false,
             \ 'auto_complete': v:false,
+            \ 'refresh_always': v:true
             \ })
 
 autocmd MyAutoCmd CompleteDone * silent! pclose!
