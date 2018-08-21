@@ -247,14 +247,16 @@ on_source = 'denite.nvim'
 
 # }}}
 
-# vim-visualstar (star for visual mode) {{{
+# vim-asterisk (star improved) {{{
 [[plugins]]
-repo = 'thinca/vim-visualstar'
-on_map = '<Plug>(visualstar-'
+repo = 'haya14busa/vim-asterisk'
+on_map = '<Plug>(asterisk-'
 hook_add = '''
-    noremap <Plug>N N
-    map * <Plug>(visualstar-*)<Plug>N
-    map # <Plug>(visualstar-#)<Plug>N
+let g:asterisk#keeppos = 1
+map *  <Plug>(asterisk-z*)
+map #  <Plug>(asterisk-z#)
+map g* <Plug>(asterisk-gz*)
+map g# <Plug>(asterisk-gz#)
 '''
 # }}}
 
