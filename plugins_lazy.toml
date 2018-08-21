@@ -247,5 +247,16 @@ on_source = 'denite.nvim'
 
 # }}}
 
+# vim-visualstar (star for visual mode) {{{
+[[plugins]]
+repo = 'thinca/vim-visualstar'
+on_map = '<Plug>(visualstar-'
+hook_add = '''
+    noremap <Plug>N N
+    map * <Plug>(visualstar-*)<Plug>N
+    map # <Plug>(visualstar-#)<Plug>N
+'''
+# }}}
+
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

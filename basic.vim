@@ -219,11 +219,6 @@ set smartindent
 vnoremap < <gv
 vnoremap > >gv
 
-
-" Visual mode pressing * or # searches for the current selection
-vnoremap <slient> * :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
-vnoremap <slient> # :<C-u>call VisualSelection('','')<CR>?<C-R>=@/<CR><CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
