@@ -251,12 +251,16 @@ on_source = 'denite.nvim'
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
 on_map = '<Plug>(asterisk-'
+
+[[plugins]]
+repo = 'haya14busa/is.vim'
+on_source = 'vim-asterisk'
 hook_add = '''
 let g:asterisk#keeppos = 1
-map *  <Plug>(asterisk-z*)
-map #  <Plug>(asterisk-z#)
-map g* <Plug>(asterisk-gz*)
-map g# <Plug>(asterisk-gz#)
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 '''
 # }}}
 
