@@ -137,10 +137,9 @@ hook_add = '''
 
 # auto-pairs {{{
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
+repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
 hook_add = '''
-    let g:AutoPairsFlyMode = 0
 '''
 # }}}
 
