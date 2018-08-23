@@ -10,6 +10,9 @@ hook_add = '''
     let g:gruvbox_termcolors=256
     let g:gruvbox_contrast_dark="hard"
     let g:gruvbox_vert_split="bg0"
+    if !has_key(g:colorscheme_bg_list, 'gruvbox')
+        let g:colorscheme_bg_list['gruvbox'] = 'light'
+    endif
     autocmd MyAutoCmd ColorScheme gruvbox :AirlineTheme gruvbox
 '''
 # }}}
@@ -17,6 +20,9 @@ hook_add = '''
 [[plugins]]
 repo = 'kristijanhusak/vim-hybrid-material'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'hybrid_reverse')
+        let g:colorscheme_bg_list['hybrid_reverse'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme hybrid-material :AirlineTheme hybrid
 '''
 # }}}
@@ -24,6 +30,9 @@ hook_add = '''
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'jellybeans')
+        let g:colorscheme_bg_list['jellybeans'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme jellybeans :AirlineTheme jellybeans
 '''
 # }}}}
@@ -31,6 +40,9 @@ hook_add = '''
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'onedark')
+        let g:colorscheme_bg_list['onedark'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme onedark :AirlineTheme onedark
 '''
 # }}}
@@ -38,13 +50,18 @@ hook_add = '''
 [[plugins]]
 repo = 'rakr/vim-one'
 hook_add = '''
-    " need to set background
+    if !has_key(g:colorscheme_bg_list, 'one')
+        let g:colorscheme_bg_list['one'] = 'dark'
+    endif
 '''
 # }}}
 # nord {{{
 [[plugins]]
 repo = 'arcticicestudio/nord-vim'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'nord')
+        let g:colorscheme_bg_list['nord'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme nord :AirlineTheme nord
 '''
 # }}}
@@ -52,6 +69,9 @@ hook_add = '''
 [[plugins]]
 repo = 'ajmwagar/vim-deus'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'deus')
+        let g:colorscheme_bg_list['deus'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme deus :AirlineTheme deus
 '''
 # }}}
@@ -59,6 +79,9 @@ hook_add = '''
 [[plugins]]
 repo = 'fenetikm/falcon' 
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'falcon')
+        let g:colorscheme_bg_list['falcon'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme falcon :AirlineTheme falcon
 '''
 # }}}
@@ -66,6 +89,9 @@ hook_add = '''
 [[plugins]]
 repo = 'trevordmiller/nova-vim'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'nova')
+        let g:colorscheme_bg_list['nova'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme nova :AirlineTheme nova
 '''
 # }}}
@@ -73,10 +99,13 @@ hook_add = '''
 [[plugins]]
 repo = 'dikiaap/minimalist'
 hook_add = '''
+    if !has_key(g:colorscheme_bg_list, 'minimalist')
+        let g:colorscheme_bg_list['minimalist'] = 'dark'
+    endif
     autocmd MyAutoCmd ColorScheme minimalist :AirlineTheme minimalist
 '''
 # }}}
-#j }}}
+# }}}
 
 # vim-airline (status and tabline) {{{
 [[plugins]]

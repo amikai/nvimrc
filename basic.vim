@@ -286,3 +286,5 @@ augroup MyAutoCmd
 augroup END
 nnoremap <silent><F7> :call vimrc#colors_random()<cr><cr>
 nnoremap <silent><F12> :call vimrc#show_function_key()<cr>
+
+let g:colorscheme_bg_list = {}
