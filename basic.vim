@@ -283,6 +283,10 @@ augroup MyAutoCmd
     autocmd!
     autocmd CursorHold *? syntax sync minlines=300
     autocmd VimEnter * call vimrc#colors_random()
+
+    " Not use relative number, if not in the window
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
 nnoremap <silent><F7> :call vimrc#colors_random()<cr><cr>
 nnoremap <silent><F12> :call vimrc#show_function_key()<cr>
