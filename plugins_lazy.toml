@@ -263,5 +263,17 @@ map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 '''
 # }}}
 
+# vim-yankstack (vim like kill ring) {{{
+[[plugins]]
+repo = 'maxbrunsfeld/vim-yankstack'
+on_event = 'TextYankPost'
+hook_source = '''
+    let g:yankstack_map_keys = 0
+    call yankstack#setup()
+    let g:yankstack_yank_keys = ['y', 'd']
+    nmap <leader>p <Plug>yankstack_substitute_older_paste
+    nmap <leader>P <Plug>yankstack_substitute_newer_paste
+'''
+# }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
