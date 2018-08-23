@@ -143,9 +143,6 @@ hook_add = '''
     autocmd MyAutoCmd ColorScheme minimalist :AirlineTheme zenburn
 '''
 # }}}
-
-# }}}
-
 # }}}
 
 # vim-airline (status and tabline) {{{
