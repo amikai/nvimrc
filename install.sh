@@ -22,7 +22,7 @@ install_nvim_folder() {
 
 install_plugin() {
     nvim +qa
-    nvim +checkhealth +UpdateRemotePlugins +qa
+    nvim +checkhealth +"call dein#remote_plugins()" +qa
     success "install plugin"
 }
 
