@@ -15,9 +15,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set nocompatible
-
 set history=500
 
 " Set to auto read when a file is changed from the outside
