@@ -263,6 +263,7 @@ map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 '''
 # }}}
 
+
 # vim-yankstack (vim like kill ring) {{{
 [[plugins]]
 repo = 'maxbrunsfeld/vim-yankstack'
@@ -273,6 +274,16 @@ hook_source = '''
     let g:yankstack_yank_keys = ['y', 'd']
     nmap <leader>p <Plug>yankstack_substitute_older_paste
     nmap <leader>P <Plug>yankstack_substitute_newer_paste
+'''
+# }}}
+
+# vim-exapnd-region {{{
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+on_map = '<Plug>(expand_region_'
+hook_add = '''
+    map J <Plug>(expand_region_expand)
+    map K <Plug>(expand_region_shrink)
 '''
 # }}}
 
