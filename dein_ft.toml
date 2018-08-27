@@ -1,2 +1,5 @@
 [ftplugin]
+html = '''
+    setlocal nowrap
+'''
 
