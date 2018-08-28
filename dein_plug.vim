@@ -25,7 +25,7 @@ call dein#begin(s:dein_dir, expand('<sfile>'))
     endif
     call dein#load_toml(expand($nvimrc.'/plugins.toml'), {'lazy': 0})
     call dein#load_toml(expand($nvimrc.'/plugins_lazy.toml'), {'lazy': 1})
-    call dein#load_toml($nvimrc.'/dein_ft.toml')
+    call dein#load_toml(expand($nvimrc.'/dein_ft.toml'))
 call dein#end()
 call dein#save_state()
 
