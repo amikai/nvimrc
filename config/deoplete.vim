@@ -30,8 +30,8 @@ call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " Sources setting "{{{
 
 " Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_',
-            \ 'disabled_syntaxes', ['Comment', 'String'])
+" call deoplete#custom#source('_',
+"             \ 'disabled_syntaxes', ['Comment', 'String'])
 
 " Use mathcer_head instead of fuzzy
 
