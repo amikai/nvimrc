@@ -20,8 +20,6 @@ set history=500
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Enable filetype plugins
-filetype indent plugin on
 inoremap jk <esc>
 tnoremap <esc> <C-\><C-n>
 
@@ -286,6 +284,8 @@ augroup MyAutoCmd
     " Not use relative number, if not in the window
     autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+
+    autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *? call vimrc#on_filetype()
 augroup END
 nnoremap <silent><F7> :call vimrc#colors_random()<cr><cr>
 nnoremap <silent><F12> :call vimrc#show_function_key()<cr>
