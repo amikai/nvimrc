@@ -217,10 +217,13 @@ hook_add = '''
     nmap ; [denite-leader]
     
     " TODO: Denite outline and ctags setting
-    "
+
     " ctrlp
-    nnoremap <silent> <C-p> :<C-u>Denite -mode=normal file_rec<CR>
-    
+    nnoremap <silent> [denite-leader]f :<C-u>Denite -mode=normal file_rec<CR>
+
+    " file mru
+    nnoremap <silent> [denite-leader]fu :<C-u>Denite -mode=normal file_mru<CR>
+
     " list all buffer
     nnoremap <silent> [denite-leader]b :<C-u>Denite -mode=normal buffer<CR>
     
