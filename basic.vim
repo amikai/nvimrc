@@ -257,12 +257,6 @@ noremap <leader>t :tabnew<cr>
 " Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" When jump to next match also center screen
-" Note: Use :norm! to make it count as one command. (i.e. for i_CTRL-o)
-nnoremap <silent> n :norm! nzz<CR>
-nnoremap <silent> N :norm! Nzz<CR>
-vnoremap <silent> n :norm! nzz<CR>
-vnoremap <silent> N :norm! Nzz<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => command line mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

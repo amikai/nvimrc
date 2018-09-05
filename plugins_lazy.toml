@@ -261,13 +261,23 @@ on_map = '<Plug>(asterisk-'
 
 [[plugins]]
 repo = 'haya14busa/is.vim'
-on_source = 'vim-asterisk'
+on_map = '<Plug>(is-'
 hook_add = '''
 let g:asterisk#keeppos = 1
 map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
 map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
 map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+on_map = '<Plug>(anzu-'
+hook_add = '''
+" map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+" map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+nmap n <Plug>(anzu-mode-n)
+nmap N <Plug>(anzu-mode-N)
 '''
 # }}}
 
