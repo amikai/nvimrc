@@ -75,16 +75,6 @@ hook_add = '''
     autocmd MyAutoCmd ColorScheme deus :AirlineTheme deus
 '''
 # }}}
-# falcon {{{
-[[plugins]]
-repo = 'fenetikm/falcon' 
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'falcon')
-        let g:colorscheme_bg_list['falcon'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme falcon :AirlineTheme falcon
-'''
-# }}}
 # nova {{{
 [[plugins]]
 repo = 'trevordmiller/nova-vim'
