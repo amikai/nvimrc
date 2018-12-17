@@ -1,7 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# colorscheme {{{
 # gruvbox {{{
 [[plugins]]
 repo = 'morhetz/gruvbox'
@@ -10,139 +9,9 @@ hook_add = '''
     let g:gruvbox_termcolors=256
     let g:gruvbox_contrast_dark="hard"
     let g:gruvbox_vert_split="bg0"
-    if !has_key(g:colorscheme_bg_list, 'gruvbox')
-        let g:colorscheme_bg_list['gruvbox'] = 'light'
-    endif
-    autocmd MyAutoCmd ColorScheme gruvbox :AirlineTheme gruvbox
+    set bg=dark
+    colorscheme gruvbox
 '''
-# }}}
-# vim-hybrid-material {{{
-[[plugins]]
-repo = 'kristijanhusak/vim-hybrid-material'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'hybrid_reverse')
-        let g:colorscheme_bg_list['hybrid_reverse'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme hybrid-material :AirlineTheme hybrid
-'''
-# }}}
-# jellybeans {{{
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'jellybeans')
-        let g:colorscheme_bg_list['jellybeans'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme jellybeans :AirlineTheme jellybeans
-'''
-# }}}}
-# onedark {{{
-[[plugins]]
-repo = 'joshdick/onedark.vim'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'onedark')
-        let g:colorscheme_bg_list['onedark'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme onedark :AirlineTheme onedark
-'''
-# }}}
-# one {{{
-[[plugins]]
-repo = 'rakr/vim-one'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'one')
-        let g:colorscheme_bg_list['one'] = 'dark'
-    endif
-'''
-# }}}
-# nord {{{
-[[plugins]]
-repo = 'arcticicestudio/nord-vim'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'nord')
-        let g:colorscheme_bg_list['nord'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme nord :AirlineTheme nord
-'''
-# }}}
-# deus {{{
-[[plugins]]
-repo = 'ajmwagar/vim-deus'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'deus')
-        let g:colorscheme_bg_list['deus'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme deus :AirlineTheme deus
-'''
-# }}}
-# falcon {{{
-[[plugins]]
-repo = 'fenetikm/falcon' 
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'falcon')
-        let g:colorscheme_bg_list['falcon'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme falcon :AirlineTheme falcon
-'''
-# }}}
-# nova {{{
-[[plugins]]
-repo = 'trevordmiller/nova-vim'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'nova')
-        let g:colorscheme_bg_list['nova'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme nova :AirlineTheme nova
-'''
-# }}}
-# minimalist {{{
-[[plugins]]
-repo = 'dikiaap/minimalist'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'minimalist')
-        let g:colorscheme_bg_list['minimalist'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme minimalist :AirlineTheme minimalist
-'''
-# }}}
-# vim-gotham {{{
-[[plugins]]
-repo = 'whatyouhide/vim-gotham'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'gotham')
-        let g:colorscheme_bg_list['gotham'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme minimalist :AirlineTheme gotham
-'''
-# }}}
-# sacredforest-vim {{{
-[[plugins]]
-repo = 'KKPMW/sacredforest-vim'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'sacredforest')
-        let g:colorscheme_bg_list['sacredforest'] = 'dark'
-    endif
-'''
-# }}}
-# seoul256.vim {{{
-[[plugins]]
-repo = 'junegunn/seoul256.vim'
-hook_add = '''
-    let g:seoul256_background = 236
-    if !has_key(g:colorscheme_bg_list, 'seoul256')
-        let g:colorscheme_bg_list['seoul256'] = 'dark'
-    endif
-'''
-# }}}
-# Zenburn {{{
-repo = 'jnurmine/Zenburn'
-hook_add = '''
-    if !has_key(g:colorscheme_bg_list, 'zenburn')
-        let g:colorscheme_bg_list['zenburn'] = 'dark'
-    endif
-    autocmd MyAutoCmd ColorScheme minimalist :AirlineTheme zenburn
-'''
-# }}}
 # }}}
 
 # vim-airline (status and tabline) {{{
