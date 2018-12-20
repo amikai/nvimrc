@@ -112,21 +112,48 @@ repo = 'vim-scripts/matchit.zip'
 on_ft = ['html', 'vim', 'xml']
 # }}}
 
-# nerdtree (file explorer) {{{
+# Defx {{{
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-on_cmd = 'NERDTreeToggle'
-hook_add =  '''
-    noremap <F5> :NERDTreeToggle<cr>
-    " Open file navigator by default
-    
-    let NERDTreeMinimalUI = 1
-    let NERDTreeDirArrows = 1
+repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
+hook_source = "exe 'source' $nvimrc.'/config/defx.vim'"
+hook_add = '''
+    nnoremap <silent><F5>
+    \ :<C-u>Defx -resume -toggle
+    \ -winwidth=40 -direction=topleft -fnamewidth=50 -split=vertical
+    \ -columns=git:mark:filename:size:time
+    \ -buffer-name=tab`tabpagenr()`<CR>
+'''
+
+[plugins.ftplugin]
+defx = '''
+    nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+    nnoremap <silent><buffer><expr> o defx#do_action('open')
+    nnoremap <silent><buffer><expr> <2-LeftMouse> defx#do_action('drop')
+    nnoremap <silent><buffer><expr> s defx#do_action('open', 'botright vsplit')
+    nnoremap <silent><buffer><expr> R defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
+    nnoremap <silent><buffer><expr> I defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
+    nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> q defx#do_action('quit')
+    nnoremap <silent><buffer><expr> gh defx#do_action('cd', [getcwd()])
+    nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
+    nnoremap <silent><buffer>m :call DefxContextMenu()<CR>
 '''
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-depends = ['nerdtree']
+repo = 'kristijanhusak/defx-git'
+on_source = ['defx.nvim']
+hook_add = '''
+    nnoremap <buffer><silent> [c <Plug>(defx-git-prev)
+    nnoremap <buffer><silent> ]c <Plug>(defx-git-next)
+    let g:defx_git#column_length = 1
+    let g:defx_git#show_ignored = 0
+'''
 # }}}
 
 # tagbar (display tags in window) {{{
