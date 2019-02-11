@@ -5,7 +5,8 @@ let g:vimrc = 1
 
 function! vimrc#show_function_key() abort
     let l:msg =  "<F3> autoformat | ".
-                \"<F5> defx | ".
+                \"<F4> defx | ".
+                \"<F5> nerdtree | ".
                 \"<F6> undotree | ".
                 \"<F8> tagbar | ".
                 \"<F12> show msg"
