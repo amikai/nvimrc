@@ -133,7 +133,7 @@ hook_source = "exe 'source' $nvimrc.'/config/defx.vim'"
 hook_add = '''
     nnoremap <silent><F4>
     \ :<C-u>Defx -resume -toggle
-    \ -winwidth=40 -direction=topleft -fnamewidth=50 -split=vertical
+    \ -winwidth=40 -direction=topleft -split=vertical
     \ -columns=git:mark:filename:size:time
     \ -buffer-name=tab`tabpagenr()`<CR>
 '''
