@@ -122,6 +122,8 @@ set smartcase
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
+set nowrap
+
 
 " search
 set incsearch           " search as characters are entered
