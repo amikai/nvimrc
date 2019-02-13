@@ -345,4 +345,12 @@ hook_add = '''
 '''
 # }}}
 
+#  vim-better-whitespace {{{
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+on_cmd = 'ToggleWhitespace'
+hook_add = '''
+    noremap <F6> :ToggleWhitespace<cr>
+'''
+# }}}
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
