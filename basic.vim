@@ -54,10 +54,9 @@ nnoremap H ^
 nnoremap L $
 
 " set esc to noh highlight
-nnoremap <esc> <esc>:noh<return><esc>
-inoremap <esc> <esc>:noh<return><esc>
-
 nnoremap <silent> <esc> <esc>:<C-u>set nopaste<return>:noh<return>
+inoremap <silent> <esc> <esc>:<C-u>:noh<return>
+ 
 " map U to redo
 noremap U :redo<cr>
 
