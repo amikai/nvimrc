@@ -135,6 +135,9 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+hook_add = '''
+    let g:precious_enable_switchers = {'*': {'setfiletype': 1}, 'defx': {'setfiletype': 0}}
+'''
 # }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
