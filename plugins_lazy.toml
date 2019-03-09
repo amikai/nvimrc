@@ -140,10 +140,22 @@ hook_add = '''
 
 [plugins.ftplugin]
 defx = '''
-    nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
-    nnoremap <silent><buffer><expr> o defx#do_action('open')
-    nnoremap <silent><buffer><expr> <2-LeftMouse> defx#do_action('drop')
-    nnoremap <silent><buffer><expr> s defx#do_action('open', 'botright vsplit')
+
+    nnoremap <silent><buffer><expr> <CR>
+    \ defx#is_directory() ?
+    \ defx#do_action('open_or_close_tree') :
+    \ defx#do_action('drop')
+
+    nnoremap <silent><buffer><expr> o
+    \ defx#is_opened_tree() ?
+    \ defx#do_action('close_tree') :
+    \ defx#do_action('open_tree')
+
+    nnoremap <silent><buffer><expr> O
+    \ defx#is_opened_tree() ?
+    \ defx#do_action('close_tree') :
+    \ defx#async_action('open_tree_recursive')
+
     nnoremap <silent><buffer><expr> R defx#do_action('redraw')
     nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
