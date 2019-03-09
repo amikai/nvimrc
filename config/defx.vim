@@ -10,6 +10,6 @@ call defx#custom#column('mark', {
       \ 'directory_icon': '▸',
       \ 'opened_icon': '▾',
       \ 'readonly_icon': '✗',
-      \ 'root_icon': ' ',
+      \ 'root_icon': '📁 ',
       \ 'selected_icon': '✓',
       \ })

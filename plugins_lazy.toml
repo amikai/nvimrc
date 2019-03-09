@@ -135,6 +135,7 @@ hook_add = '''
     \ :<C-u>Defx -resume -toggle
     \ -winwidth=40 -direction=topleft -split=vertical
     \ -columns=git:mark:filename:size:time
+    \ -root-marker=''
     \ -buffer-name=tab`tabpagenr()`<CR>
 '''
 
@@ -157,10 +158,23 @@ defx = '''
     \ defx#async_action('open_tree_recursive')
 
     nnoremap <silent><buffer><expr> R defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
-    nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
+
+    nnoremap <silent><buffer><expr> >
+    \ defx#is_directory() ?
+    \ defx#do_action('open') :
+    \ "\<nop>"
+    nnoremap <silent><buffer><expr> < defx#do_action('cd', ['..'])
+
+    " back to current directory
+    nnoremap <silent><buffer><expr> ~ defx#do_action('cd', [getcwd()])
+
+    " change current work directory
+    nnoremap <buffer> cd :call defx#call_action('change_vim_cwd')<CR>
+    \ :echo "Defx: CWD is now: ".getcwd()<CR>
+
     nnoremap <silent><buffer><expr> I defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+
     nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
     nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
     nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
