@@ -108,8 +108,8 @@ hook_add = '''
     \   'vim':['vint'],
     \     'php':['phpcs']
     \}
-    let g:ale_set_loclist = 0
-    let g:ale_set_quickfix = 1
+    let g:ale_set_loclist = 1
+    let g:ale_set_quickfix = 0
 
     let g:ale_php_cs_fixer_executable = 'php-cs-fixer'
 '''
