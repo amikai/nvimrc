@@ -71,7 +71,7 @@ on_ft = 'javascript'
 repo = 'justinmk/vim-syntax-extra'
 on_ft = ['c', 'lex', 'yacc']
 # }}}
-# c {{{
+# diff {{{
 [[plugins]]
 repo = 'sgeb/vim-diff-fold'
 on_ft = ['diff']
