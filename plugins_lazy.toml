@@ -272,10 +272,16 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
-hook_add = '''
-    let g:deoplete#enable_at_startup = 1
+hook_source = '''
+    exe 'source' $nvimrc.'/config/deoplete.vim'
+    call deoplete#enable()
 '''
-hook_source = "exe 'source' $nvimrc.'/config/deoplete.vim'"
+# }}}
+
+# deoplete-tag (tag source for deoplete) {{{
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-tag'
+on_source = 'deoplete.nvim'
 # }}}
 
 # denite {{{
