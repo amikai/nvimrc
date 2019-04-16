@@ -6,10 +6,14 @@ function! DefxContextMenu() abort
   return feedkeys(defx#do_action(l:actions[l:selection - 1]))
 endfunction
 
-call defx#custom#column('mark', {
+call defx#custom#column('icon', {
       \ 'directory_icon': '▸',
       \ 'opened_icon': '▾',
-      \ 'readonly_icon': '✗',
       \ 'root_icon': '📁 ',
+      \ })
+
+call defx#custom#column('mark', {
+      \ 'readonly_icon': '✗',
       \ 'selected_icon': '✓',
       \ })
+
