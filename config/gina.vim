@@ -17,6 +17,9 @@ call gina#custom#mapping#nmap(
 
 " 10 line git log viewer
 call gina#custom#command#alias('log', 'lg')
+call gina#custom#command#option('lg', '--graph')
+call gina#custom#command#option('lg', '--abbrev-commit')
+call gina#custom#command#option('lg', '--decorate')
 call gina#custom#command#option('lg', '--group', 'trace-log')
 call gina#custom#command#option('lg', '--opener', 'botright ' . '10split')
 call gina#custom#mapping#nmap(
