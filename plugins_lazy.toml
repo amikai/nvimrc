@@ -98,6 +98,9 @@ hook_add = '''
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
+hook_source = '''
+    exe 'source' $nvimrc.'/config/gina.vim'
+'''
 # }}}
 
 # vim-scriptease {{{
