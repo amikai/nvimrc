@@ -9,7 +9,7 @@ endif
 
 if !exists("g:python3_host_prog")
     " echo -n for trimming newline
-    let g:python3_host_prog = system('echo -n "$(which python3)"')
+    let g:python3_host_prog = system('echo -n "$(which python3.6)"')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,6 +131,9 @@ set hlsearch            " highlight matches
 if exists('+inccommand')
     set inccommand=split    " show the effect of :s, :sm, and :sno command
 endif
+
+" mark before search
+nnoremap / ms/
 
 
 " Don't redraw while executing macros (good performance config)
