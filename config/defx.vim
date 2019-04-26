@@ -17,3 +17,11 @@ call defx#custom#column('mark', {
       \ 'selected_icon': '✓',
       \ })
 
+" disable root marker
+call defx#custom#option('_', {
+      \ 'root_marker': ':',
+      \ })
+
+call defx#custom#column('filename', {
+      \ 'root_marker_highlight': 'Ignore',
+      \ })

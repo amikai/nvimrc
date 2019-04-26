@@ -138,7 +138,6 @@ hook_add = '''
     \ :<C-u>Defx -resume -toggle
     \ -winwidth=40 -direction=topleft -split=vertical
     \ -columns=mark:git:indent:icon:filename:type:size:time
-    \ -root-marker=''
     \ -buffer-name=tab`tabpagenr()`<CR>
 '''
 
