@@ -192,6 +192,7 @@ on_source = ['defx.nvim']
 hook_add = '''
     nnoremap <buffer><silent> [c <Plug>(defx-git-prev)
     nnoremap <buffer><silent> ]c <Plug>(defx-git-next)
+    let g:defx_git#raw_mode = 1
     let g:defx_git#column_length = 1
     let g:defx_git#show_ignored = 0
 '''
