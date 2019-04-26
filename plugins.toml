@@ -67,6 +67,9 @@ repo = 'itchyny/vim-cursorword'
 # indentine (display indentions levels) {{{
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_fileTypeExclude = ['defx']
+'''
 # }}}
 
 # rainbow (rainbow parenthethese) {{{
