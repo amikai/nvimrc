@@ -179,7 +179,9 @@ defx = '''
 
     nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
     nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
-    nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> p defx#do_action('paste')
+    nnoremap <silent><buffer><expr> dd defx#do_action('move')
+    nnoremap <silent><buffer><expr> yy defx#do_action('copy')
     nnoremap <silent><buffer><expr> q defx#do_action('quit')
     nnoremap <silent><buffer><expr> gh defx#do_action('cd', [getcwd()])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
