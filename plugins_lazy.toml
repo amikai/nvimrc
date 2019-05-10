@@ -387,4 +387,20 @@ hook_add = '''
     noremap <F6> :ToggleWhitespace<cr>
 '''
 # }}}
+
+[[plugins]]
+repo = 'ronakg/quickr-cscope.vim'
+on_cmd = ['cs', 'cscope']
+hook_add = '''
+    let g:quickr_cscope_keymaps = 0
+    nmap <C-s>s <plug>(quickr_cscope_symbols)
+    nmap <C-s>g <plug>(quickr_cscope_global)
+    nmap <C-s>c <plug>(quickr_cscope_callers)
+    nmap <C-s>f <plug>(quickr_cscope_files)
+    nmap <C-s>i <plug>(quickr_cscope_includes)
+    nmap <C-s>t <plug>(quickr_cscope_text)
+    nmap <C-s>e <plug>(quickr_cscope_egrep)
+    nmap <C-s>d <plug>(quickr_cscope_functions)
+'''
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
