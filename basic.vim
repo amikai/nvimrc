@@ -165,7 +165,10 @@ set foldcolumn=1
 set completeopt-=preview
 
 " Use tab to choose condidate in pop up menu
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup MyAutoCmd
+    autocmd!
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,7 +210,9 @@ set expandtab   "space replace tab
 set smarttab "Be smart when using tab
 
 " for nasm
-au BufRead,BufNewFile *.asm set filetype=nasm
+augroup MyAutoCmd
+    autocmd BufRead,BufNewFile *.asm set filetype=nasm
+augroup END
 
 set autoindent
 set smartindent
@@ -276,7 +281,6 @@ cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
 augroup MyAutoCmd
-    autocmd!
     autocmd CursorHold *? syntax sync minlines=300
 
     " Not use relative number, if not in the window
