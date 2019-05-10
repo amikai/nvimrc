@@ -1,3 +1,3 @@
 let $nvimrc=fnamemodify(expand('<sfile>'), ':h')
-exe "source" $nvimrc."/basic.vim"
-exe "source" $nvimrc."/dein_plug.vim"
+exe 'source' $nvimrc.'/basic.vim'
+exe 'source' $nvimrc.'/dein_plug.vim'

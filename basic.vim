@@ -2,12 +2,12 @@
 " => Enviroment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if !exists("g:python_host_prog")
+if !exists('g:python_host_prog')
     " echo -n for trimming newline
     let g:python_host_prog = system('echo -n "$(which python)"')
 endif
 
-if !exists("g:python3_host_prog")
+if !exists('g:python3_host_prog')
     " echo -n for trimming newline
     let g:python3_host_prog = system('echo -n "$(which python3.6)"')
 endif
@@ -23,9 +23,9 @@ set autoread
 inoremap jk <esc>
 tnoremap <esc> <C-\><C-n>
 
-let mapleader=","
-let g:mapleader=","
-let maplocalleader=";"
+let mapleader=','
+let g:mapleader=','
+let maplocalleader=';'
 
 command W w !sudo tee % > /dev/null
 
@@ -40,6 +40,7 @@ autocmd BufReadPost *
     \ endif
     " center buffer around cursor when opening files
 autocmd BufRead * normal zz
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
