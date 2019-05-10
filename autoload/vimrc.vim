@@ -4,7 +4,8 @@ endif
 let g:vimrc = 1
 
 function! vimrc#show_function_key() abort
-    let l:msg =  "<F3> autoformat | ".
+    let l:msg =  "<F1> load session | ".
+                \"<F3> autoformat | ".
                 \"<F4> defx | ".
                 \"<F5> nerdtree | ".
                 \"<F6> undotree | ".
@@ -20,4 +21,11 @@ function! vimrc#on_filetype() abort
     syntax enable
     filetype detect
   endif
+endfunction
+
+function! vimrc#load_session() abort
+    let l:session_file = 'Session.vim'
+    if filereadable(l:session_file)
+        exe "source" l:session_file
+    endif
 endfunction

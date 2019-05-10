@@ -143,4 +143,7 @@ hook_add = '''
 '''
 # }}}
 
+[[plugins]]
+repo = 'tpope/vim-obsession'
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
