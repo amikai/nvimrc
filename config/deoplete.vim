@@ -36,7 +36,7 @@ call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " Use mathcer_head instead of fuzzy
 
 call deoplete#custom#option('sources', {
-            \ '_': ['around','buffer', 'syntax'],
+            \ '_': ['around','buffer', 'syntax', 'tabnine'],
             \ 'c': ['buffer', 'tag', 'member'],
             \ 'vim': ['vim','buffer'],
             \ 'rust': ['racer', 'buffer', 'member'],

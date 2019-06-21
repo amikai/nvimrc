@@ -399,4 +399,11 @@ hook_add = '''
     nmap <C-s>d <plug>(quickr_cscope_functions)
 '''
 
+[[plugins]]
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
+on_source = 'deoplete.nvim'
+
+
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
