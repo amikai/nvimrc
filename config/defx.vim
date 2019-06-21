@@ -7,7 +7,6 @@ function! DefxContextMenu() abort
             \ "  (m)name the current node\n"
 
   echo l:msg
-  let l:ans = nr2char(getchar()) 
   let l:actions = {'a':'new_file', 'f':'new_directory', 'd':'remove', 'm':'rename'}
   if !(has_key(l:actions, l:ans))
       silent exe 'redraw'
@@ -28,3 +27,11 @@ call defx#custom#column('mark', {
       \ 'selected_icon': '✓',
       \ })
 
+
+call defx#custom#option('_', {
+      \ 'winwidth': 40,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'resume': v:false,
+      \ 'toggle': v:true
+      \ })

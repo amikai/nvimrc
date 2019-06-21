@@ -134,11 +134,7 @@ repo = 'Shougo/defx.nvim'
 on_cmd = 'Defx'
 hook_source = "exe 'source' $nvimrc.'/config/defx.vim'"
 hook_add = '''
-    nnoremap <silent><F4>
-    \ :<C-u>Defx -resume -toggle
-    \ -winwidth=40 -direction=topleft -split=vertical
-    \ -columns=mark:git:indent:icon:filename:type:size:time
-    \ -buffer-name=tab`tabpagenr()`<CR>
+    nnoremap <silent><F4>  :<C-u>Defx<CR>
 '''
 
 [plugins.ftplugin]
