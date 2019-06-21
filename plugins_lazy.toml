@@ -351,7 +351,6 @@ map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 '''
 # }}}
 
-
 # vim-yankstack (vim like kill ring) {{{
 [[plugins]]
 repo = 'maxbrunsfeld/vim-yankstack'
@@ -384,6 +383,7 @@ hook_add = '''
 '''
 # }}}
 
+# cscope in quickfixwindow {{{
 [[plugins]]
 repo = 'ronakg/quickr-cscope.vim'
 on_cmd = ['cs', 'cscope']
@@ -398,11 +398,14 @@ hook_add = '''
     nmap <C-s>e <plug>(quickr_cscope_egrep)
     nmap <C-s>d <plug>(quickr_cscope_functions)
 '''
+# }}}
 
+#  tabnine deoplete source {{{
 [[plugins]]
 repo = 'tbodt/deoplete-tabnine'
 build = './install.sh'
 on_source = 'deoplete.nvim'
+# }}}
 
 
 
