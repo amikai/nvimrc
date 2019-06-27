@@ -44,6 +44,11 @@ on_ft = 'vim'
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
+hook_source = '''
+    let $RUST_SRC_PATH =
+                \ system('echo -n "$(rustc --print sysroot)"').
+                \ "/lib/rustlib/src/rust/src"
+'''
 
 [[plugins]]
 repo = 'racer-rust/vim-racer'
