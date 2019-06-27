@@ -14,7 +14,7 @@ call deoplete#custom#option({
 autocmd MyAutoCmd CompleteDone * silent! pclose!
 " }}}
 
-" Matchers and Conveters "{{{ 
+" Matchers and Conveters "{{{
 
 call deoplete#custom#source('_', 'converters', [
             \ 'converter_remove_paren',
@@ -52,6 +52,15 @@ call deoplete#custom#var('omni', 'input_patterns', {
 call deoplete#custom#source('omni', 'functions', {
             \ 'go':  'go#complete#Complete'
             \})
+
+call deoplete#custom#source('buffer',
+		    \ 'max_candidates', 10)
+
+call deoplete#custom#source('around',
+		    \ 'max_candidates', 10)
+
+call deoplete#custom#source('tabnine',
+		    \ 'max_candidates', 10)
 
 " Change the source mark
 call deoplete#custom#source('buffer', 'mark', 'buf')
