@@ -144,8 +144,9 @@ repo = 'Shougo/defx.nvim'
 on_cmd = 'Defx'
 hook_source = "exe 'source' $nvimrc.'/config/defx.vim'"
 hook_add = '''
+    autocmd MyAutoCmd BufLeave,BufWinLeave  \[defx\]* call defx#call_action('add_session')
     autocmd MyAutoCmd FileType defx call MyDefxKeySetup()
-    nnoremap <silent><F4>  :<C-u>Defx<CR>
+    nnoremap <silent><F4> :<C-u>Defx -session-file='/tmp/defx_session' -buffer-name="defx"<CR>
 '''
 
 [[plugins]]
