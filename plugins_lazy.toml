@@ -424,4 +424,11 @@ on_cmd = 'RTFHighlight'
 # }}}
 
 
+#  git-messenger {{{
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+on_cmd = 'GitMessenger'
+on_map = '<Plug>(git-messenger'
+# }}}
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
