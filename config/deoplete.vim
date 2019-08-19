@@ -46,7 +46,7 @@ call deoplete#custom#option('sources', {
             \})
 
 call deoplete#custom#var('omni', 'input_patterns', {
-            \ 'go' : '[^.[:digit:] *\t]\.'
+            \ 'go' : '[^. *\t]\.\w*'
             \})
 
 call deoplete#custom#source('omni', 'functions', {
