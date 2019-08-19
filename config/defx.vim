@@ -29,8 +29,8 @@ call defx#custom#column('mark', {
 
 
 call defx#custom#option('_', {
-      \ 'winwidth': 40,
       \ 'split': 'vertical',
+      \ 'winwidth': 35,
       \ 'direction': 'topleft',
       \ 'resume': v:false,
       \ 'toggle': v:true
