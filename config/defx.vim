@@ -4,9 +4,10 @@ function! DefxContextMenu() abort
             \ "  (a)dd a new file\n".
             \ "  add a new (f)older\n".
             \ "  (d)elete the current node\n".
-            \ "  (m)name the current node\n"
+            \ "  (m)ove the current node\n"
 
   echo l:msg
+  let l:ans = nr2char(getchar()) 
   let l:actions = {'a':'new_file', 'f':'new_directory', 'd':'remove', 'm':'rename'}
   if !(has_key(l:actions, l:ans))
       silent exe 'redraw'
