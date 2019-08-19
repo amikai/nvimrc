@@ -64,11 +64,11 @@ repo = 'tomtom/tcomment_vim'
 repo = 'itchyny/vim-cursorword'
 # }}}
 
-# indentine (display indentions levels) {{{
+# vim-indent-guides (display indentions levels) {{{
 [[plugins]]
-repo = 'Yggdroot/indentLine'
+repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
-    let g:indentLine_fileTypeExclude = ['defx']
+    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'defx']
 '''
 # }}}
 
@@ -143,12 +143,10 @@ hook_add = '''
 '''
 # }}}
 
-# vim-obsession {{{
 [[plugins]]
 repo = 'tpope/vim-obsession'
 hook_source = '''
     autocmd VimEnter * :Obsession
 '''
-# }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

@@ -62,6 +62,9 @@ call deoplete#custom#source('around',
 call deoplete#custom#source('tabnine',
 		    \ 'max_candidates', 10)
 
+call deoplete#custom#source('neosnippet',
+		    \ 'max_candidates', 10)
+
 " Change the source mark
 call deoplete#custom#source('buffer', 'mark', 'buf')
 call deoplete#custom#source('file', 'mark', '📄 ')
