@@ -402,7 +402,7 @@ repo = 'junegunn/goyo.vim'
 on_cmd = ['Goyo', 'Goyo!']
 hook_add = '''
     " Goyo toggle
-    noremap <expr> <F2> exists('#goyo') ? ':Goyo!<cr>':':Goyo<cr>'
+    noremap <silent><expr> <F2> exists('#goyo') ? ':Goyo!<cr>':':Goyo<cr>'
 '''
 
 [[plugins]]
