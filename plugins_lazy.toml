@@ -99,6 +99,10 @@ on_ft = ['c', 'go']
 repo = 'mhinz/vim-sayonara'
 on_cmd = 'Sayonara'
 hook_add = '''
+    let g:sayonara_filetypes = {
+        \ 'defx': 'call defx#call_action("quit")',
+        \ 'tagbar': 'TagbarClose'
+        \ }
     nnoremap <silent> <leader>c :Sayonara!<CR>
     nnoremap <silent> <leader>q :Sayonara<CR>
 '''
