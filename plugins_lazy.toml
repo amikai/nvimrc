@@ -400,6 +400,10 @@ on_map = '<Plug>(git-messenger'
 [[plugins]]
 repo = 'junegunn/goyo.vim'
 on_cmd = ['Goyo', 'Goyo!']
+hook_add = '''
+    " Goyo toggle
+    noremap <expr> <F2> exists('#goyo') ? ':Goyo!<cr>':':Goyo<cr>'
+'''
 
 [[plugins]]
 repo = 'junegunn/limelight.vim'
