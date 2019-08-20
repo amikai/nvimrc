@@ -394,6 +394,10 @@ on_cmd = 'RTFHighlight'
 repo = 'rhysd/git-messenger.vim'
 on_cmd = 'GitMessenger'
 on_map = '<Plug>(git-messenger'
+hook_source = "exe 'source' $nvimrc.'/config/git_messenger.vim'"
+hook_add = '''
+    autocmd FileType gitmessengerpopup call SetupGitMessengerPopup()
+'''
 # }}}
 
 # focus programming {{{
