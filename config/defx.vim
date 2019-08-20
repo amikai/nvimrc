@@ -78,6 +78,7 @@ call defx#custom#column('mark', {
 
 
 call defx#custom#option('_', {
+      \ 'columns': 'git:mark:indent:icon:filename:type',
       \ 'split': 'vertical',
       \ 'winwidth': 35,
       \ 'direction': 'topleft',
