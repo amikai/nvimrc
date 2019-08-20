@@ -109,7 +109,8 @@ hook_add = '''
     \   'python': ['flake8'],
     \   'rust': ['rustc', 'cargo'],
     \   'vim':['vint'],
-    \     'php':['phpcs']
+    \   'php':['phpcs'],
+    \   'sh': ['shellcheck']
     \}
     let g:ale_set_loclist = 1
     let g:ale_set_quickfix = 0
