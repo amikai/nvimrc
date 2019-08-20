@@ -396,4 +396,19 @@ on_cmd = 'GitMessenger'
 on_map = '<Plug>(git-messenger'
 # }}}
 
+# focus programming {{{
+[[plugins]]
+repo = 'junegunn/goyo.vim'
+on_cmd = ['Goyo', 'Goyo!']
+
+[[plugins]]
+repo = 'junegunn/limelight.vim'
+on_cmd = ['Limelight', 'Limelight!']
+on_map = '<Plug>(Limelight)'
+hook_add = '''
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+'''
+# }}}
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
