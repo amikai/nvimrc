@@ -80,6 +80,12 @@ on_ft = ['c', 'lex', 'yacc']
 [[plugins]]
 repo = 'othree/xml.vim'
 on_ft = ['html', 'xml']
+
+[[plugins]]
+repo = 'AndrewRadev/tagalong.vim'
+on_ft = 'html'
+on_cmd = 'TagalongInit'
+
 # }}}
 # diff {{{
 [[plugins]]
@@ -382,7 +388,6 @@ on_source = 'deoplete.nvim'
 repo = 'dharanasoft/rtf-highlight'
 on_cmd = 'RTFHighlight'
 # }}}
-
 
 #  git-messenger {{{
 [[plugins]]
