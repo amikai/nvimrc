@@ -410,7 +410,10 @@ repo = 'junegunn/limelight.vim'
 on_cmd = ['Limelight', 'Limelight!']
 on_map = '<Plug>(Limelight)'
 hook_add = '''
-    autocmd! User GoyoEnter Limelight
+    " <S-F2> Limeligh toggle
+    noremap <silent><expr> <F14> !exists('#goyo') ? ''
+                \ : exists('#limelight') ? ':Limelight!<cr>'
+                \ : ':Limelight<cr>'
     autocmd! User GoyoLeave Limelight!
 '''
 # }}}
