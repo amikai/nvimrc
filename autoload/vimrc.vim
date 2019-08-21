@@ -5,9 +5,10 @@ let g:vimrc = 1
 
 function! vimrc#show_function_key() abort
     let l:msg =  '<F1> load session | '.
+                \'<F2> goyo focus | '.
                 \'<F3> autoformat | '.
                 \'<F4> defx | '.
-                \'<F5> nerdtree | '.
+                \'<F5> whitespace | '.
                 \'<F6> undotree | '.
                 \'<F8> tagbar | '.
                 \'<F12> show msg'

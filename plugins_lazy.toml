@@ -353,9 +353,12 @@ hook_add = '''
 #  vim-better-whitespace {{{
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
-on_cmd = 'ToggleWhitespace'
+on_cmd = ['ToggleWhitespace', 'StripWhitespace']
 hook_add = '''
-    noremap <F6> :ToggleWhitespace<cr>
+    nnoremap <F5> :ToggleWhitespace<cr>
+
+    " <S-F5> for stripping white space
+    nnoremap <F17> :StripWhitespace<cr>
 '''
 # }}}
 
