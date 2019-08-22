@@ -135,19 +135,6 @@ repo = 'vim-scripts/matchit.zip'
 on_ft = ['html', 'vim', 'xml']
 # }}}
 
-# nerdtree (file explorer) {{{
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-on_cmd = 'NERDTreeToggle'
-hook_add = '''
-    noremap <F5> :NERDTreeToggle<cr>
-    " Open file navigator by default
-    
-    let NERDTreeMinimalUI = 1
-    let NERDTreeDirArrows = 1
-'''
-# }}}
-
 # Defx {{{
 [[plugins]]
 repo = 'Shougo/defx.nvim'
