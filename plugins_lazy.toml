@@ -195,12 +195,11 @@ hook_add = '''
 '''
 # }}}
 
-# vim-mundo (undo tree) {{{
-[[plugins]]
-repo = 'simnalamburt/vim-mundo'
-on_cmd = 'MundoToggle'
+# undo tree {{{
+repo = 'mbbill/undotree'
+on_cmd = 'UndotreeToggle'
 hook_add = '''
-    noremap <F6> :MundoToggle<cr>
+    nnoremap <F6> :UndotreeToggle<cr>
 '''
 # }}}
 
