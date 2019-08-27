@@ -11,6 +11,7 @@ hook_add = '''
     let g:gruvbox_vert_split="bg0"
     set bg=dark
     colorscheme gruvbox
+    autocmd MyAutoCmd VimEnter * nested set bg=dark | colorscheme gruvbox
 '''
 # }}}
 
