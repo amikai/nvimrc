@@ -20,27 +20,27 @@ hook_add = '''
 repo = 'vim-airline/vim-airline'
 hook_add = '''
     let g:airline#extensions#tabline#enabled = 1
-    
+
     " show the airline_tab type is tab or buffer (top right)
     let g:airline#extensions#tabline#show_tab_type = 1
-    
+
     " close symbol (top right)
     let g:airline#extensions#tabline#close_symbol = 'X'
-    
-    " enable displaying buffers with a single tab 
+
+    " enable displaying buffers with a single tab
     " it mean airline_tab type is buffer
     let g:airline#extensions#tabline#show_buffers = 1
     " Show the buffer order with a single tab
     " convient to use <leader>n to switch buffer
     let g:airline#extensions#tabline#buffer_idx_mode = 1
-    
+
     " if airline_tab type is tab
     " convient to use <leader>n to switch tap
-    let g:airline#extensions#tabline#tab_nr_type = 1 
-    
+    let g:airline#extensions#tabline#tab_nr_type = 1
+
     " disable show split information on top right
     let g:airline#extensions#tabline#show_splits = 0
-    
+
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
@@ -78,7 +78,7 @@ hook_add = '''
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
 on_cmd = ['ToggleWhitespace', 'StripWhitespace']
-hook_add = ''' 
+hook_add = '''
     let g:better_whitespace_enabled = 1
     let g:better_whitespace_ctermcolor='3'
     let g:better_whitespace_guicolor = '#c8e6c9'
@@ -93,7 +93,7 @@ hook_add = '''
 [[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
-    let g:rainbow_active = 1 
+    let g:rainbow_active = 1
 '''
 # }}}
 
@@ -123,12 +123,12 @@ hook_add = '''
     let g:ale_completion_enabled = 0
     let g:ale_fix_on_save = 0
     let g:ale_linters = {
-    \   'python': ['flake8'],
-    \   'rust': ['rustc', 'cargo'],
-    \   'vim':['vint'],
-    \   'php':['phpcs'],
-    \   'sh': ['shellcheck']
-    \}
+                \   'python': ['flake8'],
+                \   'rust': ['rustc', 'cargo'],
+                \   'vim':['vint'],
+                \   'php':['phpcs'],
+                \   'sh': ['shellcheck']
+                \}
     let g:ale_set_loclist = 1
     let g:ale_set_quickfix = 0
 

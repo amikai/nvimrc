@@ -106,9 +106,9 @@ repo = 'mhinz/vim-sayonara'
 on_cmd = 'Sayonara'
 hook_add = '''
     let g:sayonara_filetypes = {
-        \ 'defx': 'call defx#call_action("quit")',
-        \ 'tagbar': 'TagbarClose'
-        \ }
+                \ 'defx': 'call defx#call_action("quit")',
+                \ 'tagbar': 'TagbarClose'
+                \ }
     nnoremap <silent> <leader>c :Sayonara!<CR>
     nnoremap <silent> <leader>q :Sayonara<CR>
 '''
@@ -161,8 +161,8 @@ hook_source = '''
 
 # tagbar (display tags in window) {{{
 [[plugins]]
-repo = 'majutsushi/tagbar'	
-on_cmd = 'TagbarToggle' 
+repo = 'majutsushi/tagbar'
+on_cmd = 'TagbarToggle'
 hook_add = '''
     noremap <F8> :TagbarToggle<cr>
     filetype plugin indent on
@@ -174,8 +174,6 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
-hook_add = '''
-'''
 # }}}
 
 # linux coding style {{{
@@ -219,12 +217,12 @@ depends = ['neosnippet-snippets']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  let g:neosnippet#enable_completed_snippet = 1
-  let g:neosnippet#expand_word_boundary = 1
-  " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
-  let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
-  autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#enable_completed_snippet = 1
+    let g:neosnippet#expand_word_boundary = 1
+    " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
+    let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
+    autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
 '''
 # }}}
 
@@ -278,7 +276,7 @@ hook_add = '''
     " list register 
     nnoremap <silent> [denite-leader]re :<C-u>Denite -mode=normal -buffer-name=list_reg register<CR>
 '''
-#  file mru source {{{ 
+#  file mru source {{{
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 on_source = 'denite.nvim'
@@ -295,21 +293,21 @@ on_map = '<Plug>(asterisk-'
 repo = 'haya14busa/is.vim'
 on_map = '<Plug>(is-'
 hook_add = '''
-let g:asterisk#keeppos = 1
-map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
-map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
-map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+    let g:asterisk#keeppos = 1
+    map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+    map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+    map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+    map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
 on_map = '<Plug>(anzu-'
 hook_add = '''
-map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
-map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
-" nmap n <Plug>(anzu-mode-n)
-" nmap N <Plug>(anzu-mode-N)
+    map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+    map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+    " nmap n <Plug>(anzu-mode-n)
+    " nmap N <Plug>(anzu-mode-N)
 '''
 # }}}
 

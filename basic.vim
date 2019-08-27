@@ -9,7 +9,7 @@ endif
 
 if !exists('g:python3_host_prog')
     " echo -n for trimming newline
-    let g:python3_host_prog = system('echo -n "$(which python3.6)"')
+    let g:python3_host_prog = system('echo -n "$(which python3)"')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -35,10 +35,10 @@ noremap <silent><F1> :call vimrc#load_session()<cr>
 
 " Remember cursor position between vim sessions
 autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal! g'\"" |
-    \ endif
-    " center buffer around cursor when opening files
+            \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+            \   exe "normal! g'\"" |
+            \ endif
+" center buffer around cursor when opening files
 autocmd BufRead * normal zz
 
 
@@ -59,7 +59,7 @@ nnoremap L $
 " set esc to noh highlight
 nnoremap <silent> <esc> <esc>:<C-u>set nopaste<return>:noh<return>
 inoremap <silent> <esc> <esc>:<C-u>:noh<return>
- 
+
 " map U to redo
 noremap U :redo<cr>
 

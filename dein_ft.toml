@@ -1,5 +1,5 @@
 [ftplugin]
-_ = ''' 
+_ = '''
     setlocal formatoptions-=ro
 '''
 

@@ -54,16 +54,16 @@ call deoplete#custom#source('omni', 'functions', {
             \})
 
 call deoplete#custom#source('buffer',
-		    \ 'max_candidates', 10)
+            \ 'max_candidates', 10)
 
 call deoplete#custom#source('around',
-		    \ 'max_candidates', 10)
+            \ 'max_candidates', 10)
 
 call deoplete#custom#source('tabnine',
-		    \ 'max_candidates', 10)
+            \ 'max_candidates', 10)
 
 call deoplete#custom#source('neosnippet',
-		    \ 'max_candidates', 10)
+            \ 'max_candidates', 10)
 
 " Change the source mark
 call deoplete#custom#source('buffer', 'mark', 'buf')
