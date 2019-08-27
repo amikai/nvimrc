@@ -56,6 +56,8 @@ nnoremap k gk
 nnoremap H ^
 nnoremap L $
 
+nnoremap G Gzz
+
 " set esc to noh highlight
 nnoremap <silent> <esc> <esc>:<C-u>set nopaste<return>:noh<return>
 inoremap <silent> <esc> <esc>:<C-u>:noh<return>
