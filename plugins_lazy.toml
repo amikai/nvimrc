@@ -70,6 +70,10 @@ hook_source = '''
 [[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+on_ft = 'javascript'
 # }}}
 # c {{{
 [[plugins]]

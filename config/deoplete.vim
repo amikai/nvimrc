@@ -43,6 +43,7 @@ call deoplete#custom#option('sources', {
             \ 'go' :['omni', 'buffer', 'member', 'file'],
             \ 'python' :['jedi', 'buffer', 'member', 'file'],
             \ 'php' :['phpactor', 'buffer', 'member', 'file'],
+            \ 'javascript': ['tern'],
             \})
 
 call deoplete#custom#var('omni', 'input_patterns', {
