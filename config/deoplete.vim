@@ -43,15 +43,17 @@ call deoplete#custom#option('sources', {
             \ 'go' :['omni', 'buffer', 'member', 'file'],
             \ 'python' :['jedi', 'buffer', 'member', 'file'],
             \ 'php' :['phpactor', 'buffer', 'member', 'file'],
-            \ 'javascript': ['tern'],
+            \ 'javascript': ['omni','tern'],
             \})
 
 call deoplete#custom#var('omni', 'input_patterns', {
-            \ 'go' : '[^. *\t]\.\w*'
+            \ 'go' : '[^. *\t]\.\w*',
+            \ 'javascript': '[^. *\t]\.\w*'
             \})
 
 call deoplete#custom#source('omni', 'functions', {
-            \ 'go':  'go#complete#Complete'
+            \ 'go':  'go#complete#Complete',
+            \ 'javascript': ['jspc#omni'],
             \})
 
 call deoplete#custom#source('buffer',
@@ -79,6 +81,7 @@ call deoplete#custom#source('racer', 'mark', '⚡')
 call deoplete#custom#source('jedi', 'mark', '⚡')
 call deoplete#custom#source('phpactor', 'mark', '⚡')
 call deoplete#custom#source('vim', 'mark', '⚡')
+call deoplete#custom#source('tern', 'mark', '⚡')
 call deoplete#custom#source('syntax', 'mark', '♯')
 
 " }}}

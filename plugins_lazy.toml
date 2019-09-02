@@ -68,6 +68,10 @@ hook_source = '''
 # }}}
 # javascript {{{
 [[plugins]]
+repo = 'othree/jspc.vim'
+on_ft = 'javascript'
+
+[[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
 
