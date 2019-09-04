@@ -4,13 +4,13 @@ endif
 let g:vimrc = 1
 
 function! vimrc#show_function_key() abort
-    let l:msg =  '<F1> load session | '.
+    let l:msg =  '<F1> defx | '.
                 \'<F2> goyo focus | '.
                 \'<F3> autoformat | '.
-                \'<F4> defx | '.
+                \'<F4> load session | '.
                 \'<F5> whitespace | '.
                 \'<F6> undotree | '.
-                \'<F8> tagbar | '.
+                \'<F11> tagbar | '.
                 \'<F12> show msg'
     echo l:msg
 endfunction
