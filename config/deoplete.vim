@@ -123,5 +123,34 @@ inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
 
 " }}}
 
+" Language specific setting {{{
+autocmd FileType go call <SID>golang_setting()
+function! s:golang_setting() abort
+    call deoplete#custom#source('omni',
+                \ {'max_candidates': 3,
+                \  'rank':900
+                \ })
+
+    call deoplete#custom#source('tabnine',
+                \ {'max_candidates': 3,
+                \  'rank':800
+                \ })
+
+    call deoplete#custom#source('neosnippet',
+                \ {'max_candidates': 3,
+                \  'rank':700
+                \ })
+
+    call deoplete#custom#source('buffer',
+                \ {'max_candidates': 3,
+                \  'rank':600
+                \ })
+
+    call deoplete#custom#source('arround',
+                \ {'max_candidates': 3,
+                \  'rank':600
+                \ })
+endfunction
+" }}}
 
 " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
