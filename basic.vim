@@ -31,7 +31,7 @@ command W w !sudo tee % > /dev/null
 
 set path+=**
 
-noremap <silent><F4> :call vimrc#load_session()<cr>
+noremap <silent><F1> :call vimrc#load_session()<cr>
 
 " Remember cursor position between vim sessions
 autocmd BufReadPost *
