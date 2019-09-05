@@ -165,6 +165,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'glts/vim-textobj-comment'
+
 # }}}
 
 [[plugins]]
