@@ -161,6 +161,12 @@ hook_add = '''
 '''
 # }}}
 
+# vim text objecy {{{
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+# }}}
+
 [[plugins]]
 repo = 'tpope/vim-obsession'
 hook_source = '''
