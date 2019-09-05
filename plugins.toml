@@ -169,6 +169,9 @@ repo = 'kana/vim-textobj-user'
 [[plugins]]
 repo = 'glts/vim-textobj-comment'
 
+[[plugins]]
+repo = 'sgur/vim-textobj-parameter'
+
 # }}}
 
 [[plugins]]
