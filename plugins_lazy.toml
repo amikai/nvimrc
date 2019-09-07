@@ -292,6 +292,12 @@ repo = 'Shougo/neomru.vim'
 on_source = 'denite.nvim'
 # }}}
 
+# neoyank source {{{
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_source = 'denite.nvim'
+
+# }}}
 # }}}
 
 # vim-asterisk (star improved) {{{
@@ -318,19 +324,6 @@ hook_add = '''
     map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
     " nmap n <Plug>(anzu-mode-n)
     " nmap N <Plug>(anzu-mode-N)
-'''
-# }}}
-
-# vim-yankstack (vim like kill ring) {{{
-[[plugins]]
-repo = 'maxbrunsfeld/vim-yankstack'
-on_event = 'TextYankPost'
-hook_source = '''
-    let g:yankstack_map_keys = 0
-    call yankstack#setup()
-    let g:yankstack_yank_keys = ['y', 'd']
-    nmap <leader>p <Plug>yankstack_substitute_older_paste
-    nmap <leader>P <Plug>yankstack_substitute_newer_paste
 '''
 # }}}
 
