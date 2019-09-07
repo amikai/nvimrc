@@ -320,8 +320,8 @@ hook_add = '''
 repo = 'osyo-manga/vim-anzu'
 on_map = '<Plug>(anzu-'
 hook_add = '''
-    map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
-    map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+    map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv
+    map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)zzzv
     " nmap n <Plug>(anzu-mode-n)
     " nmap N <Plug>(anzu-mode-N)
 '''
