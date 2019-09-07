@@ -17,18 +17,21 @@ call denite#custom#option('search', {
             \})
 
 " denite-key mapping
-call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>')
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>')
+function! MyDeniteKeySetup() abort
+    nnoremap <silent><buffer><expr> <CR>
+    \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d
+    \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+    \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+    \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+    \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+    \ denite#do_map('toggle_select').'j'
+endfunction
 
-call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>')
-call denite#custom#map('normal', 'vs', '<denite:do_action:vsplit>')
-call denite#custom#map('normal', 'sp', '<denite:do_action:split>')
-call denite#custom#map('normal', '<C-h>', '<denite:wincmd:h>')
-call denite#custom#map('normal', '<C-j>', '<denite:wincmd:j>')
-call denite#custom#map('normal', '<C-k>', '<denite:wincmd:k>')
-call denite#custom#map('normal', '<C-l>', '<denite:wincmd:l>')
 " customize ignore globs
 call denite#custom#source('grep', 'matchers', ['matcher_ignore_globs'])
 call denite#custom#source('line', 'matchers', ['matcher_ignore_globs', 'matcher_regexp'])
