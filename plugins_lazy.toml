@@ -337,6 +337,19 @@ hook_add = '''
 '''
 # }}}
 
+#  vim-better-whitespace {{{
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+on_cmd = ['ToggleWhitespace', 'StripWhitespace', 'EnableWhitespace']
+hook_add = '''
+    let g:better_whitespace_ctermcolor='3'
+    let g:better_whitespace_guicolor = '#c8e6c9'
+    let g:better_whitespace_filetypes_blacklist = ['defx', 'help', 'qf', 'diff']
+    nnoremap <silent><expr><F5> exists("g:better_whitespace_enabled") ? ':ToggleWhitespace<cr>' : ':EnableWhitespace<cr>'
+    " <S-F5> for stripping white space
+    nnoremap <F17> :StripWhitespace<cr>
+'''
+# }}}
 
 # cscope in quickfixwindow {{{
 [[plugins]]

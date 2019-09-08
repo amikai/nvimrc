@@ -74,21 +74,6 @@ hook_add = '''
 '''
 # }}}
 
-#  vim-better-whitespace {{{
-[[plugins]]
-repo = 'ntpeters/vim-better-whitespace'
-on_cmd = ['ToggleWhitespace', 'StripWhitespace']
-hook_add = '''
-    let g:better_whitespace_enabled = 1
-    let g:better_whitespace_ctermcolor='3'
-    let g:better_whitespace_guicolor = '#c8e6c9'
-    let g:better_whitespace_filetypes_blacklist = ['defx', 'help', 'qf', 'diff']
-    nnoremap <F5> :ToggleWhitespace<cr>
-    " <S-F5> for stripping white space
-    nnoremap <F17> :StripWhitespace<cr>
-'''
-# }}}
-
 # rainbow (rainbow parenthethese) {{{
 [[plugins]]
 repo = 'luochen1990/rainbow'
