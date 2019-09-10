@@ -4,17 +4,43 @@ function! DefxContextMenu() abort
                 \ "  (a)dd a new file\n".
                 \ "  add a new (f)older\n".
                 \ "  (d)elete the current node\n".
-                \ "  (m)ove the current node\n"
+                \ "  (m)ove the current node\n".
+                \ "  (r)eveal in Finder the current node\n"
 
     echo l:msg
     let l:ans = nr2char(getchar()) 
-    let l:actions = {'a':'new_file', 'f':'new_directory', 'd':'remove', 'm':'rename'}
+    let l:actions = {'a':{'op':'new_file', 'args':[]},
+                \ 'f':{'op':'new_directory', 'args':[]},
+                \ 'd':{'op':'remove', 'args':[]},
+                \ 'm':{'op':'rename', 'args':[]},
+                \ 'r':{'op': 'call', 'args':['DefxOpenFinder']}}
     if !(has_key(l:actions, l:ans))
         silent exe 'redraw'
         return
     endif
     echo "=========================================================\n"
-    call defx#call_action(get(l:actions, l:ans))
+    let l:action = get(l:actions, l:ans)
+    call defx#call_action(action.op, action.args)
+endfunction
+
+
+function! DefxOpenFinder(context)
+    if has('mac')
+        let l:open = 'open'
+    elseif has('unix')
+        let l:open = 'xdg-open'
+    endif
+
+    for path in a:context.targets
+        if defx#is_directory()
+            let l:full_path = fnamemodify(path, ':p')
+        else
+            let l:full_path = fnamemodify(path, ':p:h')
+        endif
+        let l:open_folder = printf("%s '%s'", l:open, l:full_path)
+        echo l:open_folder 
+        call system(l:open_folder)
+    endfor
 endfunction
 
 function! MyDefxKeySetup() abort
