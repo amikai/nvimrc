@@ -2,6 +2,7 @@ function! DefxContextMenu() abort
     let l:msg = "Defx context menu\n".
                 \ "=========================================================\n".
                 \ "  (a)dd a childnode\n".
+                \ "  (A)dd multiple childnodes\n".
                 \ "  (d)elete the current node\n".
                 \ "  (m)ove the current node\n".
                 \ "  (r)eveal in Finder the current node\n"
@@ -9,6 +10,7 @@ function! DefxContextMenu() abort
     echo l:msg
     let l:ans = nr2char(getchar()) 
     let l:actions = {'a':{'op':'call', 'args':['DefxNewNode']},
+                \ 'A': {'op':'call', 'args':['DefxNewMultiNode']},
                 \ 'd':{'op':'remove', 'args':[]},
                 \ 'm':{'op':'rename', 'args':[]},
                 \ 'r':{'op': 'call', 'args':['DefxOpenFinder']}}
@@ -24,6 +26,11 @@ endfunction
 function! DefxNewNode(context)
     echo "Enter the dir/file name to be created. Dirs end with a '/'\n"
     call defx#call_action('new_file')
+endfunction
+
+function! DefxNewMultiNode(context)
+    echo "Enter the dir/file name seperated by space. Dirs end with a '/'\n"
+    call defx#call_action('new_multiple_files')
 endfunction
 
 function! DefxOpenFinder(context)
@@ -90,6 +97,7 @@ function! MyDefxKeySetup() abort
     nnoremap <silent><buffer><expr> q defx#do_action('quit')
     nnoremap <silent><buffer><expr> gh defx#do_action('cd', [getcwd()])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
+    nnoremap <silent><buffer><expr> x defx#do_action('execute_system')
     nnoremap <silent><buffer>m :call DefxContextMenu()<CR>
 endfunction
 
