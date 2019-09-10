@@ -8,6 +8,12 @@ on_source = 'deoplete.nvim'
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+hook_add = '''
+    let g:go_highlight_types = 1
+    autocmd FileType go nnoremap <F16> :GoTest<cr>
+    autocmd FileType go nnoremap <F17> :GoBuild<cr>
+    autocmd FileType go nnoremap <F18> :GoRun<cr>
+'''
 # }}}
 # python {{{
 [[plugins]]
@@ -413,5 +419,19 @@ hook_add = '''
     autocmd! User GoyoLeave Limelight!
 '''
 # }}}
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+on_map = ['<Plug>Commentary', '<Plug>CommentaryLine']
+on_cmd = 'Commentary'
+hook_add = '''
+    xmap gc  <Plug>Commentary
+    nmap gc  <Plug>Commentary
+    omap gc  <Plug>Commentary
+    nmap gcc <Plug>CommentaryLine
+    autocmd FileType toml setlocal commentstring=#\ %s
+    autocmd FileType vim setlocal commentstring=\"\ %s
+
+'''
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

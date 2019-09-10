@@ -10,7 +10,6 @@ hook_add = '''
     let g:gruvbox_contrast_dark="hard"
     let g:gruvbox_vert_split="bg0"
     set bg=dark
-    colorscheme gruvbox
     autocmd MyAutoCmd VimEnter * nested set bg=dark | colorscheme gruvbox
 '''
 # }}}
@@ -53,11 +52,6 @@ hook_add = '''
 '''
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-# }}}
-
-# tcomment_vim (comment) {{{
-[[plugins]]
-repo = 'tomtom/tcomment_vim'
 # }}}
 
 # vim-cursorword (underline the word under the cursor) {{{
