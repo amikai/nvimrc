@@ -1,16 +1,14 @@
 function! DefxContextMenu() abort
     let l:msg = "Defx context menu\n".
                 \ "=========================================================\n".
-                \ "  (a)dd a new file\n".
-                \ "  add a new (f)older\n".
+                \ "  (a)dd a childnode\n".
                 \ "  (d)elete the current node\n".
                 \ "  (m)ove the current node\n".
                 \ "  (r)eveal in Finder the current node\n"
 
     echo l:msg
     let l:ans = nr2char(getchar()) 
-    let l:actions = {'a':{'op':'new_file', 'args':[]},
-                \ 'f':{'op':'new_directory', 'args':[]},
+    let l:actions = {'a':{'op':'call', 'args':['DefxNewNode']},
                 \ 'd':{'op':'remove', 'args':[]},
                 \ 'm':{'op':'rename', 'args':[]},
                 \ 'r':{'op': 'call', 'args':['DefxOpenFinder']}}
@@ -23,6 +21,10 @@ function! DefxContextMenu() abort
     call defx#call_action(action.op, action.args)
 endfunction
 
+function! DefxNewNode(context)
+    echo "Enter the dir/file name to be created. Dirs end with a '/'\n"
+    call defx#call_action('new_file')
+endfunction
 
 function! DefxOpenFinder(context)
     if has('mac')
