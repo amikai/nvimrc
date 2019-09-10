@@ -420,6 +420,7 @@ hook_add = '''
 '''
 # }}}
 
+# vim-commentary {{{
 [[plugins]]
 repo = 'tpope/vim-commentary'
 on_map = ['<Plug>Commentary', '<Plug>CommentaryLine']
@@ -429,9 +430,11 @@ hook_add = '''
     nmap gc  <Plug>Commentary
     omap gc  <Plug>Commentary
     nmap gcc <Plug>CommentaryLine
+
     autocmd FileType toml setlocal commentstring=#\ %s
     autocmd FileType vim setlocal commentstring=\"\ %s
-
+    autocmd FileType html setlocal commentstring=\"\ %s
 '''
+# }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
