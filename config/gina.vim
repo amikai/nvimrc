@@ -1,6 +1,7 @@
 
 call gina#custom#command#alias('status', 'st')
 call gina#custom#command#option('st', '--opener', &previewheight . 'split')
+call gina#custom#command#option('st', '--group', 'st-cm')
 call gina#custom#mapping#nmap(
             \ 'status', 'cm',
             \ ':<C-u>Gina cm \| setlocal winfixheight<cr>',
@@ -9,6 +10,7 @@ call gina#custom#mapping#nmap(
 
 call gina#custom#command#alias('commit', 'cm')
 call gina#custom#command#option('cm', '--opener', &previewheight . 'split')
+call gina#custom#command#option('cm', '--group', 'st-cm')
 call gina#custom#mapping#nmap(
             \ 'commit', 'st',
             \ ':<C-u>Gina st \| setlocal winfixheight<cr>',
