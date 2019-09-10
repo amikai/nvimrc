@@ -1,3 +1,14 @@
+call gina#custom#mapping#nmap(
+            \ '/.*', '<C-k>',
+            \ ':wincmd k<cr>',
+            \ {'noremap': 1, 'silent': 1},
+            \)
+
+call gina#custom#mapping#nmap(
+            \ '/.*', '<C-j>',
+            \ ':wincmd j<cr>',
+            \ {'noremap': 1, 'silent': 1},
+            \)
 
 call gina#custom#command#alias('status', 'st')
 call gina#custom#command#option('st', '--opener', &previewheight . 'split')
