@@ -15,7 +15,7 @@ call gina#custom#command#option('st', '--opener', &previewheight . 'split')
 call gina#custom#command#option('st', '--group', 'st-cm')
 call gina#custom#mapping#nmap(
             \ 'status', 'cm',
-            \ ':<C-u>Gina cm \| setlocal winfixheight<cr>',
+            \ ':<C-u>Gina cm<cr>',
             \ {'noremap': 1, 'silent': 1},
             \)
 
@@ -24,7 +24,7 @@ call gina#custom#command#option('cm', '--opener', &previewheight . 'split')
 call gina#custom#command#option('cm', '--group', 'st-cm')
 call gina#custom#mapping#nmap(
             \ 'commit', 'st',
-            \ ':<C-u>Gina st \| setlocal winfixheight<cr>',
+            \ ':<C-u>Gina st<cr>',
             \ {'noremap': 1, 'silent': 1},
             \)
 
