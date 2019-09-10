@@ -76,7 +76,6 @@ function! MyDefxKeySetup() abort
                 \ "\<nop>"
     nnoremap <silent><buffer><expr> < defx#do_action('cd', ['..'])
 
-    nnoremap <silent><buffer><expr> sc defx#do_action('add_session')
 
     " back to current directory
     nnoremap <silent><buffer><expr> ~ defx#do_action('cd', [getcwd()])
@@ -95,9 +94,7 @@ function! MyDefxKeySetup() abort
     nnoremap <silent><buffer><expr> dd defx#do_action('move')
     nnoremap <silent><buffer><expr> yy defx#do_action('copy')
     nnoremap <silent><buffer><expr> q defx#do_action('quit')
-    nnoremap <silent><buffer><expr> gh defx#do_action('cd', [getcwd()])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
-    nnoremap <silent><buffer><expr> x defx#do_action('execute_system')
     nnoremap <silent><buffer>m :call DefxContextMenu()<CR>
 endfunction
 
