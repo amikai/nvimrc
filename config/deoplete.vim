@@ -36,23 +36,20 @@ call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " Use mathcer_head instead of fuzzy
 
 call deoplete#custom#option('sources', {
-            \ '_': ['around','buffer', 'syntax', 'tabnine'],
+            \ '_': ['around','buffer', 'tabnine'],
             \ 'c': ['buffer', 'tag', 'member'],
             \ 'vim': ['vim','buffer'],
             \ 'rust': ['racer', 'buffer', 'member'],
-            \ 'go' :['omni', 'buffer', 'member', 'file'],
             \ 'python' :['jedi', 'buffer', 'member', 'file'],
             \ 'php' :['phpactor', 'buffer', 'member', 'file'],
             \ 'javascript': ['omni','tern'],
             \})
 
 call deoplete#custom#var('omni', 'input_patterns', {
-            \ 'go' : '[^. *\t]\.\w*',
             \ 'javascript': '[^. *\t]\.\w*'
             \})
 
 call deoplete#custom#source('omni', 'functions', {
-            \ 'go':  'go#complete#Complete',
             \ 'javascript': ['jspc#omni'],
             \})
 
@@ -126,8 +123,19 @@ inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
 " Language specific setting {{{
 autocmd FileType go call <SID>golang_setting()
 function! s:golang_setting() abort
+    call deoplete#custom#option('sources', {
+                \ 'go' :['omni', 'buffer', 'member', 'file']
+                \})
+
+    call deoplete#custom#var('omni', 'input_patterns', {
+                \ 'go' : '[^. *\t]\.\w*'
+                \})
+    call deoplete#custom#source('omni', 'functions', {
+                \ 'go': ['go', 'go#complete#Complete'],
+                \})
+
     call deoplete#custom#source('omni',
-                \ {'max_candidates': 3,
+                \ {'max_candidates': 5,
                 \  'rank':900
                 \ })
 
