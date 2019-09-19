@@ -437,4 +437,15 @@ hook_add = '''
 '''
 # }}}
 
+# highlight text yank {{{
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+on_event = 'TextYankPost'
+hook_add = '''
+    let g:highlightedyank_highlight_duration = 400
+'''
+# }}}
+
+
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
