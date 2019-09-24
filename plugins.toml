@@ -165,7 +165,9 @@ hook_source = '''
 # matchup (% enhancement) {{{
 [[plugins]]
 repo = 'andymass/vim-matchup'
-on_map = '<plug>(matchup-'
+hook_add = '''
+    let g:matchup_surround_enabled = 1
+'''
 # }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
