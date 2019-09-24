@@ -209,7 +209,7 @@ hook_add = '''
 '''
 # }}}
 
-# vim-gitgutter (show git diff and stages/undoes hunks) {{{
+# vim-sinify (show git diff and stages/undoes hunks) {{{
 [[plugins]]
 repo = 'mhinz/vim-signify'
 on_if = "isdirectory(getcwd().'/.git/')" # has .git folder
