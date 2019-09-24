@@ -213,6 +213,14 @@ hook_add = '''
 [[plugins]]
 repo = 'mhinz/vim-signify'
 on_if = "isdirectory(getcwd().'/.git/')" # has .git folder
+hook_add = '''
+    xmap ic <plug>(signify-motion-inner-visual)
+    nmap [c <plug>(signify-next-hunk)
+    nmap ]c <plug>(signify-prev-hunk)
+    omap ic <plug>(signify-motion-inner-pending)
+    omap ac <plug>(signify-motion-outer-pending)
+    xmap ac <plug>(signify-motion-outer-visual)
+'''
 # }}}
 
 # neosnippet (snippet) {{{
