@@ -141,7 +141,7 @@ hook_add = '''
 '''
 # }}}
 
-# vim text objecy {{{
+# vim text object {{{
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
