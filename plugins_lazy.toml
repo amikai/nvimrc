@@ -143,12 +143,6 @@ repo = 'tpope/vim-scriptease'
 on_ft = 'vim'
 # }}}
 
-# matchit (% enhancement) {{{
-[[plugins]]
-repo = 'vim-scripts/matchit.zip'
-on_ft = ['html', 'vim', 'xml']
-# }}}
-
 # Defx {{{
 [[plugins]]
 repo = 'Shougo/defx.nvim'
