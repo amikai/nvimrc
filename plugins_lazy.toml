@@ -381,17 +381,6 @@ repo = 'dharanasoft/rtf-highlight'
 on_cmd = 'RTFHighlight'
 # }}}
 
-#  git-messenger {{{
-[[plugins]]
-repo = 'rhysd/git-messenger.vim'
-on_cmd = 'GitMessenger'
-on_map = '<Plug>(git-messenger'
-hook_source = "exe 'source' $nvimrc.'/config/git_messenger.vim'"
-hook_add = '''
-    autocmd FileType gitmessengerpopup call SetupGitMessengerPopup()
-'''
-# }}}
-
 # focus programming {{{
 [[plugins]]
 repo = 'junegunn/goyo.vim'
