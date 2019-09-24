@@ -134,6 +134,8 @@ repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_source = '''
     exe 'source' $nvimrc.'/config/gina.vim'
+    nmap dp <Plug>(gina-diffput)
+    nmap do <Plug>(gina-diffget)
 '''
 # }}}
 
