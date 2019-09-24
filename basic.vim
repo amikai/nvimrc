@@ -31,6 +31,8 @@ command W w !sudo tee % > /dev/null
 
 set path+=**
 
+set diffopt=vertical,algorithm:patience
+
 noremap <silent><F1> :call vimrc#load_session()<cr>
 
 " Remember cursor position between vim sessions
