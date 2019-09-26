@@ -7,7 +7,7 @@
 call deoplete#custom#option({
             \ 'auto_complete_delay': 200,
             \ 'ignore_case': v:false,
-            \ 'auto_complete': v:false,
+            \ 'auto_complete': v:true,
             \ 'refresh_always': v:true
             \ })
 
