@@ -15,7 +15,7 @@ make = '''
     setlocal noexpandtab
 '''
 
-quickfix = '''
+qf = '''
     " bnext or bprevious ignore quickfix
     set nobuflisted
 '''

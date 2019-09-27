@@ -292,7 +292,7 @@ augroup MyAutoCmd
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 
     autocmd FileType,Syntax,BufNewFile,BufNew,BufRead call vimrc#on_filetype()
-    autocmd FileType quickfix wincmd J
+    autocmd FileType qf wincmd J
     autocmd VimResized * wincmd =
 augroup END
 nnoremap <silent><F12> :call vimrc#show_function_key()<cr>
