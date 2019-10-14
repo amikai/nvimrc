@@ -121,18 +121,10 @@ inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
 autocmd FileType go call <SID>golang_setting()
 function! s:golang_setting() abort
     call deoplete#custom#option('sources', {
-                \ 'go' :['omni', 'buffer', 'member', 'file']
+                \ 'go' :['go', 'buffer', 'member', 'file']
                 \})
-
-    call deoplete#custom#var('omni', 'input_patterns', {
-                \ 'go' : '[^. *\t]\.\w*'
-                \})
-    call deoplete#custom#source('omni', 'functions', {
-                \ 'go': ['go', 'go#complete#Complete'],
-                \})
-
-    call deoplete#custom#source('omni',
-                \ {'max_candidates': 5,
+    call deoplete#custom#source('go',
+                \ {'max_candidates': 10,
                 \  'rank':900
                 \ })
 
@@ -155,6 +147,23 @@ function! s:golang_setting() abort
                 \ {'max_candidates': 3,
                 \  'rank':600
                 \ })
+
+    "" deoplete use vim-go omnifunc to complete
+    " call deoplete#custom#option('sources', {
+    "             \ 'go' :['omni', 'buffer', 'member', 'file']
+    "             \})
+
+    " call deoplete#custom#var('omni', 'input_patterns', {
+    "             \ 'go' : '[^. *\t]\.\w*'
+    "             \})
+    " call deoplete#custom#source('omni', 'functions', {
+    "             \ 'go': ['go', 'go#complete#Complete'],
+    "             \})
+
+    " call deoplete#custom#source('omni',
+    "             \ {'max_candidates': 5,
+    "             \  'rank':900
+    "             \ })
 endfunction
 " }}}
 
