@@ -11,6 +11,7 @@ on_ft = 'go'
 build = 'GoInstallBinaries'
 hook_add = '''
     let g:go_highlight_types = 1
+    let g:go_echo_go_info = 0
     autocmd FileType go nnoremap <F16> :GoTest<cr>
     autocmd FileType go nnoremap <F17> :GoBuild<cr>
     autocmd FileType go nnoremap <F18> :GoRun<cr>
