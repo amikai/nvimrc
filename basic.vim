@@ -168,6 +168,8 @@ set foldcolumn=1
 " Use a popup menu to show the possible completions
 set completeopt-=preview
 
+set virtualedit=block
+
 " Use tab to choose condidate in pop up menu
 augroup MyAutoCmd
     autocmd!
