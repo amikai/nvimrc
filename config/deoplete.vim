@@ -7,7 +7,7 @@
 call deoplete#custom#option({
             \ 'auto_complete_delay': 200,
             \ 'ignore_case': v:false,
-            \ 'auto_complete': v:false,
+            \ 'auto_complete': v:true,
             \ 'refresh_always': v:true
             \ })
 
@@ -36,23 +36,20 @@ call deoplete#custom#source('_', 'matchers', ['matcher_head'])
 " Use mathcer_head instead of fuzzy
 
 call deoplete#custom#option('sources', {
-            \ '_': ['around','buffer', 'syntax', 'tabnine'],
+            \ '_': ['around','buffer', 'tabnine'],
             \ 'c': ['buffer', 'tag', 'member'],
             \ 'vim': ['vim','buffer'],
             \ 'rust': ['racer', 'buffer', 'member'],
-            \ 'go' :['omni', 'buffer', 'member', 'file'],
             \ 'python' :['jedi', 'buffer', 'member', 'file'],
             \ 'php' :['phpactor', 'buffer', 'member', 'file'],
             \ 'javascript': ['omni','tern'],
             \})
 
 call deoplete#custom#var('omni', 'input_patterns', {
-            \ 'go' : '[^. *\t]\.\w*',
             \ 'javascript': '[^. *\t]\.\w*'
             \})
 
 call deoplete#custom#source('omni', 'functions', {
-            \ 'go':  'go#complete#Complete',
             \ 'javascript': ['jspc#omni'],
             \})
 
@@ -87,9 +84,6 @@ call deoplete#custom#source('syntax', 'mark', '♯')
 " }}}
 
 " Key mapping "{{{
-inoremap <expr><C-g>       deoplete#refresh()
-inoremap <expr><C-l> deoplete#complete_common_string()
-inoremap <expr><C-e>       deoplete#cancel_popup()
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 " <Tab> completion:
 " 1. If popup menu is visible, select and insert next item
@@ -126,8 +120,20 @@ inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
 " Language specific setting {{{
 autocmd FileType go call <SID>golang_setting()
 function! s:golang_setting() abort
+
+    call deoplete#custom#option('sources', {
+                \ 'go' :['omni', 'buffer', 'member', 'file', 'neosnippet']
+                \})
+
+    call deoplete#custom#var('omni', 'input_patterns', {
+                \ 'go' : '[^. *\t]\.\w*'
+                \})
+    call deoplete#custom#source('omni', 'functions', {
+                \ 'go': ['go', 'go#complete#Complete'],
+                \})
+
     call deoplete#custom#source('omni',
-                \ {'max_candidates': 3,
+                \ {'max_candidates': 5,
                 \  'rank':900
                 \ })
 
@@ -150,6 +156,8 @@ function! s:golang_setting() abort
                 \ {'max_candidates': 3,
                 \  'rank':600
                 \ })
+
+    "" deoplete use vim-go omnifunc to complete
 endfunction
 " }}}
 

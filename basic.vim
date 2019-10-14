@@ -31,6 +31,8 @@ command W w !sudo tee % > /dev/null
 
 set path+=**
 
+set diffopt=filler,vertical,algorithm:patience,context:3,foldcolumn:0
+
 noremap <silent><F1> :call vimrc#load_session()<cr>
 
 " Remember cursor position between vim sessions
@@ -164,7 +166,9 @@ set foldcolumn=1
 
 
 " Use a popup menu to show the possible completions
-set completeopt-=preview
+set completeopt=menu,preview
+
+set virtualedit=block
 
 " Use tab to choose condidate in pop up menu
 augroup MyAutoCmd
@@ -289,8 +293,8 @@ augroup MyAutoCmd
     autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 
-    autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *? call vimrc#on_filetype()
-    autocmd FileType quickfix wincmd J
+    autocmd FileType,Syntax,BufNewFile,BufNew,BufRead call vimrc#on_filetype()
+    autocmd FileType qf wincmd J
     autocmd VimResized * wincmd =
 augroup END
 nnoremap <silent><F12> :call vimrc#show_function_key()<cr>

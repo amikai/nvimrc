@@ -8,6 +8,19 @@ on_source = 'deoplete.nvim'
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+build = 'GoInstallBinaries'
+hook_add = '''
+    let g:go_highlight_types = 1
+    let g:go_echo_go_info = 0
+    autocmd FileType go nnoremap <F16> :GoTest<cr>
+    autocmd FileType go nnoremap <F17> :GoBuild<cr>
+    autocmd FileType go nnoremap <F18> :GoRun<cr>
+'''
+
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-go'
+on_ft = 'go'
+build = 'make'
 # }}}
 # python {{{
 [[plugins]]
@@ -95,11 +108,6 @@ on_ft = 'html'
 on_cmd = 'TagalongInit'
 
 # }}}
-# diff {{{
-[[plugins]]
-repo = 'sgeb/vim-diff-fold'
-on_ft = ['diff']
-# }}}
 # }}}
 
 # apathy {{{
@@ -128,6 +136,8 @@ repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_source = '''
     exe 'source' $nvimrc.'/config/gina.vim'
+    nmap dp <Plug>(gina-diffput)
+    nmap do <Plug>(gina-diffget)
 '''
 # }}}
 
@@ -135,12 +145,6 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-scriptease'
 on_ft = 'vim'
-# }}}
-
-# matchit (% enhancement) {{{
-[[plugins]]
-repo = 'vim-scripts/matchit.zip'
-on_ft = ['html', 'vim', 'xml']
 # }}}
 
 # Defx {{{
@@ -209,10 +213,18 @@ hook_add = '''
 '''
 # }}}
 
-# vim-gitgutter (show git diff and stages/undoes hunks) {{{
+# vim-sinify (show git diff and stages/undoes hunks) {{{
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'mhinz/vim-signify'
 on_if = "isdirectory(getcwd().'/.git/')" # has .git folder
+hook_add = '''
+    xmap ic <plug>(signify-motion-inner-visual)
+    nmap [c <plug>(signify-next-hunk)
+    nmap ]c <plug>(signify-prev-hunk)
+    omap ic <plug>(signify-motion-inner-pending)
+    omap ac <plug>(signify-motion-outer-pending)
+    xmap ac <plug>(signify-motion-outer-visual)
+'''
 # }}}
 
 # neosnippet (snippet) {{{
@@ -228,9 +240,9 @@ hook_source = '''
     let g:neosnippet#enable_snipmate_compatibility = 1
     let g:neosnippet#enable_completed_snippet = 1
     let g:neosnippet#expand_word_boundary = 1
+	let g:neosnippet#enable_complete_done = 1
     " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
     let g:neosnippet#snippets_directory = expand('~/.config/config/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets')
-    autocmd MyAutoCmd CompleteDone * call neosnippet#complete_done()
 '''
 # }}}
 
@@ -381,17 +393,6 @@ repo = 'dharanasoft/rtf-highlight'
 on_cmd = 'RTFHighlight'
 # }}}
 
-#  git-messenger {{{
-[[plugins]]
-repo = 'rhysd/git-messenger.vim'
-on_cmd = 'GitMessenger'
-on_map = '<Plug>(git-messenger'
-hook_source = "exe 'source' $nvimrc.'/config/git_messenger.vim'"
-hook_add = '''
-    autocmd FileType gitmessengerpopup call SetupGitMessengerPopup()
-'''
-# }}}
-
 # focus programming {{{
 [[plugins]]
 repo = 'junegunn/goyo.vim'
@@ -412,6 +413,38 @@ hook_add = '''
                 \ : ':Limelight<cr>'
     autocmd! User GoyoLeave Limelight!
 '''
+# }}}
+
+# vim-commentary {{{
+[[plugins]]
+repo = 'tpope/vim-commentary'
+on_map = ['<Plug>Commentary', '<Plug>CommentaryLine']
+on_cmd = 'Commentary'
+hook_add = '''
+    xmap gc  <Plug>Commentary
+    nmap gc  <Plug>Commentary
+    omap gc  <Plug>Commentary
+    nmap gcc <Plug>CommentaryLine
+
+    autocmd FileType toml setlocal commentstring=#\ %s
+    autocmd FileType vim setlocal commentstring=\"\ %s
+    autocmd FileType html setlocal commentstring=\"\ %s
+'''
+# }}}
+
+# highlight text yank {{{
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+on_event = 'TextYankPost'
+hook_add = '''
+    let g:highlightedyank_highlight_duration = 400
+'''
+# }}}
+
+# dein-command {{{
+[[plugins]]
+repo = 'haya14busa/dein-command.vim'
+on_cmd = 'Dein'
 # }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
