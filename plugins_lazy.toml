@@ -108,11 +108,6 @@ on_ft = 'html'
 on_cmd = 'TagalongInit'
 
 # }}}
-# diff {{{
-[[plugins]]
-repo = 'sgeb/vim-diff-fold'
-on_ft = ['diff']
-# }}}
 # }}}
 
 # apathy {{{
