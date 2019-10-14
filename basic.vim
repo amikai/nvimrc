@@ -31,7 +31,7 @@ command W w !sudo tee % > /dev/null
 
 set path+=**
 
-set diffopt=vertical,algorithm:patience
+set diffopt=filler,vertical,algorithm:patience,context:3,foldcolumn:0
 
 noremap <silent><F1> :call vimrc#load_session()<cr>
 
