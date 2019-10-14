@@ -84,9 +84,6 @@ call deoplete#custom#source('syntax', 'mark', '♯')
 " }}}
 
 " Key mapping "{{{
-inoremap <expr><C-g>       deoplete#refresh()
-inoremap <expr><C-l> deoplete#complete_common_string()
-inoremap <expr><C-e>       deoplete#cancel_popup()
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 " <Tab> completion:
 " 1. If popup menu is visible, select and insert next item
