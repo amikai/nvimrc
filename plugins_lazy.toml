@@ -17,11 +17,6 @@ hook_add = '''
     autocmd FileType go nnoremap <F17> :GoBuild<cr>
     autocmd FileType go nnoremap <F18> :GoRun<cr>
 '''
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-go'
-on_ft = 'go'
-build = 'make'
 # }}}
 # python {{{
 [[plugins]]
