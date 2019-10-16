@@ -10,7 +10,6 @@ repo = 'fatih/vim-go'
 on_ft = 'go'
 build = 'GoInstallBinaries'
 hook_add = '''
-    let g:go_highlight_types = 1
     let g:go_metalinter_command = "golangci-lint"
     let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
     let g:go_metalinter_autosave = 1
