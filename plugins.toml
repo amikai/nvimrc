@@ -108,7 +108,7 @@ hook_add = '''
                 \   'vim':['vint'],
                 \   'php':['phpcs'],
                 \   'sh': ['shellcheck'],
-                \   'go': []
+                \   'go': ['gobuild']
                 \}
     " let g:ale_set_loclist = 1
     let g:ale_set_quickfix = 1
