@@ -107,7 +107,8 @@ hook_add = '''
                 \   'rust': ['rustc', 'cargo'],
                 \   'vim':['vint'],
                 \   'php':['phpcs'],
-                \   'sh': ['shellcheck']
+                \   'sh': ['shellcheck'],
+                \   'go': []
                 \}
     let g:ale_set_loclist = 1
     let g:ale_set_quickfix = 0
