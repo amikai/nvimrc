@@ -162,7 +162,14 @@ hook_source = '''
 [[plugins]]
 repo = 'andymass/vim-matchup'
 hook_add = '''
+    let g:matchup_matchparen_enabled = 1
     let g:matchup_surround_enabled = 1
+    let g:matchup_matchparen_offscreen = {'method': 'popup'}
+    let g:matchup_transmute_enabled = 1
+
+    let g:matchup_matchpref = {
+                \ 'html': { 'tagnameonly': 1}
+                \ }
 '''
 # }}}
 
