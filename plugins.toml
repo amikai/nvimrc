@@ -117,11 +117,6 @@ hook_add = '''
 '''
 # }}}
 
-# vim-surround (delte change and add surroundings) {{{
-[[plugins]]
-repo = 'tpope/vim-surround'
-# }}}
-
 # cpsm matcher {{{
 [[plugins]]
 repo = 'nixprime/cpsm'
