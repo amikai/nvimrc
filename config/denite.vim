@@ -6,7 +6,9 @@ call denite#custom#option('_', {
             \ 'source_names': 'short',
             \ 'empty': 0,
             \ 'auto-accel': 1,
-            \ 'vertical_preview': 1,
+            \ 'floating-preview': 1,
+            \ 'filter-split-direction': "floating",
+            \ 'split': 'floating'
             \})
 "   'vertical_preview': 1, " use it when needed
 
