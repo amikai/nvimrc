@@ -8,7 +8,7 @@ function! DefxContextMenu() abort
                 \ "  (r)eveal in Finder the current node\n"
 
     echo l:msg
-    let l:ans = nr2char(getchar()) 
+    let l:ans = nr2char(getchar())
     let l:actions = {'a':{'op':'call', 'args':['DefxNewNode']},
                 \ 'A': {'op':'call', 'args':['DefxNewMultiNode']},
                 \ 'd':{'op':'remove', 'args':[]},
@@ -47,7 +47,7 @@ function! DefxOpenFinder(context)
             let l:full_path = fnamemodify(path, ':p:h')
         endif
         let l:open_folder = printf("%s '%s'", l:open, l:full_path)
-        echo l:open_folder 
+        echo l:open_folder
         call system(l:open_folder)
     endfor
 endfunction
