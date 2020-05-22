@@ -96,27 +96,6 @@ hook_add = '''
 repo = 'tpope/vim-unimpaired'
 # }}}
 
-# ale (async lint engine) {{{
-[[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-    let g:ale_completion_enabled = 0
-    let g:ale_fix_on_save = 0
-    let g:ale_linters = {
-                \   'python': ['flake8'],
-                \   'rust': ['rustc', 'cargo'],
-                \   'vim':['vint'],
-                \   'php':['phpcs'],
-                \   'sh': ['shellcheck'],
-                \   'go': ['gobuild']
-                \}
-    " let g:ale_set_loclist = 1
-    let g:ale_set_quickfix = 1
-
-    let g:ale_php_cs_fixer_executable = 'php-cs-fixer'
-'''
-# }}}
-
 # cpsm matcher {{{
 [[plugins]]
 repo = 'nixprime/cpsm'
