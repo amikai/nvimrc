@@ -31,3 +31,12 @@ function! vimrc#load_session() abort
         exe "source" l:session_file
     endif
 endfunction
+
+function! vimrc#close_floating_window() abort
+    let l:wins = nvim_list_wins()
+    for wid in l:wins
+        if !empty(nvim_win_get_config(wid)['relative'])
+            call nvim_win_close(wid, 0)
+        endif
+    endfor
+endfunction

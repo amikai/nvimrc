@@ -61,8 +61,8 @@ nnoremap L $
 nnoremap G Gzz
 
 " set esc to noh highlight
-nnoremap <silent> <esc> <esc>:<C-u>set nopaste<return>:noh<return>
-inoremap <silent> <esc> <esc>:<C-u>:noh<return>
+nnoremap <silent> <esc> :<esc> <bar> :<C-u>set nopaste <bar> :noh <bar> :call vimrc#close_floating_window()<return>
+inoremap <silent> <esc> :<esc> <bar> :<C-u>set nopaste <bar> :noh <bar> :call vimrc#close_floating_window()<return>
 
 " map U to redo
 noremap U :redo<cr>
