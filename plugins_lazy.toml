@@ -209,6 +209,7 @@ hook_source = '''
 repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle'
 hook_add = '''
+    let g:tagbar_ctags_bin = system('echo -n "$(which ctags)"')
     noremap <F8> :TagbarToggle<cr>
     filetype plugin indent on
     syntax enable
