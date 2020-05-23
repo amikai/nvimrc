@@ -87,6 +87,7 @@ function! MyDefxKeySetup() abort
 
     nnoremap <silent><buffer><expr> I defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> <esc> defx#do_action('clear_select_all')
 
     nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
     nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
