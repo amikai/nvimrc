@@ -81,7 +81,9 @@ function! MyDefxKeySetup() abort
     nnoremap <silent><buffer><expr> ~ defx#do_action('cd', [getcwd()])
 
     " change current work directory
-    nnoremap <buffer> cd :call defx#call_action('change_vim_cwd')<CR>
+    nnoremap <buffer> cd
+                \ :call defx#call_action('change_vim_cwd')<bar>
+                \ :call defx#call_action('open') <bar>
                 \ :echo "Defx: CWD is now: ".getcwd()<CR>
 
 
