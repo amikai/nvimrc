@@ -107,6 +107,16 @@ set relativenumber
 " Height of the command bar
 set cmdheight=2
 
+" Enables pseudo-transparency for a floating window
+set winblend=20
+" Set minimal width for current window.
+set winwidth=30
+" Set minimal height for current window.
+set winheight=20
+" Set maximam maximam command line window.
+set cmdwinheight=5
+" No equal window size.
+set noequalalways
 
 " show command
 set showcmd
