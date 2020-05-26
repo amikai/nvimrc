@@ -20,6 +20,8 @@ set history=500
 " Set to auto read when a file is changed from the outside
 set autoread
 
+set report=0
+
 inoremap jk <esc>
 tnoremap <esc> <C-\><C-n>
 
