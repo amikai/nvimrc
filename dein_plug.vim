@@ -1,4 +1,4 @@
-let s:dein_dir = expand($nvimrc.'/dein')
+let s:dein_dir = expand('$CACHE/dein')
 
 if &runtimepath !~# '/dein.vim'
     let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -18,14 +18,18 @@ if !dein#load_state(s:dein_dir)
     finish
 endif
 
-call dein#begin(s:dein_dir, expand('<sfile>'))
-    if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-    endif
-    call dein#load_toml(expand($nvimrc.'/plugins.toml'), {'lazy': 0})
-    call dein#load_toml(expand($nvimrc.'/plugins_lazy.toml'), {'lazy': 1})
-    call dein#load_toml(expand($nvimrc.'/dein_ft.toml'))
+let s:plugins_toml = expand('$NVIMRC/plugins.toml')
+let s:plugins_lazy_toml = expand('$NVIMRC/plugins_lazy.toml')
+let s:dein_ft_toml = expand('$NVIMRC/dein_ft.toml')
+call dein#begin(s:dein_dir, [
+            \ expand('<sfile>'),
+            \ s:plugins_toml,
+            \ s:plugins_lazy_toml,
+            \ s:dein_ft_toml])
+
+    call dein#load_toml(s:plugins_toml, {'lazy': 0})
+    call dein#load_toml(s:plugins_lazy_toml, {'lazy': 1})
+    call dein#load_toml(s:dein_ft_toml)
 call dein#end()
 call dein#save_state()
 

@@ -168,7 +168,7 @@ hook_add = '''
 repo = 'lambdalisue/gina.vim'
 on_cmd = 'Gina'
 hook_source = '''
-    exe 'source' $nvimrc.'/config/gina.vim'
+    exe 'source' $NVIMRC.'/config/gina.vim'
     nmap dp <Plug>(gina-diffput)
     nmap do <Plug>(gina-diffget)
 '''
@@ -184,7 +184,7 @@ on_ft = 'vim'
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 on_cmd = 'Defx'
-hook_source = "exe 'source' $nvimrc.'/config/defx.vim'"
+hook_source = "exe 'source' $NVIMRC.'/config/defx.vim'"
 hook_add = '''
     autocmd MyAutoCmd BufLeave,BufWinLeave  \[defx\]* call defx#call_action('add_session')
     autocmd MyAutoCmd FileType defx call MyDefxKeySetup()
@@ -312,7 +312,7 @@ hook_source = '''
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_source = '''
-    exe 'source' $nvimrc.'/config/deoplete.vim'
+    exe 'source' $NVIMRC.'/config/deoplete.vim'
     call deoplete#enable()
 '''
 # }}}
@@ -327,7 +327,7 @@ on_source = 'deoplete.nvim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
-hook_source = "exe 'source' $nvimrc.'/config/denite.vim'"
+hook_source = "exe 'source' $NVIMRC.'/config/denite.vim'"
 hook_add = '''
     noremap [denite-leader] <Nop>
     nmap ; [denite-leader]

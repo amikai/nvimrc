@@ -5,12 +5,9 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
-    " need to set background
     let g:gruvbox_termcolors=256
     let g:gruvbox_contrast_dark="hard"
     let g:gruvbox_vert_split="bg0"
-    set bg=dark
-    autocmd MyAutoCmd VimEnter * nested set bg=dark | colorscheme gruvbox
 '''
 # }}}
 
