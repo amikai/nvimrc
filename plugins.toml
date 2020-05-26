@@ -123,7 +123,18 @@ repo = 'glts/vim-textobj-comment'
 
 [[plugins]]
 repo = 'sgur/vim-textobj-parameter'
+# }}}
 
+# vim operator {{{
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+hook_add = '''
+  map R <Plug>(operator-replace)
+'''
 # }}}
 
 # session {{{
