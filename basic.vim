@@ -312,4 +312,4 @@ augroup MyAutoCmd
     autocmd VimResized * wincmd =
 augroup END
 nnoremap <silent><F12> :call vimrc#show_function_key()<cr>
-
+nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
