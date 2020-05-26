@@ -92,12 +92,10 @@ set scrolloff=7
 " set breakindent
 " set formatoptions=
 
-
-" visual autocomplete for command menu
+" Display candidates by popup menu.
 set wildmenu
-set wildmode=list:longest,full
-set wildignore=*.o,*.pyc,*~
-
+set wildmode=full
+set wildoptions+=pum
 
 " line number setting
 set number
