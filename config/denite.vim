@@ -20,6 +20,8 @@ call denite#custom#option('search', {
 
 " denite-key mapping
 function! MyDeniteKeySetup() abort
+    nnoremap <silent><buffer><expr> ?
+    \ denite#do_map('choose_action')
     nnoremap <silent><buffer><expr> <CR>
     \ denite#do_map('do_action')
     nnoremap <silent><buffer><expr> d
@@ -32,6 +34,12 @@ function! MyDeniteKeySetup() abort
     \ denite#do_map('open_filter_buffer')
     nnoremap <silent><buffer><expr> <Space>
     \ denite#do_map('toggle_select').'j'
+    nnoremap <silent><buffer><expr> r
+    \ denite#do_map('do_action', 'quickfix')
+    nnoremap <silent><buffer><expr> <C-r>
+    \ denite#do_map('restore_sources')
+    nnoremap <silent><buffer><expr> R
+    \ denite#do_map('redraw')
 endfunction
 
 " customize ignore globs
