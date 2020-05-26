@@ -45,6 +45,8 @@ autocmd BufReadPost *
 " center buffer around cursor when opening files
 autocmd BufRead * normal zz
 
+set grepprg=grep\ -inH
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
