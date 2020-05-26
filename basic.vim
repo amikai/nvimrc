@@ -246,6 +246,10 @@ vnoremap > >gv
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Adjust window size of preview and help.
+set previewheight=8
+set helpheight=12
+
 " Puts new vsplit windows to the right of the current
 set splitright
 " Puts new split windows to the bottom of the current
