@@ -188,6 +188,13 @@ augroup MyAutoCmd
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
 
+" Set popup menu max height.
+set pumheight=10
+
+" Enables pseudo-transparency for the popup-menu
+set pumblend=20
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
