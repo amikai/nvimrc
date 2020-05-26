@@ -508,4 +508,9 @@ repo = 'haya14busa/dein-command.vim'
 on_cmd = 'Dein'
 # }}}
 
+# qfreplace {{{
+repo = 'thinca/vim-qfreplace'
+on_cmd = 'Qfreplace'
+# }}}
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
