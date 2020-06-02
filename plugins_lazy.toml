@@ -522,4 +522,15 @@ repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
 # }}}
 
+[[plugins]]
+repo  = 'easymotion/vim-easymotion'
+on_map = '<Plug>(easymotion-'
+hook_add = '''
+map  f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
+
+map  w <Plug>(easymotion-bd-w)
+nmap w <Plug>(easymotion-overwin-w)
+'''
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
