@@ -18,9 +18,9 @@ hook_add = '''
     let g:go_auto_type_info = 1
     let g:go_auto_sameids = 1
     let g:go_fmt_command = "goimports"
-    autocmd FileType go nnoremap <F16> :GoTest<cr>
-    autocmd FileType go nnoremap <F17> :GoBuild<cr>
-    autocmd FileType go nnoremap <F18> :GoRun<cr>
+    autocmd FileType go nnoremap <F16> <cmd>GoTest<cr>
+    autocmd FileType go nnoremap <F17> <cmd>GoBuild<cr>
+    autocmd FileType go nnoremap <F18> <cmd>GoRun<cr>
 '''
 # }}}
 # python {{{
@@ -124,7 +124,7 @@ on_cmd = 'TagalongInit'
 repo = 'w0rp/ale'
 on_cmd = 'ALEToggle'
 hook_add = '''
-    noremap <F7> :ALEToggle<cr>
+    noremap <F7> <cmd>ALEToggle<cr>
     let g:ale_enabled = 0
     let g:ale_completion_enabled = 0
     let g:ale_fix_on_save = 0
@@ -158,8 +158,8 @@ hook_add = '''
                 \ 'defx': 'call defx#call_action("quit")',
                 \ 'tagbar': 'TagbarClose'
                 \ }
-    nnoremap <silent> <leader>c :Sayonara!<CR>
-    nnoremap <silent> <leader>q :Sayonara<CR>
+    nnoremap <silent> <leader>c <cmd>Sayonara!<CR>
+    nnoremap <silent> <leader>q <cmd>Sayonara<CR>
 '''
 # }}}
 
@@ -188,7 +188,7 @@ hook_source = "exe 'source' $NVIMRC.'/config/defx.vim'"
 hook_add = '''
     autocmd MyAutoCmd BufLeave,BufWinLeave  \[defx\]* call defx#call_action('add_session')
     autocmd MyAutoCmd FileType defx call MyDefxKeySetup()
-    nnoremap <silent><F4> :<C-u>Defx -session-file='/tmp/defx_session' -buffer-name="defx"<CR>
+    noremap <silent><F4> <cmd>Defx -session-file='/tmp/defx_session' -buffer-name="defx"<CR>
 '''
 
 [[plugins]]
@@ -210,7 +210,7 @@ repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle'
 hook_add = '''
     let g:tagbar_ctags_bin = system('echo -n "$(which ctags)"')
-    noremap <F8> :TagbarToggle<cr>
+    noremap <F8> <cmd>TagbarToggle<cr>
     filetype plugin indent on
     syntax enable
     let g:tagbar_type_go = {
@@ -260,7 +260,7 @@ on_cmd = 'LinuxCodingStyle'
 repo = 'Chiel92/vim-autoformat'
 on_cmd = 'Autoformat'
 hook_add = '''
-    noremap <F3> :Autoformat<cr>
+    noremap <F3> <cmd>Autoformat<cr>
     let g:formatters_python = ['autopep8']
     let g:formatters_rust = ['rustfmt']
 '''
@@ -270,7 +270,7 @@ hook_add = '''
 repo = 'mbbill/undotree'
 on_cmd = 'UndotreeToggle'
 hook_add = '''
-    nnoremap <F6> :UndotreeToggle<cr>
+    nnoremap <F6> <cmd>UndotreeToggle<cr>
 '''
 # }}}
 
@@ -429,7 +429,7 @@ hook_add = '''
     let g:better_whitespace_filetypes_blacklist = ['defx', 'help', 'qf', 'diff']
     nnoremap <silent><expr><F5> exists("g:better_whitespace_enabled") ? ':ToggleWhitespace<cr>' : ':EnableWhitespace<cr>'
     " <S-F5> for stripping white space
-    nnoremap <F17> :StripWhitespace<cr>
+    nnoremap <F17> <cmd>StripWhitespace<cr>
 '''
 # }}}
 
@@ -469,7 +469,7 @@ repo = 'junegunn/goyo.vim'
 on_cmd = ['Goyo', 'Goyo!']
 hook_add = '''
     " Goyo toggle
-    noremap <silent><expr> <F2> exists('#goyo') ? ':Goyo!<cr>':':Goyo<cr>'
+    noremap <silent><expr> <F2> exists('#goyo') ? '<cmd>Goyo!<cr>':'<cmd>Goyo<cr>'
 '''
 
 [[plugins]]
@@ -479,8 +479,8 @@ on_map = '<Plug>(Limelight)'
 hook_add = '''
     " <S-F2> Limeligh toggle
     noremap <silent><expr> <F14> !exists('#goyo') ? ''
-                \ : exists('#limelight') ? ':Limelight!<cr>'
-                \ : ':Limelight<cr>'
+                \ : exists('#limelight') ? '<cmd>Limelight!<cr>'
+                \ : '<cmd>Limelight<cr>'
     autocmd! User GoyoLeave Limelight!
 '''
 # }}}

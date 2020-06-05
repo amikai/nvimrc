@@ -35,7 +35,7 @@ set path+=**
 
 set diffopt=filler,vertical,algorithm:patience,context:3,foldcolumn:0
 
-noremap <silent><F1> :call vimrc#load_session()<cr>
+noremap <silent><F1> <cmd>call vimrc#load_session()<cr>
 
 " Remember cursor position between vim sessions
 autocmd BufReadPost *
@@ -69,7 +69,7 @@ nnoremap <silent> <esc> :<esc> <bar> :<C-u>set nopaste <bar> :noh <bar> :call vi
 inoremap <silent> <esc> :<esc> <bar> :<C-u>set nopaste <bar> :noh <bar> :call vimrc#close_floating_window()<return>
 
 " map U to redo
-noremap U :redo<cr>
+noremap U <cmd>redo<cr>
 
 " copy paste
 set clipboard+=unnamedplus
@@ -272,7 +272,7 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close current tab
-nnoremap <silent> <leader>qt :tabclose<cr>
+nnoremap <silent> <leader>qt <cmd>tabclose<cr>
 
 " Use vim-sayonara plugin
 " <leader>q => Close current buffer and window
@@ -280,21 +280,21 @@ nnoremap <silent> <leader>qt :tabclose<cr>
 
 
 " Close all the buffers
-noremap <leader>ba :bufdo bd<cr>
+noremap <leader>ba <cmd>bufdo bd<cr>
 
 
 " Move between buffer
 " Use tpope/vim-unimpaired replace below
-" noremap ]b :bnext<cr>
-" noremap [b :bprevious<cr>
+" noremap ]b <cmd>bnext<cr>
+" noremap [b <cmd>bprevious<cr>
 
 " Managing tabs
-noremap <leader>t :tabnew<cr>
-" gt => :tabnext
-" gT => :tabprevious
+noremap <leader>t <cmd>tabnew<cr>
+" gt => <cmd>tabnext<cr>
+" gT => <cmd>tabprevious<cr>
 
 " Opens a new tab with the current buffer's path
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>te <cmd>tabedit <c-r>=expand("%:p:h")<cr>/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => command line mode
@@ -320,5 +320,5 @@ augroup MyAutoCmd
     autocmd FileType qf wincmd J
     autocmd VimResized * wincmd =
 augroup END
-nnoremap <silent><F12> :call vimrc#show_function_key()<cr>
+nnoremap <silent><F12> <cmd>call vimrc#show_function_key()<cr>
 nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
