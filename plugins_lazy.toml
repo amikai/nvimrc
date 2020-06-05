@@ -536,6 +536,16 @@ hook_add = '''
 
 # }}}
 
+# vim-easy-align {{{
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_cmd = 'EasyAlign'
+on_map = '<Plug>(EasyAlign)'
+hook_add = '''
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
 '''
+
+# }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
