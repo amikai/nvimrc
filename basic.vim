@@ -29,7 +29,7 @@ let mapleader=','
 let g:mapleader=','
 let maplocalleader=';'
 
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 set path+=**
 
