@@ -65,8 +65,21 @@ nnoremap L $
 nnoremap G Gzz
 
 " set esc to noh highlight
-nnoremap <silent> <esc> :<esc> <bar> :<C-u>set nopaste <bar> :noh <bar> :call vimrc#close_floating_window()<return>
-inoremap <silent> <esc> :<esc> <bar> :<C-u>set nopaste <bar> :noh <bar> :call vimrc#close_floating_window()<return>
+function s:esc_mapping()
+    let s:cmds = [
+                \ 'set nopaste',
+                \ 'call vimrc#close_floating_window()',
+                \]
+
+    let s:all_cmds = ""
+    for cmd in s:cmds
+        let s:all_cmds = s:all_cmds . "\<cmd>" . cmd . "\<cr>"
+    endfor
+    return printf(s:all_cmds . "\<esc>")
+endfunction
+noremap <expr><esc> <SID>esc_mapping()
+
+
 
 " map U to redo
 noremap U <cmd>redo<cr>
