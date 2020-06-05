@@ -1,19 +1,28 @@
+if exists('g:config_defx')
+    finish
+endif
+let g:config_defx = 1
+
 function! DefxContextMenu() abort
-    let l:msg = "Defx context menu\n".
-                \ "=========================================================\n".
+    call utils#echo_succes_msg("Defx context menu\n")
+    let l:msg =  "=========================================================\n".
                 \ "  (a)dd a childnode\n".
                 \ "  (A)dd multiple childnodes\n".
                 \ "  (d)elete the current node\n".
                 \ "  (m)ove the current node\n".
-                \ "  (r)eveal in Finder the current node\n"
+                \ "  (r)eveal in Finder the current node\n".
+                \ "  (s)earch the word in files\n".
+                \ "  (g)ina add\n"
 
     echo l:msg
     let l:ans = nr2char(getchar())
     let l:actions = {'a':{'op':'call', 'args':['DefxNewNode']},
-                \ 'A': {'op':'call', 'args':['DefxNewMultiNode']},
-                \ 'd':{'op':'remove', 'args':[]},
-                \ 'm':{'op':'rename', 'args':[]},
-                \ 'r':{'op': 'call', 'args':['DefxOpenFinder']}}
+                \ 'A': {'op':'call',   'args':['DefxNewMultiNode']},
+                \ 'd':{'op':'remove',  'args':[]},
+                \ 'm':{'op':'rename',  'args':[]},
+                \ 'r':{'op': 'call',   'args':['DefxOpenFinder']},
+                \ 's': {'op': 'call',  'args': ['DefxSearchByDenite']},
+                \ 'g': {'op': 'call', 'args': ['DefxGinaAdd']}}
     if !(has_key(l:actions, l:ans))
         silent exe 'redraw'
         return
@@ -23,17 +32,17 @@ function! DefxContextMenu() abort
     call defx#call_action(action.op, action.args)
 endfunction
 
-function! DefxNewNode(context)
+function! DefxNewNode(context) abort
     echo "Enter the dir/file name to be created. Dirs end with a '/'\n"
     call defx#call_action('new_file')
 endfunction
 
-function! DefxNewMultiNode(context)
+function! DefxNewMultiNode(context) abort
     echo "Enter the dir/file name seperated by space. Dirs end with a '/'\n"
     call defx#call_action('new_multiple_files')
 endfunction
 
-function! DefxOpenFinder(context)
+function! DefxOpenFinder(context) abort
     if has('mac')
         let l:open = 'open'
     elseif has('unix')
@@ -50,6 +59,47 @@ function! DefxOpenFinder(context)
         echo l:open_folder
         call system(l:open_folder)
     endfor
+endfunction
+
+function! DefxSearchByDenite(context) abort
+    " clean arg list
+    if !dein#tap('denite.nvim')
+        return
+    endif
+    call dein#source('denite.nvim')
+
+    let l:args = []
+    for path in a:context.targets
+        if filereadable(path)
+            call add(l:args, path)
+        elseif isdirectory(path)
+            call extend(l:args, glob(path.'/**', v:false, v:true))
+        endif
+    endfor
+    call uniq(sort(l:args))
+    let l:paths_str = join(l:args, ':')
+
+    execute 'wincmd p'
+    exe 'Denite grep:' . l:paths_str
+endfunction
+
+function! DefxGinaAdd(context) abort
+    if !dein#tap('gina.vim')
+        return
+    endif
+    call dein#source('denite.nvim')
+
+    let l:args = []
+    for path in a:context.targets
+        if filereadable(path)
+            call add(l:args, path)
+        elseif isdirectory(path)
+            call extend(l:args, glob(path.'/**', v:false, v:true))
+        endif
+    endfor
+    call uniq(sort(l:args))
+    let l:paths_str = join(l:args, ' ')
+    exe 'Gina add ' . l:paths_str
 endfunction
 
 function! MyDefxKeySetup() abort
