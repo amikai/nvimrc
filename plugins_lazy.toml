@@ -197,8 +197,8 @@ hook_add = '''
 repo = 'kristijanhusak/defx-git'
 on_source = ['defx.nvim']
 hook_add = '''
-    nnoremap <buffer><silent> [c <Plug>(defx-git-prev)
-    nnoremap <buffer><silent> ]c <Plug>(defx-git-next)
+    autocmd MyAutoCmd FileType defx nmap <buffer><silent> [c <Plug>(defx-git-prev)
+    autocmd MyAutoCmd FileType defx nmap <buffer><silent> ]c <Plug>(defx-git-next)
 '''
 hook_source = '''
     call defx#custom#column('git', 'raw_mode', 1)
