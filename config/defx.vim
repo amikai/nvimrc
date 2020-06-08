@@ -132,9 +132,9 @@ function! MyDefxKeySetup() abort
 
     " change current work directory
     nnoremap <buffer> cd
-                \ :call defx#call_action('change_vim_cwd')<bar>
                 \ :call defx#call_action('open') <bar>
-                \ :echo "Defx: CWD is now: ".getcwd()<CR>
+                \ :call defx#call_action('change_vim_cwd')<bar>
+                \ :call utils#echo_succes_msg("Defx: CWD is now: ".getcwd())<cr>
 
 
     nnoremap <silent><buffer><expr> I defx#do_action('toggle_ignored_files')
