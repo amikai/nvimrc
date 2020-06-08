@@ -18,6 +18,8 @@ hook_add = '''
     let g:go_auto_type_info = 1
     let g:go_auto_sameids = 1
     let g:go_fmt_command = "goimports"
+    let g:go_fmt_autosave = 1
+
     autocmd FileType go nnoremap <F16> <cmd>GoTest<cr>
     autocmd FileType go nnoremap <F17> <cmd>GoBuild<cr>
     autocmd FileType go nnoremap <F18> <cmd>GoRun<cr>
@@ -281,13 +283,8 @@ hook_add = '''
 [[plugins]]
 repo = 'mhinz/vim-signify'
 on_if = "isdirectory(getcwd().'/.git/')" # has .git folder
-hook_add = '''
-    xmap ic <plug>(signify-motion-inner-visual)
-    nmap [c <plug>(signify-next-hunk)
-    nmap ]c <plug>(signify-prev-hunk)
-    omap ic <plug>(signify-motion-inner-pending)
-    omap ac <plug>(signify-motion-outer-pending)
-    xmap ac <plug>(signify-motion-outer-visual)
+hook_source = '''
+    exe 'source' $NVIMRC.'/config/signify.vim'
 '''
 # }}}
 
