@@ -80,7 +80,7 @@ function! DefxSearchByDenite(context) abort
     let l:paths_str = join(l:args, ':')
 
     execute 'wincmd p'
-    exe 'Denite grep:' . l:paths_str
+    exe 'Denite grep:' . ' -match-highlight' . ' -matchers="matcher/regexp"' . l:paths_str
 endfunction
 
 function! DefxGinaAdd(context) abort
