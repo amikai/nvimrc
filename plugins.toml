@@ -160,4 +160,9 @@ hook_add = '''
 '''
 # }}}
 
+# vim-scriptease {{{
+[[plugins]]
+repo = 'tpope/vim-scriptease'
+# }}}
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
