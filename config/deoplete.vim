@@ -5,7 +5,7 @@
 " Gerneral settings "{{{
 
 call deoplete#custom#option({
-            \ 'auto_complete_delay': 200,
+            \ 'auto_complete_delay': 700,
             \ 'ignore_case': v:false,
             \ 'auto_complete': v:true,
             \ 'refresh_always': v:true
@@ -25,6 +25,7 @@ call deoplete#custom#source('_', 'converters', [
             \ ])
 
 call deoplete#custom#source('_', 'matchers', ['matcher_head'])
+call deoplete#custom#source('_', 'sorters', ['sorter_rank'])
 " }}}
 
 " Sources setting "{{{
