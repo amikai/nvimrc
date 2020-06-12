@@ -109,9 +109,9 @@ endfunction
 
 
 " <CR>: If popup menu visible, expand snippet or close popup with selection
-inoremap <silent><expr><CR> pumvisible() ?
+imap <silent><expr><CR> pumvisible() ?
             \ (neosnippet#expandable() ? neosnippet#mappings#expand_impl() : deoplete#close_popup())
-            \ : "\<CR>"
+            \:(dein#is_sourced('delimitMate') ?  "<Plug>delimitMateCR" : "\<cr>")
 inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
 inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
 
