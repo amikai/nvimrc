@@ -191,7 +191,7 @@ set foldcolumn=1
 
 
 " Use a popup menu to show the possible completions
-set completeopt=menu
+set completeopt=menu,preview
 
 set virtualedit=block
 
@@ -269,7 +269,7 @@ vnoremap > >gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Adjust window size of preview and help.
-set previewheight=8
+set previewheight=5
 set helpheight=12
 
 " Puts new vsplit windows to the right of the current
