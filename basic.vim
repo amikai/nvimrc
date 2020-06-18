@@ -101,8 +101,8 @@ nnoremap p p`]
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set 7 lines to the cursor - when moving vertically using j/k
-set scrolloff=7
+" Cursor always in vertical center on the screen
+set scrolloff=999
 
 " Maximum width of text that is being inserted (TODO)
 " set textwidth=80
