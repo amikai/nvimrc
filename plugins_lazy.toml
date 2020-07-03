@@ -39,36 +39,9 @@ hook_add = '''
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim']
 on_ft = 'python'
-
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
-hook_add = '''
-    let g:jedi#completions_enabled = 0
-'''
-
-# }}}
-# php {{{
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'phpactor/phpactor'
-build = 'composer install'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'kristijanhusak/deoplete-phpactor'
-depends = ['deoplete.nvim']
-on_ft = 'php'
-# }}}
-# toml {{{
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
 # }}}
 # vim {{{
+# vim source for deoplete
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
@@ -98,35 +71,6 @@ hook_source = '''
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
-# }}}
-# javascript {{{
-[[plugins]]
-repo = 'othree/jspc.vim'
-on_ft = 'javascript'
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = 'javascript'
-
-[[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-on_ft = 'javascript'
-# }}}
-# c {{{
-[[plugins]]
-repo = 'justinmk/vim-syntax-extra'
-on_ft = ['c', 'lex', 'yacc']
-# }}}
-# html {{{
-[[plugins]]
-repo = 'othree/xml.vim'
-on_ft = ['html', 'xml']
-
-[[plugins]]
-repo = 'AndrewRadev/tagalong.vim'
-on_ft = 'html'
-on_cmd = 'TagalongInit'
-
 # }}}
 # }}}
 
@@ -408,16 +352,6 @@ hook_add = '''
 '''
 # }}}
 
-# vim-exapnd-region {{{
-[[plugins]]
-repo = 'terryma/vim-expand-region'
-on_map = '<Plug>(expand_region_'
-hook_add = '''
-    map J <Plug>(expand_region_expand)
-    map K <Plug>(expand_region_shrink)
-'''
-# }}}
-
 #  vim-better-whitespace {{{
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
@@ -510,26 +444,9 @@ hook_add = '''
 '''
 # }}}
 
-# dein-command {{{
-[[plugins]]
-repo = 'haya14busa/dein-command.vim'
-on_cmd = 'Dein'
-# }}}
-
 # qfreplace {{{
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
-# }}}
-
-# easymoiton {{{
-[[plugins]]
-repo  = 'easymotion/vim-easymotion'
-on_map = '<Plug>(easymotion-'
-hook_add = '''
-    map  <leader>f <Plug>(easymotion-bd-f)
-    map  <leader>w <Plug>(easymotion-bd-w)
-'''
-
 # }}}
 
 # vim-easy-align {{{

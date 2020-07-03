@@ -93,12 +93,6 @@ hook_add = '''
 repo = 'tpope/vim-unimpaired'
 # }}}
 
-# cpsm matcher {{{
-[[plugins]]
-repo = 'nixprime/cpsm'
-build = 'sh -c "PY3=ON ./install.sh"'
-# }}}
-
 # context_filetype (context filetype library for Vim script) {{{
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -134,14 +128,6 @@ repo = 'kana/vim-operator-replace'
 depends = 'vim-operator-user'
 hook_add = '''
   map R <Plug>(operator-replace)
-'''
-# }}}
-
-# session {{{
-[[plugins]]
-repo = 'tpope/vim-obsession'
-hook_source = '''
-    autocmd VimEnter * :Obsession
 '''
 # }}}
 

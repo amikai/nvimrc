@@ -4,8 +4,7 @@ endif
 let g:vimrc = 1
 
 function! vimrc#show_function_key() abort
-    let l:msg =  '<F1> load session | '.
-                \'<F2> goyo focus | '.
+    let l:msg =  '<F2> goyo focus | '.
                 \'<F3> autoformat | '.
                 \'<F4> defx | '.
                 \'<F5> whitespace | '.
