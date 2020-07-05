@@ -39,10 +39,6 @@ hook_add = '''
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim']
 on_ft = 'python'
-
-[[plugins]]
-repo = 'numirias/semshi'
-on_ft = 'python'
 # }}}
 # vim {{{
 # vim source for deoplete
