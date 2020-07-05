@@ -332,6 +332,7 @@ augroup MyAutoCmd
     autocmd FileType,Syntax,BufNewFile,BufNew,BufRead call vimrc#on_filetype()
     autocmd FileType qf wincmd J
     autocmd VimResized * wincmd =
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 500)
 augroup END
 nnoremap <silent><F12> <cmd>call vimrc#show_function_key()<cr>
 nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""

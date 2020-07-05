@@ -439,15 +439,6 @@ hook_add = '''
 '''
 # }}}
 
-# highlight text yank {{{
-[[plugins]]
-repo = 'machakann/vim-highlightedyank'
-on_event = 'TextYankPost'
-hook_add = '''
-    let g:highlightedyank_highlight_duration = 400
-'''
-# }}}
-
 # qfreplace {{{
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
