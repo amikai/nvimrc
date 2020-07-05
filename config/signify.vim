@@ -16,8 +16,8 @@ endfunction
 
 function! s:keymapping() abort
     xmap <buffer> ic <plug>(signify-motion-inner-visual)
-    nmap <buffer> [c <plug>(signify-next-hunk)
-    nmap <buffer> ]c <plug>(signify-prev-hunk)
+    nmap <buffer> ]c <plug>(signify-next-hunk)
+    nmap <buffer> [c <plug>(signify-prev-hunk)
     omap <buffer> ic <plug>(signify-motion-inner-pending)
     omap <buffer> ac <plug>(signify-motion-outer-pending)
     xmap <buffer> ac <plug>(signify-motion-outer-visual)
