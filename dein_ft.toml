@@ -20,4 +20,20 @@ qf = '''
     set nobuflisted
 '''
 
+lua = '''
+    setlocal commentstring=--\ %s
+'''
+
+toml = '''
+    setlocal commentstring=#\ %s
+'''
+
+vim = '''
+    setlocal commentstring=\"\ %s
+'''
+
+html = '''
+    setlocal commentstring=\"\ %s
+'''
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
