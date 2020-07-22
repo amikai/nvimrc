@@ -119,6 +119,13 @@ repo = 'glts/vim-textobj-comment'
 repo = 'sgur/vim-textobj-parameter'
 # }}}
 
+# vim-commentary {{{
+[[plugins]]
+repo = 'tpope/vim-commentary'
+hook_add = '''
+'''
+# }}}
+
 # vim operator {{{
 [[plugins]]
 repo = 'kana/vim-operator-user'

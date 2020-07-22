@@ -390,23 +390,6 @@ hook_add = '''
 '''
 # }}}
 
-# vim-commentary {{{
-[[plugins]]
-repo = 'tpope/vim-commentary'
-on_map = ['<Plug>Commentary', '<Plug>CommentaryLine']
-on_cmd = 'Commentary'
-hook_add = '''
-    xmap gc  <Plug>Commentary
-    nmap gc  <Plug>Commentary
-    omap gc  <Plug>Commentary
-    nmap gcc <Plug>CommentaryLine
-
-    autocmd FileType toml setlocal commentstring=#\ %s
-    autocmd FileType vim setlocal commentstring=\"\ %s
-    autocmd FileType html setlocal commentstring=\"\ %s
-'''
-# }}}
-
 # qfreplace {{{
 repo = 'thinca/vim-qfreplace'
 on_cmd = 'Qfreplace'
