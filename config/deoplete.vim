@@ -43,16 +43,9 @@ call deoplete#custom#option('sources', {
             \ 'rust': ['racer', 'buffer', 'member'],
             \ 'python' :['jedi', 'buffer', 'member', 'file'],
             \ 'php' :['phpactor', 'buffer', 'member', 'file'],
-            \ 'javascript': ['omni','tern'],
             \})
 
-call deoplete#custom#var('omni', 'input_patterns', {
-            \ 'javascript': '[^. *\t]\.\w*'
-            \})
 
-call deoplete#custom#source('omni', 'functions', {
-            \ 'javascript': ['jspc#omni'],
-            \})
 
 call deoplete#custom#source('buffer',
             \ 'max_candidates', 10)
