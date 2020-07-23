@@ -73,6 +73,7 @@ call deoplete#custom#source('jedi', 'mark', '⚡')
 call deoplete#custom#source('phpactor', 'mark', '⚡')
 call deoplete#custom#source('vim', 'mark', '⚡')
 call deoplete#custom#source('tern', 'mark', '⚡')
+call deoplete#custom#source('typescript', 'mark', '⚡')
 call deoplete#custom#source('syntax', 'mark', '♯')
 
 " }}}
@@ -150,7 +151,39 @@ function! s:golang_setting() abort
 
     "" deoplete use vim-go omnifunc to complete
 endfunction
+
+function! s:javascript_setting() abort
+
+    call deoplete#custom#option('sources', {
+                \ 'javascript' :['buffer', 'member', 'file', 'neosnippet', 'typescript']
+                \})
+
+    call deoplete#custom#buffer_option('ignore_sources', ['tabnine', 'lsp', 'syntax'])
+
+    call deoplete#custom#source('typescript',
+                \ {'max_candidates': 5,
+                \  'rank':1000
+                \ })
+
+    call deoplete#custom#source('neosnippet',
+                \ {'max_candidates': 3,
+                \  'rank':700
+                \ })
+
+    call deoplete#custom#source('buffer',
+                \ {'max_candidates': 3,
+                \  'rank':600
+                \ })
+
+    call deoplete#custom#source('arround',
+                \ {'max_candidates': 3,
+                \  'rank':600
+                \ })
+
+    "" deoplete use vim-go omnifunc to complete
+endfunction
 autocmd FileType go call s:golang_setting()
+autocmd FileType javascript call s:javascript_setting()
 " }}}
 
 " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

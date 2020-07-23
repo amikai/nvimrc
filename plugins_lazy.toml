@@ -72,6 +72,17 @@ hook_source = '''
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
 # }}}
+# javascript, typescript {{{
+[[plugins]]
+repo = 'mhartington/nvim-typescript'
+build = './install.sh'
+on_ft = ['javascript', 'typescript']
+hook_add = '''
+    let g:nvim_typescript#server_path = 'tsserver'
+    let g:nvim_typescript#javascript_support = 1
+    let g:nvim_typescript#type_info_on_hold = 1
+'''
+#}}}
 # }}}
 
 # apathy {{{
