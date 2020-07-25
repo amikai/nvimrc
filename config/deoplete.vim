@@ -103,6 +103,9 @@ endfunction
 
 " <CR>: If popup menu visible, expand snippet or close popup with selection
 imap <expr><CR> pumvisible() ? deoplete#close_popup() : "\<Plug>delimitMateCR"
+inoremap <silent><expr><CR> pumvisible() ? deoplete#close_popup()
+	\ : (dein#tap('delimitMate') && delimitMate#WithinEmptyPair() ?
+	\   "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<CR>")
 
 inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
 inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
