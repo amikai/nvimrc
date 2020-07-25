@@ -16,9 +16,7 @@ hook_add = '''
     autocmd Filetype go nmap <buffer> gR <Plug>(go-rename)
     autocmd Filetype go nmap <buffer> gr <Plug>(go-referrers)
     let g:go_snippet_engine = 'neosnippet'
-    let g:go_metalinter_command = "golangci-lint"
-    let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
-    let g:go_metalinter_autosave = 1
+    let g:go_metalinter_autosave = 0
     let g:go_jump_to_error = 0
 
     let g:go_echo_go_info = 0
@@ -32,6 +30,8 @@ hook_add = '''
     autocmd Filetype go nnoremap <buffer> <f16> <cmd>GoTest<cr>
     autocmd Filetype go nnoremap <buffer> <f17> <cmd>GoBuild<cr>
     autocmd Filetype go nnoremap <buffer> <f18> <cmd>GoRun<cr>
+
+    let g:go_highlight_function_calls = 1
 '''
 # }}}
 # python {{{
