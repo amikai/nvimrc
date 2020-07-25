@@ -72,6 +72,12 @@ hook_source = '''
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
 # }}}
+# enhanced javascript syntax {{{
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+# }}}
 # javascript, typescript {{{
 [[plugins]]
 repo = 'mhartington/nvim-typescript'
