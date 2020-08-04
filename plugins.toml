@@ -15,7 +15,7 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-    let g:airline_extensions = ['tabline', 'quickfix']
+    let g:airline_extensions = ['tabline', 'quickfix', 'branch']
     let g:airline#extensions#tabline#enabled = 1
 
     " show the airline_tab type is tab or buffer (top right)
