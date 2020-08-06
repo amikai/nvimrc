@@ -162,6 +162,10 @@ call defx#custom#column('mark', {
             \ 'selected_icon': '✓',
             \ })
 
+call defx#custom#column('filename', {
+            \ 'min_width': 128,
+            \ 'max_width': 128,
+            \ })
 
 call defx#custom#option('_', {
             \ 'columns': 'git:mark:indent:icon:filename:type',
