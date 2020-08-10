@@ -21,6 +21,13 @@ options     head
     ${0:TARGET:return }
   }
 
+snippet method
+abbr func (rx) method (args) {...}
+options head
+  func (${1:rx_name}) ${2:method}(${3:args}) ${4: ret} {
+    ${0:TARGET:return }
+  }
+
 snippet     import
 alias im
 options     head
