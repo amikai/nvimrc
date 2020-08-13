@@ -104,7 +104,7 @@ repo = 'mhinz/vim-sayonara'
 on_cmd = 'Sayonara'
 hook_add = '''
     let g:sayonara_filetypes = {
-                \ 'defx': 'call defx#call_action("quit")',
+                \ 'nerdtree': 'NERDTreeClose',
                 \ 'tagbar': 'TagbarClose'
                 \ }
     nnoremap <silent> <leader>c <cmd>Sayonara!<CR>
@@ -118,27 +118,12 @@ repo = 'tpope/vim-scriptease'
 on_ft = 'vim'
 # }}}
 
-# Defx {{{
+# nerdtree {{{
 [[plugins]]
-repo = 'Shougo/defx.nvim'
-on_cmd = 'Defx'
-hook_source = "exe 'source' $NVIMRC.'/config/defx.vim'"
+repo = 'preservim/nerdtree'
+on_cmd = 'NERDTreeToggle'
 hook_add = '''
-    autocmd MyAutoCmd BufLeave,BufWinLeave  \[defx\]* call defx#call_action('add_session')
-    autocmd MyAutoCmd FileType defx call MyDefxKeySetup()
-    noremap <silent><F4> <cmd>Defx -session-file='/tmp/defx_session' -buffer-name="defx"<CR>
-'''
-
-[[plugins]]
-repo = 'kristijanhusak/defx-git'
-on_source = ['defx.nvim']
-hook_add = '''
-    autocmd MyAutoCmd FileType defx nmap <buffer><silent> [c <Plug>(defx-git-prev)
-    autocmd MyAutoCmd FileType defx nmap <buffer><silent> ]c <Plug>(defx-git-next)
-'''
-hook_source = '''
-    call defx#custom#column('git', 'raw_mode', 1)
-    call defx#custom#column('git', 'max_indicator_width', 2)
+    nnoremap <silent> <f4> <cmd>NERDTreeToggle<CR>
 '''
 # }}}
 
@@ -341,7 +326,7 @@ on_cmd = ['ToggleWhitespace', 'StripWhitespace', 'EnableWhitespace']
 hook_add = '''
     let g:better_whitespace_ctermcolor='3'
     let g:better_whitespace_guicolor = '#c8e6c9'
-    let g:better_whitespace_filetypes_blacklist = ['defx', 'help', 'qf', 'diff']
+    let g:better_whitespace_filetypes_blacklist = ['nerdtree', 'help', 'qf', 'diff']
     nnoremap <silent><expr><F5> exists("g:better_whitespace_enabled") ? ':ToggleWhitespace<cr>' : ':EnableWhitespace<cr>'
     " <S-F5> for stripping white space
     nnoremap <F17> <cmd>StripWhitespace<cr>

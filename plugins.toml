@@ -62,7 +62,7 @@ repo = 'itchyny/vim-cursorword'
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
     let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'defx', 'diff']
+    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'diff']
 '''
 # }}}
 
@@ -103,7 +103,7 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 hook_add = '''
-    let g:precious_enable_switchers = {'*': {'setfiletype': 1}, 'defx': {'setfiletype': 0}}
+    let g:precious_enable_switchers = {'*': {'setfiletype': 1}, 'nerdtree': {'setfiletype': 0}}
 '''
 # }}}
 
@@ -162,6 +162,5 @@ repo = 'tpope/vim-scriptease'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 # }}}
-
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

@@ -1,4 +1,4 @@
-let g:signify_skip_filetype = { 'defx': 1, 'tagbar': 1 }
+let g:signify_skip_filetype = { 'nerdtree': 1, 'tagbar': 1 }
 function! SignifySetting() abort
     autocmd Filetype * call s:skip_ft_keymapping()
 endfunction

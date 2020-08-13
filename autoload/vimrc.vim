@@ -6,7 +6,7 @@ let g:vimrc = 1
 function! vimrc#show_function_key() abort
     let l:msg =  '<F2> goyo focus | '.
                 \'<F3> autoformat | '.
-                \'<F4> defx | '.
+                \'<F4> nerdtree | '.
                 \'<F5> whitespace | '.
                 \'<F6> undotree | '.
                 \'<F7> ale | '.
