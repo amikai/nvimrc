@@ -158,4 +158,10 @@ hook_add = '''
 repo = 'tpope/vim-scriptease'
 # }}}
 
+# vim-fugitive (git wrapper) {{{
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+# }}}
+
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

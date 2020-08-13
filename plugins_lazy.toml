@@ -112,17 +112,6 @@ hook_add = '''
 '''
 # }}}
 
-# Gina {{{
-[[plugins]]
-repo = 'lambdalisue/gina.vim'
-on_cmd = 'Gina'
-hook_source = '''
-    exe 'source' $NVIMRC.'/config/gina.vim'
-    nmap dp <Plug>(gina-diffput)
-    nmap do <Plug>(gina-diffget)
-'''
-# }}}
-
 # vim-scriptease {{{
 [[plugins]]
 repo = 'tpope/vim-scriptease'
