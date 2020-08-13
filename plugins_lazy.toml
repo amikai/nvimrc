@@ -402,7 +402,7 @@ hook_add = '''
 
 # }}}
 
-# context.vim
+# {{{ context.vim
 [[plugins]]
 repo = 'wellle/context.vim'
 on_cmd = 'ContextToggleWindow'
@@ -410,6 +410,7 @@ hook_add = '''
     let g:context_enabled = 0
     nnoremap <f9> <cmd>ContextToggleWindow<cr>
 '''
+# }}}
 
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
