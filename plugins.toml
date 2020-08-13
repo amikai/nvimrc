@@ -158,34 +158,4 @@ hook_add = '''
 repo = 'tpope/vim-scriptease'
 # }}}
 
-# treesitter {{{
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-merged = '0'
-hook_source = '''
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,
-    },
-    incremental_selection = {
-        enable = false,
-    },
-    refactor = {
-      highlight_defintions = {
-        enable = false
-      },
-      smart_rename = {
-        enable = false,
-      },
-      navigation = {
-        enable = false,
-      }
-    },
-    ensure_installed = 'all'
-}
-EOF
-'''
-# }}}
-
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
