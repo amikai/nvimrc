@@ -16,7 +16,8 @@ hook_add = '''
     autocmd Filetype go nmap <buffer> gR <Plug>(go-rename)
     autocmd Filetype go nmap <buffer> gr <Plug>(go-referrers)
     let g:go_snippet_engine = 'neosnippet'
-    let g:go_metalinter_autosave = 0
+    let g:go_metalinter_autosave = 1
+    let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
     let g:go_jump_to_error = 0
 
     let g:go_echo_go_info = 0
@@ -426,5 +427,15 @@ hook_add = '''
 '''
 
 # }}}
+
+# context.vim
+[[plugins]]
+repo = 'wellle/context.vim'
+on_cmd = 'ContextToggleWindow'
+hook_add = '''
+    let g:context_enabled = 0
+    nnoremap <f9> <cmd>ContextToggleWindow<cr>
+'''
+
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
