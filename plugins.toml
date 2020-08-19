@@ -163,4 +163,23 @@ repo = 'tpope/vim-scriptease'
 repo = 'tpope/vim-fugitive'
 # }}}
 
+# nvim-lsp related plugin {{{
+[[plugins]]
+repo = 'neovim/nvim-lsp'
+merged = 0
+hook_source = '''
+lua << EOF
+    local nvim_lsp = require'nvim_lsp'
+    nvim_lsp.gopls.setup{on_attach=require'diagnostic'.on_attach}
+EOF
+'''
+
+[[plugins]]
+repo = 'nvim-lua/diagnostic-nvim'
+merged = 0
+hook_add = '''
+    let g:diagnostic_insert_delay = 1
+'''
+# }}}
+
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
