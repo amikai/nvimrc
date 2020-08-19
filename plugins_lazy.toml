@@ -121,10 +121,15 @@ on_ft = 'vim'
 # nerdtree {{{
 [[plugins]]
 repo = 'preservim/nerdtree'
-on_cmd = 'NERDTreeToggle'
+on_cmd = ['NERDTreeToggle', 'NERDTree', 'NERDTreeClose']
 hook_add = '''
-    nnoremap <silent> <f4> <cmd>NERDTreeToggle<CR>
+    nnoremap <silent><expr><f4> (exists("g:NERDTree") && g:NERDTree.IsOpen()) ? ":NERDTreeClose<cr>" : ":NERDTree \| NERDTreeProjectLoadFromCWD<cr>"
+    autocmd MyAutoCmd VimLeave NERDTreeProjectSave
 '''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree-project-plugin'
+on_source = 'nerdtree'
 # }}}
 
 # tagbar (display tags in window) {{{
