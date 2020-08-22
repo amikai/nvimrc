@@ -112,12 +112,6 @@ hook_add = '''
 '''
 # }}}
 
-# vim-scriptease {{{
-[[plugins]]
-repo = 'tpope/vim-scriptease'
-on_ft = 'vim'
-# }}}
-
 # nerdtree {{{
 [[plugins]]
 repo = 'preservim/nerdtree'
