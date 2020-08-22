@@ -163,6 +163,20 @@ repo = 'tpope/vim-scriptease'
 repo = 'tpope/vim-fugitive'
 # }}}
 
+# fzf fuzzy finder {{{
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+hook_source = '''
+    exe 'source' $NVIMRC.'/config/fzf.vim'
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+# }}}
+
 # nvim-lsp related plugin {{{
 [[plugins]]
 repo = 'neovim/nvim-lsp'

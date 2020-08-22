@@ -247,56 +247,6 @@ repo = 'deoplete-plugins/deoplete-tag'
 on_source = 'deoplete.nvim'
 # }}}
 
-# denite {{{
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-hook_source = "exe 'source' $NVIMRC.'/config/denite.vim'"
-hook_add = '''
-    noremap [denite-leader] <Nop>
-    nmap ; [denite-leader]
-
-    autocmd FileType denite call MyDeniteKeySetup()
-
-    " file mru
-    nnoremap <silent> [denite-leader]fu :<C-u>Denite -start-filter file_mru<CR>
-
-    " list all buffer
-    nnoremap <silent> [denite-leader]b :<C-u>Denite buffer<CR>
-
-    " search in this file (create buffer name called search)
-    nnoremap <silent> [denite-leader]/ :<C-u>Denite -auto-resize -start-filter line<CR>
-
-    " search globally - search recursively from project root (auto-preview is slowly)
-    nnoremap <silent> [denite-leader]g/ :<C-u>Denite -buffer-name=search grep<CR>
-
-    " search current word in the file
-    nnoremap <silent> [denite-leader]cr :<C-u>DeniteCursorWord line<CR><C-R><C-W><CR>
-    " search current word globally
-    nnoremap <silent> [denite-leader]gc :<C-u>DeniteCursorWord -buffer-name=search grep<CR><C-R><C-W><CR>
-
-    " list register
-    nnoremap <silent> [denite-leader]r
-                \ :<C-u>Denite -buffer-name=register
-                \ neoyank register<CR>
-    xnoremap <silent> [denite-leader]r
-                \ :<C-u>Denite -default-action=replace -buffer-name=register
-                \ neoyank register<CR>
-'''
-#  file mru source {{{
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-on_source = 'denite.nvim'
-# }}}
-
-# neoyank source {{{
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_source = 'denite.nvim'
-
-# }}}
-# }}}
-
 # vim-asterisk (star improved) {{{
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
