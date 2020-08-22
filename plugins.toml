@@ -194,6 +194,40 @@ merged = 0
 hook_add = '''
     let g:diagnostic_insert_delay = 1
 '''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = 0
+hook_source = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    highlight = {
+        enable = true
+    },
+    incremental_selection = {
+        enable = false,
+    },
+    refactor = {
+        highlight_definitions = { enable = true },
+        highlight_current_scope = { enable = true },
+        smart_rename = { enable = false },
+        navigation = { enable = false }
+    },
+    textobjects = {
+        select = {
+            enable = true,
+                keymaps = {
+                    ["af"] = "@function.outer",
+                    ["ic"] = "@class.inner"
+                }
+        },
+        swap = { enable = false },
+        move = { enable = false }
+    }
+}
+EOF
+'''
 # }}}
 
 # " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
