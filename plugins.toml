@@ -82,7 +82,6 @@ repo = 'tpope/vim-dispatch'
 # gen_tags (ctags/gtags) {{{
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
-# gen_tags support deoplete source
 hook_add = '''
     let  g:gen_tags#gtags_default_map = 1
 '''
@@ -177,6 +176,30 @@ build = './install --all'
 merged = 0
 # }}}
 
+# ncm2 {{{
+[[plugins]]
+repo = 'ncm2/ncm2'
+hook_add = '''
+    " let g:ncm2#auto_popup = 0
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+'''
+hook_source = '''
+    exe 'source' $NVIMRC.'/config/ncm2.vim'
+'''
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'ncm2/ncm2-neosnippet'
+
+[[plugins]]
+repo = 'ncm2/ncm2-bufword'
+
+[[plugins]]
+repo = 'ncm2/ncm2-path'
+# }}}
+
 # nvim-lsp related plugin {{{
 [[plugins]]
 repo = 'neovim/nvim-lsp'
@@ -184,7 +207,10 @@ merged = 0
 hook_source = '''
 lua << EOF
     local nvim_lsp = require'nvim_lsp'
-    nvim_lsp.gopls.setup{on_attach=require'diagnostic'.on_attach}
+    local ncm2 = require('ncm2')
+    nvim_lsp.gopls.setup{on_init = ncm2.register_lsp_source,
+        on_attach=require'diagnostic'.on_attach
+    }
 EOF
 '''
 

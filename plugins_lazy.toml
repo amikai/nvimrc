@@ -1,9 +1,4 @@
 # language setting {{{
-# all {{{
-[[plugins]]
-repo = 'Shougo/neco-syntax'
-on_source = 'deoplete.nvim'
-# }}}
 # golang {{{
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -37,18 +32,6 @@ hook_add = '''
 
     let g:go_highlight_function_calls = 1
 '''
-# }}}
-# python {{{
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-depends = ['deoplete.nvim']
-on_ft = 'python'
-# }}}
-# vim {{{
-# vim source for deoplete
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = 'vim'
 # }}}
 # rust {{{
 [[plugins]]
@@ -228,22 +211,6 @@ hook_add = '''
 '''
 # }}}
 
-# deoplete (autocomplete) {{{
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_source = '''
-    exe 'source' $NVIMRC.'/config/deoplete.vim'
-    call deoplete#enable()
-'''
-# }}}
-
-# deoplete-tag (tag source for deoplete) {{{
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-tag'
-on_source = 'deoplete.nvim'
-# }}}
-
 # vim-asterisk (star improved) {{{
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
@@ -300,13 +267,6 @@ hook_add = '''
     nmap <C-s>e <plug>(quickr_cscope_egrep)
     nmap <C-s>d <plug>(quickr_cscope_functions)
 '''
-# }}}
-
-#  tabnine deoplete source {{{
-[[plugins]]
-repo = 'tbodt/deoplete-tabnine'
-build = './install.sh'
-on_source = 'deoplete.nvim'
 # }}}
 
 # rtf highlight {{{
