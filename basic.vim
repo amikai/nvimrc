@@ -191,8 +191,9 @@ set foldcolumn=1
 
 
 " Use a popup menu to show the possible completions
-" set completeopt=menu,preview
-set completeopt=noinsert,menuone,noselect
+set completeopt=menuone,noinsert,noselect
+
+set shortmess+=c
 
 set virtualedit=block
 

@@ -176,28 +176,32 @@ build = './install --all'
 merged = 0
 # }}}
 
-# ncm2 {{{
+# completion-nvim {{{
 [[plugins]]
-repo = 'ncm2/ncm2'
+repo = 'nvim-lua/completion-nvim'
+merged = 0
 hook_add = '''
-    " let g:ncm2#auto_popup = 0
-    autocmd BufEnter * call ncm2#enable_for_buffer()
+    let g:completion_enable_auto_popup = 0
+    let g:completion_enable_auto_signature = 1
+    let g:completion_timer_cycle = 200
+    let g:completion_matching_strategy_list = ['exact']
+    let g:completion_enable_snippet = 'vim-vsnip'
+    let g:completion_chain_complete_list = [
+        \{'complete_items': ['lsp', 'snippet']},
+        \{'mode': '<c-p>'},
+        \{'mode': '<c-n>'}
+    \]
+    let g:completion_confirm_key = "\<C-y>"
 '''
 hook_source = '''
-    exe 'source' $NVIMRC.'/config/ncm2.vim'
+    exe 'source' $NVIMRC.'/config/completion_nvim.vim'
 '''
 
 [[plugins]]
-repo = 'roxma/nvim-yarp'
+repo = 'hrsh7th/vim-vsnip'
 
 [[plugins]]
-repo = 'ncm2/ncm2-neosnippet'
-
-[[plugins]]
-repo = 'ncm2/ncm2-bufword'
-
-[[plugins]]
-repo = 'ncm2/ncm2-path'
+repo = 'hrsh7th/vim-vsnip-integ'
 # }}}
 
 # nvim-lsp related plugin {{{
@@ -207,9 +211,13 @@ merged = 0
 hook_source = '''
 lua << EOF
     local nvim_lsp = require'nvim_lsp'
-    local ncm2 = require('ncm2')
-    nvim_lsp.gopls.setup{on_init = ncm2.register_lsp_source,
-        on_attach=require'diagnostic'.on_attach
+    local on_attach_vim = function()
+      require'completion'.on_attach()
+      require'diagnostic'.on_attach()
+    end
+    nvim_lsp.gopls.setup{
+        init_options= { usePlaceholders = true },
+        on_attach=on_attach_vim
     }
 EOF
 '''
