@@ -181,6 +181,7 @@ merged = 0
 repo = 'nvim-lua/completion-nvim'
 merged = 0
 hook_add = '''
+    autocmd BufEnter * lua require'completion'.on_attach()
     let g:completion_enable_auto_popup = 0
     let g:completion_enable_auto_signature = 1
     let g:completion_timer_cycle = 200
