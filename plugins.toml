@@ -188,7 +188,7 @@ hook_add = '''
     let g:completion_matching_strategy_list = ['exact']
     let g:completion_enable_snippet = 'vim-vsnip'
     let g:completion_chain_complete_list = [
-        \{'complete_items': ['lsp', 'snippet']},
+        \{'complete_items': ['lsp', 'snippet', 'buffers']},
         \{'mode': '<c-p>'},
         \{'mode': '<c-n>'}
     \]
@@ -197,6 +197,10 @@ hook_add = '''
 hook_source = '''
     exe 'source' $NVIMRC.'/config/completion_nvim.vim'
 '''
+
+[[plugins]]
+repo = 'steelsojka/completion-buffers'
+merged = 0
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
