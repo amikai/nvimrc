@@ -19,3 +19,5 @@ imap <expr> <cr>  pumvisible() ? (complete_info()["selected"] != "-1" ?
                  \ "\<Plug>(completion_confirm_completion)" : "\<c-e>\<CR>")
                  \ : ((dein#tap('delimitMate') && delimitMate#WithinEmptyPair()) ?
                  \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<CR>")
+
+imap <s-tab> <Plug>(completion_next_source)
