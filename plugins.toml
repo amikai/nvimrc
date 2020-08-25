@@ -59,10 +59,9 @@ repo = 'itchyny/vim-cursorword'
 
 # vim-indent-guides (display indentions levels) {{{
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Yggdroot/indentLine'
 hook_add = '''
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'diff']
+    let g:indentLine_fileTypeExclude = ['nerdtree', 'diff', 'tagbar', 'help']
 '''
 # }}}
 
