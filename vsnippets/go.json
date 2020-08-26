@@ -1,0 +1,128 @@
+{
+    "switch": {
+        "prefix": ["sw"],
+        "body": [
+            "switch $1 {",
+            "case $2:",
+            "\t$3",
+            "default:",
+            "\t$4",
+            "}"
+        ],
+        "description": "switch case"
+    },
+    "select": {
+        "prefix": "se",
+        "body": [
+            "select {",
+            "case $1:",
+            "\t$2",
+            "}"
+        ],
+        "description": "select case"
+    },
+    "func": {
+        "prefix": "func",
+        "body": [
+            "func ${1:fname}(${2:args}) ${3:ret} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "func ...() {...}"
+    },
+    "method": {
+        "prefix": "me",
+        "body": [
+            "func (${1:receiver}) ${2:method}(${3:args}) ${4:ret} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "func (tx) method (args) {...}"
+    },
+    "import": {
+        "prefix": "im",
+        "body": [
+            "import (",
+            "\t\"${1:fmt}\"",
+            ")"
+        ],
+        "description": "import (...)"
+    },
+    "fmt.Println": {
+        "prefix": "pl",
+        "body": [
+            "fmt.Println($1)"
+        ],
+        "description": "fmt.Println(...)"
+    },
+    "fmt.Printf": {
+        "prefix": "pf",
+        "body": [
+            "fmt.Printf(\"$1\", $2)"
+        ],
+        "description": "fmt.Printf(...)"
+    },
+    "struct": {
+        "prefix": "ts",
+        "body": [
+            "type ${1} struct {",
+            "\t${0}",
+            "}"
+        ],
+        "description": "type ... struct {}"
+    },
+    "interface": {
+        "prefix": "ti",
+        "body": [
+            "type ${1} interface {",
+            "\t${0}",
+            "}"
+        ],
+        "description": "type ... interface {}"
+    },
+    "fori": {
+        "prefix": "for",
+        "body": [
+            "for $1; $2; $3 {",
+            "\t${0}",
+            "}"
+        ],
+        "description": "for ...;...;... {...}"
+    },
+    "forkv": {
+        "prefix": "forkv",
+        "body": [
+            "for ${1:k}, ${2:v} := range ${3:iterator} {",
+            "$0",
+            "}"
+        ],
+        "description": "for ... := range {...}"
+    },
+    "fork": {
+        "prefix": "fork",
+        "body": [
+            "for ${1:k} := range ${2:iterator} {",
+            "$0",
+            "}"
+        ],
+        "description": "for ... := range {...}"
+    },
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if ${1:condition} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "if cond {...}"
+    },
+    "iferror": {
+        "prefix": "ife",
+        "body": [
+            "if err != nil {",
+            "\treturn ${1}err",
+            "}"
+        ],
+        "description": "if cond {...}"
+    }
+}
