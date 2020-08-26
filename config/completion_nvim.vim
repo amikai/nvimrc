@@ -1,3 +1,5 @@
+autocmd MyAutoCmd CompleteDone * silent! pclose!
+
 function! s:is_whitespace()
     let col = col('.') - 1
     return ! col || getline('.')[col - 1] =~? '\s'
