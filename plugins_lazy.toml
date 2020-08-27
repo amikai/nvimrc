@@ -295,7 +295,6 @@ hook_add = '''
     noremap <silent><expr> <F14> !exists('#goyo') ? ''
                 \ : exists('#limelight') ? '<cmd>Limelight!<cr>'
                 \ : '<cmd>Limelight<cr>'
-    autocmd! User GoyoLeave Limelight!
 '''
 # }}}
 
