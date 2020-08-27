@@ -121,8 +121,8 @@ on_cmd = 'TagbarToggle'
 hook_add = '''
     let g:tagbar_ctags_bin = system('echo -n "$(which ctags)"')
     noremap <F8> <cmd>TagbarToggle<cr>
-    filetype plugin indent on
-    syntax enable
+    let g:tagbar_sort = 0
+    syntax on
     let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
