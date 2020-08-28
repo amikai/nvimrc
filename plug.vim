@@ -26,7 +26,7 @@ Plug 'itchyny/vim-cursorword'
 
 " indent line guide {{{
 Plug 'Yggdroot/indentLine'
-let g:indentLine_fileTypeExclude = ['nerdtree', 'diff', 'tagbar', 'help']
+let g:indentLine_fileTypeExclude = ['nerdtree', 'diff', 'tagbar', 'help', 'defx']
 " }}}
 
 " vim text object {{{
@@ -207,7 +207,8 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
 let g:sayonara_filetypes = {
             \ 'nerdtree': 'NERDTreeClose',
-            \ 'tagbar': 'TagbarClose'
+            \ 'tagbar': 'TagbarClose',
+            \ 'defx' : 'call defx#call_action("quit")'
             \ }
 nnoremap <silent> <leader>c <cmd>Sayonara!<CR>
 nnoremap <silent> <leader>q <cmd>Sayonara<CR>
