@@ -87,6 +87,7 @@ noremap U <cmd>redo<cr>
 " copy paste
 set clipboard+=unnamedplus
 
+set updatetime=500
 
 " Don't yank to default register when changing something
 xnoremap c "xc
