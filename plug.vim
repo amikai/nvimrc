@@ -346,11 +346,14 @@ colorscheme gruvbox
 
 function! s:lsp_setting() abort
 lua << EOF
+    local lsp_status = require('lsp-status')
+    lsp_status.register_progress()
+
     local nvim_lsp = require'nvim_lsp'
-    local on_attach_vim = function()
-      require'completion'.on_attach()
-      require'diagnostic'.on_attach()
-      require'lsp-status'.on_attach()
+    local on_attach_vim = function(client, bufnr)
+        require'completion'.on_attach(client, bufnr)
+        require'diagnostic'.on_attach(client, bufnr)
+        lsp_status.on_attach(client)
     end
     nvim_lsp.gopls.setup{
         init_options= { usePlaceholders = true },
