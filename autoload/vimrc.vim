@@ -9,7 +9,6 @@ function! vimrc#show_function_key() abort
                 \'<F4> nerdtree | '.
                 \'<F5> whitespace | '.
                 \'<F6> undotree | '.
-                \'<F7> ale | '.
                 \'<F8> tagbar | '.
                 \'<F12> show msg'
     echo l:msg
