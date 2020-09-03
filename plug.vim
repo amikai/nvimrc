@@ -149,7 +149,7 @@ let g:vsnip_snippet_dir = $NVIMRC.'/vsnippets'
 " }}}
 
 " nvim-lsp plugin {{{
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'nvim-lua/diagnostic-nvim'
 let g:diagnostic_show_sign = 1
