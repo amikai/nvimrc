@@ -159,10 +159,10 @@ let g:diagnostic_virtual_text_prefix = '<'
 nnoremap <leader>d <cmd>OpenDiagnostic<cr>
 nnoremap [d <cmd>PrevDiagnostic<cr>
 nnoremap ]d <cmd>NextDiagnostic<cr>
-call sign_define("LspDiagnosticsErrorSign", {"text" : "?", "texthl" : "GruvboxRedSign"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "?", "texthl" : "GruvboxOrangeSign"})
-call sign_define("LspDiagnosticsInformationSign", {"text" : "?", "texthl" : "GruvboxGreeSign"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "?", "texthl" : "GruvboxGreeSign"})
+call sign_define("LspDiagnosticsErrorSign", {"text" : "E", "texthl" : "GruvboxRedSign"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "W", "texthl" : "GruvboxOrangeSign"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "GruvboxGreeSign"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "GruvboxGreeSign"})
 
 Plug 'nvim-lua/lsp-status.nvim'
 " }}}
