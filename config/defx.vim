@@ -10,19 +10,17 @@ function! DefxContextMenu() abort
                 \ "  (A)dd multiple childnodes\n".
                 \ "  (d)elete the current node\n".
                 \ "  (m)ove the current node\n".
-                \ "  (r)eveal in Finder the current node\n".
-                \ "  (s)earch the word in files\n".
-                \ "  (g)ina add\n"
+                \ "  (r)eveal in Finder the current node\n"
 
     echo l:msg
     let l:ans = nr2char(getchar())
-    let l:actions = {'a':{'op':'call', 'args':['DefxNewNode']},
+    let l:actions = {
+                \ 'a':{'op':'call', 'args':['DefxNewNode']},
                 \ 'A': {'op':'call',   'args':['DefxNewMultiNode']},
                 \ 'd':{'op':'remove',  'args':[]},
                 \ 'm':{'op':'rename',  'args':[]},
-                \ 'r':{'op': 'call',   'args':['DefxOpenFinder']},
-                \ 's': {'op': 'call',  'args': ['DefxSearchByDenite']},
-                \ 'g': {'op': 'call', 'args': ['DefxGinaAdd']}}
+                \ 'r':{'op': 'call',   'args':['DefxOpenFinder']}
+                \ }
     if !(has_key(l:actions, l:ans))
         silent exe 'redraw'
         return
@@ -59,47 +57,6 @@ function! DefxOpenFinder(context) abort
         echo l:open_folder
         call system(l:open_folder)
     endfor
-endfunction
-
-function! DefxSearchByDenite(context) abort
-    " clean arg list
-    if !dein#tap('denite.nvim')
-        return
-    endif
-    call dein#source('denite.nvim')
-
-    let l:args = []
-    for path in a:context.targets
-        if filereadable(path)
-            call add(l:args, path)
-        elseif isdirectory(path)
-            call extend(l:args, glob(path.'/**', v:false, v:true))
-        endif
-    endfor
-    call uniq(sort(l:args))
-    let l:paths_str = join(l:args, ':')
-
-    execute 'wincmd p'
-    exe 'Denite grep:' . ' -match-highlight' . ' -matchers="matcher/regexp"' . l:paths_str
-endfunction
-
-function! DefxGinaAdd(context) abort
-    if !dein#tap('gina.vim')
-        return
-    endif
-    call dein#source('denite.nvim')
-
-    let l:args = []
-    for path in a:context.targets
-        if filereadable(path)
-            call add(l:args, path)
-        elseif isdirectory(path)
-            call extend(l:args, glob(path.'/**', v:false, v:true))
-        endif
-    endfor
-    call uniq(sort(l:args))
-    let l:paths_str = join(l:args, ' ')
-    exe 'Gina add ' . l:paths_str
 endfunction
 
 function! MyDefxKeySetup() abort
