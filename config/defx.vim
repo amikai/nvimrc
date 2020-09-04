@@ -1,8 +1,3 @@
-if exists('g:config_defx')
-    finish
-endif
-let g:config_defx = 1
-
 function! DefxContextMenu() abort
     call utils#echo_succes_msg("Defx context menu\n")
     let l:msg =  "=========================================================\n".
