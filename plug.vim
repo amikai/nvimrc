@@ -99,9 +99,9 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
 let g:go_guru_scope = ["..."]
 
-autocmd Filetype go nnoremap <buffer> <f16> <cmd>GoTest<cr>
-autocmd Filetype go nnoremap <buffer> <f17> <cmd>GoBuild<cr>
-autocmd Filetype go nnoremap <buffer> <f18> <cmd>GoRun<cr>
+autocmd Filetype go nmap <buffer> <f16> <Plug>(go-test)
+autocmd Filetype go nmap <buffer> <f17> <Plug>(go-build)
+autocmd Filetype go nmap <buffer> <f18> <Plug>(go-run)
 
 let g:go_highlight_function_calls = 1
 " }}}
