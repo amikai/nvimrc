@@ -358,6 +358,7 @@ lua << EOF
         require'diagnostic'.on_attach(client, bufnr)
         lsp_status.on_attach(client)
     end
+
     nvim_lsp.gopls.setup{
         init_options= { usePlaceholders = true },
         on_attach=on_attach_vim
