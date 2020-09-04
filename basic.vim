@@ -20,6 +20,9 @@ set history=500
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Switch buffer without casuing error when file is edited
+set hidden
+
 set report=0
 
 inoremap jk <esc>
