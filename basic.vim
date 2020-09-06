@@ -101,6 +101,10 @@ vnoremap y y`]
 vnoremap p "_dP`]
 nnoremap p p`]
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -341,3 +345,4 @@ augroup MyAutoCmd
 augroup END
 nnoremap <silent><F12> <cmd>call vimrc#show_function_key()<cr>
 nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
+
