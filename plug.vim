@@ -126,6 +126,9 @@ Plug 'mhartington/nvim-typescript',{'do':'./install.sh', 'for': ['javacript', 't
 let g:nvim_typescript#server_path = 'tsserver'
 let g:nvim_typescript#javascript_support = 1
 let g:nvim_typescript#type_info_on_hold = 1
+
+Plug 'pangloss/vim-javascript', {'for':['javascript']}
+Plug 'othree/yajs.vim', {'for':['javascript']}
 " }}}
 
 " completion nvim {{{
