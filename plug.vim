@@ -376,21 +376,23 @@ lua << EOF
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
 
-    local nvim_lsp = require'nvim_lsp'
-    local on_attach_vim = function(client, bufnr)
-        require'completion'.on_attach(client, bufnr)
-        require'diagnostic'.on_attach(client, bufnr)
+    local on_attach = function(client)
+        require'completion'.on_attach()
+        require'diagnostic'.on_attach()
         lsp_status.on_attach(client)
     end
 
-    local on_attach_vim_js = function(client, bufnr)
-        require'completion'.on_attach(client, bufnr)
+    local on_attach_vim_js = function(client)
+        require'completion'.on_attach()
         lsp_status.on_attach(client)
         vim.api.nvim_call_function('ale#toggle#Enable',{})
     end
 
+
+    local nvim_lsp = require'nvim_lsp'
     nvim_lsp.gopls.setup{
         init_options= { usePlaceholders = true },
+        on_attach=on_attach
     }
 
     nvim_lsp.tsserver.setup{
