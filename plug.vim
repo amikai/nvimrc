@@ -134,6 +134,7 @@ let g:nvim_typescript#type_info_on_hold = 1
 
 Plug 'pangloss/vim-javascript', {'for':['javascript']}
 Plug 'othree/yajs.vim', {'for':['javascript']}
+Plug 'HerringtonDarkholme/yats.vim', {'for':['typescript']}
 " }}}
 
 " completion nvim {{{
