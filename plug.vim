@@ -55,6 +55,11 @@ let g:matchup_matchpref = {
             \ }
 " }}}
 
+" vim-endwise {{{
+Plug 'tpope/vim-endwise'
+let g:endwise_no_mappings = 1
+" }}}
+
 " vim-commentary {{{
 Plug 'tpope/vim-commentary'
 " }}}

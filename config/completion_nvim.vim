@@ -20,6 +20,6 @@ smap <silent><expr><Tab> pumvisible() ? "\<C-n>"
 imap <expr> <cr>  pumvisible() ? (complete_info()["selected"] != "-1" ? 
                  \ "\<Plug>(completion_confirm_completion)" : "\<c-e>\<CR>")
                  \ : (delimitMate#WithinEmptyPair() ?
-                 \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<CR>")
+                 \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" : "\<CR>\<Plug>DiscretionaryEnd")
 
 imap <S-Tab> <Plug>(completion_next_source)
