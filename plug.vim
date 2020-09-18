@@ -346,6 +346,19 @@ Plug 'thinca/vim-qfreplace', {'on': 'Qfreplace'}
 Plug 'junegunn/vim-easy-align', {'on':['EasyAlign', '<Plug>(EasyAlign)']}
 " }}}
 
+Plug 'dense-analysis/ale'
+let g:ale_enabled = 0
+let g:ale_completion_enabled = 0
+let g:ale_fix_on_save = 0
+let g:ale_linters = {
+            \   'javascript': ['eslint'],
+            \}
+let g:ale_fixers = {
+            \   'javascript': ['eslint'],
+            \}
+let g:ale_set_quickfix = 1
+let g:ale_lint_on_insert_leave = 1
+
 " gruvbox {{{
 Plug 'morhetz/gruvbox'
 let g:gruvbox_termcolors=256
@@ -370,9 +383,18 @@ lua << EOF
         lsp_status.on_attach(client)
     end
 
+    local on_attach_vim_js = function(client, bufnr)
+        require'completion'.on_attach(client, bufnr)
+        lsp_status.on_attach(client)
+        vim.api.nvim_call_function('ale#toggle#Enable',{})
+    end
+
     nvim_lsp.gopls.setup{
         init_options= { usePlaceholders = true },
-        on_attach=on_attach_vim
+    }
+
+    nvim_lsp.tsserver.setup{
+        on_attach=on_attach_vim_js
     }
 EOF
 exe 'source' $NVIMRC.'/config/completion_nvim.vim'
