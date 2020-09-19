@@ -379,6 +379,20 @@ lua << EOF
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
 
+    local lsp_keymap = function() 
+        local mapper = function(mode, key, result)
+          vim.fn.nvim_buf_set_keymap(0, mode, key, result, {noremap=true, silent=true})
+        end
+        mapper('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+        mapper('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
+        mapper('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+        mapper('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+        mapper('n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+        mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+        mapper('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+        mapper('i', '<c-l>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    end
+
     local on_attach = function(client)
         require'completion'.on_attach()
         require'diagnostic'.on_attach()
@@ -389,6 +403,7 @@ lua << EOF
         require'completion'.on_attach()
         lsp_status.on_attach(client)
         vim.api.nvim_call_function('ale#toggle#Enable',{})
+        lsp_keymap()
     end
 
 
