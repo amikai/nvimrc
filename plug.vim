@@ -347,6 +347,7 @@ Plug 'thinca/vim-qfreplace', {'on': 'Qfreplace'}
 Plug 'junegunn/vim-easy-align', {'on':['EasyAlign', '<Plug>(EasyAlign)']}
 " }}}
 
+" ale {{{
 Plug 'dense-analysis/ale'
 let g:ale_enabled = 0
 let g:ale_completion_enabled = 0
@@ -359,6 +360,7 @@ let g:ale_fixers = {
             \}
 let g:ale_set_quickfix = 1
 let g:ale_lint_on_insert_leave = 1
+" }}}
 
 " gruvbox {{{
 Plug 'morhetz/gruvbox'
