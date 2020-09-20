@@ -127,7 +127,7 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " }}}
 
 " js, ts {{{
-Plug 'mhartington/nvim-typescript',{'do':'./install.sh', 'for': ['javacript', 'typescript']}
+Plug 'mhartington/nvim-typescript',{'do':'./install.sh', 'for': ['javascript', 'typescript']}
 let g:nvim_typescript#server_path = 'tsserver'
 let g:nvim_typescript#javascript_support = 1
 let g:nvim_typescript#type_info_on_hold = 1
