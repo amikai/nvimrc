@@ -235,7 +235,7 @@ noremap <silent><F4> <cmd>Defx -session-file='/tmp/defx_session' -buffer-name="d
 " }}}
 
 " tagbar {{{
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+Plug 'preservim/tagbar', {'on': 'TagbarToggle'}
 let g:tagbar_ctags_bin = system('echo -n "$(which ctags)"')
 noremap <F8> <cmd>TagbarToggle<cr>
 let g:tagbar_sort = 0
