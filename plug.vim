@@ -347,6 +347,10 @@ Plug 'thinca/vim-qfreplace', {'on': 'Qfreplace'}
 Plug 'junegunn/vim-easy-align', {'on':['EasyAlign', '<Plug>(EasyAlign)']}
 " }}}
 
+" nvim-treesitter {{{
+Plug 'nvim-treesitter/nvim-treesitter'
+" }}}
+
 " ale {{{
 Plug 'dense-analysis/ale'
 let g:ale_enabled = 0
@@ -373,11 +377,48 @@ call plug#end()
 set bg=dark
 colorscheme gruvbox
 
+function! s:nvim_treesitter_setting() abort
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    highlight = {
+        enable = true
+    },
+    incremental_selection = {
+        enable = false,
+    },
+    refactor = {
+        highlight_definitions = { enable = true },
+        highlight_current_scope = { enable = false },
+        smart_rename = { enable = false },
+        navigation = { enable = false }
+    },
+    textobjects = {
+        select = {
+            enable = true,
+                keymaps = {
+                    ["af"] = "@function.outer",
+                    ["if"] = "@function.inner",
+                    ["ic"] = "@class.inner"
+                }
+        },
+        swap = { enable = false },
+        move = { enable = false }
+    }
+}
+EOF
+endfunction
+call s:nvim_treesitter_setting()
+
 
 function! s:lsp_setting() abort
 lua << EOF
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
+
+    vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+    vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+    vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 
     local lsp_keymap = function() 
         local mapper = function(mode, key, result)
