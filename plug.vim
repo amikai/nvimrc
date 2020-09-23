@@ -351,6 +351,13 @@ Plug 'junegunn/vim-easy-align', {'on':['EasyAlign', '<Plug>(EasyAlign)']}
 Plug 'nvim-treesitter/nvim-treesitter'
 " }}}
 
+" vim-sneak {{{
+Plug 'justinmk/vim-sneak'
+let g:sneak#label = 1
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+" }}}
+
 " ale {{{
 Plug 'dense-analysis/ale'
 let g:ale_enabled = 0
