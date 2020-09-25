@@ -456,12 +456,12 @@ lua << EOF
 
 
     local nvim_lsp = require'nvim_lsp'
-    require'nvim_lsp'.cssls.setup{
+    nvim_lsp.cssls.setup{
         on_attach=on_attach
     }
 
 
-    require'nvim_lsp'.html.setup{
+    nvim_lsp.html.setup{
         on_attach=on_attach
     }
 
