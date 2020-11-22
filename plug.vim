@@ -455,22 +455,22 @@ lua << EOF
     end
 
 
-    local nvim_lsp = require'nvim_lsp'
-    nvim_lsp.cssls.setup{
+    local lspconfig = require'lspconfig'
+    lspconfig.cssls.setup{
         on_attach=on_attach
     }
 
 
-    nvim_lsp.html.setup{
+    lspconfig.html.setup{
         on_attach=on_attach
     }
 
-    nvim_lsp.gopls.setup{
+    lspconfig.gopls.setup{
         init_options= { usePlaceholders = true },
         on_attach=on_attach
     }
 
-    nvim_lsp.tsserver.setup{
+    lspconfig.tsserver.setup{
         on_attach=on_attach_vim_js
     }
 EOF
