@@ -160,19 +160,6 @@ let g:vsnip_snippet_dir = $NVIMRC.'/vsnippets'
 " nvim-lsp plugin {{{
 Plug 'neovim/nvim-lspconfig'
 
-Plug 'nvim-lua/diagnostic-nvim'
-let g:diagnostic_show_sign = 1
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_insert_delay = 1
-let g:diagnostic_virtual_text_prefix = '<'
-nnoremap <leader>d <cmd>OpenDiagnostic<cr>
-nnoremap [d <cmd>PrevDiagnostic<cr>
-nnoremap ]d <cmd>NextDiagnostic<cr>
-call sign_define("LspDiagnosticsErrorSign", {"text" : "E", "texthl" : "GruvboxRedSign"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "W", "texthl" : "GruvboxOrangeSign"})
-call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "GruvboxGreeSign"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "GruvboxGreeSign"})
-
 Plug 'nvim-lua/lsp-status.nvim'
 " }}}
 
@@ -422,6 +409,30 @@ function! s:lsp_setting() abort
 lua << EOF
     local lsp_status = require('lsp-status')
     lsp_status.register_progress()
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Enable underline, use default values
+        underline = true,
+        -- Enable virtual text, override spacing to 2
+        virtual_text = {
+          spacing = 2,
+          prefix = '<',
+        },
+        -- Use a function to dynamically turn signs off
+        -- and on, using buffer local variables
+        signs = function(bufnr, client_id)
+          local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
+          -- No buffer local variable set, so just enable by default
+          if not ok then
+            return true
+          end
+
+          return result
+        end,
+        -- Disable a feature
+        update_in_insert = false,
+      }
+    )
 
     vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
     vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
@@ -439,11 +450,14 @@ lua << EOF
         mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
         mapper('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
         mapper('i', '<c-l>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+        mapper('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+        mapper('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+        mapper('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
     end
+
 
     local on_attach = function(client)
         require'completion'.on_attach()
-        require'diagnostic'.on_attach()
         lsp_status.on_attach(client)
     end
 
