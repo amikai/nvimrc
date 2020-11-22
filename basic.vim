@@ -28,9 +28,10 @@ set report=0
 inoremap jk <esc>
 tnoremap <esc> <C-\><C-n>
 
-let mapleader=','
-let g:mapleader=','
-let maplocalleader=';'
+nnoremap <SPACE> <Nop>
+let mapleader="\<Space>"
+let g:mapleader="\<Space>"
+let maplocalleader="\<Space>"
 
 command! W w !sudo tee % > /dev/null
 
