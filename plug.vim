@@ -352,6 +352,7 @@ let g:ale_completion_enabled = 0
 let g:ale_fix_on_save = 0
 let g:ale_linters = {
             \   'javascript': ['eslint'],
+            \   'go': ['golangci-lint']
             \}
 let g:ale_fixers = {
             \   'javascript': ['eslint'],
