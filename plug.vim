@@ -143,29 +143,33 @@ Plug 'stephpy/vim-yaml'
 
 
 " completion nvim {{{
-Plug 'nvim-lua/completion-nvim'
-let g:completion_auto_change_source = 1
-let g:completion_enable_auto_popup = 0
-let g:completion_enable_auto_signature = 1
-let g:completion_timer_cycle = 200
-let g:completion_matching_strategy_list = ['exact']
-let g:completion_enable_snippet = 'vim-vsnip'
-let g:completion_chain_complete_list = [
-            \{'complete_items': ['lsp', 'snippet']},
-            \{'complete_items': ['buffers']},
-            \]
+if utils#is_nightly()
+    Plug 'nvim-lua/completion-nvim'
+    let g:completion_auto_change_source = 1
+    let g:completion_enable_auto_popup = 0
+    let g:completion_enable_auto_signature = 1
+    let g:completion_timer_cycle = 200
+    let g:completion_matching_strategy_list = ['exact']
+    let g:completion_enable_snippet = 'vim-vsnip'
+    let g:completion_chain_complete_list = [
+                \{'complete_items': ['lsp', 'snippet']},
+                \{'complete_items': ['buffers']},
+                \]
 
-Plug 'steelsojka/completion-buffers'
+    Plug 'steelsojka/completion-buffers'
 
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-let g:vsnip_snippet_dir = $NVIMRC.'/vsnippets'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
+    let g:vsnip_snippet_dir = $NVIMRC.'/vsnippets'
+endif
 " }}}
 
 " nvim-lsp plugin {{{
-Plug 'neovim/nvim-lspconfig'
+if utils#is_nightly()
+    Plug 'neovim/nvim-lspconfig'
 
-Plug 'nvim-lua/lsp-status.nvim'
+    Plug 'nvim-lua/lsp-status.nvim'
+endif
 " }}}
 
 " vim-airline {{{
@@ -340,7 +344,9 @@ Plug 'junegunn/vim-easy-align', {'on':['EasyAlign', '<Plug>(EasyAlign)']}
 " }}}
 
 " nvim-treesitter {{{
-Plug 'nvim-treesitter/nvim-treesitter'
+if utils#is_nightly()
+    Plug 'nvim-treesitter/nvim-treesitter'
+endif
 " }}}
 
 " vim-sneak {{{
@@ -408,7 +414,9 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 endfunction
-call s:nvim_treesitter_setting()
+if utils#is_nightly()
+    call s:nvim_treesitter_setting()
+endif
 
 
 function! s:lsp_setting() abort
@@ -496,7 +504,9 @@ lua << EOF
 EOF
 exe 'source' $NVIMRC.'/config/completion_nvim.vim'
 endfunction
-call s:lsp_setting()
+if utils#is_nightly()
+    call s:lsp_setting()
+endif
 
 function! GetCurFunc() abort
     return 'ℱ ' . b:lsp_current_function . ' '

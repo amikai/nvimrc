@@ -4,3 +4,7 @@ function! utils#echo_succes_msg(msg) abort
     echo a:msg
     echohl None
 endfunction
+
+function! utils#is_nightly() abort
+    return has("nvim-0.5")
+endfunction
