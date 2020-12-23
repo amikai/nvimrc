@@ -137,6 +137,11 @@ Plug 'othree/yajs.vim', {'for':['javascript']}
 Plug 'HerringtonDarkholme/yats.vim', {'for':['typescript']}
 " }}}
 
+" yaml {{{
+Plug 'stephpy/vim-yaml'
+" }}}
+
+
 " completion nvim {{{
 Plug 'nvim-lua/completion-nvim'
 let g:completion_auto_change_source = 1
