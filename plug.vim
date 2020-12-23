@@ -502,16 +502,4 @@ function! GetCurFunc() abort
     return 'ℱ ' . b:lsp_current_function . ' '
 endfunction
 
-function! s:airline_setting() abort
-    call airline#parts#define_function('cur_func', 'GetCurFunc')
-    call airline#parts#define_minwidth('cur_func', 50)
-    call airline#parts#define_condition('cur_func', 'exists("b:lsp_current_function") && b:lsp_current_function !=# ""')
-    if airline#util#winwidth() > 79
-        let g:airline_section_z = airline#section#create(['windowswap', 'obsession', 'cur_func' ,'%p%%'.' ', 'linenr', 'maxlinenr', ':%v'])
-    else
-        let g:airline_section_z = airline#section#create(['cur_func','%p%%'.' ', 'linenr',  ':%v'])
-    endif
-endfunction
-call s:airline_setting()
-
 " vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
