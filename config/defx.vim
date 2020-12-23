@@ -61,14 +61,12 @@ function! MyDefxKeySetup() abort
                 \ defx#do_action('drop')
 
     nnoremap <silent><buffer><expr> o
-                \ defx#is_opened_tree() ?
-                \ defx#do_action('close_tree') :
-                \ defx#do_action('open_tree')
+                \ defx#do_action('open_tree', 'toggle')
 
     nnoremap <silent><buffer><expr> O
                 \ defx#is_opened_tree() ?
                 \ defx#do_action('close_tree') :
-                \ defx#async_action('open_tree_recursive')
+                \ defx#async_action('open_tree', 'recursive')
 
     nnoremap <silent><buffer><expr> R defx#do_action('redraw')
 
@@ -76,6 +74,7 @@ function! MyDefxKeySetup() abort
                 \ defx#is_directory() ?
                 \ defx#do_action('open') :
                 \ "\<nop>"
+
     nnoremap <silent><buffer><expr> < defx#do_action('cd', ['..'])
 
 
