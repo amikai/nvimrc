@@ -318,7 +318,7 @@ noremap <leader>t <cmd>tabnew<cr>
 " gT => <cmd>tabprevious<cr>
 
 " Opens a new tab with the current buffer's path
-map <leader>te <cmd>tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>te <cmd>Texplore<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => command line mode
