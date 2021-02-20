@@ -335,7 +335,9 @@ Plug 'junegunn/vim-easy-align', {'on':['EasyAlign', '<Plug>(EasyAlign)']}
 " }}}
 
 " nvim-treesitter {{{
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 " }}}
 
 " vim-sneak {{{
@@ -374,7 +376,7 @@ colorscheme gruvbox
 function! s:nvim_treesitter_setting() abort
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all",
+    ensure_installed = {"c", "rust", "go", "javascript", "python"},
     highlight = {
         enable = true
     },
