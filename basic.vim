@@ -17,6 +17,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=500
 
+" Do not atomically add newline at end of file
+set nofixendofline
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
