@@ -349,5 +349,5 @@ augroup MyAutoCmd
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 500)
 augroup END
 nnoremap <silent><F12> <cmd>call vimrc#show_function_key()<cr>
-nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
+nnoremap <silent><expr> Q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
 
