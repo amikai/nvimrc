@@ -456,7 +456,7 @@ lua << EOF
 
     local lsp_keymap = function() 
         local mapper = function(mode, key, result)
-          vim.fn.nvim_buf_set_keymap(0, mode, key, result, {noremap=true, silent=true})
+          vim.api.nvim_buf_set_keymap(0, mode, key, result, {noremap=true, silent=true})
         end
         mapper('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
         mapper('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
