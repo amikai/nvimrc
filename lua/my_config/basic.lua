@@ -96,6 +96,9 @@ km('v', 'y', 'y`]', {noremap = true})
 km('v', 'p', '"_dP`', {noremap = true})
 km('n', 'p', 'p`]', {noremap = true})
 
+-- Copy paste
+opt('clipboard', 'unnamedplus')
+
 -- Move visual block
 km('v', 'J', ":m '>+1<cr>gv=gv", {noremap = true})
 km('v', 'K', ":m '<-2<cr>gv=gv", {noremap = true})
