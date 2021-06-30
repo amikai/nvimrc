@@ -1,5 +1,20 @@
+local cmd = vim.cmd
+local fn = vim.fn
+local call = vim.call
+local err_writeln = vim.api.nvim_err_writeln
+
 local opt = function(key, val)
+    if vim.o[key] == nil then
+        err_writeln("option ${key} invalid")
+    end
     vim.o[key] = val
+end
+
+local w_opt = function(key, val)
+    if vim.wo[key] == nil then
+        err_writeln("option ${key} invalid")
+    end
+    vim.wo[key] = val
 end
 
 local km = vim.api.nvim_set_keymap
@@ -7,13 +22,6 @@ local km = vim.api.nvim_set_keymap
 local g_v = function(key, val)
     vim.g[key] = val
 end
-
-local cmd = vim.cmd
-
-local fn = vim.fn
-local call = vim.call
-
-
 
 
 -- General {{{
@@ -36,9 +44,8 @@ opt('report', 0)
 km('i', 'jk', '<esc>', {noremap = true})
 km('t', '<esc>', '<C-\\><C-n>', {noremap = true})
 
-km('n', '<SPACE>', '<Nop>', {noremap = true})
-
-g_v('mapleader', '<Space>')
+km('n', '<space>', '<nop>', {noremap = true})
+g_v('mapleader', '<space>')
 
 opt('termguicolors', true)
 
@@ -110,7 +117,7 @@ vim.o.wildoptions = vim.o.wildoptions .. ',pum'
 
 
 -- line number setting
-opt('number', true)
+w_opt('number', true)
 
 -- Not use relative number, if not in the window
 cmd [[ augroup MyAutoCmd
@@ -129,7 +136,7 @@ cmd [[ augroup MyAutoCmd
 opt('cmdheight', 2)
 
 -- Enables pseudo-transparency for a floating window
-opt('winblend', 20)
+w_opt('winblend', 20)
 -- Set minimal width for current window.
 opt('winwidth', 30)
 -- Set minimal height for current window.
@@ -168,9 +175,9 @@ opt('smartcase', true)
 
 -- Configure backspace so it acts as it should act
 opt('backspace', 'indent,eol,start')
-vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l'
+vim.o.whichwrap = vim.o.whichwrap .. ',<,>,h,l'
 
-opt('wrap', false)
+w_opt('wrap', false)
 
 
 -- search
@@ -189,17 +196,17 @@ opt('matchtime', 1)
 
 
 -- show special character
-opt('list', true)
+w_opt('list', true)
 opt('listchars', 'eol:¬,tab:▸ ,trail:.')
 
 
 -- highlight current line
-opt('cursorline', true)
-opt('cursorcolumn', true)
-opt('colorcolumn', '81')
+w_opt('cursorline', true)
+w_opt('cursorcolumn', true)
+w_opt('colorcolumn', '81')
 
 -- Add a bit extra margin to the left
-opt('foldcolumn', '1')
+w_opt('foldcolumn', '1')
 
 
 -- Use a popup menu to show the possible completions
