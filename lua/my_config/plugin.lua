@@ -11,4 +11,15 @@ vim.cmd [[packadd vimball]]
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+
+    use {
+        'sainnhe/gruvbox-material',
+        setup = function()
+            vim.g.gruvbox_material_background = 'soft'
+        end,
+        config = function()
+            vim.cmd[[colorscheme gruvbox-material]]
+        end
+    }
+
 end)
