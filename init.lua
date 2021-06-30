@@ -1,8 +1,6 @@
 local fn = vim.fn
 
-this_file = fn.expand('<sfile>')
-
-vim.env.NVIMRC = fn.fnamemodify(this_file, ':h')
+vim.env.NVIMRC = fn.expand('$XDG_CONFIG_HOME/nvim')
 vim.env.CACHE = fn.expand('$HOME/.cache')
 
 require('my_config.basic')
