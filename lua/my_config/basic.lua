@@ -244,17 +244,21 @@ opt('undofile', true)
 opt('undodir', vim.env.HOME .. '/.config/nvim/undo')
 -- }}}
 
--- TODO: Indent and tab {{{
--- Confiugre white space
--- set shiftwidth=4 "indent width
--- set tabstop=4    "tab width
--- set softtabstop=4
--- set expandtab   "space replace tab
--- set smarttab "Be smart when using tab
+-- Indent and tab {{{
+-- indent width
+opt('shiftwidth', 4)
+-- tab width
+opt('tabstop', 4)
+
+opt('softtabstop', 4)
+
+-- space replace tab
+opt('expandtab', true)
+
+opt('smarttab', true)
 
 -- set autoindent
 -- set smartindent
-
 -- }}}
 
 -- Moving around, tabs, windows and buffers {{{
