@@ -1,0 +1,278 @@
+local opt = function(key, val)
+    vim.o[key] = val
+end
+
+local km = vim.api.nvim_set_keymap
+
+local g_v = function(key, val)
+    vim.g[key] = val
+end
+
+local cmd = vim.cmd
+
+local fn = vim.fn
+local call = vim.call
+
+
+
+
+-- General {{{
+g_v('python_host_prog', 'python')
+g_v('python3_host_prog', 'python3')
+
+opt('history', 500)
+
+-- Do not atomically add newline at end of file
+opt('fixendofline', false)
+
+-- Set to auto read when a file is changed from the outside
+opt('autoread', true)
+
+-- Switch buffer without casuing error when file is edited
+opt('hidden', true)
+
+opt('report', 0)
+
+km('i', 'jk', '<esc>', {noremap = true})
+km('t', '<esc>', '<C-\\><C-n>', {noremap = true})
+
+km('n', '<SPACE>', '<Nop>', {noremap = true})
+
+g_v('mapleader', '<Space>')
+
+opt('termguicolors', true)
+
+opt('encoding', 'utf-8')
+
+opt('fileformats', 'unix,dos,mac')
+
+-- set path+=**
+
+opt('diffopt', 'filler,vertical,algorithm:patience,context:3,foldcolumn:0')
+
+
+-- TODO: fix this
+-- Remember cursor position between vim sessions
+-- cmd [[ autocmd BufReadPost *
+--        if line("'\"") > 0 && line ("'\"") <= line("$")
+--            exe "normal! g'\"" |
+--        endif ]]
+
+-- center buffer around cursor when opening files
+cmd [[ autocmd BufRead * normal zz ]]
+
+opt('grepprg', 'grep -inH')
+
+cmd [[ augroup MyAutoCmd
+           autocmd!
+       augroup END ]]
+
+opt('mouse', '')
+
+km('n', 'j', 'gj', {noremap = true})
+km('n', 'k', 'gk', {noremap = true})
+
+km('n', 'G', 'Gzz', {noremap = true})
+
+km('n', 'U', '<cmd>redo<cr>', {noremap = true})
+
+opt('updatetime', 500)
+
+-- TODO: clipboard behavior
+
+-- Don't yank to default register when changing something
+km('x', 'c', '"xc', {noremap = true})
+km('n', 'c', '"xc', {noremap = true})
+
+-- After block yank and paste, move cursor to the end of operated text and don't override register
+km('v', 'y', 'y`]', {noremap = true})
+km('v', 'p', '"_dP`', {noremap = true})
+km('n', 'p', 'p`]', {noremap = true})
+
+-- Move visual block
+km('v', 'J', ":m '>+1<cr>gv=gv", {noremap = true})
+km('v', 'K', ":m '<-2<cr>gv=gv", {noremap = true})
+
+-- Visual shifting
+km('v', '<', '<gv', {noremap = true})
+km('v', '>', '>gv', {noremap = true})
+
+-- }}}
+
+-- Vim user interface {{{
+opt('scrolloff', 999)
+
+-- Display candidates by popup menu.
+opt('wildmenu', true)
+opt('wildmode', 'full')
+vim.o.wildoptions = vim.o.wildoptions .. ',pum'
+
+
+
+-- line number setting
+opt('number', true)
+
+-- Not use relative number, if not in the window
+cmd [[ augroup MyAutoCmd
+           autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+           autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+       augroup END ]]
+
+
+-- Maximum width of text that is being inserted (TODO)
+-- set textwidth=80
+-- set breakindent
+-- set formatoptions=
+
+
+-- Height of the command bar
+opt('cmdheight', 2)
+
+-- Enables pseudo-transparency for a floating window
+opt('winblend', 20)
+-- Set minimal width for current window.
+opt('winwidth', 30)
+-- Set minimal height for current window.
+opt('winheight', 20)
+-- Set maximam maximam command line window.
+opt('cmdwinheight', 5)
+--  No equal window size.
+opt('equalalways', false)
+
+-- Adjust window size of preview and help
+opt('previewheight', 5)
+opt('helpheight', 12)
+
+-- Puts new vsplit windows to the right of the current
+opt('splitright', true)
+-- Puts new split windows to the bottom of the current
+opt('splitbelow', true)
+
+-- show command
+opt('showcmd', true)
+
+opt('showmode', true)
+
+
+-- Always show current position
+opt('ruler', true)
+
+
+-- Ignore case when searching
+opt('ignorecase', true)
+
+
+-- When searching try to be smart about cases
+opt('smartcase', true)
+
+
+-- Configure backspace so it acts as it should act
+opt('backspace', 'indent,eol,start')
+vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l'
+
+opt('wrap', false)
+
+
+-- search
+opt('incsearch', true) -- search as characters are entered
+opt('hlsearch', true) -- highlight matches
+opt('inccommand', 'split')
+
+-- mark before search
+km('n', '/', 'ms/', {noremap = true})
+
+
+
+-- Show matching brackets when text indicator is over them
+opt('showmatch', true)
+opt('matchtime', 1)
+
+
+-- show special character
+opt('list', true)
+opt('listchars', 'eol:¬,tab:▸ ,trail:.')
+
+
+-- highlight current line
+opt('cursorline', true)
+opt('cursorcolumn', true)
+opt('colorcolumn', '81')
+
+-- Add a bit extra margin to the left
+opt('foldcolumn', '1')
+
+
+-- Use a popup menu to show the possible completions
+opt('completeopt', 'menuone,noinsert,noselect')
+
+vim.o.shortmess = vim.o.shortmess .. 'c'
+
+opt('virtualedit', 'block')
+
+-- Use tab to choose condidate in pop up menu
+cmd [[ augroup MyAutoCmd
+           autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+       augroup END ]]
+
+-- Set popup menu max height.
+opt('pumheight', 10)
+
+-- Enables pseudo-transparency for the popup-menu
+opt('pumblend', 20)
+
+--- }}}
+
+-- Files, backups and undo file {{{
+opt('backup', false)
+
+opt('writebackup', false)
+
+opt('swapfile', false)
+
+opt('undofile', true)
+
+opt('undodir', vim.env.HOME .. '/.config/nvim/undo')
+-- }}}
+
+-- TODO: Indent and tab {{{
+-- Confiugre white space
+-- set shiftwidth=4 "indent width
+-- set tabstop=4    "tab width
+-- set softtabstop=4
+-- set expandtab   "space replace tab
+-- set smarttab "Be smart when using tab
+
+-- set autoindent
+-- set smartindent
+
+-- }}}
+
+-- Moving around, tabs, windows and buffers {{{
+
+-- Smart way to move between windows
+km('n', '<C-j>', '<C-W>j', {noremap = true})
+km('n', '<C-k>', '<C-W>k', {noremap = true})
+km('n', '<C-h>', '<C-W>h', {noremap = true})
+km('n', '<C-l>', '<C-W>l', {noremap = true})
+
+-- Close current tab
+km('n', '<leader>qt', '<cmd>tabclose<cr>', {noremap = true, silent = true})
+
+-- Close all the buffers
+km('n', '<leader>ba', '<cmd>bufdo bd<cr>', {noremap = true, silent = true})
+
+-- Managing tabs
+km('n', '<leader>t', '<cmd>tabnew<cr>', {noremap = true})
+-- gt => <cmd>tabnext<cr>
+-- gT => <cmd>tabprevious<cr>
+
+cmd [[ augroup MyAutoCmd
+           autocmd CursorHold *? syntax sync minlines=300
+           autocmd FileType qf wincmd J
+            autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 500)
+       augroup END ]]
+
+-- }}}
+
+
+-- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
