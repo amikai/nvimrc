@@ -113,4 +113,12 @@ return require('packer').startup(function()
         event = 'InsertEnter'
     }
 
+    use {
+        'mbbill/undotree',
+        setup = function()
+            require('my_config.plugin.undotree').setup()
+        end,
+        cmd = 'UndotreeToggle'
+    }
+
 end)
