@@ -34,7 +34,7 @@ return require('packer').startup(function()
     use {
         'Yggdroot/indentLine',
         setup = function()
-            vim.g.indentLine_fileTypeExclude = {'nerdtree', 'diff', 'tagbar', 'help', 'defx'}
+            vim.g.indentLine_fileTypeExclude = {'NvimTree', 'diff', 'tagbar', 'help'}
         end,
     }
 
