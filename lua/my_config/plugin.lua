@@ -121,4 +121,20 @@ return require('packer').startup(function()
         cmd = 'UndotreeToggle'
     }
 
+    use {
+        {'haya14busa/vim-asterisk'},
+        {
+            'haya14busa/is.vim',
+            setup = function()
+                require('my_config.plugin.is').setup()
+            end
+        },
+        {
+            'osyo-manga/vim-anzu',
+            setup = function()
+                require('my_config.plugin.vim-anzu').setup()
+            end
+        }
+    }
+
 end)
