@@ -96,6 +96,14 @@ return require('packer').startup(function()
     }
 
     use {
+        'mhinz/vim-sayonara',
+        cmd = 'Sayonara',
+        setup = function()
+            require('my_config.plugin.vim-sayonara').setup()
+        end
+    }
+
+    use {
         'Raimondi/delimitMate',
         setup = function()
             vim.g.delimitMate_expand_space = 1
