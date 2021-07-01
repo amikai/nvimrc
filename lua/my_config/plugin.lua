@@ -59,7 +59,6 @@ return require('packer').startup(function()
     use {
         'andymass/vim-matchup',
         setup = function()
-            vim.g.indentLine_fileTypeExclude = {'nerdtree', 'diff', 'tagbar', 'help', 'defx'}
             vim.g.matchup_matchparen_enabled = 1
             vim.g.matchup_surround_enabled = 1
             vim.g.matchup_matchparen_offscreen = { method = 'popup'}
