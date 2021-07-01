@@ -158,4 +158,10 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'justinmk/vim-sneak',
+        setup = function()
+            require('my_config.plugin.vim-sneak').setup()
+        end
+    }
 end)
