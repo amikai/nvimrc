@@ -3,7 +3,7 @@ local M = {}
 local g = vim.g
 local autocmd = require('my_config.utils').autocmd
 
-function M.setup() 
+function M.setup()
     g.go_metalinter_command = "golangci-lint"
     g.go_metalinter_enabled = {'vet', 'errcheck', 'staticcheck', 'gosimple'}
     g.go_metalinter_autosave_enabled = {'vet', 'errcheck', 'staticcheck', 'gosimple'}
