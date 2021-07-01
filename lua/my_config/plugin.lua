@@ -85,9 +85,24 @@ return require('packer').startup(function()
     }
 
     use {
+        'stephpy/vim-yaml',
+        ft = 'yaml'
+    }
+
+    use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
         cmd = 'Telescope'
+    }
+
+    use {
+        'Raimondi/delimitMate',
+        setup = function()
+            vim.g.delimitMate_expand_space = 1
+            vim.g.delimitMate_smart_quotes = 1
+            vim.g.delimitMate_nesting_quotes = {'"', "'"}
+        end,
+        event = 'InsertEnter'
     }
 
 end)
