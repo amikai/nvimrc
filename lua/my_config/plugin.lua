@@ -52,7 +52,7 @@ return require('packer').startup(function()
         'kana/vim-operator-user',
         requires = {'kana/vim-operator-replace'},
         config = function()
-            vim.api.nvim_set_keymap('n', 'R', '<Plug>(operator-replace)', {})
+            vim.api.nvim_set_keymap('', 'R', '<Plug>(operator-replace)', {})
         end
     }
 
