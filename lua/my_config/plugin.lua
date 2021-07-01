@@ -109,6 +109,19 @@ return require('packer').startup(function()
     }
 
     use {
+        'fatih/vim-go',
+        ft = 'go',
+        run = ':GoUpdateBinaries',
+        setup = function()
+            require('my_config.plugin.vim-go').setup()
+        end,
+        config = function()
+            require('my_config.plugin.vim-go').config()
+        end,
+
+    }
+
+    use {
         'stephpy/vim-yaml',
         ft = 'yaml'
     }
