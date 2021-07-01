@@ -145,6 +145,13 @@ return require('packer').startup(function()
     }
 
     use {
+        'ronakg/quickr-cscope.vim',
+        setup = function()
+            require('my_config.plugin.quickr-cscope').setup()
+        end
+    }
+
+    use {
         'junegunn/goyo.vim',
         setup = function()
             require('my_config.plugin.goyo').setup()
