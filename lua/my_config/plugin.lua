@@ -144,4 +144,11 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'junegunn/goyo.vim',
+        setup = function()
+            require('my_config.plugin.goyo').setup()
+        end
+    }
+
 end)
