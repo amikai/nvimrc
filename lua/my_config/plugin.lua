@@ -92,6 +92,23 @@ return require('packer').startup(function()
     }
 
     use {
+        'hrsh7th/nvim-compe',
+        config = function()
+            require('my_config.plugin.nvim-compe').config()
+        end
+    }
+
+    use {
+        {
+            'hrsh7th/vim-vsnip',
+            setup = function()
+                vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/vsnippets'
+            end
+        },
+        {'hrsh7th/vim-vsnip-integ'}
+    }
+
+    use {
         'stephpy/vim-yaml',
         ft = 'yaml'
     }
