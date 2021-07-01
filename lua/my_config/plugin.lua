@@ -207,6 +207,13 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'mhinz/vim-signify',
+        setup = function()
+            require('my_config.plugin.vim-signify').setup()
+        end
+    }
+
     use { 'pearofducks/ansible-vim' }
 
     use { 'google/vim-jsonnet' }
