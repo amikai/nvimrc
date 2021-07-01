@@ -85,6 +85,13 @@ return require('packer').startup(function()
     }
 
     use {
+        'neovim/nvim-lspconfig',
+        config = function()
+            require('my_config.plugin.nvim-lspconfig').config()
+        end
+    }
+
+    use {
         'stephpy/vim-yaml',
         ft = 'yaml'
     }
