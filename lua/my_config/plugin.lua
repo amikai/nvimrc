@@ -159,9 +159,18 @@ return require('packer').startup(function()
     }
 
     use {
+        'thinca/vim-qfreplace',
+        cmd = {'Qfreplace'}
+    }
+
+    use {
         'justinmk/vim-sneak',
         setup = function()
             require('my_config.plugin.vim-sneak').setup()
         end
     }
+
+    use { 'pearofducks/ansible-vim' }
+
+    use { 'google/vim-jsonnet' }
 end)
