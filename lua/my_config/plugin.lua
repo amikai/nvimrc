@@ -220,6 +220,14 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = 'TSUpdate',
+        config = function()
+            require('my_config.plugin.nvim-treesitter').config()
+        end
+    }
+
     use { 'pearofducks/ansible-vim' }
 
     use { 'google/vim-jsonnet' }
