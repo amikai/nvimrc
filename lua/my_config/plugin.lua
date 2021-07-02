@@ -236,6 +236,13 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'vim-airline/vim-airline',
+        setup = function()
+            require('my_config.plugin.vim-airline').setup()
+        end
+    }
+
     use { 'pearofducks/ansible-vim' }
 
     use { 'google/vim-jsonnet' }
