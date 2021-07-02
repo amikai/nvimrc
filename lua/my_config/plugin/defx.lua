@@ -1,10 +1,9 @@
 local M = {}
 
 local g = vim.g
-local echo = vim.api.nvim_echo
 local km = require('my_config.utils').km
-local b_km = require('my_config.utils').b_km
 local autocmd = require('my_config.utils').autocmd
+local execute = vim.api.nvim_command
 local fn = vim.fn
 
 function M.setup()
@@ -14,6 +13,7 @@ function M.setup()
 end
 
 function M.config()
+    execute 'hi link Defx_filename_directory GreenSign'
     fn['my_config#defx#basic_setting']()
 end
 
