@@ -264,4 +264,8 @@ return require('packer').startup(function()
     use { 'pearofducks/ansible-vim' }
 
     use { 'google/vim-jsonnet' }
+
+    -- TODO: rust,config,
+    -- tree.lua, autoformat,easyaline, ale
+
 end)

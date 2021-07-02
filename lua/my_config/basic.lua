@@ -44,8 +44,8 @@ opt('report', 0)
 km('i', 'jk', '<esc>', {noremap = true})
 km('t', '<esc>', '<C-\\><C-n>', {noremap = true})
 
-km('n', '<space>', '<nop>', {noremap = true})
-g_v('mapleader', '<space>')
+km('', '<Space>', '<nop>', {noremap = true})
+g_v('mapleader', '\\<Space>')
 
 opt('termguicolors', true)
 

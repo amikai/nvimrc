@@ -9,7 +9,7 @@ function M.setup()
     km('n', '<F8>', '<cmd>TagbarToggle<cr>', {noremap = true})
 
     -- See https://github.com/preservim/tagbar/issues/49
-    autocmd('MyAutoCmd', [[FileType tagbar setlocal nocursorline nocursorcolumn]] ,false)
+    autocmd('MyAutoCmd', [[FileType tagbar setlocal nocursorline nocursorcolumn]])
 
     g.tagbar_sort = 0
     g.tagbar_type_go = {

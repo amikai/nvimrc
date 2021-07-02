@@ -17,16 +17,16 @@ function M.setup()
     g.go_highlight_function_calls = 1
     g.go_def_mapping_enabled = 0
 
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gd <Plug>(go-def)]], false)
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gD <Plug>(go-describe)]], false)
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gR <Plug>(go-rename)]], false)
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gr <Plug>(go-referrers)]], false)
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> <leader>gm <Plug>(go-metalinter)]], false)
+    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gd <Plug>(go-def)]])
+    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gD <Plug>(go-describe)]])
+    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gR <Plug>(go-rename)]])
+    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gr <Plug>(go-referrers)]])
+    autocmd('MyAutocmd', [[Filetype go nmap <buffer> <leader>gm <Plug>(go-metalinter)]])
 
 
-    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f16> <Plug>(go-test) ]], false)
-    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f17> <Plug>(go-build) ]], false)
-    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f18> <Plug>(go-run) ]], false)
+    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f16> <Plug>(go-test) ]])
+    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f17> <Plug>(go-build) ]])
+    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f18> <Plug>(go-run) ]])
 end
 
 function M.config()
