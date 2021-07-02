@@ -3,9 +3,14 @@ local M = {}
 local g = vim.g
 local echo = vim.api.nvim_echo
 local km = require('my_config.utils').km
+local autocmd = require('my_config.utils').autocmd
 
 function M.setup()
     km('n', '<F8>', '<cmd>TagbarToggle<cr>', {noremap = true})
+
+    -- See https://github.com/preservim/tagbar/issues/49
+    autocmd('MyAutoCmd', [[FileType tagbar setlocal nocursorline nocursorcolumn]] ,false)
+
     g.tagbar_sort = 0
     g.tagbar_type_go = {
         ctagstype = 'go',
