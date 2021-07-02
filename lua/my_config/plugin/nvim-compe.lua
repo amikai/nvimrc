@@ -45,7 +45,7 @@ _G.enter_key = function()
     if fn.pumvisible() == 1 then
         return fn['compe#confirm']('<cr>')
     elseif fn['delimitMate#WithinEmptyPair']() == 1 then
-        return  "<C-R>=delimitMate#ExpandReturn()<CR>"
+        return t "<C-R>=delimitMate#ExpandReturn()<CR>"
     else
         return t "<CR><Plug>DiscretionaryEnd"
     end
