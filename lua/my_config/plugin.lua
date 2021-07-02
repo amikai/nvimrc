@@ -35,7 +35,7 @@ return require('packer').startup(function()
         {
             'Yggdroot/indentLine',
             setup = function()
-                vim.g.indentLine_fileTypeExclude = {'NvimTree', 'diff', 'tagbar', 'help'}
+                vim.g.indentLine_fileTypeExclude = {'defx', 'diff', 'tagbar', 'help'}
             end,
         },
         {
@@ -188,14 +188,6 @@ return require('packer').startup(function()
     }
 
     use {
-        'kyazdani42/nvim-tree.lua',
-        cmd = 'NvimTreeToggle',
-        setup = function()
-            require('my_config.plugin.nvim-tree').setup()
-        end
-    }
-
-    use {
         'ronakg/quickr-cscope.vim',
         setup = function()
             require('my_config.plugin.quickr-cscope').setup()
@@ -255,6 +247,17 @@ return require('packer').startup(function()
         'preservim/tagbar',
         setup = function()
             require('my_config.plugin.tagbar').setup()
+        end
+    }
+
+    use {
+        'Shougo/defx.nvim',
+        cmd = 'Defx',
+        setup = function()
+            require('my_config.plugin.defx').setup()
+        end,
+        config = function()
+            require('my_config.plugin.defx').config()
         end
     }
 

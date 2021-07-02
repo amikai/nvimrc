@@ -18,6 +18,12 @@ function M.km(modes, lhs, rhs, opts)
   for _, mode in ipairs(modes) do vim.api.nvim_set_keymap(mode, lhs, rhs, opts) end
 end
 
+function M.b_km(modes, lhs, rhs, opts)
+  opts = opts or {}
+  if type(modes) == 'string' then modes = {modes} end
+  for _, mode in ipairs(modes) do vim.api.nvim_buf_set_keymap(mode, lhs, rhs, opts) end
+end
+
 function M.is_load(plugin)
     return packer_plugins ~= nil and packer_plugins[plugin] ~= nil and packer_plugins[plugin].loaded ~= nil
 end

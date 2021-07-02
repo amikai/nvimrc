@@ -7,7 +7,7 @@ local km = require('my_config.utils').km
 function M.setup()
     g.sayonara_filetypes = {
         tagbar = 'TagbarClose',
-        NvimTree = 'NvimTreeClose',
+        NvimTree = 'call defx#call_action("quit")',
     }
 
     km('n', '<leader>c', '<cmd>Sayonara!<cr>', {silent = true})
