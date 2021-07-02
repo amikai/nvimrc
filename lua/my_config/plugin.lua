@@ -32,10 +32,16 @@ return require('packer').startup(function()
     use { 'itchyny/vim-cursorword'}
 
     use {
-        'Yggdroot/indentLine',
-        setup = function()
-            vim.g.indentLine_fileTypeExclude = {'NvimTree', 'diff', 'tagbar', 'help'}
-        end,
+        {
+            'Yggdroot/indentLine',
+            setup = function()
+                vim.g.indentLine_fileTypeExclude = {'NvimTree', 'diff', 'tagbar', 'help'}
+            end,
+        },
+        {
+            'lukas-reineke/indent-blankline.nvim',
+            branch = 'lua'
+        }
     }
 
     use {
