@@ -228,6 +228,14 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'romgrk/nvim-treesitter-context',
+        requires = {'nvim-treesitter/nvim-treesitter'},
+        config = function()
+            require('my_config.plugin.nvim-treesitter-context').config()
+        end
+    }
+
     use { 'pearofducks/ansible-vim' }
 
     use { 'google/vim-jsonnet' }
