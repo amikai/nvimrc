@@ -243,6 +243,13 @@ return require('packer').startup(function()
         end
     }
 
+    use {
+        'preservim/tagbar',
+        setup = function()
+            require('my_config.plugin.tagbar').setup()
+        end
+    }
+
     use { 'pearofducks/ansible-vim' }
 
     use { 'google/vim-jsonnet' }
