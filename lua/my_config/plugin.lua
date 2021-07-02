@@ -188,6 +188,14 @@ return require('packer').startup(function()
     }
 
     use {
+        'kyazdani42/nvim-tree.lua',
+        cmd = 'NvimTreeToggle',
+        setup = function()
+            require('my_config.plugin.nvim-tree').setup()
+        end
+    }
+
+    use {
         'ronakg/quickr-cscope.vim',
         setup = function()
             require('my_config.plugin.quickr-cscope').setup()
