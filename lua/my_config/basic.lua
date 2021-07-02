@@ -240,8 +240,6 @@ opt('writebackup', false)
 opt('swapfile', false)
 
 opt('undofile', true)
-
-opt('undodir', vim.env.HOME .. '/.config/nvim/undo')
 -- }}}
 
 -- Indent and tab {{{
