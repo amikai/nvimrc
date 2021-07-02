@@ -2,6 +2,9 @@ local cmd = vim.cmd
 local fn = vim.fn
 local call = vim.call
 local err_writeln = vim.api.nvim_err_writeln
+local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
 local opt = function(key, val)
     if vim.o[key] == nil then
@@ -45,7 +48,7 @@ km('i', 'jk', '<esc>', {noremap = true})
 km('t', '<esc>', '<C-\\><C-n>', {noremap = true})
 
 km('', '<Space>', '<nop>', {noremap = true})
-g_v('mapleader', '\\<Space>')
+g_v('mapleader', t '<Space>')
 
 opt('termguicolors', true)
 
