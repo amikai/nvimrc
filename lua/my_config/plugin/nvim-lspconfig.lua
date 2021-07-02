@@ -7,14 +7,14 @@ local km = require('my_config.utils').km
 local lsp_basic_setting = require('my_config.lsp').basic_setting
 
 local gopls_on_attach = function()
-    require('lspconfig').gopls.setup{
-        init_options= { usePlaceholders = true },
-        on_attach = lsp_basic_setting,
-    }
+    lsp_basic_setting()
 end
 
 function M.config()
-    gopls_on_attach()
+    require('lspconfig').gopls.setup{
+        init_options= { usePlaceholders = true },
+        on_attach = gopls_on_attach,
+    }
 end
 
 return M
