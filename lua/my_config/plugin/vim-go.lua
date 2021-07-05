@@ -16,6 +16,7 @@ function M.setup()
     g.go_guru_scope = {"..."}
     g.go_highlight_function_calls = 1
     g.go_def_mapping_enabled = 0
+    g.go_code_completion_enabled = 0
 
     autocmd('MyAutocmd', [[Filetype go nmap <buffer> gd <Plug>(go-def)]])
     autocmd('MyAutocmd', [[Filetype go nmap <buffer> gD <Plug>(go-describe)]])
