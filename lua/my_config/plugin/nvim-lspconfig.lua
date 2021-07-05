@@ -8,6 +8,7 @@ local lsp_basic_setting = require('my_config.lsp').basic_setting
 
 local gopls_on_attach = function()
     lsp_basic_setting()
+    require('packer').loader("YouCompleteMe")
 end
 
 function M.config()

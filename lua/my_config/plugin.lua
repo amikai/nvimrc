@@ -98,10 +98,14 @@ return require('packer').startup(function()
     }
 
     use {
-        'hrsh7th/nvim-compe',
+        'ycm-core/YouCompleteMe',
+        setup = function()
+            require('my_config.plugin.ycm').setup()
+        end,
         config = function()
-            require('my_config.plugin.nvim-compe').config()
-        end
+            require('my_config.plugin.ycm').config()
+        end,
+        opt = 'true',
     }
 
     use {
