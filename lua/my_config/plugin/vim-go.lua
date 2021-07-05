@@ -24,6 +24,7 @@ function M.setup()
     autocmd('MyAutocmd', [[Filetype go nmap <buffer> <leader>gm <Plug>(go-metalinter)]])
 
 
+    autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f3> <Plug>(go-fmt) ]])
     autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f16> <Plug>(go-test) ]])
     autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f17> <Plug>(go-build) ]])
     autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f18> <Plug>(go-run) ]])
