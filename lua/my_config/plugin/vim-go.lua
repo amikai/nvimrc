@@ -11,7 +11,7 @@ function M.setup()
     g.go_jump_to_error = 0
     g.go_echo_go_info = 0
     g.go_auto_type_info = 1
-    g.go_fmt_command = "goimports"
+    g.go_fmt_command = "gopls"
     g.go_fmt_autosave = 1
     g.go_guru_scope = {"..."}
     g.go_highlight_function_calls = 1
