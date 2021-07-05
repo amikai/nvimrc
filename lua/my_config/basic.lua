@@ -44,6 +44,8 @@ opt('hidden', true)
 
 opt('report', 0)
 
+km('n', '<F12>', '<cmd>call my_config#utils#show_function_key()<cr>', {noremap = true})
+
 km('i', 'jk', '<esc>', {noremap = true})
 km('t', '<esc>', '<C-\\><C-n>', {noremap = true})
 
