@@ -8,7 +8,7 @@ local fn = vim.fn
 
 function M.setup()
     autocmd('MyAutoCmd', [[BufLeave,BufWinLeave  \[defx\]* call defx#call_action('add_session')]])
-    autocmd('MyAutocmd', [[FileType defx call my_config#defx#keymapping()]])
+    autocmd('MyAutoCmd', [[FileType defx call my_config#defx#keymapping()]])
     km('', '<F4>', '<cmd>Defx -session-file="/tmp/defx_session" -buffer-name="defx"<CR>', {noremap = true})
 end
 

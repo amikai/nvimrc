@@ -18,11 +18,11 @@ function M.setup()
     g.go_def_mapping_enabled = 0
     g.go_code_completion_enabled = 0
 
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gd <Plug>(go-def)]])
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gD <Plug>(go-describe)]])
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gR <Plug>(go-rename)]])
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> gr <Plug>(go-referrers)]])
-    autocmd('MyAutocmd', [[Filetype go nmap <buffer> <leader>gm <Plug>(go-metalinter)]])
+    autocmd('MyAutoCmd', [[Filetype go nmap <buffer> gd <Plug>(go-def)]])
+    autocmd('MyAutoCmd', [[Filetype go nmap <buffer> gD <Plug>(go-describe)]])
+    autocmd('MyAutoCmd', [[Filetype go nmap <buffer> gR <Plug>(go-rename)]])
+    autocmd('MyAutoCmd', [[Filetype go nmap <buffer> gr <Plug>(go-referrers)]])
+    autocmd('MyAutoCmd', [[Filetype go nmap <buffer> <leader>gm <Plug>(go-metalinter)]])
 
 
     autocmd('MyAutoCmd', [[ Filetype go nmap <buffer> <f3> <Plug>(go-fmt) ]])
