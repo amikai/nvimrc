@@ -62,13 +62,7 @@ opt('fileformats', 'unix,dos,mac')
 
 opt('diffopt', 'filler,vertical,algorithm:patience,context:3,foldcolumn:0')
 
-
--- TODO: fix this
--- Remember cursor position between vim sessions
--- cmd [[ autocmd BufReadPost *
---        if line("'\"") > 0 && line ("'\"") <= line("$")
---            exe "normal! g'\"" |
---        endif ]]
+cmd [[ autocmd BufReadPost * call my_config#utils#go_to_original_pos()]]
 
 -- center buffer around cursor when opening files
 cmd [[ autocmd BufRead * normal zz ]]
