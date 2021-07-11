@@ -37,10 +37,11 @@ require('packer').loader("YouCompleteMe")
 -- }}}
 
 -- ale {{{
-cmd [[nmap <buffer> ]d <Plug>(ale_next_error)]]
-cmd [[nmap <buffer> [d <Plug>(ale_previous_error)]]
+km('n', ']d', '<Plug>(ale_next_error)', {noremap = false, buffer = true})
+km('n', '[d', '<Plug>(go-ale_previous_error)', {noremap = false, buffer = true})
+
 -- open location window > make it to bottom > set height > goto previous window
-cmd [[noremap <F9> <cmd>lopen <bar> wincmd J <bar> 5wincmd _ <bar> wincmd p<cr>]]
+km('n', '<F9>', '<cmd>lopen <bar> wincmd J <bar> 5wincmd _ <bar> wincmd p<cr>', {noremap = true, buffer = true})
 require('packer').loader("ale")
 -- }}}
 
