@@ -1,4 +1,3 @@
-
 local b = vim.b
 local autocmd = require('my_config.utils').autocmd
 local km = require('my_config.utils').km
