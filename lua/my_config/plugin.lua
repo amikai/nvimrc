@@ -106,6 +106,16 @@ return require('packer').startup(function()
             require('my_config.plugin.ycm').config()
         end,
         opt = 'true',
+        -- load it in ftplugin
+    }
+
+    use {
+        'dense-analysis/ale',
+        opt = 'true',
+        setup = function()
+            require('my_config.plugin.ale').setup()
+        end,
+        -- load it in ftplugin
     }
 
     use {
@@ -120,15 +130,8 @@ return require('packer').startup(function()
 
     use {
         'fatih/vim-go',
-        ft = 'go',
         run = ':GoUpdateBinaries',
-        setup = function()
-            require('my_config.plugin.vim-go').setup()
-        end,
-        config = function()
-            require('my_config.plugin.vim-go').config()
-        end,
-
+        ft = 'go'
     }
 
     use {
