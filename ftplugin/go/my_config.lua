@@ -4,8 +4,7 @@ local autocmd = require('my_config.utils').autocmd
 local km = require('my_config.utils').km
 local cmd = vim.cmd
 
-
--- vim-go
+-- vim-go {{{
 b.go_metalinter_command = "golangci-lint"
 b.go_metalinter_enabled = {'vet', 'errcheck', 'staticcheck', 'gosimple'}
 b.go_metalinter_autosave_enabled = {'vet', 'errcheck', 'staticcheck', 'gosimple'}
@@ -29,22 +28,20 @@ km('n', '<f3>', '<Plug>(go-fmt)', {noremap = false, buffer = true})
 km('n', '<f16>', '<Plug>(go-test)', {noremap = false, buffer = true})
 km('n', '<f17>', '<Plug>(go-build)', {noremap = false, buffer = true})
 km('n', '<f18>', '<Plug>(go-run)', {noremap = false, buffer = true})
+-- }}}
 
-
--- ycm
+-- ycm {{{
 -- disable ycm diagnostic, use ale linter instead
 b.ycm_show_diagnostics_ui = 0
 require('packer').loader("YouCompleteMe")
+-- }}}
 
-
--- lsp
--- require('lspconfig').gopls.setup{
---     init_options= { usePlaceholders = true },
--- }
-
--- ale
+-- ale {{{
 cmd [[nmap <buffer> ]d <Plug>(ale_next_error)]]
 cmd [[nmap <buffer> [d <Plug>(ale_previous_error)]]
 -- open location window > make it to bottom > set height > goto previous window
 cmd [[noremap <F9> <cmd>lopen <bar> wincmd J <bar> 5wincmd _ <bar> wincmd p<cr>]]
 require('packer').loader("ale")
+-- }}}
+
+-- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
