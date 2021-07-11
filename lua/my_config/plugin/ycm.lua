@@ -46,7 +46,6 @@ function M.config()
     km('i', '<tab>', '<C-R>=v:lua.tab_complete()<CR>' ,{silent = true, noremap = true})
     km('i', '<s-tab>', '<C-R>=v:lua.s_tab_complete()<CR>' ,{silent = true, noremap = true})
     km('i', '<enter>', 'v:lua.enter_key()' ,{expr = true, noremap = false})
-    km('n', '<F9>', '<cmd>YcmDiags<cr>', {noremap = false})
 end
 
 return M
