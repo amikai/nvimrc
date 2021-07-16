@@ -285,5 +285,16 @@ cmd [[ augroup MyAutoCmd
 
 -- }}}
 
+-- command line mode {{{
+km('c', '<C-a>', '<Home>', {noremap = true})
+km('c', '<C-e>', '<End>', {noremap = true})
+km('c', '<C-p>', '<Up>', {noremap = true})
+km('c', '<C-n>', '<Down>', {noremap = true})
+km('c', '<C-b>', '<Left>', {noremap = true})
+km('c', '<C-f>', '<Right>', {noremap = true})
+km('c', '<M-b>', '<S-Left>', {noremap = true})
+km('c', '<M-f>', '<S-Right>', {noremap = true})
+
+-- }}}
 
 -- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
