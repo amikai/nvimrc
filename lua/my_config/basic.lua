@@ -142,9 +142,9 @@ w_opt('winblend', 20)
 -- Set minimal width for current window.
 opt('winwidth', 30)
 -- Set minimal height for current window.
-opt('winheight', 20)
+-- opt('winheight', 20)
 -- Set maximam maximam command line window.
-opt('cmdwinheight', 5)
+opt('cmdwinheight', 3)
 --  No equal window size.
 opt('equalalways', false)
 
