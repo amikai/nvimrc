@@ -276,9 +276,30 @@ return require('packer').startup(function()
         end
     }
 
-    use { 'pearofducks/ansible-vim' }
+    use {
+        'chr4/nginx.vim',
+        ft = 'nginx'
+    }
 
-    use { 'google/vim-jsonnet' }
+    use {
+        'pearofducks/ansible-vim',
+        ft = {'yaml.ansible', 'ansible_hosts'}
+    }
+
+    use {
+        'google/vim-jsonnet',
+        ft = {'jsonnet'}
+    }
+
+    use {
+        'Vim-Jinja2-Syntax',
+        ft = 'jinja'
+    }
+
+    use {
+        'hashivim/vim-terraform',
+        ft = {'hcl', 'terraform'}
+    }
 
     -- TODO: rust,config,
     -- tree.lua, autoformat,easyaline, ale
