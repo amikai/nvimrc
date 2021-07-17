@@ -1,5 +1,5 @@
-function! DefxContextMenu() abort
-    call utils#echo_succes_msg("Defx context menu\n")
+function! my_config#defx#context_menu() abort
+    echo("Defx context menu\n")
     let l:msg =  "=========================================================\n".
                 \ "  (a)dd a childnode\n".
                 \ "  (A)dd multiple childnodes\n".
@@ -10,11 +10,11 @@ function! DefxContextMenu() abort
     echo l:msg
     let l:ans = nr2char(getchar())
     let l:actions = {
-                \ 'a':{'op':'call', 'args':['DefxNewNode']},
-                \ 'A': {'op':'call',   'args':['DefxNewMultiNode']},
+                \ 'a':{'op':'call', 'args':['my_config#defx#new_node']},
+                \ 'A': {'op':'call',   'args':['my_config#defx#new_multi_node']},
                 \ 'd':{'op':'remove',  'args':[]},
                 \ 'm':{'op':'rename',  'args':[]},
-                \ 'r':{'op': 'call',   'args':['DefxOpenFinder']}
+                \ 'r':{'op': 'call',   'args':['my_config#defx#open_finder']}
                 \ }
     if !(has_key(l:actions, l:ans))
         silent exe 'redraw'
@@ -25,17 +25,17 @@ function! DefxContextMenu() abort
     call defx#call_action(action.op, action.args)
 endfunction
 
-function! DefxNewNode(context) abort
+function! my_config#defx#new_node(context) abort
     echo "Enter the dir/file name to be created. Dirs end with a '/'\n"
     call defx#call_action('new_file')
 endfunction
 
-function! DefxNewMultiNode(context) abort
+function! my_config#defx#new_multi_node(context) abort
     echo "Enter the dir/file name seperated by space. Dirs end with a '/'\n"
     call defx#call_action('new_multiple_files')
 endfunction
 
-function! DefxOpenFinder(context) abort
+function! my_config#defx#open_finder(context) abort
     if has('mac')
         let l:open = 'open'
     elseif has('unix')
@@ -54,11 +54,11 @@ function! DefxOpenFinder(context) abort
     endfor
 endfunction
 
-function! MyDefxKeySetup() abort
+function! my_config#defx#keymapping() abort
     nnoremap <silent><buffer><expr> <CR>
                 \ defx#is_directory() ?
                 \ defx#do_action('open_or_close_tree') :
-                \ defx#do_action('drop')
+                \ defx#do_action('open', 'choose')
 
     nnoremap <silent><buffer><expr> o
                 \ defx#do_action('open_tree', 'toggle')
@@ -85,7 +85,7 @@ function! MyDefxKeySetup() abort
     nnoremap <buffer> cd
                 \ :call defx#call_action('open') <bar>
                 \ :call defx#call_action('change_vim_cwd')<bar>
-                \ :call utils#echo_succes_msg("Defx: CWD is now: ".getcwd())<cr>
+                \ :call echo("Defx: CWD is now: ".getcwd())<cr>
 
 
     nnoremap <silent><buffer><expr> I defx#do_action('toggle_ignored_files')
@@ -99,30 +99,35 @@ function! MyDefxKeySetup() abort
     nnoremap <silent><buffer><expr> yy defx#do_action('copy')
     nnoremap <silent><buffer><expr> q defx#do_action('quit')
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
-    nnoremap <silent><buffer>m :call DefxContextMenu()<CR>
+    nnoremap <silent><buffer>m :call my_config#defx#context_menu()<CR>
 endfunction
 
-call defx#custom#column('icon', {
-            \ 'directory_icon': '▸',
-            \ 'opened_icon': '▾',
-            \ 'root_icon': '📁 ',
-            \ })
 
-call defx#custom#column('mark', {
-            \ 'readonly_icon': '✗',
-            \ 'selected_icon': '✓',
-            \ })
+function! my_config#defx#basic_setting() abort
+    call defx#custom#column('icon', {
+                \ 'directory_icon': '▸',
+                \ 'opened_icon': '▾',
+                \ 'root_icon': '📁 ',
+                \ })
 
-call defx#custom#column('filename', {
-            \ 'min_width': 128,
-            \ 'max_width': 128,
-            \ })
+    call defx#custom#column('mark', {
+                \ 'readonly_icon': '✗',
+                \ 'selected_icon': '✓',
+                \ })
 
-call defx#custom#option('_', {
-            \ 'columns': 'git:mark:indent:icon:filename:type',
-            \ 'split': 'vertical',
-            \ 'winwidth': 35,
-            \ 'direction': 'topleft',
-            \ 'resume': v:false,
-            \ 'toggle': v:true
-            \ })
+    call defx#custom#column('filename', {
+                \ 'min_width': 128,
+                \ 'max_width': 128,
+                \ })
+
+    call defx#custom#option('_', {
+                \ 'columns': 'git:mark:indent:icon:filename:type',
+                \ 'split': 'vertical',
+                \ 'winwidth': 35,
+                \ 'direction': 'topleft',
+                \ 'resume': v:false,
+                \ 'toggle': v:true,
+                \ 'session_file': stdpath('data') . '/defx_session',
+                \ 'buffer_name': 'defx'
+                \ })
+endfunction
