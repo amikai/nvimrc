@@ -126,6 +126,8 @@ function! my_config#defx#basic_setting() abort
                 \ 'winwidth': 35,
                 \ 'direction': 'topleft',
                 \ 'resume': v:false,
-                \ 'toggle': v:true
+                \ 'toggle': v:true,
+                \ 'session_file': stdpath('data') . '/defx_session',
+                \ 'buffer_name': 'defx'
                 \ })
 endfunction
