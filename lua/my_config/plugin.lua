@@ -265,6 +265,14 @@ return require('packer').startup(function()
         end,
         config = function()
             require('my_config.plugin.defx').config()
+        end,
+        requires = {'t9md/vim-choosewin'},
+    }
+
+    use {
+        't9md/vim-choosewin',
+        setup = function()
+            require('my_config.plugin.vim-choosewin').setup()
         end
     }
 
