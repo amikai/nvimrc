@@ -15,7 +15,7 @@ require('packer').loader("YouCompleteMe")
 -- }}}
 
 -- lsp {{{
-local pyls_on_attach = function(client, bufnr)
+local pylsp_on_attach = function(client, bufnr)
     my_lsp.diagnostic_setting()
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     opts = {noremap = true, silent = true}
@@ -35,8 +35,8 @@ local pyls_on_attach = function(client, bufnr)
 
 end
 
-require('lspconfig').pyls.setup{
-    on_attach = pyls_on_attach,
+require('lspconfig').pylsp.setup{
+    on_attach = pylsp_on_attach,
 }
 -- }}}
 
