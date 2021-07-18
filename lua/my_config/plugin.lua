@@ -35,7 +35,7 @@ return require('packer').startup(function()
         'lukas-reineke/indent-blankline.nvim',
         setup = function()
             vim.g.indent_blankline_disable_warning_message = true
-            vim.g.indent_blankline_filetype_exclude = {'defx', 'diff', 'tagbar', 'help'}
+            vim.g.indent_blankline_filetype_exclude = {'fern', 'diff', 'tagbar', 'help'}
         end
     }
 
@@ -253,15 +253,15 @@ return require('packer').startup(function()
     }
 
     use {
-        'Shougo/defx.nvim',
-        cmd = 'Defx',
+        'lambdalisue/fern.vim',
         setup = function()
-            require('my_config.plugin.defx').setup()
-        end,
-        config = function()
-            require('my_config.plugin.defx').config()
-        end,
-        requires = {'t9md/vim-choosewin'},
+            vim.fn['my_config#fern#setting']()
+            vim.cmd [[autocmd FileType fern call my_config#fern#keymapping()]]
+        end
+    }
+
+    use {
+        'lambdalisue/fern-git-status.vim',
     }
 
     use {

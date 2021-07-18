@@ -214,7 +214,7 @@ w_opt('foldcolumn', '1')
 -- Use a popup menu to show the possible completions
 opt('completeopt', 'menuone,noinsert,noselect')
 
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.shortmess = vim.o.shortmess .. 'cF'
 
 opt('virtualedit', 'block')
 
