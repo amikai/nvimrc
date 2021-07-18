@@ -5,7 +5,7 @@ local echo = vim.api.nvim_echo
 local km = require('my_config.utils').km
 
 function M.setup()
-    g.airline_extensions = {'tabline', 'quickfix', 'branch'}
+    g.airline_extensions = {'tabline', 'quickfix', 'branch', 'fern', 'tagbar'}
 
     g.airline_powerline_fonts = 1
 
