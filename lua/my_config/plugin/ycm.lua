@@ -21,8 +21,6 @@ _G.tab_complete = function()
         return t "<C-n>"
     elseif check_back_space() then
         return t "<Tab>"
-    else
-        return fn['<SNR>157_RequestSemanticCompletion']()
     end
 end
 
@@ -37,7 +35,7 @@ _G.enter_key = function()
 end
 
 function M.setup()
-    g['ycm_auto_trigger'] = 0
+    g['ycm_auto_trigger'] = 1
     g['ycm_key_list_select_completion'] = {}
     g['ycm_key_list_previous_completion'] = {}
 end
