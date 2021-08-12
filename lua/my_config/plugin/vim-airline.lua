@@ -5,11 +5,11 @@ local echo = vim.api.nvim_echo
 local km = require('my_config.utils').km
 
 function M.setup()
-    g.airline_extensions = {'tabline', 'quickfix', 'branch', 'fern', 'tagbar'}
+    g.airline_focuslost_inactive = 1
+
+    g.airline_extensions = {'tabline', 'quickfix', 'branch', 'fern', 'tagbar', 'ale'}
 
     g.airline_powerline_fonts = 1
-
-    g['airline#extensions#tabline#enabled']= 1
 
     -- show the airline_tab type is tab or buffer (top right)
     g['airline#extensions#tabline#show_tab_type'] = 1
