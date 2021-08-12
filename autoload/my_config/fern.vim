@@ -1,14 +1,15 @@
 function! my_config#fern#setting() abort
-    let g:fern#renderer#default#expanded_symbol = '▾'
-    let g:fern#renderer#default#collapsed_symbol = '▸'
-    let g:fern#renderer#default#root_symbol = '📁'
-    let g:fern#renderer#default#leaf_symbol = ' '
+    let g:fern#renderer#default#expanded_symbol = '▾ '
+    let g:fern#renderer#default#collapsed_symbol = '▸ '
+    let g:fern#renderer#default#root_symbol = '📁 '
+    let g:fern#renderer#default#leaf_symbol = '  '
     let g:fern#renderer#default#leading = ' '
     let g:fern#disable_default_mappings = 0
     let g:fern#drawer_width = 30
     let g:fern#disable_drawer_auto_resize = 0
     let g:fern#disable_default_mappings = 1
     let g:fern#mark_symbol = '✓'
+    autocmd Filetype fern highlight link FernBranchSymbol Orange
     nnoremap <silent><F4>  :<C-u>Fern <C-r>=getcwd()<CR> -drawer -toggle -width=30<CR>
 endfunction
 
@@ -49,7 +50,7 @@ function! my_config#fern#keymapping() abort
     nmap <buffer>p <Plug>(fern-action-clipboard-paste)
     nmap <buffer>yy <Plug>(fern-action-clipboard-copy)
 
-    nmap <buffer>z <Plug>(fern-action-zoom)
+    nnoremap <buffer>+ <cmd>call fern#action#call('zoom')<cr>
 
     nnoremap <silent><buffer>m <cmd>call my_config#fern#context_menu()<cr>
 endfunction
