@@ -209,13 +209,6 @@ return require('packer').startup(function()
     }
 
     use {
-        'justinmk/vim-sneak',
-        setup = function()
-            require('my_config.plugin.vim-sneak').setup()
-        end
-    }
-
-    use {
         'mhinz/vim-signify',
         setup = function()
             require('my_config.plugin.vim-signify').setup()
