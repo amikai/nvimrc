@@ -43,6 +43,8 @@ return require('packer').startup(function()
         end
     }
 
+    use { 'machakann/vim-swap' }
+
     use {
         'glts/vim-textobj-comment',
         requires = {'kana/vim-textobj-user'},
