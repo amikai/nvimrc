@@ -1,8 +1,12 @@
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packer_install_dir = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.api.nvim_command 'packadd packer.nvim'
+local packer_repo =  "https://github.com/wbthomason/packer.nvim"
+local install_cmd = string.format("10split |term git clone --depth=1 %s %s", packer_repo, packer_install_dir)
+
+if vim.fn.empty(vim.fn.glob(packer_install_dir)) > 0 then
+    vim.api.nvim_echo({ { "Installing packer.nvim", "Type" } }, true, {})
+    vim.cmd(install_cmd)
+    vim.cmd [[ packadd packer.nvim ]]
 end
 
 vim.cmd [[packadd packer.nvim]]
