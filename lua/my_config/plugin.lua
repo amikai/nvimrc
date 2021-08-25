@@ -43,6 +43,8 @@ return require('packer').startup(function()
         end
     }
 
+    use {'PeterRincker/vim-searchlight'}
+
     use { 'machakann/vim-swap' }
 
     use {
