@@ -63,9 +63,7 @@ return require('packer').startup(function()
 
     use {
         'andymass/vim-matchup',
-        setup = function()
-            require('my_config.plugin.vim-matchup').setup()
-        end,
+        setup = [[ require('my_config.plugin.vim-matchup').setup() ]]
     }
 
     use {
@@ -91,30 +89,20 @@ return require('packer').startup(function()
 
     use {
         'neovim/nvim-lspconfig',
-        config = function()
-            require('my_config.plugin.nvim-lspconfig').config()
-        end
+        config = [[ require('my_config.plugin.nvim-lspconfig').config() ]]
     }
 
     use {
         'ycm-core/YouCompleteMe',
-        setup = function()
-            require('my_config.plugin.ycm').setup()
-        end,
-        config = function()
-            require('my_config.plugin.ycm').config()
-        end,
         opt = 'true',
-        -- load it in ftplugin
+        setup = [[ require('my_config.plugin.ycm').setup() ]],
+        config = [[ require('my_config.plugin.ycm').config() ]]
     }
 
     use {
         'dense-analysis/ale',
         opt = 'true',
-        setup = function()
-            require('my_config.plugin.ale').setup()
-        end,
-        -- load it in ftplugin
+        setup = [[ require('my_config.plugin.ale').setup() ]]
     }
 
     use {
@@ -147,9 +135,7 @@ return require('packer').startup(function()
     use {
         'mhinz/vim-sayonara',
         cmd = 'Sayonara',
-        setup = function()
-            require('my_config.plugin.vim-sayonara').setup()
-        end
+        setup = [[ require('my_config.plugin.vim-sayonara').setup() ]]
     }
 
     use {
@@ -164,9 +150,7 @@ return require('packer').startup(function()
 
     use {
         'mbbill/undotree',
-        setup = function()
-            require('my_config.plugin.undotree').setup()
-        end,
+        setup = [[ require('my_config.plugin.undotree').setup() ]],
         cmd = 'UndotreeToggle'
     }
 
@@ -237,16 +221,12 @@ return require('packer').startup(function()
 
     use {
         'vim-airline/vim-airline',
-        setup = function()
-            require('my_config.plugin.vim-airline').setup()
-        end
+        setup = [[ require('my_config.plugin.vim-airline').setup() ]]
     }
 
     use {
         'preservim/tagbar',
-        setup = function()
-            require('my_config.plugin.tagbar').setup()
-        end
+        setup = [[ require('my_config.plugin.tagbar').setup() ]]
     }
 
     use {
@@ -263,9 +243,7 @@ return require('packer').startup(function()
 
     use {
         't9md/vim-choosewin',
-        setup = function()
-            require('my_config.plugin.vim-choosewin').setup()
-        end
+        setup = [[ require('my_config.plugin.vim-choosewin').setup() ]]
     }
 
     use {
