@@ -12,7 +12,7 @@ end
 vim.cmd [[packadd packer.nvim]]
 vim.cmd [[packadd vimball]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
