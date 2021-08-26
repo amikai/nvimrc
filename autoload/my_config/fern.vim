@@ -23,7 +23,7 @@ function! my_config#fern#keymapping() abort
 
     nmap <buffer><expr>o
 	      \ fern#smart#leaf(
-	      \   "\<Nop>",
+	      \   "\<Plug>(fern-action-open:select)",
 	      \   "\<Plug>(fern-action-expand)",
 	      \   "\<Plug>(fern-action-collapse)",
 	      \ )
