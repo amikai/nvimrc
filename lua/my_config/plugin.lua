@@ -91,6 +91,8 @@ return require('packer').startup(function(use)
       cmd = {'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull'}
     }
 
+    use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
+
     use {
         'neovim/nvim-lspconfig',
         config = [[ require('my_config.plugin.nvim-lspconfig').config() ]]
