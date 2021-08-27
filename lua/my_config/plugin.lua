@@ -95,9 +95,8 @@ return require('packer').startup(function(use)
 
     use {
         'neovim/nvim-lspconfig',
-        config = function()
-            require('my_config.plugin.nvim-lspconfig')
-        end
+        config = [[ require('my_config.plugin.nvim-lspconfig') ]]
+
     }
 
     use {
@@ -167,37 +166,28 @@ return require('packer').startup(function(use)
         {'haya14busa/vim-asterisk'},
         {
             'haya14busa/is.vim',
-            setup = function()
-                require('my_config.plugin.is').setup()
-            end
+            setup = [[ require('my_config.plugin.is').setup() ]]
         },
         {
             'osyo-manga/vim-anzu',
-            setup = function()
-                require('my_config.plugin.vim-anzu').setup()
-            end
+            setup = [[ require('my_config.plugin.vim-anzu').setup() ]]
         }
     }
 
     use {
         'ntpeters/vim-better-whitespace',
-        setup = function()
-            require('my_config.plugin.vim-better-whitespace').setup()
-        end
+        setup = [[ require('my_config.plugin.vim-better-whitespace').setup() ]]
     }
 
     use {
         'ronakg/quickr-cscope.vim',
-        setup = function()
-            require('my_config.plugin.quickr-cscope').setup()
-        end
+        setup = [[ require('my_config.plugin.quickr-cscope').setup() ]]
     }
 
     use {
         'junegunn/goyo.vim',
-        setup = function()
-            require('my_config.plugin.goyo').setup()
-        end
+        setup = [[ require('my_config.plugin.goyo').setup() ]]
+
     }
 
     use {
@@ -207,17 +197,13 @@ return require('packer').startup(function(use)
 
     use {
         'mhinz/vim-signify',
-        setup = function()
-            require('my_config.plugin.vim-signify').setup()
-        end
+        setup = [[ require('my_config.plugin.vim-signify').setup() ]]
     }
 
     use {
         'nvim-treesitter/nvim-treesitter',
         run = 'TSUpdate',
-        config = function()
-            require('my_config.plugin.nvim-treesitter').config()
-        end
+        config = [[ require('my_config.plugin.nvim-treesitter').config() ]]
     }
 
     use {
