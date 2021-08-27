@@ -41,4 +41,9 @@ function M.is_load(plugin)
     return packer_plugins ~= nil and packer_plugins[plugin] ~= nil and packer_plugins[plugin].loaded ~= nil
 end
 
+-- See https://unix.stackexchange.com/questions/10689/how-can-i-tell-if-im-in-a-tmux-session-from-a-bash-script
+function M.is_in_tmux()
+    return os.getenv("TERM_PROGRAM") == "tmux"
+end
+
 return M

@@ -280,7 +280,9 @@ return require('packer').startup(function(use)
         ft = {'hcl', 'terraform'}
     }
 
-    -- TODO: rust,config,
-    -- tree.lua, autoformat,easyaline, ale
+    use {
+        'christoomey/vim-tmux-navigator',
+        cond = [[ require("my_config.utils").is_in_tmux() ]]
+    }
 
 end)
