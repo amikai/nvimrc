@@ -14,7 +14,7 @@ end
 
 function M.km(modes, lhs, rhs, opts)
     opts = opts or {}
-    set_keymap = vim.api.nvim_set_keymap
+    local set_keymap = vim.api.nvim_set_keymap
     if type(modes) == 'string' then
         modes = {modes}
     end
