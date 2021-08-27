@@ -271,7 +271,7 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'Vim-Jinja2-Syntax',
+        'Glench/Vim-Jinja2-Syntax',
         ft = 'jinja'
     }
 
