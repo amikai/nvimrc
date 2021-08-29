@@ -99,12 +99,15 @@ return require('packer').startup(function(use)
 
     }
 
+    use {'vim-denops/denops.vim'}
     use {
-        'ycm-core/YouCompleteMe',
-        opt = 'true',
-        setup = [[ require('my_config.plugin.ycm').setup() ]],
-        config = [[ require('my_config.plugin.ycm').config() ]]
+        'Shougo/ddc.vim',
+        config = [[ require('my_config.plugin.ddc').config() ]]
     }
+    use {'Shougo/ddc-around'}
+    use {'Shougo/ddc-matcher_head'}
+    use {'Shougo/ddc-sorter_rank'}
+    use {'Shougo/ddc-nvim-lsp'}
 
     use {
         'dense-analysis/ale',

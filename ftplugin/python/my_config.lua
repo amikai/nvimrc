@@ -4,16 +4,6 @@ local km = require('my_config.utils').km
 local cmd = vim.cmd
 local my_lsp = require('my_config.lsp')
 
--- ycm {{{
-b.ycm_show_diagnostics_ui = 0
-km('n', 'gd', '<cmd>YcmCompleter GoTo<cr>', {noremap = false, buffer = true})
-km('n', 'gr', '<cmd>YcmCompleter GoToReferences<cr>', {noremap = false, buffer = true})
-km('n', 'K', '<cmd>YcmCompleter GetDoc<cr>', {noremap = false, buffer = true})
-cmd [[autocmd User YcmLocationOpened call my_config#ycm#open_loc_or_quickfix_win()]]
-cmd [[autocmd User YcmQuickFixOpened call my_config#ycm#open_loc_or_quickfix_win()]]
-require('packer').loader("YouCompleteMe")
--- }}}
-
 -- lsp {{{
 local pylsp_on_attach = function(client, bufnr)
     my_lsp.diagnostic_setting()
