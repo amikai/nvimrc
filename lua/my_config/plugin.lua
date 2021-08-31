@@ -105,9 +105,11 @@ return require('packer').startup(function(use)
         config = [[ require('my_config.plugin.ddc').config() ]]
     }
     use {'Shougo/ddc-around'}
-    use {'Shougo/ddc-matcher_head'}
-    use {'Shougo/ddc-sorter_rank'}
     use {'Shougo/ddc-nvim-lsp'}
+    use {'Shougo/ddc-matcher_head'}
+    use {'Shougo/ddc-matcher_length'}
+    use {'Shougo/ddc-sorter_rank'}
+    use {'Shougo/ddc-converter_remove_overlap'}
 
     use {
         'dense-analysis/ale',

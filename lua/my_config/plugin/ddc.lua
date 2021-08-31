@@ -45,11 +45,12 @@ _G.enter_key = function()
 end
 
 M.config = function()
-    fn['ddc#custom#patch_global']('sources', {'around', 'nvimlsp'})
+    fn['ddc#custom#patch_global']('sources', {'nvimlsp', 'around'})
     fn['ddc#custom#patch_global']('sourceOptions', {
         _ = {
-            matchers = {'matcher_head'},
-            sorters = {'sorter_rank'}
+            matchers = {'matcher_head', 'matcher_length'},
+            sorters = {'sorter_rank'},
+            converters = {'converter_remove_overlap'}
         },
         around = { mark = 'A'},
         nvimlsp = { mark = 'lsp'}
