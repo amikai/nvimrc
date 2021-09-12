@@ -174,10 +174,12 @@ lspconfig.sumneko_lua.setup({
     },
 })
 -- }}}
---
+
+-- bsh lsp setting {{{
 lspconfig.bashls.setup({
     on_attach = custom_attach
 })
+-- }}}
 -- golang lsp setting {{{
 lspconfig.gopls.setup({
     on_attach = function(client, bufnr)
