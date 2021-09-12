@@ -10,7 +10,7 @@ function! my_config#fern#setting() abort
     let g:fern#disable_default_mappings = 1
     let g:fern#mark_symbol = '✓'
     autocmd Filetype fern highlight link FernBranchSymbol Orange
-    nnoremap <silent><F4>  :<C-u>Fern <C-r>=getcwd()<CR> -drawer -toggle -width=30<CR>
+    nnoremap <silent><F4>  <cmd>Fern . -drawer -toggle -width=30<cr>
 endfunction
 
 function! my_config#fern#keymapping() abort
