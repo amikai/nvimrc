@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
 
     use {
       'tpope/vim-fugitive',
-      cmd = {'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull'}
+      cmd = {'Git', 'Gdiffsplit'}
     }
 
     use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
