@@ -180,6 +180,14 @@ lspconfig.bashls.setup({
     on_attach = custom_attach
 })
 -- }}}
+
+-- vimscript lsp setting {{{
+lspconfig.vimls.setup({
+    on_attach = custom_attach
+})
+-- }}}
+
+
 -- golang lsp setting {{{
 lspconfig.gopls.setup({
     on_attach = function(client, bufnr)
