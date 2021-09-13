@@ -6,7 +6,15 @@ local km = require('my_config.utils').km
 
 function M.config()
     require'nvim-treesitter.configs'.setup {
-        ensure_installed = "maintained",
+        ensure_installed = {
+            "c", "rust",  "cpp", "cmake", "bash",
+            "go", "gomod",
+            "html", "javascript", "css", "scss",
+            "yaml", "json", "toml",
+            "dockerfile",
+            "vim",
+            "lua",
+        },
         highlight = {
             enable = true,
         },
