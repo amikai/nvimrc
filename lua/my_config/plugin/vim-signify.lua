@@ -4,6 +4,7 @@ local g = vim.g
 local km = require('my_config.utils').km
 
 function M.setup()
+    g.signify_priority = 5
     km('x', 'ic', '<plug>(signify-motion-inner-visual)')
     km('o', 'ic', '<plug>(signify-motion-inner-pending)')
     km('x', 'ac', '<plug>(signify-motion-outer-visual)')

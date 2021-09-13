@@ -59,7 +59,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, cli
     local config = {
         underline = false,
         virtual_text = false,
-        signs = true,
+        signs = { priority = 10 },
         update_in_insert = false,
     }
     vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
