@@ -106,6 +106,10 @@ km('v', 'K', ":m '<-2<cr>gv=gv", {noremap = true})
 km('v', '<', '<gv', {noremap = true})
 km('v', '>', '>gv', {noremap = true})
 
+-- Sign column
+opt('signcolumn', "auto:2")
+
+
 -- }}}
 
 -- Vim user interface {{{
