@@ -2,15 +2,6 @@
 local M = {}
 
 -- diagnostic setting {{{
-function M.show_line_diagnostics()
-    local opts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-    }
-    vim.lsp.diagnostic.show_line_diagnostics(opts)
-end
-
-
 M.toggle_diagnostic_window = function()
     local winnr = vim.fn.winnr()
     local locwin_open = vim.fn.getloclist(0, {winid = 0}).winid ~= 0
@@ -25,55 +16,9 @@ M.toggle_diagnostic_window = function()
 
 end
 
-vim.fn.sign_define("LspDiagnosticsSignError", { text = "❌", texthl = "LspDiagnosticsDefaultError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "⚠️", texthl = "LspDiagnosticsDefaultWarning" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "ℹ️", texthl = "LspDiagnosticsDefaultInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "💡", texthl = "LspDiagnosticsDefaultHint" })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-})
-
--- Refs: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
-    local uri = params.uri
-    local bufnr = vim.uri_to_bufnr(uri)
-
-    if not bufnr then
-        return
-    end
-
-    if not vim.api.nvim_buf_is_loaded(bufnr) then
-        return
-    end
-
-    local diagnostics = params.diagnostics
-    for i, v in ipairs(diagnostics) do
-        diagnostics[i].message = string.format("%s: %s", v.source, v.message)
-    end
-    vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
-
-    local config = {
-        underline = false,
-        virtual_text = false,
-        signs = { priority = 10 },
-        update_in_insert = false,
-    }
-    vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
-end
-
--- The following settings works with the bleeding edge neovim.
--- See https://github.com/neovim/neovim/pull/13998.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-})
--- }}}
---
 -- lsp attach function {{{
 local custom_attach = function(client, bufnr)
+    require('my_config.plugin.lspsaga').on_attach()
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -88,7 +33,6 @@ local custom_attach = function(client, bufnr)
     local opts = { noremap = true, silent = true }
     buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "<C-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
     buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     -- buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -96,16 +40,9 @@ local custom_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
     buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    buf_set_keymap("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     buf_set_keymap("n", "<F9>", "<cmd>lua require('my_config.plugin.nvim-lspconfig').toggle_diagnostic_window()<CR>", opts)
-    buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-    vim.cmd([[
-        autocmd CursorHold <buffer> lua require('my_config.plugin.nvim-lspconfig').show_line_diagnostics()
-    ]])
 
     -- Set some key bindings conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
@@ -191,19 +128,12 @@ lspconfig.vimls.setup({
 -- golang lsp setting {{{
 lspconfig.gopls.setup({
     on_attach = function(client, bufnr)
+        require('my_config.plugin.lspsaga').on_attach()
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
 
-        vim.cmd([[
-            autocmd cursorhold <buffer> lua require('my_config.plugin.nvim-lspconfig').show_line_diagnostics()
-        ]])
-
-        local opts = { noremap = true, silent = true }
-        buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-        buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
         buf_set_keymap("n", "<F9>", "<cmd>lua require('my_config.plugin.nvim-lspconfig').toggle_diagnostic_window()<CR>", opts)
-
         local msg = string.format("Language server %s started!", client.name)
         vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
     end
