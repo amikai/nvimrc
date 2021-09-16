@@ -206,6 +206,11 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'sindrets/diffview.nvim',
+        cmd = {'DiffviewOpen'}
+    }
+
+    use {
         'nvim-treesitter/nvim-treesitter',
         run = 'TSUpdate',
         config = [[ require('my_config.plugin.nvim-treesitter').config() ]]
