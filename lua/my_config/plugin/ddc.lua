@@ -45,16 +45,15 @@ _G.enter_key = function()
 end
 
 M.config = function()
-    fn['ddc#custom#patch_global']('sources', {'nvimlsp', 'around'})
+    fn['ddc#custom#patch_global']('sources', {'nvim-lsp','around'})
     fn['ddc#custom#patch_global']('sourceOptions', {
         _ = {
             matchers = {'matcher_head', 'matcher_length'},
             sorters = {'sorter_rank'},
             converters = {'converter_remove_overlap'}
         },
+        ['nvim-lsp'] = { mark = 'LSP' },
         around = { mark = 'A'},
-        nvimlsp = { mark = 'lsp'}
-
     })
     km('i', '<tab>', 'v:lua.tab_complete()' ,{expr = true, silent = true, noremap = true})
     km('i', '<s-tab>', '<C-R>=v:lua.s_tab_complete()<CR>' ,{silent = true, noremap = true})
