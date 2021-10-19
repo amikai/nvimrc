@@ -22,7 +22,14 @@ return require('packer').startup(function(use)
             vim.g.gruvbox_material_background = 'soft'
         end,
         config = function()
-            vim.cmd[[colorscheme gruvbox-material]]
+            -- vim.cmd[[colorscheme gruvbox-material]]
+        end
+    }
+
+    use {
+        'arcticicestudio/nord-vim',
+        config = function()
+            vim.cmd[[colorscheme nord]]
         end
     }
 
