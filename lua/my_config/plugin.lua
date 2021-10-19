@@ -200,6 +200,10 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'kevinhwang91/nvim-bqf'
+    }
+
+    use {
         'junegunn/goyo.vim',
         setup = [[ require('my_config.plugin.goyo').setup() ]]
 
