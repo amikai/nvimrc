@@ -12,12 +12,14 @@ function M.config()
             "html", "javascript", "css", "scss",
             "yaml", "json", "toml",
             "dockerfile",
+            "python",
             "vim",
             "lua",
         },
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,
+            disable = {"python"}
         },
         indent = {
             endble = true

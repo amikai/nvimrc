@@ -149,6 +149,11 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'numirias/semshi',
+        run = ':UpdateRemotePlugins'
+    }
+
+    use {
         'fatih/vim-go',
         run = ':GoUpdateBinaries',
         ft = 'go',
