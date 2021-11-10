@@ -124,6 +124,11 @@ lspconfig.vimls.setup({
 })
 -- }}}
 
+-- python pylsp setting {{{
+lspconfig.pylsp.setup({
+    on_attach= custom_attach
+})
+-- }}}
 
 -- golang lsp setting {{{
 lspconfig.gopls.setup({
