@@ -41,6 +41,10 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'bpietravalle/vim-bolt'
+    }
+
+    use {
          'luochen1990/rainbow',
         setup = function()
             vim.g.rainbow_active = 1
