@@ -29,7 +29,14 @@ return require('packer').startup(function(use)
     use {
         'arcticicestudio/nord-vim',
         config = function()
-            vim.cmd[[colorscheme nord]]
+            -- vim.cmd[[colorscheme nord]]
+        end
+    }
+
+    use {
+        'cocopon/iceberg.vim',
+        config = function()
+            vim.cmd[[colorscheme iceberg]]
         end
     }
 
