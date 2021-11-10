@@ -22,8 +22,26 @@ return require('packer').startup(function(use)
             vim.g.gruvbox_material_background = 'soft'
         end,
         config = function()
-            vim.cmd[[colorscheme gruvbox-material]]
+            -- vim.cmd[[colorscheme gruvbox-material]]
         end
+    }
+
+    use {
+        'arcticicestudio/nord-vim',
+        config = function()
+            -- vim.cmd[[colorscheme nord]]
+        end
+    }
+
+    use {
+        'cocopon/iceberg.vim',
+        config = function()
+            vim.cmd[[colorscheme iceberg]]
+        end
+    }
+
+    use {
+        'bpietravalle/vim-bolt'
     }
 
     use {
@@ -96,7 +114,10 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         config = [[ require('my_config.plugin.nvim-lspconfig') ]]
+    }
 
+    use {
+        'glepnir/lspsaga.nvim'
     }
 
     use {'vim-denops/denops.vim'}
@@ -128,6 +149,11 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'numirias/semshi',
+        run = ':UpdateRemotePlugins'
+    }
+
+    use {
         'fatih/vim-go',
         run = ':GoUpdateBinaries',
         ft = 'go',
@@ -142,6 +168,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        setup = [[ require('my_config.plugin.telescope').setup() ]],
         cmd = 'Telescope'
     }
 
@@ -187,6 +214,10 @@ return require('packer').startup(function(use)
     use {
         'ronakg/quickr-cscope.vim',
         setup = [[ require('my_config.plugin.quickr-cscope').setup() ]]
+    }
+
+    use {
+        'kevinhwang91/nvim-bqf'
     }
 
     use {
