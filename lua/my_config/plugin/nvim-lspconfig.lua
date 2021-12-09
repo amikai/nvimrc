@@ -8,7 +8,7 @@ M.toggle_diagnostic_window = function()
     if locwin_open then
         vim.cmd("lclose")
     else
-        vim.lsp.diagnostic.set_loclist({ open_loclist = true })
+        vim.diagnostic.setloclist({ open = true })
         vim.cmd("wincmd J")
         vim.cmd("5wincmd _")
     end
@@ -18,7 +18,6 @@ end
 
 -- lsp attach function {{{
 local custom_attach = function(client, bufnr)
-    require('my_config.plugin.lspsaga').on_attach()
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -42,6 +41,13 @@ local custom_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
     buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     buf_set_keymap("n", "<F9>", "<cmd>lua require('my_config.plugin.nvim-lspconfig').toggle_diagnostic_window()<CR>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
+    vim.fn.sign_define("DiagnosticSignError", { text = "❌", texthl = "DiagnosticSignError" })
+    vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
+    vim.fn.sign_define("DiagnosticSignInformation", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
+    vim.fn.sign_define("DiagnosticSignHint", { text = "💡", texthl = "DiagnosticSignHint" })
 
 
     -- Set some key bindings conditional on server capabilities
@@ -132,16 +138,7 @@ lspconfig.pylsp.setup({
 
 -- golang lsp setting {{{
 lspconfig.gopls.setup({
-    on_attach = function(client, bufnr)
-        require('my_config.plugin.lspsaga').on_attach()
-        local function buf_set_keymap(...)
-            vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
-
-        buf_set_keymap("n", "<F9>", "<cmd>lua require('my_config.plugin.nvim-lspconfig').toggle_diagnostic_window()<CR>", opts)
-        local msg = string.format("Language server %s started!", client.name)
-        vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
-    end
+    on_attach = custom_attach
 })
 
 -- }}}

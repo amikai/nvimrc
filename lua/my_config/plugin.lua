@@ -116,10 +116,6 @@ return require('packer').startup(function(use)
         config = [[ require('my_config.plugin.nvim-lspconfig') ]]
     }
 
-    use {
-        'glepnir/lspsaga.nvim'
-    }
-
     use {'vim-denops/denops.vim'}
     use {
         'Shougo/ddc.vim',
