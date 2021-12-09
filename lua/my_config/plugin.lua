@@ -111,6 +111,9 @@ return require('packer').startup(function(use)
 
     use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
 
+    use {'rhysd/committia.vim'}
+
+
     use {
         'neovim/nvim-lspconfig',
         config = [[ require('my_config.plugin.nvim-lspconfig') ]]
