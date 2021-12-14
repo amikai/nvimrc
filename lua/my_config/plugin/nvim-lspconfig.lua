@@ -15,6 +15,7 @@ M.toggle_diagnostic_window = function()
     vim.cmd(string.format("%swincmd w", winnr))
 
 end
+-- }}}
 
 -- lsp attach function {{{
 local custom_attach = function(client, bufnr)
