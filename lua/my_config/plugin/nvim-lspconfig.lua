@@ -139,7 +139,7 @@ lspconfig.pylsp.setup({
 
 -- golang lsp setting {{{
 lspconfig.gopls.setup({
-    on_attach = function (client, bufn)
+    on_attach = function (client, bufnr)
         vim.fn.sign_define("DiagnosticSignError", { text = "❌", texthl = "DiagnosticSignError" })
         vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
         vim.fn.sign_define("DiagnosticSignInformation", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
