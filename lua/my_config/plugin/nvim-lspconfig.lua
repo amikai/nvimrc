@@ -142,14 +142,31 @@ lspconfig.pylsp.setup({
 -- }}}
 
 -- golang lsp setting {{{
+-- see https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 lspconfig.gopls.setup({
+    cmd = {'gopls', 'serve'},
     on_attach = function (client, bufnr)
         vim.fn.sign_define("DiagnosticSignError", { text = "❌", texthl = "DiagnosticSignError" })
         vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
         vim.fn.sign_define("DiagnosticSignInformation", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
         vim.fn.sign_define("DiagnosticSignHint", { text = "💡", texthl = "DiagnosticSignHint" })
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
     end,
     capabilities = capabilities,
+    init_options = {
+        usePlaceholders = true
+    },
+    settings = {
+        gopls = {
+            experimentalPostfixCompletions = true,
+		    analyses = {
+		        unusedparams = true,
+		        shadow = true,
+		    },
+		    staticcheck = true,
+		},
+    }
 })
 
 -- }}}
