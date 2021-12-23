@@ -132,12 +132,6 @@ return require('packer').startup(function(use)
     use {'Shougo/ddc-converter_remove_overlap'}
 
     use {
-        'dense-analysis/ale',
-        opt = 'true',
-        setup = [[ require('my_config.plugin.ale').setup() ]]
-    }
-
-    use {
         {
             'hrsh7th/vim-vsnip',
             setup = function()

@@ -7,7 +7,7 @@ local km = require('my_config.utils').km
 function M.setup()
     g.airline_focuslost_inactive = 1
 
-    g.airline_extensions = {'tabline', 'quickfix', 'branch', 'fern', 'tagbar', 'ale'}
+    g.airline_extensions = {'tabline', 'quickfix', 'branch', 'fern', 'tagbar'}
 
     g.airline_powerline_fonts = 1
 
