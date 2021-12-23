@@ -41,6 +41,16 @@ return require('packer').startup(function(use)
     }
 
     use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+            vim.api.nvim_set_keymap("n", "[d", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", {silent = true, noremap = true})
+            vim.api.nvim_set_keymap("n", "]d", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>", {silent = true, noremap = true})
+        end
+    }
+
+    use {
         'bpietravalle/vim-bolt'
     }
 
@@ -113,32 +123,26 @@ return require('packer').startup(function(use)
 
     use {'rhysd/committia.vim'}
 
-
     use {
         'neovim/nvim-lspconfig',
         config = [[ require('my_config.plugin.nvim-lspconfig') ]]
     }
 
-    use {'vim-denops/denops.vim'}
     use {
-        'Shougo/ddc.vim',
-        config = [[ require('my_config.plugin.ddc').config() ]]
-    }
-    use {'Shougo/ddc-around'}
-    use {'Shougo/ddc-nvim-lsp'}
-    use {'Shougo/ddc-matcher_head'}
-    use {'Shougo/ddc-matcher_length'}
-    use {'Shougo/ddc-sorter_rank'}
-    use {'Shougo/ddc-converter_remove_overlap'}
-
-    use {
+        {
+            'hrsh7th/cmp-nvim-lsp',
+            config = [[ require('my_config.plugin.nvim-cmp').config() ]]
+        },
+        {'hrsh7th/cmp-buffer'},
+        {'hrsh7th/cmp-path'},
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-vsnip'},
         {
             'hrsh7th/vim-vsnip',
             setup = function()
                 vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/vsnippets'
             end
-        },
-        {'hrsh7th/vim-vsnip-integ'}
+        }
     }
 
     use {

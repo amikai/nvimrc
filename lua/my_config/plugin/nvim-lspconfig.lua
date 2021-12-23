@@ -79,7 +79,7 @@ local custom_attach = function(client, bufnr)
 end
 -- }}}
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
@@ -116,24 +116,28 @@ lspconfig.sumneko_lua.setup({
             },
         },
     },
+    capabilities = capabilities,
 })
 -- }}}
 
--- bsh lsp setting {{{
+-- bash lsp setting {{{
 lspconfig.bashls.setup({
-    on_attach = custom_attach
+    on_attach = custom_attach,
+    capabilities = capabilities,
 })
 -- }}}
 
 -- vimscript lsp setting {{{
 lspconfig.vimls.setup({
-    on_attach = custom_attach
+    on_attach = custom_attach,
+    capabilities = capabilities,
 })
 -- }}}
 
 -- python pylsp setting {{{
 lspconfig.pylsp.setup({
-    on_attach= custom_attach
+    on_attach= custom_attach,
+    capabilities = capabilities,
 })
 -- }}}
 
@@ -144,7 +148,8 @@ lspconfig.gopls.setup({
         vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
         vim.fn.sign_define("DiagnosticSignInformation", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
         vim.fn.sign_define("DiagnosticSignHint", { text = "💡", texthl = "DiagnosticSignHint" })
-    end
+    end,
+    capabilities = capabilities,
 })
 
 -- }}}
