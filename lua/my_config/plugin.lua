@@ -142,7 +142,8 @@ return require('packer').startup(function(use)
             setup = function()
                 vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/vsnippets'
             end
-        }
+        },
+        {'rafamadriz/friendly-snippets'}
     }
 
     use {
