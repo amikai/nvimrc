@@ -84,6 +84,14 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
 
+
+-- dockerfile lsp setting {{{
+lspconfig.dockerls.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+})
+--}}}
+
 -- ansible lsp setting {{{
 lspconfig.ansiblels.setup({
     on_attach = custom_attach,
