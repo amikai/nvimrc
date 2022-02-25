@@ -69,6 +69,11 @@ return require('packer').startup(function(use)
     use { 'itchyny/vim-cursorword'}
 
     use {
+        'akinsho/toggleterm.nvim',
+        setup = [[ require('my_config.plugin.toggleterm').setup() ]]
+    }
+
+    use {
         'lukas-reineke/indent-blankline.nvim',
         setup = function()
             vim.g.indent_blankline_disable_warning_message = true
