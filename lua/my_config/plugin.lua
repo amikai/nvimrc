@@ -61,6 +61,11 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use {
+        'lambdalisue/suda.vim',
+        cmd = {'SudaRead', 'SudaWrite'}
+    }
+
     use { 'itchyny/vim-cursorword'}
 
     use {
