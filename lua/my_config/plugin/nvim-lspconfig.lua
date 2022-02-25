@@ -85,6 +85,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lspconfig = require("lspconfig")
 
 -- terraform lsp setting {{{
+lspconfig.jsonnet_ls.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+})
+-- }}}
+
+-- terraform lsp setting {{{
 lspconfig.terraformls.setup({
     on_attach = custom_attach,
     capabilities = capabilities,
