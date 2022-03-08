@@ -307,7 +307,10 @@ return require('packer').startup(function(use)
 
     use {
         'hashivim/vim-terraform',
-        ft = {'hcl', 'terraform'}
+        ft = {'hcl', 'terraform'},
+        setup = function()
+            vim.g.terraform_fmt_on_save = 1
+        end
     }
 
     use {
