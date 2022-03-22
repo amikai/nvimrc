@@ -255,6 +255,16 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'junegunn/fzf',
+        run=':call fzf#install()'
+    }
+
+    use {
+        'junegunn/fzf.vim'
+    }
+
+
+    use {
         'vim-airline/vim-airline',
         setup = [[ require('my_config.plugin.vim-airline').setup() ]]
     }
