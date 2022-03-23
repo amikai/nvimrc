@@ -11,6 +11,15 @@ function! my_config#fern#setting() abort
     let g:fern#mark_symbol = '✓'
     autocmd Filetype fern highlight link FernBranchSymbol Orange
     nnoremap <silent><F4>  <cmd>Fern . -drawer -toggle -width=30<cr>
+
+    " Disable listing ignored files/directories
+    let g:fern_git_status#disable_ignored = 1
+
+    " Disable listing untracked files
+    let g:fern_git_status#disable_untracked = 1
+
+    " Disable listing status of submodules
+    let g:fern_git_status#disable_submodules = 1
 endfunction
 
 function! my_config#fern#keymapping() abort
