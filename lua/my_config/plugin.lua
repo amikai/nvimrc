@@ -36,7 +36,17 @@ return require('packer').startup(function(use)
     use {
         'cocopon/iceberg.vim',
         config = function()
-            vim.cmd[[colorscheme iceberg]]
+            -- vim.cmd[[colorscheme iceberg]]
+        end
+    }
+
+    use {
+        'Mofiqul/vscode.nvim',
+        setup = function()
+            vim.g.vscode_style = "dark"
+        end,
+        config = function()
+            vim.cmd([[colorscheme vscode]])
         end
     }
 
