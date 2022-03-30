@@ -273,10 +273,19 @@ return require('packer').startup(function(use)
         'junegunn/fzf.vim'
     }
 
-
     use {
-        'vim-airline/vim-airline',
-        setup = [[ require('my_config.plugin.vim-airline').setup() ]]
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      config = function()
+        require('lualine').setup{
+            extensions = {
+                'fern',
+                'quickfix',
+                'toggleterm',
+                'fugitive',
+            }
+        }
+      end
     }
 
     use {
