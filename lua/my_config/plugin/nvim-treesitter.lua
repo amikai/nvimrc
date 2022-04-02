@@ -7,7 +7,7 @@ local km = require('my_config.utils').km
 function M.config()
     require'nvim-treesitter.configs'.setup {
         ensure_installed = {
-            "c", "rust",  "cpp", "cmake", "bash",
+            "c", "rust",  "cpp", "make", "cmake", "bash",
             "go", "gomod", "gowork",
             "html", "javascript", "css", "scss",
             "yaml", "json", "toml",
