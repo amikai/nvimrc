@@ -8,7 +8,7 @@ function M.config()
     require'nvim-treesitter.configs'.setup {
         ensure_installed = {
             "c", "rust",  "cpp", "cmake", "bash",
-            "go", "gomod",
+            "go", "gomod", "gowork",
             "html", "javascript", "css", "scss",
             "yaml", "json", "toml",
             "dockerfile",
@@ -24,6 +24,7 @@ function M.config()
         indent = {
             endble = true
         },
+        additional_vim_regex_highlighting = false,
     }
 end
 
