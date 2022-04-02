@@ -65,13 +65,6 @@ return require('packer').startup(function(use)
     }
 
     use {
-         'luochen1990/rainbow',
-        setup = function()
-            vim.g.rainbow_active = 1
-        end,
-    }
-
-    use {
         'lambdalisue/suda.vim',
         cmd = {'SudaRead', 'SudaWrite'}
     }
@@ -263,6 +256,11 @@ return require('packer').startup(function(use)
         config = function()
             require('my_config.plugin.nvim-treesitter-context').config()
         end
+    }
+
+    use {
+        'p00f/nvim-ts-rainbow',
+        requires = {'nvim-treesitter/nvim-treesitter'},
     }
 
     use {

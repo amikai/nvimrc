@@ -27,6 +27,11 @@ function M.config()
         matchup = {
             enable = true
         },
+        rainbow = {
+            enable = true,
+            extended_mode = false,
+            max_file_lines = 1000
+        },
         additional_vim_regex_highlighting = false,
     }
 end
