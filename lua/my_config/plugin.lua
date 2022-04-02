@@ -36,7 +36,17 @@ return require('packer').startup(function(use)
     use {
         'cocopon/iceberg.vim',
         config = function()
-            vim.cmd[[colorscheme iceberg]]
+            -- vim.cmd[[colorscheme iceberg]]
+        end
+    }
+
+    use {
+        'Mofiqul/vscode.nvim',
+        setup = function()
+            vim.g.vscode_style = "dark"
+        end,
+        config = function()
+            vim.cmd([[colorscheme vscode]])
         end
     }
 
@@ -77,6 +87,7 @@ return require('packer').startup(function(use)
         'lukas-reineke/indent-blankline.nvim',
         setup = function()
             vim.g.indent_blankline_disable_warning_message = true
+            vim.g.indent_blankline_char = '┆'
             vim.g.indent_blankline_filetype_exclude = {'fern', 'diff', 'tagbar', 'help'}
         end
     }
@@ -263,10 +274,27 @@ return require('packer').startup(function(use)
         'junegunn/fzf.vim'
     }
 
+    use {
+        'akinsho/bufferline.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require("bufferline").setup{}
+        end
+    }
 
     use {
-        'vim-airline/vim-airline',
-        setup = [[ require('my_config.plugin.vim-airline').setup() ]]
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      config = function()
+        require('lualine').setup{
+            extensions = {
+                'fern',
+                'quickfix',
+                'toggleterm',
+                'fugitive',
+            }
+        }
+      end
     }
 
     use {
