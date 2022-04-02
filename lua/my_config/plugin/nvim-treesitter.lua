@@ -24,6 +24,9 @@ function M.config()
         indent = {
             endble = true
         },
+        matchup = {
+            enable = true
+        },
         additional_vim_regex_highlighting = false,
     }
 end
