@@ -87,6 +87,7 @@ return require('packer').startup(function(use)
         'lukas-reineke/indent-blankline.nvim',
         setup = function()
             vim.g.indent_blankline_disable_warning_message = true
+            vim.g.indent_blankline_char = '┆'
             vim.g.indent_blankline_filetype_exclude = {'fern', 'diff', 'tagbar', 'help'}
         end
     }
