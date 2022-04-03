@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
+        cmd = {'Trouble', 'TroubleClose'},
         config = function()
             require("trouble").setup {}
             vim.api.nvim_set_keymap("n", "[d", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", {silent = true, noremap = true})
@@ -73,6 +74,7 @@ return require('packer').startup(function(use)
 
     use {
         'akinsho/toggleterm.nvim',
+        cmd = 'ToggleTerm',
         setup = [[ require('my_config.plugin.toggleterm').setup() ]]
     }
 
@@ -220,7 +222,8 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'kevinhwang91/nvim-bqf'
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf'
     }
 
     use {
@@ -246,6 +249,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-treesitter/nvim-treesitter',
+        event = 'BufEnter',
         run = 'TSUpdate',
         config = [[ require('my_config.plugin.nvim-treesitter').config() ]]
     }
@@ -297,24 +301,31 @@ return require('packer').startup(function(use)
 
     use {
         'preservim/tagbar',
+        cmd = 'TagbarToggle',
         setup = [[ require('my_config.plugin.tagbar').setup() ]]
     }
 
     use {
         'lambdalisue/fern.vim',
         setup = function()
-            vim.fn['my_config#fern#setting']()
+            vim.api.nvim_set_keymap('n', '<F4>', '<cmd>Fern . -drawer -toggle -width=30<cr>', {silent = true, noremap = true})
             vim.cmd [[autocmd FileType fern call my_config#fern#keymapping()]]
-        end
+        end,
+        config = function()
+            vim.fn['my_config#fern#setting']()
+        end,
+        cmd = 'Fern'
     }
 
     use {
         'lambdalisue/fern-git-status.vim',
+        after = 'fern.vim'
     }
 
     use {
         't9md/vim-choosewin',
-        setup = [[ require('my_config.plugin.vim-choosewin').setup() ]]
+        setup = [[ require('my_config.plugin.vim-choosewin').setup() ]],
+        keys = {'n', '<Plug>(choosewin)'}
     }
 
     use {
