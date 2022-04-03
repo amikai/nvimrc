@@ -10,7 +10,6 @@ function! my_config#fern#setting() abort
     let g:fern#disable_default_mappings = 1
     let g:fern#mark_symbol = '✓'
     autocmd Filetype fern highlight link FernBranchSymbol Orange
-    nnoremap <silent><F4>  <cmd>Fern . -drawer -toggle -width=30<cr>
 
     " Disable listing ignored files/directories
     let g:fern_git_status#disable_ignored = 1
