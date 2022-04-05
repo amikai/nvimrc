@@ -143,7 +143,11 @@ return require('packer').startup(function(use)
       cmd = {'Git', 'Gdiffsplit'}
     }
 
-    use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
+    use {
+        "rbong/vim-flog",
+        after = "vim-fugitive",
+        cmd = { "Flog" }
+    }
 
     use {'rhysd/committia.vim'}
 
