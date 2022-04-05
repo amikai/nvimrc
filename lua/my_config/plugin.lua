@@ -92,21 +92,28 @@ return require('packer').startup(function(use)
     use { 'machakann/vim-swap' }
 
     use {
-        'glts/vim-textobj-comment',
-        requires = {'kana/vim-textobj-user'},
-    }
+        'kana/vim-textobj-user',
+        {
+            'glts/vim-textobj-comment',
+            after = 'vim-textobj-user',
+        },
+        {
+            'sgur/vim-textobj-parameter',
+            after = 'vim-textobj-user',
+        },
 
-    use {
-        'sgur/vim-textobj-parameter',
-        requires = {'kana/vim-textobj-user'},
     }
 
     use {
         'kana/vim-operator-user',
-        requires = {'kana/vim-operator-replace'},
-        config = function()
-            vim.api.nvim_set_keymap('', 'R', '<Plug>(operator-replace)', {})
-        end
+        {
+            'kana/vim-operator-replace',
+            after = 'vim-operator-user',
+            keys = {{'', '<Plug>(operator-replace)'}},
+            setup = function()
+                vim.api.nvim_set_keymap('', 'R', '<Plug>(operator-replace)', {})
+            end
+        },
     }
 
     use {
