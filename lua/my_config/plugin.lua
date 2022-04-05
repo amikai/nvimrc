@@ -325,7 +325,7 @@ return require('packer').startup(function(use)
     use {
         't9md/vim-choosewin',
         setup = [[ require('my_config.plugin.vim-choosewin').setup() ]],
-        keys = {'n', '<Plug>(choosewin)'}
+        keys = {{'n', '<Plug>(choosewin)'}}
     }
 
     use {
