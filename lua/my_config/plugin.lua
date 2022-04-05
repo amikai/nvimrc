@@ -135,6 +135,7 @@ return require('packer').startup(function(use)
 
     use {
         'tpope/vim-dispatch'
+        cmd = {'Make', 'Dispatch'}
     }
 
     use {
