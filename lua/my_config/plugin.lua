@@ -177,6 +177,7 @@ return require('packer').startup(function(use)
     use {
         'fatih/vim-go',
         run = ':GoUpdateBinaries',
+        ft = 'go',
         setup = function()
             require('my_config.plugin.vim-go').setup()
         end,
