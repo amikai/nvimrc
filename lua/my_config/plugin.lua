@@ -229,7 +229,10 @@ return require('packer').startup(function(use)
         },
         {
             'osyo-manga/vim-anzu',
-            after = 'vim-asterisk',
+            keys = {
+                {'', '<Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv'},
+                {'', '<Plug>(is-nohl)<Plug>(anzu-N-with-echo)zzzv'},
+            },
             setup = [[ require('my_config.plugin.vim-anzu').setup() ]]
         }
     }
