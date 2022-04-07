@@ -215,24 +215,13 @@ return require('packer').startup(function(use)
     use {
         {
             'haya14busa/vim-asterisk',
-            keys = {
-                {'',  '<Plug>(asterisk-z*)<Plug>(is-nohl-1)'},
-                {'',  '<Plug>(asterisk-z#)<Plug>(is-nohl-1)'},
-                {'',  '<Plug>(asterisk-gz*)<Plug>(is-nohl-1)'},
-                {'',  '<Plug>(asterisk-gz#)<Plug>(is-nohl-1)'},
-            },
         },
         {
             'haya14busa/is.vim',
-            after = 'vim-asterisk',
             setup = [[ require('my_config.plugin.is').setup() ]]
         },
         {
             'osyo-manga/vim-anzu',
-            keys = {
-                {'', '<Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv'},
-                {'', '<Plug>(is-nohl)<Plug>(anzu-N-with-echo)zzzv'},
-            },
             setup = [[ require('my_config.plugin.vim-anzu').setup() ]]
         }
     }
