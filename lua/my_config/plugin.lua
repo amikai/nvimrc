@@ -216,10 +216,10 @@ return require('packer').startup(function(use)
         {
             'haya14busa/vim-asterisk',
             keys = {
-                {'',  '<Plug>(asterisk-z*)'},
-                {'',  '<Plug>(asterisk-z#)'},
-                {'',  '<Plug>(asterisk-gz*)'},
-                {'',  '<Plug>(asterisk-gz#)'},
+                {'',  '<Plug>(asterisk-z*)<Plug>(is-nohl-1)'},
+                {'',  '<Plug>(asterisk-z#)<Plug>(is-nohl-1)'},
+                {'',  '<Plug>(asterisk-gz*)<Plug>(is-nohl-1)'},
+                {'',  '<Plug>(asterisk-gz#)<Plug>(is-nohl-1)'},
             },
         },
         {
