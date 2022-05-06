@@ -20,7 +20,7 @@ local w_opt = function(key, val)
     vim.wo[key] = val
 end
 
-local km = vim.api.nvim_set_keymap
+local km = vim.keymap.set
 
 local g_v = function(key, val)
     vim.g[key] = val
@@ -44,12 +44,12 @@ opt('hidden', true)
 
 opt('report', 0)
 
-km('n', '<F12>', '<cmd>call my_config#utils#show_function_key()<cr>', {noremap = true})
+km('n', '<F12>', vim.fn['my_config#utils#show_function_key'])
 
-km('i', 'jk', '<esc>', {noremap = true})
-km('t', '<esc>', '<C-\\><C-n>', {noremap = true})
+km('i', 'jk', '<esc>')
+km('t', '<esc>', '<C-\\><C-n>')
 
-km('', '<Space>', '<nop>', {noremap = true})
+km('', '<Space>', '<nop>')
 g_v('mapleader', t '<Space>')
 
 opt('termguicolors', true)
@@ -75,36 +75,36 @@ cmd [[ augroup MyAutoCmd
 
 opt('mouse', '')
 
-km('n', 'j', 'gj', {noremap = true})
-km('n', 'k', 'gk', {noremap = true})
+km('n', 'j', 'gj')
+km('n', 'k', 'gk')
 
-km('n', 'G', 'Gzz', {noremap = true})
+km('n', 'G', 'Gzz')
 
-km('n', 'U', '<cmd>redo<cr>', {noremap = true})
+km('n', 'U', '<cmd>redo<cr>')
 
 opt('updatetime', 500)
 
 -- TODO: clipboard behavior
 
 -- Don't yank to default register when changing something
-km('x', 'c', '"xc', {noremap = true})
-km('n', 'c', '"xc', {noremap = true})
+km('x', 'c', '"xc')
+km('n', 'c', '"xc')
 
 -- After block yank and paste, move cursor to the end of operated text and don't override register
-km('v', 'y', 'y`]', {noremap = true})
-km('v', 'p', '"_dP`', {noremap = true})
-km('n', 'p', 'p`]', {noremap = true})
+km('v', 'y', 'y`]')
+km('v', 'p', '"_dP`')
+km('n', 'p', 'p`]')
 
 -- Copy paste
 opt('clipboard', 'unnamedplus')
 
 -- Move visual block
-km('v', 'J', ":m '>+1<cr>gv=gv", {noremap = true})
-km('v', 'K', ":m '<-2<cr>gv=gv", {noremap = true})
+km('v', 'J', ":m '>+1<cr>gv=gv")
+km('v', 'K', ":m '<-2<cr>gv=gv")
 
 -- Visual shifting
-km('v', '<', '<gv', {noremap = true})
-km('v', '>', '>gv', {noremap = true})
+km('v', '<', '<gv')
+km('v', '>', '>gv')
 
 -- Sign column
 opt('signcolumn', "auto:2")
@@ -265,19 +265,19 @@ opt('smarttab', true)
 -- Moving around, tabs, windows and buffers {{{
 
 -- Smart way to move between windows
-km('n', '<C-j>', '<C-W>j', {noremap = true})
-km('n', '<C-k>', '<C-W>k', {noremap = true})
-km('n', '<C-h>', '<C-W>h', {noremap = true})
-km('n', '<C-l>', '<C-W>l', {noremap = true})
+km('n', '<C-j>', '<C-W>j')
+km('n', '<C-k>', '<C-W>k')
+km('n', '<C-h>', '<C-W>h')
+km('n', '<C-l>', '<C-W>l')
 
 -- Close current tab
-km('n', '<leader>qt', '<cmd>tabclose<cr>', {noremap = true, silent = true})
+km('n', '<leader>qt', '<cmd>tabclose<cr>')
 
 -- Close all the buffers
-km('n', '<leader>ba', '<cmd>bufdo bd<cr>', {noremap = true, silent = true})
+km('n', '<leader>ba', '<cmd>bufdo bd<cr>')
 
 -- Managing tabs
-km('n', '<leader>t', '<cmd>tabnew<cr>', {noremap = true})
+km('n', '<leader>t', '<cmd>tabnew<cr>')
 -- gt => <cmd>tabnext<cr>
 -- gT => <cmd>tabprevious<cr>
 
@@ -290,14 +290,14 @@ cmd [[ augroup MyAutoCmd
 -- }}}
 
 -- command line mode {{{
-km('c', '<C-a>', '<Home>', {noremap = true})
-km('c', '<C-e>', '<End>', {noremap = true})
-km('c', '<C-p>', '<Up>', {noremap = true})
-km('c', '<C-n>', '<Down>', {noremap = true})
-km('c', '<C-b>', '<Left>', {noremap = true})
-km('c', '<C-f>', '<Right>', {noremap = true})
-km('c', '<M-b>', '<S-Left>', {noremap = true})
-km('c', '<M-f>', '<S-Right>', {noremap = true})
+km('c', '<C-a>', '<Home>')
+km('c', '<C-e>', '<End>')
+km('c', '<C-p>', '<Up>')
+km('c', '<C-n>', '<Down>')
+km('c', '<C-b>', '<Left>')
+km('c', '<C-f>', '<Right>')
+km('c', '<M-b>', '<S-Left>')
+km('c', '<M-f>', '<S-Right>')
 
 -- }}}
 

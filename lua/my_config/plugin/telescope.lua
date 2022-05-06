@@ -1,6 +1,6 @@
 local M = {}
 
-local km = require('my_config.utils').km
+local km = vim.keymap.set
 
 function M.setup()
     km('n', '<leader>ff','<cmd>Telescope find_files<cr>')

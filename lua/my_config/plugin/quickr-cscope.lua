@@ -1,7 +1,7 @@
 local M = {}
 
 local g = vim.g
-local km = require('my_config.utils').km
+local km = vim.keymap.set
 
 function M.setup()
     g.quickr_cscope_keymaps = 0

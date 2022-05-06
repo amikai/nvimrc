@@ -1,7 +1,7 @@
 local M = {}
 
 local g = vim.g
-local km = require('my_config.utils').km
+local km = vim.keymap.set
 
 function M.setup()
     g.better_whitespace_enabled = 1
@@ -9,7 +9,7 @@ function M.setup()
     g.better_whitespace_guicolor = '#c8e6c9'
     g.better_whitespace_filetypes_blacklist = {'nerdtree', 'help', 'qf', 'diff', 'tagbar', 'fern'}
 
-    km('n', '<F5>', '<cmd>ToggleWhitespace<cr>', {noremap = true})
+    km('n', '<F5>', '<cmd>ToggleWhitespace<cr>')
 end
 
 return M

@@ -2,10 +2,10 @@ local M = {}
 
 local g = vim.g
 local echo = vim.api.nvim_echo
-local km = require('my_config.utils').km
+local km = vim.keymap.set
 
 function M.setup()
-    km('', '<F2>', '<cmd>Goyo<cr>', {silent = true, noremap = true})
+    km('', '<F2>', '<cmd>Goyo<cr>')
 end
 
 return M

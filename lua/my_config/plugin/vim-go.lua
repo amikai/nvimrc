@@ -1,7 +1,6 @@
 local M = {}
 
 local b = vim.b
-local km = require('my_config.utils').km
 
 function M.setup()
     -- b.go_metalinter_command = "golangci-lint"
@@ -18,7 +17,7 @@ function M.setup()
     -- b.go_def_mapping_enabled = 0
     -- b.go_code_completion_enabled = 0
 
-    vim.g.go_gopls_gofumpt=true
+    -- vim.g.go_gopls_gofumpt=true
     vim.api.nvim_buf_set_keymap(0, "n", "gR", "<Plug>(go-rename)", { noremap = false, silent = true })
     vim.cmd([[
     augroup MyGoSetting

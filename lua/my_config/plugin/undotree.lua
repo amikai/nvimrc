@@ -1,9 +1,9 @@
 local M = {}
 
-local km = require('my_config.utils').km
+local km = vim.keymap.set
 
 function M.setup()
-    km('n', '<F6>', '<cmd>UndotreeToggle<cr>', {silent = true, noremap = true})
+    km('n', '<F6>', '<cmd>UndotreeToggle<cr>')
 end
 
 return M

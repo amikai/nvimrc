@@ -2,7 +2,7 @@ local M = {}
 
 local g = vim.g
 local echo = vim.api.nvim_echo
-local km = require('my_config.utils').km
+local km = vim.keymap.set
 
 function M.setup()
     km('', 'n', '<Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv')
