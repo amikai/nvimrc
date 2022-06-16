@@ -145,7 +145,6 @@ return require('packer').startup(function(use)
 
     use {
         "rbong/vim-flog",
-        after = "vim-fugitive",
         cmd = { "Flog" }
     }
 
@@ -279,6 +278,11 @@ return require('packer').startup(function(use)
 
     use {
         'p00f/nvim-ts-rainbow',
+        after = 'nvim-treesitter'
+    }
+
+    use {
+        'mizlan/iswap.nvim',
         after = 'nvim-treesitter'
     }
 
