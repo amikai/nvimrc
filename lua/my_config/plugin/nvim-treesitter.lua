@@ -5,6 +5,7 @@ local fn = vim.fn
 local km = require('my_config.utils').km
 
 function M.config()
+    require("nvim-treesitter.install").prefer_git = true
     require'nvim-treesitter.configs'.setup {
         ensure_installed = {
             "c", "rust",  "cpp", "make", "cmake", "bash",
