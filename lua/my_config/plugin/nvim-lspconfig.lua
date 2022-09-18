@@ -45,12 +45,6 @@ local custom_attach = function(client, bufnr)
     buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
-    vim.fn.sign_define("DiagnosticSignError", { text = "❌", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
-    vim.fn.sign_define("DiagnosticSignInformation", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "💡", texthl = "DiagnosticSignHint" })
-
-
     -- Set some key bindings conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<F3>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -195,10 +189,6 @@ lspconfig.pylsp.setup({
 lspconfig.gopls.setup({
     cmd = {'gopls', 'serve'},
     on_attach = function (client, bufnr)
-        vim.fn.sign_define("DiagnosticSignError", { text = "❌", texthl = "DiagnosticSignError" })
-        vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
-        vim.fn.sign_define("DiagnosticSignInformation", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
-        vim.fn.sign_define("DiagnosticSignHint", { text = "💡", texthl = "DiagnosticSignHint" })
         vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<F9>", "<cmd>lua require('my_config.plugin.nvim-lspconfig').toggle_diagnostic_window()<CR>", { noremap = true, silent = true })
