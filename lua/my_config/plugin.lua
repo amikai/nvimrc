@@ -304,6 +304,13 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'mhartington/formatter.nvim',
+        config = function()
+            require('my_config.plugin.formatter').setup()
+        end
+    }
+
+    use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function()
@@ -379,5 +386,6 @@ return require('packer').startup(function(use)
         'christoomey/vim-tmux-navigator',
         cond = [[ require("my_config.utils").is_in_tmux() ]]
     }
+
 
 end)
