@@ -323,7 +323,6 @@ return require("packer").startup(function(use)
 			vim.keymap.set("n", "<F3>", function()
 				local client = vim.lsp.buf_get_clients(0)
 				if next(client) == nil and utils.has_plugin("formatter.nvim") then
-					print("formatter")
 					vim.cmd("Format")
 				else
 					vim.lsp.for_each_buffer_client(0, function(client, client_id, bufnr)
