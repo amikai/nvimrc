@@ -3,6 +3,7 @@ local M = {}
 
 local keymap = vim.keymap
 local fn = vim.fn
+local utils = require("my_config.utils")
 
 -- diagnostic setting {{{
 M.toggle_diagnostic_window = function()
@@ -48,6 +49,8 @@ local custom_attach = function(client, bufnr)
 
     if client.resolved_capabilities.document_formatting then
         map("n", "<F3>", vim.lsp.buf.formatting)
+    elseif utils.has_plugin("formatter.nvim") then
+        map("n", "<F3>", "<cmd>Format<cr>")
     end
 
     if client.resolved_capabilities.document_range_formatting then

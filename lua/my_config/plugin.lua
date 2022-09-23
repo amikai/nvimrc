@@ -317,6 +317,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"mhartington/formatter.nvim",
+		cmd = { "Format", "FormatWrite" },
 		config = function()
 			require("my_config.plugin.formatter").setup()
 		end,
