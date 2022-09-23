@@ -1,15 +1,16 @@
 local M = {}
 
 local g = vim.g
-local echo = vim.api.nvim_echo
-local km = vim.keymap.set
-local autocmd = require("my_config.utils").autocmd
+local km = require("my_config.utils").km
+local autocmd = vim.api.nvim_create_autocmd
 
 function M.setup()
     km("n", "<F8>", "<cmd>TagbarToggle<cr>")
 
-    -- See https://github.com/preservim/tagbar/issues/49
-    autocmd("MyAutoCmd", [[FileType tagbar setlocal nocursorline nocursorcolumn]])
+    autocmd("FileType", { pattern = "tagbar", callback = function()
+        vim.opt_local.cursorline = false
+        vim.opt_local.cursorcolumn = false
+    end })
 
     g.tagbar_sort = 0
     g.tagbar_type_go = {
