@@ -1,7 +1,7 @@
 local M = {}
 
 local g = vim.g
-local km = vim.keymap.set
+local km = require("my_config.utils").km
 
 function M.setup()
     g.sayonara_filetypes = {

@@ -1,8 +1,6 @@
 local M = {}
 
 local g = vim.g
-local fn = vim.fn
-local km = require("my_config.utils").km
 
 function M.config()
     require("nvim-treesitter.install").prefer_git = true

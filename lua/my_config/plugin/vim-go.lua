@@ -1,7 +1,7 @@
 local M = {}
 
 local b = vim.b
-local km = vim.keymap.set
+local km = require("my_config.utils").km
 local autocmd = vim.api.nvim_create_autocmd
 
 function M.setup()

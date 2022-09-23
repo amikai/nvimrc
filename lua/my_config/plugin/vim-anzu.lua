@@ -1,8 +1,6 @@
 local M = {}
 
-local g = vim.g
-local echo = vim.api.nvim_echo
-local km = vim.keymap.set
+local km = require("my_config.utils").km
 
 function M.setup()
     km("", "n", "<Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv")

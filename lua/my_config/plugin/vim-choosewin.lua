@@ -1,5 +1,6 @@
 local M = {}
-local km = vim.keymap.set
+
+local km = require("my_config.utils").km
 
 function M.setup()
     vim.g.choosewin_overlay_enable = 1
