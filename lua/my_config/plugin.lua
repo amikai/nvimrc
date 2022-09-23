@@ -252,9 +252,9 @@ return require("packer").startup(function(use)
 	use({
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
-        setup = function()
-            vim.keymap.set("n", "<F2>", "<cmd>ZenMode<cr>")
-        end,
+		setup = function()
+			vim.keymap.set("n", "<F2>", "<cmd>ZenMode<cr>")
+		end,
 		config = [[ require('my_config.plugin.zen-mode').setup() ]],
 	})
 
