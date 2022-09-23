@@ -28,6 +28,7 @@ function M.config()
 			"python",
 			"vim",
 			"lua",
+            "proto",
 		},
 		highlight = {
 			enable = true,
