@@ -1,47 +1,36 @@
 local cmd = vim.cmd
 local fn = vim.fn
 local call = vim.call
-local err_writeln = vim.api.nvim_err_writeln
-local t = function(str)
+
+local km = require("my_config.utils").km
+local g = vim.g
+local o = vim.o
+local go = vim.go
+local bo = vim.bo
+local wo = vim.wo
+
+local autocmd = vim.api.nvim_create_autocmd
+
+local term = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local opt = function(key, val)
-    if vim.o[key] == nil then
-        err_writeln("option ${key} invalid")
-    end
-    vim.o[key] = val
-end
-
-local w_opt = function(key, val)
-    if vim.wo[key] == nil then
-        err_writeln("option ${key} invalid")
-    end
-    vim.wo[key] = val
-end
-
-local km = vim.keymap.set
-
-local g_v = function(key, val)
-    vim.g[key] = val
-end
-
 -- General {{{
-g_v("python_host_prog", "python")
-g_v("python3_host_prog", "python3")
+g.python_host_prog = "python"
+g.python3_host_prog = "python3"
 
-opt("history", 500)
+o.history = 500
 
--- Do not atomically add newline at end of file
-opt("fixendofline", false)
+-- -- Do not atomically add newline at end of file
+o.fixendofline = false
 
--- Set to auto read when a file is changed from the outside
-opt("autoread", true)
+-- -- Set to auto read when a file is changed from the outside
+o.autoread = true
 
--- Switch buffer without casuing error when file is edited
-opt("hidden", true)
+-- -- Switch buffer without casuing error when file is edited
+o.hidden = true
 
-opt("report", 0)
+o.report = 0
 
 km("n", "<F12>", vim.fn["my_config#utils#show_function_key"])
 
@@ -49,30 +38,29 @@ km("i", "jk", "<esc>")
 km("t", "<esc>", "<C-\\><C-n>")
 
 km("", "<Space>", "<nop>")
-g_v("mapleader", t("<Space>"))
 
-opt("termguicolors", true)
+g.mapleader = term("<Space>")
 
-opt("encoding", "utf-8")
+o.termguicolors = true
 
-opt("fileformats", "unix,dos,mac")
+o.encoding = "utf-8"
 
--- set path+=**
+o.fileformats = "unix,dos,mac"
 
-opt("diffopt", "filler,vertical,algorithm:patience,context:3,foldcolumn:0")
+o.path = o.path .. ",**"
 
-cmd([[ autocmd BufReadPost * call my_config#utils#go_to_original_pos()]])
+o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0"
 
--- center buffer around cursor when opening files
-cmd([[ autocmd BufRead * normal zz ]])
+autocmd("BufReadPost", { pattern = "*", callback = function()
+    vim.fn["my_config#utils#go_to_original_pos"]()
+end })
 
-opt("grepprg", "grep -inH")
+-- -- center buffer around cursor when opening files
+autocmd("BufRead", { pattern = "*", command = "normal zz" })
 
-cmd([[ augroup MyAutoCmd
-           autocmd!
-       augroup END ]])
+o.grepprg = "grep -inH"
 
-opt("mouse", "")
+o.mouse = ""
 
 km("n", "j", "gj")
 km("n", "k", "gk")
@@ -81,9 +69,8 @@ km("n", "G", "Gzz")
 
 km("n", "U", "<cmd>redo<cr>")
 
-opt("updatetime", 500)
+o.updatetime = 500
 
--- TODO: clipboard behavior
 
 -- Don't yank to default register when changing something
 km("x", "c", '"xc')
@@ -94,8 +81,8 @@ km("v", "y", "y`]")
 km("v", "p", '"_dP`')
 km("n", "p", "p`]")
 
--- Copy paste
-opt("clipboard", "unnamedplus")
+-- -- Copy paste
+o.clipboard = "unnamedplus"
 
 -- Move visual block
 km("v", "J", ":m '>+1<cr>gv=gv")
@@ -106,26 +93,35 @@ km("v", "<", "<gv")
 km("v", ">", ">gv")
 
 -- Sign column
-opt("signcolumn", "auto:2")
+o.signcolumn = "auto:2"
 
--- }}}
+-- -- }}}
 
--- Vim user interface {{{
-opt("scrolloff", 999)
+-- -- Vim user interface {{{
+o.scrolloff = 999
 
--- Display candidates by popup menu.
-opt("wildmenu", true)
-opt("wildmode", "full")
-vim.o.wildoptions = vim.o.wildoptions .. ",pum"
+-- -- Display candidates by popup menu.
+o.wildmenu = true
+o.wildmode = "full"
+o.wildoptions = o.wildoptions .. ",pum"
 
 -- line number setting
-w_opt("number", true)
+o.number = true
 
 -- Not use relative number, if not in the window
-cmd([[ augroup MyAutoCmd
-           autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-           autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
-       augroup END ]])
+autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" },
+    { pattern = "*", callback = function()
+        if o.number then
+            vim.o.relativenumber = true
+        end
+    end })
+
+autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" },
+    { pattern = "*", callback = function()
+        if o.number then
+            vim.o.relativenumber = false
+        end
+    end })
 
 -- Maximum width of text that is being inserted (TODO)
 -- set textwidth=80
@@ -133,114 +129,113 @@ cmd([[ augroup MyAutoCmd
 -- set formatoptions=
 
 -- Height of the command bar
-opt("cmdheight", 2)
+o.cmdheight = 2
 
 -- Enables pseudo-transparency for a floating window
-w_opt("winblend", 20)
+wo.winblend = 20
 -- Set minimal width for current window.
-opt("winwidth", 30)
+o.winwidth = 30
 -- Set minimal height for current window.
--- opt('winheight', 20)
+o.winheight = 20
 -- Set maximam maximam command line window.
-opt("cmdwinheight", 3)
---  No equal window size.
-opt("equalalways", false)
+o.cmdwinheight = 3
 
--- Adjust window size of preview and help
-opt("previewheight", 5)
-opt("helpheight", 12)
+-- -- Adjust window size of preview and help
+o.previewheight = 5
+go.helpheight = 10
 
 -- Puts new vsplit windows to the right of the current
-opt("splitright", true)
+o.splitright = true
 -- Puts new split windows to the bottom of the current
-opt("splitbelow", true)
+o.splitbelow = true
 
 -- show command
-opt("showcmd", true)
+o.showcmd = true
 
-opt("showmode", true)
+o.showmode = true
 
 -- Always show current position
-opt("ruler", true)
+o.ruler = true
 
 -- Ignore case when searching
-opt("ignorecase", true)
+o.ignorecase = true
 
 -- When searching try to be smart about cases
-opt("smartcase", true)
+o.smartcase = true
 
--- Configure backspace so it acts as it should act
-opt("backspace", "indent,eol,start")
-vim.o.whichwrap = vim.o.whichwrap .. ",<,>,h,l"
+-- -- Configure backspace so it acts as it should act
+o.backspace = "indent,eol,start"
+o.whichwrap = o.whichwrap .. ",<,>,h,l"
 
-w_opt("wrap", false)
+o.wrap = false
 
 -- search
-opt("incsearch", true) -- search as characters are entered
-opt("hlsearch", true) -- highlight matches
-opt("inccommand", "split")
+o.incsearch = true -- search as characters are entered
+o.hlsearch = true -- highlight matches
+o.inccommand = "split"
 
 -- mark before search
-km("n", "/", "ms/", { noremap = true })
+km("n", "/", "ms/")
 
 -- Show matching brackets when text indicator is over them
-opt("showmatch", true)
-opt("matchtime", 1)
+o.showmatch = true
+o.matchtime = 1
 
--- show special character
-w_opt("list", true)
-opt("listchars", "eol:¬,tab:▸ ,trail:.")
+-- -- show special character
+wo.list = true
+o.listchars = "eol:¬,tab:▸ ,trail:."
 
 -- highlight current line
-w_opt("cursorline", true)
-w_opt("cursorcolumn", true)
-w_opt("colorcolumn", "81")
+wo.cursorline = true
+wo.cursorcolumn = true
+wo.colorcolumn = "81"
 
--- Add a bit extra margin to the left
-w_opt("foldcolumn", "1")
+-- -- Add a bit extra margin to the left
+o.foldcolumn = "1"
 
--- Use a popup menu to show the possible completions
-opt("completeopt", "menuone,noinsert,noselect")
+-- -- Use a popup menu to show the possible completions
+o.completeopt = "menuone,noinsert,noselect"
 
-vim.o.shortmess = vim.o.shortmess .. "cF"
+o.shortmess = o.shortmess .. "cF"
 
-opt("virtualedit", "block")
+o.virtualedit = "block"
 
--- Use tab to choose condidate in pop up menu
-cmd([[ augroup MyAutoCmd
-           autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-       augroup END ]])
+autocmd({ "InsertLeave", "CompleteDone" },
+    { pattern = "*", callback = function()
+        if fn.pumvisible() == 0 then
+            cmd("pclose")
+        end
+    end })
 
--- Set popup menu max height.
-opt("pumheight", 10)
+o.pumheight = 10
 
 -- Enables pseudo-transparency for the popup-menu
-opt("pumblend", 20)
+o.pumblend = 20
 
---- }}}
+-- }}}
 
 -- Files, backups and undo file {{{
-opt("backup", false)
+o.backup = false
 
-opt("writebackup", false)
+o.writebackup = false
 
-opt("swapfile", false)
+o.swapfile = false
 
-opt("undofile", true)
+o.undofile = true
 -- }}}
 
 -- Indent and tab {{{
 -- indent width
-opt("shiftwidth", 4)
+o.shiftwidth = 4
 -- tab width
-opt("tabstop", 4)
+o.tabstop = 4
 
-opt("softtabstop", 4)
+o.softtabstop = 4
 
 -- space replace tab
-opt("expandtab", true)
+o.expandtab = true
 
-opt("smarttab", true)
+o.smarttab = true
 
 -- set autoindent
 -- set smartindent
@@ -265,11 +260,11 @@ km("n", "<leader>t", "<cmd>tabnew<cr>")
 -- gt => <cmd>tabnext<cr>
 -- gT => <cmd>tabprevious<cr>
 
-cmd([[ augroup MyAutoCmd
-           autocmd CursorHold *? syntax sync minlines=300
-           autocmd FileType qf wincmd J
-            autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 500)
-       augroup END ]])
+autocmd({ "CursorHold" }, { pattern = "*?", command = "syntax sync minlines=300" })
+autocmd({ "FileType" }, { pattern = "qf", command = "wincmd J" })
+autocmd({ "TextYankPost" }, { pattern = "*", callback = function()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
+end })
 
 -- }}}
 

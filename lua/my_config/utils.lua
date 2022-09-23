@@ -20,21 +20,8 @@ end
 
 function M.km(modes, lhs, rhs, opts)
     opts = opts or {}
-    local set_keymap = vim.api.nvim_set_keymap
-    if type(modes) == "string" then
-        modes = { modes }
-    end
-
-    if opts["buffer"] == true then
-        opts["buffer"] = nil -- delete the element
-        for _, mode in ipairs(modes) do
-            vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
-        end
-        return
-    end
-    for _, mode in ipairs(modes) do
-        vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-    end
+    opts.silent = true
+    vim.keymap.set(modes, lhs, rhs, opts)
 end
 
 function M.is_load(plugin)
