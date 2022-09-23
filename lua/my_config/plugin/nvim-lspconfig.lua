@@ -76,6 +76,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- html lsp setting {{{
+lspconfig.html.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+})
+-- }}}
+
 -- terraform lsp setting {{{
 lspconfig.jsonnet_ls.setup({
     on_attach = custom_attach,
