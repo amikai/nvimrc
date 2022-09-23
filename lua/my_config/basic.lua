@@ -3,27 +3,27 @@ local fn = vim.fn
 local call = vim.call
 local err_writeln = vim.api.nvim_err_writeln
 local t = function(str)
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 local opt = function(key, val)
-	if vim.o[key] == nil then
-		err_writeln("option ${key} invalid")
-	end
-	vim.o[key] = val
+    if vim.o[key] == nil then
+        err_writeln("option ${key} invalid")
+    end
+    vim.o[key] = val
 end
 
 local w_opt = function(key, val)
-	if vim.wo[key] == nil then
-		err_writeln("option ${key} invalid")
-	end
-	vim.wo[key] = val
+    if vim.wo[key] == nil then
+        err_writeln("option ${key} invalid")
+    end
+    vim.wo[key] = val
 end
 
 local km = vim.keymap.set
 
 local g_v = function(key, val)
-	vim.g[key] = val
+    vim.g[key] = val
 end
 
 -- General {{{
