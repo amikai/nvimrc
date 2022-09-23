@@ -264,8 +264,8 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"mhinz/vim-signify",
-		setup = [[ require('my_config.plugin.vim-signify').setup() ]],
+		"lewis6991/gitsigns.nvim",
+		config = [[ require('my_config.plugin.gitsigns').config() ]],
 	})
 
 	use({
