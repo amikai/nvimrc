@@ -250,8 +250,12 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"junegunn/goyo.vim",
-		setup = [[ require('my_config.plugin.goyo').setup() ]],
+		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
+        setup = function()
+            vim.keymap.set("n", "<F2>", "<cmd>ZenMode<cr>")
+        end,
+		config = [[ require('my_config.plugin.zen-mode').setup() ]],
 	})
 
 	use({
