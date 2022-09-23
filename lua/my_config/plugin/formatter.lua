@@ -8,6 +8,21 @@ function M.setup()
         filetype = {
             lua = {
                 require("formatter.filetypes.lua").stylua,
+                function()
+                    return {
+                        exe = "stylua",
+                        args = {
+                            "--search-parent-directories",
+                            "--stdin-filepath",
+                            util.escape_path(util.get_current_buffer_file_path()),
+                            "--",
+                            "indent-type Spaces",
+                            "--",
+                            "-",
+                        },
+                        stdin = true,
+                    }
+                end
             },
             proto = {
                 function()
