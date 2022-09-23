@@ -47,12 +47,6 @@ local custom_attach = function(client, bufnr)
         vim.pretty_print(vim.lsp.buf.list_workspace_folders())
     end)
 
-    if client.resolved_capabilities.document_formatting then
-        map("n", "<F3>", vim.lsp.buf.formatting)
-    elseif utils.has_plugin("formatter.nvim") then
-        map("n", "<F3>", "<cmd>Format<cr>")
-    end
-
     if client.resolved_capabilities.document_range_formatting then
         map("x", "<F3>", vim.lsp.buf.range_formatting)
     end

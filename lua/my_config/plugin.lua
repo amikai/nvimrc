@@ -318,6 +318,22 @@ return require("packer").startup(function(use)
 	use({
 		"mhartington/formatter.nvim",
 		cmd = { "Format", "FormatWrite" },
+		setup = function()
+			local utils = require("my_config.utils")
+			vim.keymap.set("n", "<F3>", function()
+				local client = vim.lsp.buf_get_clients(0)
+				if next(client) == nil and utils.has_plugin("formatter.nvim") then
+					print("formatter")
+					vim.cmd("Format")
+				else
+					vim.lsp.for_each_buffer_client(0, function(client, client_id, bufnr)
+						if client.resolved_capabilities.document_formatting then
+							vim.lsp.buf.formatting()
+						end
+					end)
+				end
+			end)
+		end,
 		config = function()
 			require("my_config.plugin.formatter").setup()
 		end,
