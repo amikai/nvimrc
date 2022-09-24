@@ -165,6 +165,21 @@ return require("packer").startup(function(use)
     })
 
     use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            local saga = require("lspsaga")
+
+            saga.init_lsp_saga({
+                -- your configuration
+                code_action_lightbulb = {
+                    enable = false
+                }
+            })
+        end,
+    })
+
+    use({
         {
             "hrsh7th/cmp-nvim-lsp",
             config = [[ require('my_config.plugin.nvim-cmp').config() ]],

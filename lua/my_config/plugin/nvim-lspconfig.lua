@@ -18,6 +18,20 @@ M.toggle_diagnostic_window = function()
     end
     vim.cmd(string.format("%swincmd w", winnr))
 end
+
+-- Change diagnostic signs.
+fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
+fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
+-- global config for diagnostic
+vim.diagnostic.config {
+    underline = false,
+    virtual_text = false,
+    signs = true,
+    severity_sort = true,
+}
 -- }}}
 
 -- lsp attach function {{{
@@ -29,23 +43,31 @@ local custom_attach = function(client, bufnr)
         keymap.set(mode, l, r, opts)
     end
 
-    -- Mappings.
     map("n", "gd", vim.lsp.buf.definition)
-    map("n", "K", vim.lsp.buf.hover)
-    -- map("n", "<C-k>", vim.lsp.buf.signature_help)
-    map("n", "gR", vim.lsp.buf.rename)
-    map("n", "gr", vim.lsp.buf.references)
-    map("n", "[d", vim.diagnostic.goto_prev)
-    map("n", "]d", vim.diagnostic.goto_next)
-    map("n", "gi", vim.lsp.buf.implementation)
-    map("n", "gD", vim.lsp.buf.declaration)
+    map("n", "<F9>", M.toggle_diagnostic_window)
+    if utils.has_plugin("lspsaga.nvim") then
+        map("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+        map("n", "gp", "<cmd>Lspsaga peek_definition<cr>")
+        map("n", "gR", "<cmd>Lspsaga rename<cr>")
+        map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+        map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+    else
+        map("n", "K", vim.lsp.buf.hover)
+        -- map("n", "<C-k>", vim.lsp.buf.signature_help)
+        map("n", "gR", vim.lsp.buf.rename)
+        map("n", "gr", vim.lsp.buf.references)
+        map("n", "[d", vim.diagnostic.goto_prev)
+        map("n", "]d", vim.diagnostic.goto_next)
+        map("n", "gi", vim.lsp.buf.implementation)
+        map("n", "gD", vim.lsp.buf.declaration)
 
-    map("n", "<leader>ca", vim.lsp.buf.code_action)
-    map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-    map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
-    map("n", "<leader>wl", function()
-        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
-    end)
+        map("n", "<leader>ca", vim.lsp.buf.code_action)
+        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
+        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
+        map("n", "<leader>wl", function()
+            vim.pretty_print(vim.lsp.buf.list_workspace_folders())
+        end)
+    end
 
     if client.resolved_capabilities.document_range_formatting then
         map("x", "<F3>", vim.lsp.buf.range_formatting)
