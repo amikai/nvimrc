@@ -192,6 +192,19 @@ return require("packer").startup(function(use)
             "hrsh7th/vim-vsnip",
             setup = function()
                 vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/vsnippets"
+                vim.keymap.set("i", "<C-J>", function()
+                    if vim.fn["vsnip#jumpable"](1) == 1 then
+                        return "<Plug>(vsnip-expand-or-jump)"
+                    end
+                    return "<C-J>"
+                end, { expr = true })
+
+                vim.keymap.set("i", "<C-K>", function()
+                    if vim.fn["vsnip#jumpable"](-1) == 1 then
+                        return "<Plug>(vsnip-jump-prev)"
+                    end
+                    return "<C-K>"
+                end, { expr = true })
             end,
         },
         { "rafamadriz/friendly-snippets" },
