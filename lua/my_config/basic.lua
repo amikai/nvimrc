@@ -136,7 +136,7 @@ wo.winblend = 20
 -- Set minimal width for current window.
 o.winwidth = 30
 -- Set minimal height for current window.
-o.winheight = 20
+-- o.winheight = 20
 -- Set maximam maximam command line window.
 o.cmdwinheight = 3
 
