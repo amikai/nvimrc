@@ -53,7 +53,15 @@ return require("packer").startup(function(use)
     use({
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-        cmd = { "Trouble", "TroubleClose" },
+        cmd = { "Trouble", "TroubleClose", "TroubleToggle" },
+        setup = function()
+            vim.keymap.set(
+                "n",
+                "<F33>",  -- Ctrl + F9
+                "<cmd>TroubleToggle<cr>",
+                { silent = true }
+            )
+        end,
         config = function()
             require("trouble").setup({})
             vim.keymap.set(
