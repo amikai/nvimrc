@@ -395,7 +395,7 @@ return require("packer").startup(function(use)
         setup = function()
             vim.api.nvim_set_keymap(
                 "n",
-                "<F3>",
+                "<F4>",
                 "<cmd>NvimTreeToggle<cr>",
                 { silent = true, noremap = true }
             )
