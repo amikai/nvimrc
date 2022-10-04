@@ -93,7 +93,7 @@ return require("packer").startup(function(use)
         setup = function()
             vim.g.indent_blankline_disable_warning_message = true
             vim.g.indent_blankline_char = "┆"
-            vim.g.indent_blankline_filetype_exclude = { "fern", "diff", "tagbar", "help" }
+            vim.g.indent_blankline_filetype_exclude = { "NvimTree", "diff", "tagbar", "help" }
         end,
     })
 
@@ -372,7 +372,7 @@ return require("packer").startup(function(use)
         config = function()
             require("lualine").setup({
                 extensions = {
-                    "fern",
+                    "nvim-tree",
                     "quickfix",
                     "toggleterm",
                     "fugitive",
@@ -388,25 +388,27 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "lambdalisue/fern.vim",
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        },
         setup = function()
             vim.api.nvim_set_keymap(
                 "n",
-                "<F4>",
-                "<cmd>Fern . -drawer -toggle -width=30<cr>",
+                "<F3>",
+                "<cmd>NvimTreeToggle<cr>",
                 { silent = true, noremap = true }
             )
-            vim.cmd([[autocmd FileType fern call my_config#fern#keymapping()]])
         end,
         config = function()
-            vim.fn["my_config#fern#setting"]()
+            require("nvim-tree").setup({
+                git = {
+                    enable = false,
+                },
+            })
         end,
-        cmd = "Fern",
-    })
-
-    use({
-        "lambdalisue/fern-git-status.vim",
-        after = "fern.vim",
+        cmd = 'NvimTreeToggle',
+        tag = 'nightly'
     })
 
     use({

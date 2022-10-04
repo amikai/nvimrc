@@ -174,9 +174,6 @@ o.incsearch = true -- search as characters are entered
 o.hlsearch = true -- highlight matches
 o.inccommand = "split"
 
--- mark before search
-km("n", "/", "ms/")
-
 -- Show matching brackets when text indicator is over them
 o.showmatch = true
 o.matchtime = 1
