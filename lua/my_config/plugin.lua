@@ -56,17 +56,17 @@ return require("packer").startup(function(use)
         cmd = { "Trouble", "TroubleClose" },
         config = function()
             require("trouble").setup({})
-            vim.api.nvim_set_keymap(
+            vim.keymap.set(
                 "n",
                 "[d",
                 "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>",
-                { silent = true, noremap = true }
+                { silent = true }
             )
-            vim.api.nvim_set_keymap(
+            vim.keymap.set(
                 "n",
                 "]d",
                 "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>",
-                { silent = true, noremap = true }
+                { silent = true }
             )
         end,
     })
@@ -120,7 +120,7 @@ return require("packer").startup(function(use)
             after = "vim-operator-user",
             keys = { { "", "<Plug>(operator-replace)" } },
             setup = function()
-                vim.api.nvim_set_keymap("", "R", "<Plug>(operator-replace)", {})
+                vim.keymap.set("", "R", "<Plug>(operator-replace)", { silent = true })
             end,
         },
     })
@@ -355,7 +355,7 @@ return require("packer").startup(function(use)
                 else
                     vim.lsp.for_each_buffer_client(0, function(client, client_id, bufnr)
                         if client.resolved_capabilities.document_formatting then
-                            vim.lsp.buf.formatting()
+                            vim.lsp.buf.format()
                         end
                     end)
                 end
@@ -397,7 +397,7 @@ return require("packer").startup(function(use)
                 "n",
                 "<F4>",
                 "<cmd>NvimTreeToggle<cr>",
-                { silent = true, noremap = true }
+                { silent = true }
             )
         end,
         config = function()
