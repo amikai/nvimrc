@@ -146,7 +146,12 @@ return require("packer").startup(function(use)
         event = { "InsertEnter" },
     })
 
-    use({ "tpope/vim-commentary" })
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     use({ "tpope/vim-unimpaired" })
 
