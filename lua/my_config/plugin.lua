@@ -110,18 +110,6 @@ return require("packer").startup(function(use)
     use({ "machakann/vim-swap" })
 
     use({
-        "kana/vim-textobj-user",
-        {
-            "glts/vim-textobj-comment",
-            after = "vim-textobj-user",
-        },
-        {
-            "sgur/vim-textobj-parameter",
-            after = "vim-textobj-user",
-        },
-    })
-
-    use({
         "kana/vim-operator-user",
         {
             "kana/vim-operator-replace",
@@ -326,6 +314,14 @@ return require("packer").startup(function(use)
         after = "nvim-treesitter",
         config = function()
             require("my_config.plugin.nvim-treesitter-context").config()
+        end,
+    })
+
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        config = function()
+            require("my_config.plugin.nvim-treesitter-textobjects").config()
         end,
     })
 
