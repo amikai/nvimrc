@@ -92,8 +92,11 @@ return require("packer").startup(function(use)
 
     use({
         "akinsho/toggleterm.nvim",
-        cmd = "ToggleTerm",
         setup = [[ require('my_config.plugin.toggleterm').setup() ]],
+        cmd = 'ToggleTerm',
+        config = function()
+            require("toggleterm").setup()
+        end
     })
 
     use({
