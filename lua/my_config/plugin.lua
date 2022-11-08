@@ -363,7 +363,7 @@ return require("packer").startup(function(use)
                     vim.cmd("Format")
                 else
                     vim.lsp.for_each_buffer_client(0, function(client, client_id, bufnr)
-                        if client.resolved_capabilities.document_formatting then
+                        if client.server_capabilities.document_formatting then
                             vim.lsp.buf.format()
                         end
                     end)
