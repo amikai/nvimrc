@@ -6,18 +6,6 @@ local fn = vim.fn
 local utils = require("my_config.utils")
 
 -- diagnostic setting {{{
-M.toggle_diagnostic_window = function()
-    local winnr = vim.fn.winnr()
-    local locwin_open = vim.fn.getloclist(0, { winid = 0 }).winid ~= 0
-    if locwin_open then
-        vim.cmd("lclose")
-    else
-        vim.diagnostic.setloclist({ open = true })
-        vim.cmd("wincmd J")
-        vim.cmd("5wincmd _")
-    end
-    vim.cmd(string.format("%swincmd w", winnr))
-end
 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
@@ -44,7 +32,7 @@ local custom_attach = function(client, bufnr)
     end
 
     map("n", "gd", vim.lsp.buf.definition)
-    map("n", "<F9>", M.toggle_diagnostic_window)
+    map("n", "<F9>", utils.toggle_diagnostic_window)
     if utils.has_plugin("lspsaga.nvim") then
         map("n", "K", "<cmd>Lspsaga hover_doc<cr>")
         map("n", "gp", "<cmd>Lspsaga peek_definition<cr>")

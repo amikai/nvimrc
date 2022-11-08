@@ -27,4 +27,17 @@ function M.executable(name)
     return false
 end
 
+M.toggle_diagnostic_window = function()
+    local winnr = vim.fn.winnr()
+    local locwin_open = vim.fn.getloclist(0, { winid = 0 }).winid ~= 0
+    if locwin_open then
+        vim.cmd("lclose")
+    else
+        vim.diagnostic.setloclist({ open = true })
+        vim.cmd("wincmd J")
+        vim.cmd("5wincmd _")
+    end
+    vim.cmd(string.format("%swincmd w", winnr))
+end
+
 return M
