@@ -31,6 +31,11 @@ local custom_attach = function(client, bufnr)
         keymap.set(mode, l, r, opts)
     end
 
+    -- See https://github.com/redhat-developer/yaml-language-server/issues/486
+    if client.name == "yamlls" then
+        client.server_capabilities.documentFormattingProvider = true
+    end
+
     map("n", "gd", vim.lsp.buf.definition)
     map("n", "<F9>", utils.toggle_diagnostic_window)
     if utils.has_plugin("lspsaga.nvim") then
