@@ -69,6 +69,7 @@ local custom_attach = function(client, bufnr)
         end)
     end
 
+    map("n", "<F3>", vim.lsp.buf.format)
     if client.server_capabilities.document_range_formatting then
         map("x", "<F3>", vim.lsp.buf.range_formatting)
     end
