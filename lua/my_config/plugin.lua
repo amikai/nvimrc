@@ -169,6 +169,32 @@ return require("packer").startup(function(use)
     })
 
     use({
+        "williamboman/mason.nvim",
+    })
+
+    use({
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "ansiblels",
+                    "gopls",
+                    "dockerls",
+                    "jsonnet_ls",
+                    "terraformls",
+                    "html",
+                    "bashls",
+                    "sumneko_lua",
+                    "vimls",
+                    "yamlls",
+                },
+                automatic_installation = true,
+            })
+        end,
+    })
+
+    use({
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = function()
