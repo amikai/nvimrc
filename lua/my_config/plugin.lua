@@ -80,10 +80,6 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "bpietravalle/vim-bolt",
-    })
-
-    use({
         "lambdalisue/suda.vim",
         cmd = { "SudaRead", "SudaWrite" },
     })
