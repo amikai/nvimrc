@@ -113,15 +113,15 @@ return require("packer").startup(function(use)
     use({ "machakann/vim-swap" })
 
     use({
-        "kana/vim-operator-user",
-        {
-            "kana/vim-operator-replace",
-            after = "vim-operator-user",
-            keys = { { "", "<Plug>(operator-replace)" } },
-            setup = function()
-                vim.keymap.set("", "R", "<Plug>(operator-replace)", { silent = true })
-            end,
-        },
+        "gbprod/substitute.nvim",
+        config = function()
+            require("substitute").setup({})
+                vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
+                vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+                vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
+                vim.keymap.set("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
+
+        end
     })
 
     use({
