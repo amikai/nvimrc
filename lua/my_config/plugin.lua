@@ -180,6 +180,7 @@ return require("packer").startup(function(use)
                 ensure_installed = {
                     "ansiblels",
                     "gopls",
+                    "golangci_lint_ls",
                     "dockerls",
                     "jsonnet_ls",
                     "terraformls",

@@ -210,6 +210,10 @@ lspconfig.gopls.setup({
     },
 })
 
+lspconfig.golangci_lint_ls.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+})
 -- }}}
 
 return M
