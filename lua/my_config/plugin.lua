@@ -94,11 +94,7 @@ return require("packer").startup(function(use)
 
     use({
         "lukas-reineke/indent-blankline.nvim",
-        setup = function()
-            vim.g.indent_blankline_disable_warning_message = true
-            vim.g.indent_blankline_char = "┆"
-            vim.g.indent_blankline_filetype_exclude = { "NvimTree", "diff", "tagbar", "help" }
-        end,
+        config = [[ require('my_config.plugin.indent-blankline').config() ]],
     })
 
     use({ "PeterRincker/vim-searchlight" })
@@ -334,7 +330,6 @@ return require("packer").startup(function(use)
 
     use({
         "nvim-treesitter/nvim-treesitter",
-        event = "BufEnter",
         run = "TSUpdate",
         config = [[ require('my_config.plugin.nvim-treesitter').config() ]],
     })
