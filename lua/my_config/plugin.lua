@@ -57,7 +57,7 @@ return require("packer").startup(function(use)
         setup = function()
             vim.keymap.set(
                 "n",
-                "<F33>",  -- Ctrl + F9
+                "<F33>", -- Ctrl + F9
                 "<cmd>TroubleToggle<cr>",
                 { silent = true }
             )
@@ -105,10 +105,10 @@ return require("packer").startup(function(use)
         "gbprod/substitute.nvim",
         config = function()
             require("substitute").setup({})
-                vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
-                vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
-                vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
-                vim.keymap.set("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
+            vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
+            vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+            vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
+            vim.keymap.set("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
 
         end
     })
