@@ -32,7 +32,7 @@ o.hidden = true
 
 o.report = 0
 
-km("n", "<F12>", vim.fn["my_config#utils#show_function_key"])
+km("n", "<F12>", require("my_config.utils").show_function_keymapping)
 
 km("i", "jk", "<esc>")
 km("t", "<esc>", "<C-\\><C-n>")
@@ -51,8 +51,12 @@ o.path = o.path .. ",**"
 
 o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0"
 
+-- go to original position
 autocmd("BufReadPost", { pattern = "*", callback = function()
-    vim.fn["my_config#utils#go_to_original_pos"]()
+    local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
+    if { row, col } ~= { 0, 0 } then
+        vim.api.nvim_win_set_cursor(0, { row, 0 })
+    end
 end })
 
 -- -- center buffer around cursor when opening files

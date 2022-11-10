@@ -40,4 +40,19 @@ M.toggle_diagnostic_window = function()
     vim.cmd(string.format("%swincmd w", winnr))
 end
 
+M.show_function_keymapping = function()
+    msgs = {
+        "<F1> term",
+        "<F2> focus",
+        "<F3> codefmt",
+        "<F4> file",
+        "<F5> whitespace",
+        "<F6> undotree",
+        "<F8> tagbar",
+        "<F9> diagnostics",
+        "<F12> show msg"
+    }
+    print(table.concat(msgs, " | "))
+end
+
 return M
