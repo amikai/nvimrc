@@ -1,6 +1,12 @@
 local M = {}
 
+local km = require("my_config.utils").km
+
 function M.setup()
+    km("n", "<F2>", "<cmd>ZenMode<cr>")
+end
+
+function M.config()
     require("zen-mode").setup({
         window = {
             backdrop = 0.8, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal

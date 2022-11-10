@@ -54,29 +54,8 @@ return require("packer").startup(function(use)
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         cmd = { "Trouble", "TroubleClose", "TroubleToggle" },
-        setup = function()
-            vim.keymap.set(
-                "n",
-                "<F33>", -- Ctrl + F9
-                "<cmd>TroubleToggle<cr>",
-                { silent = true }
-            )
-        end,
-        config = function()
-            require("trouble").setup({})
-            vim.keymap.set(
-                "n",
-                "[d",
-                "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>",
-                { silent = true }
-            )
-            vim.keymap.set(
-                "n",
-                "]d",
-                "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>",
-                { silent = true }
-            )
-        end,
+        setup = [[ require('my_config.plugin.trouble').setup() ]],
+        config = [[ require('my_config.plugin.trouble').config() ]],
     })
 
     use({
@@ -128,9 +107,7 @@ return require("packer").startup(function(use)
 
     use {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
+        config = [[ require('Comment').setup() ]]
     }
 
     use({ "tpope/vim-unimpaired" })
@@ -186,9 +163,7 @@ return require("packer").startup(function(use)
 
     use({
         "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("my_config.plugin.null-ls").config()
-        end
+        config = [[ require("my_config.plugin.null-ls").config() ]]
     })
 
     use({
@@ -241,9 +216,7 @@ return require("packer").startup(function(use)
         "fatih/vim-go",
         run = ":GoUpdateBinaries",
         ft = "go",
-        setup = function()
-            require("my_config.plugin.vim-go").setup()
-        end,
+        setup = [[ require("my_config.plugin.vim-go").setup() ]]
     })
 
     use({
@@ -261,11 +234,7 @@ return require("packer").startup(function(use)
 
     use({
         "Raimondi/delimitMate",
-        setup = function()
-            vim.g.delimitMate_expand_space = 1
-            vim.g.delimitMate_smart_quotes = 1
-            vim.g.delimitMate_nesting_quotes = { '"', "'" }
-        end,
+        setup = [[ require('my_config.plugin.delimitMate').setup() ]],
         event = "InsertEnter",
     })
 
@@ -307,10 +276,8 @@ return require("packer").startup(function(use)
     use({
         "folke/zen-mode.nvim",
         cmd = "ZenMode",
-        setup = function()
-            vim.keymap.set("n", "<F2>", "<cmd>ZenMode<cr>")
-        end,
-        config = [[ require('my_config.plugin.zen-mode').setup() ]],
+        setup = [[ require('my_config.plugin.zen-mode').setup() ]],
+        config = [[ require('my_config.plugin.zen-mode').config() ]],
     })
 
     use({
