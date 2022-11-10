@@ -84,10 +84,10 @@ return require("packer").startup(function(use)
         "gbprod/substitute.nvim",
         config = function()
             require("substitute").setup({})
-            vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
-            vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
-            vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
-            vim.keymap.set("n", "sx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
+            vim.keymap.set("n", "R", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
+            vim.keymap.set("x", "R", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+            vim.keymap.set("n", "RR", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
+            vim.keymap.set("n", "cx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
 
         end
     })
