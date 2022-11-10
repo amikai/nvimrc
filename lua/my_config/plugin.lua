@@ -136,6 +136,14 @@ return require("packer").startup(function(use)
 
     use({
         "williamboman/mason.nvim",
+        config = function()
+            require('my_config.plugin.mason').config({
+                ensure_installed = {
+                    "buf",
+                    "black",
+                },
+            })
+        end,
     })
 
     use({
