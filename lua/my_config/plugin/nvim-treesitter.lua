@@ -5,6 +5,7 @@ local g = vim.g
 function M.config()
     require("nvim-treesitter.install").prefer_git = true
     require("nvim-treesitter.configs").setup({
+        additional_vim_regex_highlighting = false,
         ensure_installed = {
             "c",
             "rust",
@@ -59,7 +60,9 @@ function M.config()
             extended_mode = false,
             max_file_lines = 1000,
         },
-        additional_vim_regex_highlighting = false,
+        endwise = {
+            enable = true,
+        },
     })
 end
 

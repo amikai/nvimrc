@@ -97,14 +97,6 @@ return require("packer").startup(function(use)
         setup = [[ require('my_config.plugin.vim-matchup').setup() ]],
     })
 
-    use({
-        "tpope/vim-endwise",
-        setup = function()
-            vim.g.endwise_no_mappings = 1
-        end,
-        event = { "InsertEnter" },
-    })
-
     use {
         'numToStr/Comment.nvim',
         config = [[ require('Comment').setup() ]]
@@ -330,6 +322,12 @@ return require("packer").startup(function(use)
     use({
         "p00f/nvim-ts-rainbow",
         after = "nvim-treesitter",
+    })
+
+    use({
+        "RRethy/nvim-treesitter-endwise",
+        after = "nvim-treesitter",
+        event = "InsertEnter",
     })
 
     use({
