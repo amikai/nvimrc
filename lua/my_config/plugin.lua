@@ -227,11 +227,16 @@ return require("packer").startup(function(use)
         setup = [[ require("my_config.plugin.vim-go").setup() ]]
     })
 
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    }
+
     use({
         "nvim-telescope/telescope.nvim",
         requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
         setup = [[ require('my_config.plugin.telescope').setup() ]],
-        cmd = "Telescope",
+        config = [[ require('my_config.plugin.telescope').config() ]],
     })
 
     use({
@@ -333,15 +338,6 @@ return require("packer").startup(function(use)
     use({
         "mizlan/iswap.nvim",
         after = "nvim-treesitter",
-    })
-
-    use({
-        "junegunn/fzf",
-        run = ":call fzf#install()",
-    })
-
-    use({
-        "junegunn/fzf.vim",
     })
 
     use({
