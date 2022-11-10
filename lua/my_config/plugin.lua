@@ -315,7 +315,7 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "romgrk/nvim-treesitter-context",
+        "nvim-treesitter/nvim-treesitter-context",
         after = "nvim-treesitter",
         config = function()
             require("my_config.plugin.nvim-treesitter-context").config()
