@@ -33,8 +33,23 @@ function M.config()
             additional_vim_regex_highlighting = false,
             disable = { "python" },
         },
+        -- Indentation based on treesitter for the = operator
         indent = {
-            endble = true,
+            enable = true,
+        },
+        textobjects = {
+            select = {
+                enable = true,
+                lookahead = true,
+                keymaps = {
+                    ["af"] = "@function.outer",
+                    ["if"] = "@function.inner",
+                    ["i,"] = "@parameter.inner",
+                    ["a,"] = "@parameter.outer",
+                    ["ac"] = "@comment.outer",
+                },
+                include_surrounding_whitespace = true,
+            },
         },
         matchup = {
             enable = true,
