@@ -21,8 +21,7 @@ install_nvim_folder() {
 }
 
 install_plugin() {
-    nvim +qa
-    nvim +checkhealth +"PackerSync" +qa
+    nvim -c"autocmd User PackerComplete quitall" -c"checkhealth" -c"PackerSync"
     success "install plugin"
 }
 
