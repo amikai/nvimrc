@@ -287,6 +287,13 @@ return require("packer").startup(function(use)
     })
 
     use({
+        "folke/twilight.nvim",
+        cmd = "Twilight",
+        setup = [[ require('my_config.plugin.twilight').setup() ]],
+        config = [[ require('my_config.plugin.twilight').config() ]],
+    })
+
+    use({
         "thinca/vim-qfreplace",
         cmd = { "Qfreplace" },
     })
