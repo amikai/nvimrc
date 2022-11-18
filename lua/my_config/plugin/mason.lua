@@ -4,8 +4,8 @@ local install_pkgs = require("mason.api.command").MasonInstall
 local is_installed = require("mason-registry").is_installed
 
 function M.config(pkgs)
-    ensure_installed = pkgs.ensure_installed or {}
-    want_pkgs = {}
+    local ensure_installed = pkgs.ensure_installed or {}
+    local want_pkgs = {}
 
     for _, pkg in pairs(ensure_installed) do
         if not is_installed(pkg) then

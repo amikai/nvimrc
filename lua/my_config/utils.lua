@@ -20,7 +20,7 @@ function M.is_in_tmux()
 end
 
 function M.executable(name)
-    if fn.executable(name) > 0 then
+    if vim.fn.executable(name) > 0 then
         return true
     end
 
