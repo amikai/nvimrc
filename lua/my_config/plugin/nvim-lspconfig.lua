@@ -183,7 +183,7 @@ lspconfig.vimls.setup({
 -- }}}
 
 -- python pylsp setting {{{
-lspconfig.pylsp.setup({
+lspconfig.pyright.setup({
     on_attach = custom_attach,
     capabilities = capabilities,
 })

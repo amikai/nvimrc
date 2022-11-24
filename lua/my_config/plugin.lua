@@ -147,6 +147,7 @@ return require("packer").startup(function(use)
                 ensure_installed = {
                     "ansiblels",
                     "gopls",
+                    "pyright",
                     "golangci_lint_ls",
                     "dockerls",
                     "jsonnet_ls",
