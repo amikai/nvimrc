@@ -6,6 +6,12 @@ function M.km(modes, lhs, rhs, opts)
     vim.keymap.set(modes, lhs, rhs, opts)
 end
 
+function M.km_factory(opts)
+    return function(modes, lhs, rhs)
+        vim.keymap.set(modes, lhs, rhs, opts)
+    end
+end
+
 function M.is_load(plugin)
     return packer_plugins ~= nil and packer_plugins[plugin] ~= nil and packer_plugins[plugin].loaded ~= nil
 end

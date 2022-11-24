@@ -1,7 +1,6 @@
 -- Copy from https://github.com/jdhao/nvim-config/blob/master/lua/config/lsp.lua
 local M = {}
 
-local keymap = vim.keymap
 local fn = vim.fn
 local utils = require("my_config.utils")
 
@@ -24,47 +23,43 @@ vim.diagnostic.config {
 
 -- lsp attach function {{{
 local custom_attach = function(client, bufnr)
-    local map = function(mode, l, r, opts)
-        opts = opts or {}
-        opts.silent = true
-        opts.buffer = bufnr
-        keymap.set(mode, l, r, opts)
-    end
+    local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
+
 
     -- See https://github.com/redhat-developer/yaml-language-server/issues/486
     if client.name == "yamlls" then
         client.server_capabilities.documentFormattingProvider = true
     end
 
-    map("n", "gd", vim.lsp.buf.definition)
-    map("n", "<F9>", utils.toggle_diagnostic_window)
+    km("n", "gd", vim.lsp.buf.definition)
+    km("n", "<F9>", utils.toggle_diagnostic_window)
     if utils.has_plugin("lspsaga.nvim") then
-        map("n", "K", "<cmd>Lspsaga hover_doc<cr>")
-        map("n", "gp", "<cmd>Lspsaga peek_definition<cr>")
-        map("n", "gR", "<cmd>Lspsaga rename<cr>")
-        map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-        map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+        km("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+        km("n", "gp", "<cmd>Lspsaga peek_definition<cr>")
+        km("n", "gR", "<cmd>Lspsaga rename<cr>")
+        km("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+        km("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
     else
-        map("n", "K", vim.lsp.buf.hover)
-        -- map("n", "<C-k>", vim.lsp.buf.signature_help)
-        map("n", "gR", vim.lsp.buf.rename)
-        map("n", "gr", vim.lsp.buf.references)
-        map("n", "[d", vim.diagnostic.goto_prev)
-        map("n", "]d", vim.diagnostic.goto_next)
-        map("n", "gi", vim.lsp.buf.implementation)
-        map("n", "gD", vim.lsp.buf.declaration)
+        km("n", "K", vim.lsp.buf.hover)
+        -- km("n", "<C-k>", vim.lsp.buf.signature_help)
+        km("n", "gR", vim.lsp.buf.rename)
+        km("n", "gr", vim.lsp.buf.references)
+        km("n", "[d", vim.diagnostic.goto_prev)
+        km("n", "]d", vim.diagnostic.goto_next)
+        km("n", "gi", vim.lsp.buf.implementation)
+        km("n", "gD", vim.lsp.buf.declaration)
 
-        map("n", "<leader>ca", vim.lsp.buf.code_action)
-        map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-        map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
-        map("n", "<leader>wl", function()
+        km("n", "<leader>ca", vim.lsp.buf.code_action)
+        km("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
+        km("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
+        km("n", "<leader>wl", function()
             vim.pretty_print(vim.lsp.buf.list_workspace_folders())
         end)
     end
 
-    map("n", "<F3>", vim.lsp.buf.format)
+    km("n", "<F3>", vim.lsp.buf.format)
     if client.server_capabilities.document_range_formatting then
-        map("x", "<F3>", vim.lsp.buf.range_formatting)
+        km("x", "<F3>", vim.lsp.buf.range_formatting)
     end
 
     -- The blow command will highlight the current variable and its usages in the buffer.

@@ -2,7 +2,8 @@ local cmd = vim.cmd
 local fn = vim.fn
 local call = vim.call
 
-local km = require("my_config.utils").km
+local km = require("my_config.utils").km_factory({ silent = true })
+
 local g = vim.g
 local o = vim.o
 local go = vim.go
