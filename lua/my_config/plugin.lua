@@ -148,6 +148,7 @@ return require("packer").startup(function(use)
                     "ansiblels",
                     "gopls",
                     "pyright",
+                    "rust_analyzer",
                     "golangci_lint_ls",
                     "dockerls",
                     "jsonnet_ls",
