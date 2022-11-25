@@ -296,6 +296,7 @@ return require("packer").startup(function(use)
     use({
         "folke/twilight.nvim",
         cmd = "Twilight",
+        after = "nvim-treesitter",
         setup = [[ require('my_config.plugin.twilight').setup() ]],
         config = [[ require('my_config.plugin.twilight').config() ]],
     })
