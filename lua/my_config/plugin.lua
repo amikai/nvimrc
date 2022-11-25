@@ -373,9 +373,16 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "preservim/tagbar",
-        cmd = "TagbarToggle",
-        setup = [[ require('my_config.plugin.tagbar').setup() ]],
+        "liuchengxu/vista.vim",
+        cmd = "Vista",
+        setup = function()
+            vim.api.nvim_set_keymap(
+                "n",
+                "<F8>",
+                "<cmd>Vista!!<cr>",
+                { silent = true }
+            )
+        end
     })
 
     use({

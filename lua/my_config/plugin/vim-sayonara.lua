@@ -5,7 +5,7 @@ local km = require("my_config.utils").km
 
 function M.setup()
     g.sayonara_filetypes = {
-        tagbar = "TagbarClose",
+        vista = "Vista!",
     }
 
     km("n", "<leader>c", "<cmd>Sayonara!<cr>")

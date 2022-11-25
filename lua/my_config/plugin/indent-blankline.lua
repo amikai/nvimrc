@@ -4,7 +4,7 @@ local api = vim.api
 
 function M.config()
     vim.g.indent_blankline_disable_warning_message = true
-    local exclude_ft = { "help", "git", "diff", "NvimTree", "tagbar" }
+    local exclude_ft = { "help", "git", "diff", "NvimTree", "vista" }
     require("indent_blankline").setup {
         -- U+2502 may also be a good choice, it will be on the middle of cursor.
         -- U+250A is also a good choice

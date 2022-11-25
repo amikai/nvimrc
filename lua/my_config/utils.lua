@@ -54,7 +54,7 @@ M.show_function_keymapping = function()
         "<F4> file",
         "<F5> whitespace",
         "<F6> undotree",
-        "<F8> tagbar",
+        "<F8> vista",
         "<F9> diagnostics",
         "<F12> show msg"
     }
