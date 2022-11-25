@@ -79,12 +79,14 @@ local custom_attach = function(client, bufnr)
     local msg = string.format("Language server %s started!", client.name)
     vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
 end
+M.custom_attach = custom_attach
 -- }}}
 
 local lspconfig = require("lspconfig")
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = capabilities
 
 -- html lsp setting {{{
 lspconfig.html.setup({
