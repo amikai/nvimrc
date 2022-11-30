@@ -12,8 +12,12 @@ function M.km_factory(opts)
     end
 end
 
+function M.load_plugin(plugin)
+    require("packer").loader(plugin)
+end
+
 function M.is_load(plugin)
-    return packer_plugins ~= nil and packer_plugins[plugin] ~= nil and packer_plugins[plugin].loaded ~= nil
+    return packer_plugins ~= nil and packer_plugins[plugin] ~= nil and packer_plugins[plugin].loaded
 end
 
 function M.has_plugin(plugin)

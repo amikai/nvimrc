@@ -259,16 +259,22 @@ return require("packer").startup(function(use)
 
     use({
         {
+            "kevinhwang91/nvim-hlslens",
+            branch = "main",
+            keys = {
+                { "n", "*" }, { "x", "*" },
+                { "n", "#" }, { "x", "#" },
+                { "n", "g*" }, { "x", "g*" },
+                { "n", "#" }, { "x", "g#" },
+                { "n", "n" }, { "n", "N" }
+            },
+            config = [[ require('my_config.plugin.hlslens').config() ]],
+
+        },
+        {
             "haya14busa/vim-asterisk",
-        },
-        {
-            "haya14busa/is.vim",
-            setup = [[ require('my_config.plugin.is').setup() ]],
-        },
-        {
-            "osyo-manga/vim-anzu",
-            setup = [[ require('my_config.plugin.vim-anzu').setup() ]],
-        },
+            opt = true,
+        }
     })
 
     use({
