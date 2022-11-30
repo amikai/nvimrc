@@ -100,6 +100,10 @@ return require("packer").startup(function(use)
 
     use {
         'numToStr/Comment.nvim',
+        keys = {
+            {"n", "gc"},
+            {"n", "gcc"}
+        },
         config = [[ require('Comment').setup() ]]
     }
 
