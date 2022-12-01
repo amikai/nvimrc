@@ -77,8 +77,6 @@ return require("packer").startup(function(use)
         config = [[ require('my_config.plugin.indent-blankline').config() ]],
     })
 
-    use({ "PeterRincker/vim-searchlight" })
-
     use({ "machakann/vim-swap" })
 
     use({
