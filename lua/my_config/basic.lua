@@ -103,7 +103,7 @@ o.signcolumn = "auto:2"
 -- -- }}}
 
 -- -- Vim user interface {{{
-o.scrolloff = 999
+o.scrolloff = 3
 
 -- -- Display candidates by popup menu.
 o.wildmenu = true
