@@ -55,7 +55,7 @@ o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0"
 -- go to original position
 autocmd("BufReadPost", { pattern = "*", callback = function()
     local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
-    if { row, col } ~= { 0, 0 } then
+    if row ~= 0 or col ~= 0 then
         vim.api.nvim_win_set_cursor(0, { row, 0 })
     end
 end })
