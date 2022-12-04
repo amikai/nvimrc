@@ -18,7 +18,7 @@ function M.config()
         if not status then
             -- 13 is the index where real error message starts
             msg = msg:sub(13)
-            api.nvim_err_writeln(msg)
+            vim.api.nvim_err_writeln(msg)
             return
         end
 
