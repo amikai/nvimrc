@@ -63,8 +63,6 @@ return require("packer").startup(function(use)
         cmd = { "SudaRead", "SudaWrite" },
     })
 
-    use({ "itchyny/vim-cursorword" })
-
     use({
         "akinsho/toggleterm.nvim",
         cmd = 'ToggleTerm',
@@ -358,6 +356,12 @@ return require("packer").startup(function(use)
         "RRethy/nvim-treesitter-endwise",
         after = "nvim-treesitter",
         event = "InsertEnter",
+    })
+
+    use({
+        "RRethy/vim-illuminate",
+        after = "nvim-treesitter",
+        config = [[ require('my_config.plugin.vim-illuminate').config() ]],
     })
 
     use({
