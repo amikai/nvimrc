@@ -123,6 +123,7 @@ return require("packer").startup(function(use)
 
     use({
         "rbong/vim-flog",
+        requires = "tpope/vim-fugitive",
         cmd = { "Flog" },
     })
 
