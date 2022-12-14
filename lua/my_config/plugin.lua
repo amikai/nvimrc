@@ -80,10 +80,10 @@ return require("packer").startup(function(use)
     use({
         "gbprod/substitute.nvim",
         keys = {
-            {"n", "R"},
-            {"x", "R"},
-            {"n", "RR"},
-            {"n", "cx"},
+            { "n", "R" },
+            { "x", "R" },
+            { "n", "RR" },
+            { "n", "cx" },
         },
         config = function()
             require("substitute").setup({})
@@ -102,9 +102,9 @@ return require("packer").startup(function(use)
     use {
         'numToStr/Comment.nvim',
         keys = {
-            {"n", "gc"},
-            {"x", "gc"},
-            {"n", "gcc"},
+            { "n", "gc" },
+            { "x", "gc" },
+            { "n", "gcc" },
         },
         config = [[ require('Comment').setup() ]]
     }
