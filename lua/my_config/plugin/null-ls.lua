@@ -21,6 +21,12 @@ function M.config()
         },
     })
 
+    require("mason-null-ls").setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+        automatic_setup = false,
+    })
+
     vim.keymap.set("n", "<F9>", utils.toggle_diagnostic_window)
     vim.keymap.set("n", "<F3>", vim.lsp.buf.format)
 end

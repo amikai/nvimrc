@@ -136,14 +136,6 @@ return require("packer").startup(function(use)
 
     use({
         "williamboman/mason.nvim",
-        config = function()
-            require('my_config.plugin.mason').config({
-                ensure_installed = {
-                    "buf",
-                    "black",
-                },
-            })
-        end,
     })
 
     use({
@@ -174,6 +166,10 @@ return require("packer").startup(function(use)
     use({
         "jose-elias-alvarez/null-ls.nvim",
         config = [[ require("my_config.plugin.null-ls").config() ]]
+    })
+
+    use({
+        "jayp0521/mason-null-ls.nvim",
     })
 
     use({
