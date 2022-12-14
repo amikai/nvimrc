@@ -1,8 +1,7 @@
 local M = {}
 
-local b = vim.b
 local g = vim.g
-local km = require("my_config.utils").km
+local km = require("my_config.utils").km_factory({ silent = true, buffer = true })
 local autocmd = vim.api.nvim_create_autocmd
 
 function M.setup()
@@ -24,13 +23,13 @@ function M.setup()
     autocmd("FileType", {
         pattern = "go",
         callback = function()
-            km("n", "gR", "<Plug>(go-rename)", { buffer = true })
-            km("n", "gd", "<Plug>(go-def)", { buffer = true })
-            km("n", "gD", "<Plug>(go-describe)", { buffer = true })
-            km("n", "gr", "<Plug>(go-referrers)", { buffer = true })
-            km("n", "gR", "<Plug>(go-rename)", { buffer = true })
-            km("n", "gi", "<Plug>(go-implements)", { buffer = true })
-            km("n", "gt", "<Plug>(go-def-type)", { buffer = true })
+            km("n", "gR", "<Plug>(go-rename)")
+            km("n", "gd", "<Plug>(go-def)")
+            km("n", "gD", "<Plug>(go-describe)")
+            km("n", "gr", "<Plug>(go-referrers)")
+            km("n", "gR", "<Plug>(go-rename)")
+            km("n", "gi", "<Plug>(go-implements)")
+            km("n", "gt", "<Plug>(go-def-type)")
         end,
     })
 end
