@@ -157,6 +157,7 @@ return require("packer").startup(function(use)
                     "sumneko_lua",
                     "vimls",
                     "yamlls",
+                    "graphql",
                 },
                 automatic_installation = true,
             })

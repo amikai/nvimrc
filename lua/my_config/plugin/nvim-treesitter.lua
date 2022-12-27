@@ -27,6 +27,7 @@ function M.config()
             "vim",
             "lua",
             "proto",
+            "graphql",
         },
         highlight = {
             enable = true,

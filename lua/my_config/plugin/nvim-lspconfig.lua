@@ -186,6 +186,13 @@ lspconfig.pyright.setup({
 })
 -- }}}
 
+-- graphql lsp setting {{{
+lspconfig.graphql.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+})
+-- }}}
+
 -- golang lsp setting {{{
 -- see https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 lspconfig.gopls.setup({
