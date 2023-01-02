@@ -18,6 +18,8 @@ function M.config()
             null_ls.builtins.formatting.buf,
             -- python
             null_ls.builtins.formatting.black,
+            -- bash
+            null_ls.builtins.diagnostics.shellcheck,
         },
     })
 
