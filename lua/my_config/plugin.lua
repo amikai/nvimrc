@@ -177,12 +177,12 @@ return require("packer").startup(function(use)
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = function()
-            local saga = require("lspsaga")
-
-            saga.init_lsp_saga({
-                -- your configuration
-                code_action_lightbulb = {
-                    enable = false
+            require("lspsaga").setup({
+                lightbulb = {
+                    enable = false,
+                },
+                symbol_in_winbar = {
+                    enable = false,
                 }
             })
         end,
