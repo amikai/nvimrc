@@ -102,7 +102,6 @@ M.custom_attach = custom_attach
 local lspconfig = require("lspconfig")
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = capabilities
 
 -- html lsp setting {{{
