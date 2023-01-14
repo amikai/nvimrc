@@ -3,6 +3,7 @@ local M = {}
 
 local fn = vim.fn
 local utils = require("my_config.utils")
+local autocmd = vim.api.nvim_create_autocmd
 
 -- diagnostic setting {{{
 
@@ -75,6 +76,20 @@ local custom_attach = function(client, bufnr)
             augroup END
         ]])
     end
+
+    -- auto format on save
+    local fmt_fts = { "rust", "lua" }
+    if client.server_capabilities.documentFormattingProvider then
+        autocmd("BufWritePre", { pattern = "*", callback = function()
+            for _, ft in ipairs(fmt_fts) do
+                if vim.o.ft == ft then
+                    vim.lsp.buf.format()
+                end
+            end
+        end })
+    end
+
+
 
     local msg = string.format("Language server %s started!", client.name)
     vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
