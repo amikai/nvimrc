@@ -391,16 +391,16 @@ return require("packer").startup(function(use)
     })
 
     use({
-        "liuchengxu/vista.vim",
-        cmd = "Vista",
+        "simrat39/symbols-outline.nvim",
         setup = function()
             vim.api.nvim_set_keymap(
                 "n",
                 "<F8>",
-                "<cmd>Vista!!<cr>",
+                "<cmd>SymbolsOutline<cr>",
                 { silent = true }
             )
-        end
+        end,
+        config = [[ require('my_config.plugin.symbols-outline').config() ]],
     })
 
     use({
