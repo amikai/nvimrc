@@ -231,6 +231,13 @@ return require("packer").startup(function(use)
         config = [[ require("my_config.plugin.rust-tools").config() ]]
     })
 
+    use({
+        "rust-lang/rust.vim",
+        ft = "rust",
+        config = function()
+        end
+    })
+
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make'
