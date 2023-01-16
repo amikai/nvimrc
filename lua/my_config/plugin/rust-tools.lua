@@ -6,6 +6,7 @@ local my_lsp = require('my_config.plugin.nvim-lspconfig')
 
 function M.config()
     rt.setup({
+        executor = require("rust-tools.executors").quickfix,
         server = {
             on_attach = function(client, bufnr)
                 my_lsp.custom_attach(client, bufnr)
