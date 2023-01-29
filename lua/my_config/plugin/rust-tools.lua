@@ -8,6 +8,9 @@ function M.config()
     rt.setup({
         executor = require("rust-tools.executors").quickfix,
         server = {
+            cmd = {
+                "rustup", "run", "stable", "rust-analyzer",
+            },
             on_attach = function(client, bufnr)
                 my_lsp.custom_attach(client, bufnr)
                 km("n", "K", rt.hover_actions.hover_actions)
@@ -19,7 +22,8 @@ function M.config()
                     checkOnSave = {
                         allFeatures = true,
                         overrideCommand = {
-                            'cargo', 'clippy', '--workspace', '--message-format=json',
+                            'rustup', 'run', 'stable', 'cargo-clippy', '--workspace',
+                            '--message-format=json-diagnostic-rendered-ansi',
                             '--all-targets', '--all-features'
                         }
                     }
