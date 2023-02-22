@@ -208,11 +208,12 @@ lspconfig.gopls.setup({
     cmd = { "gopls", "serve" },
     on_attach = custom_attach,
     capabilities = capabilities,
-    init_options = {
-        usePlaceholders = true,
-    },
     settings = {
         gopls = {
+            -- reference: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+            gofumpt = true,
+            semanticTokens = true,
+            usePlaceholders = true,
             experimentalPostfixCompletions = true,
             analyses = {
                 unusedparams = true,
