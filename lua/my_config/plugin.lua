@@ -153,7 +153,7 @@ return require("packer").startup(function(use)
                     "terraformls",
                     "html",
                     "bashls",
-                    "sumneko_lua",
+                    "lua_ls",
                     "vimls",
                     "yamlls",
                     "graphql",

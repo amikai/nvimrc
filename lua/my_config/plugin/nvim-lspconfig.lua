@@ -147,7 +147,7 @@ lspconfig.yamlls.setup({
 -- }}}
 
 -- lua lsp setting {{{
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
     on_attach = custom_attach,
     settings = {
         Lua = {
