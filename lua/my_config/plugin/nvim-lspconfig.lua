@@ -104,7 +104,7 @@ lspconfig.html.setup({
 })
 -- }}}
 
--- terraform lsp setting {{{
+-- jsonnet ls lsp setting {{{
 lspconfig.jsonnet_ls.setup({
     on_attach = custom_attach,
     capabilities = capabilities,
