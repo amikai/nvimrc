@@ -30,6 +30,7 @@ function M.setup()
             km("n", "gR", "<Plug>(go-rename)")
             km("n", "gi", "<Plug>(go-implements)")
             km("n", "gt", "<Plug>(go-def-type)")
+            km("n", "<F3>", "<Plug>(go-fmt)")
         end,
     })
 end
