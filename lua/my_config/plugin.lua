@@ -115,12 +115,6 @@ require("lazy").setup({
     },
     { "rhysd/committia.vim" },
     {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require('my_config.plugin.nvim-lspconfig')
-        end,
-    },
-    {
         "williamboman/mason.nvim",
     },
     {
@@ -465,4 +459,5 @@ require("lazy").setup({
         "christoomey/vim-tmux-navigator",
         cond = require("my_config.utils").is_in_tmux(),
     },
+    { import = "plugins" },
 })
