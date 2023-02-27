@@ -115,42 +115,6 @@ require("lazy").setup({
     },
     { "rhysd/committia.vim" },
     {
-        "williamboman/mason.nvim",
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason").setup()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "ansiblels",
-                    "gopls",
-                    "pyright",
-                    "golangci_lint_ls",
-                    "dockerls",
-                    "jsonnet_ls",
-                    "terraformls",
-                    "html",
-                    "bashls",
-                    "lua_ls",
-                    "vimls",
-                    "yamlls",
-                    "graphql",
-                },
-                automatic_installation = true,
-            })
-        end,
-    },
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("my_config.plugin.null-ls").config()
-        end,
-    },
-    {
-        "jayp0521/mason-null-ls.nvim",
-    },
-    {
         {
             "hrsh7th/cmp-nvim-lsp",
             config = function()
