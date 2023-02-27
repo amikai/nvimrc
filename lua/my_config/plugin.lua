@@ -137,7 +137,7 @@ require("lazy").setup({
                 end, { expr = true })
 
                 vim.keymap.set("i", "<C-K>", function()
-                    if vim.fn["vsnip#jumpable"](-1) == 1 then
+                    if vim.fn["vsnip#jumpable"]( -1) == 1 then
                         return "<Plug>(vsnip-jump-prev)"
                     end
                     return "<C-K>"

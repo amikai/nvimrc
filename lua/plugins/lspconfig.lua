@@ -67,14 +67,16 @@ return {
                 -- auto format on save
                 local fmt_fts = { "rust", "lua" }
                 if client.server_capabilities.documentFormattingProvider then
-                    autocmd("BufWritePre", { buffer = 0,
+                    autocmd("BufWritePre", {
+                        buffer = 0,
                         callback = function()
                             for _, ft in ipairs(fmt_fts) do
                                 if vim.o.ft == ft then
                                     vim.lsp.buf.format()
                                 end
                             end
-                        end })
+                        end
+                    })
                 end
 
 
