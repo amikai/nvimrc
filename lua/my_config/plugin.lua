@@ -183,14 +183,6 @@ require("lazy").setup({
         { "rafamadriz/friendly-snippets" },
     },
 
-    {
-        "fatih/vim-go",
-        build = ":GoUpdateBinaries",
-        ft = "go",
-        init = function()
-            require("my_config.plugin.vim-go").setup()
-        end,
-    },
 
     {
         "simrat39/rust-tools.nvim",
