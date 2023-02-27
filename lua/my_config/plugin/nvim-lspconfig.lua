@@ -33,7 +33,6 @@ local custom_attach = function(client, bufnr)
     end
 
     km("n", "gd", vim.lsp.buf.definition)
-    km("n", "<F9>", utils.toggle_diagnostic_window)
     km("n", "K", vim.lsp.buf.hover)
     -- km("n", "<C-k>", vim.lsp.buf.signature_help)
     km("n", "gR", vim.lsp.buf.rename)
@@ -50,26 +49,14 @@ local custom_attach = function(client, bufnr)
         vim.pretty_print(vim.lsp.buf.list_workspace_folders())
     end)
 
-    if client.server_capabilities.documentHighlightProvider then
+    if client.server_capabilities.documentFormattingProvider then
         km("n", "<F3>", vim.lsp.buf.format)
     end
     if client.server_capabilities.documentRangeFormattingProvider then
-        km("x", "<F3>", vim.lsp.buf.range_formatting)
+        -- FIXME
+        -- km("x", "<F3>", vim.lsp.buf.range_formatting)
     end
 
-    -- The blow command will highlight the current variable and its usages in the buffer.
-    if client.server_capabilities.documentHighlightProvider then
-        vim.cmd([[
-            hi link LspReferenceRead Visual
-            hi link LspReferenceText Visual
-            hi link LspReferenceWrite Visual
-            augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]])
-    end
 
     -- auto format on save
     local fmt_fts = { "rust", "lua" }
@@ -239,10 +226,7 @@ lspconfig.gopls.setup({
     },
 })
 
-lspconfig.golangci_lint_ls.setup({
-    on_attach = custom_attach,
-    capabilities = capabilities,
-})
+lspconfig.golangci_lint_ls.setup({})
 -- }}}
 
 return M

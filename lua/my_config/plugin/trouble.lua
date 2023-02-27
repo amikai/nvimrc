@@ -5,8 +5,8 @@ local km = require("my_config.utils").km
 function M.setup()
     km(
         "n",
-        "<F33>", -- Ctrl + F9
-        "<cmd>TroubleToggle<cr>",
+        "<F9>",
+        "<cmd>TroubleToggle document_diagnostics<cr>",
         { silent = true }
     )
 end

@@ -38,10 +38,6 @@ function M.config()
     )
 
     local activate_hlslen_asterisk = function(asterisk_key)
-        if not utils.is_load("vim-asterisk") then
-            utils.load_plugin("vim-asterisk")
-        end
-
         local keyCodes = vim.api.nvim_replace_termcodes(asterisk_key, true, false, true)
         vim.api.nvim_feedkeys(keyCodes, 'im', false)
         hlslens.start()
