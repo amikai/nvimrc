@@ -92,11 +92,6 @@ return {
                 capabilities = capabilities,
             })
 
-            lspconfig.jsonnet_ls.setup({
-                on_attach = custom_attach,
-                capabilities = capabilities,
-            })
-
             lspconfig.terraformls.setup({
                 on_attach = custom_attach,
                 capabilities = capabilities,
