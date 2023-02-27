@@ -53,4 +53,8 @@ M.show_function_keymapping = function()
     print(table.concat(msgs, " | "))
 end
 
+M.in_git_repo = function()
+    return vim.fn.system("git rev-parse --is-inside-work-tree") == "true\n"
+end
+
 return M

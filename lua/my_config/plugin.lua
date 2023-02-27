@@ -266,13 +266,6 @@ require("lazy").setup({
         "thinca/vim-qfreplace",
         cmd = { "Qfreplace" },
     },
-
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require('my_config.plugin.gitsigns').config()
-        end,
-    },
     {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
