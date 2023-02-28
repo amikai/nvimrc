@@ -1,6 +1,16 @@
 return {
     {
         "andymass/vim-matchup",
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter",
+                opts = {
+                    matchup = {
+                        enable = true,
+                    },
+                },
+            }
+        },
         event = "VeryLazy",
         init = function()
             local g = vim.g
