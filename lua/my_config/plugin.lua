@@ -61,12 +61,6 @@ require("lazy").setup({
         end
     },
     {
-        "andymass/vim-matchup",
-        init = function()
-            require('my_config.plugin.vim-matchup').setup()
-        end,
-    },
-    {
         'numToStr/Comment.nvim',
         keys = {
             { "n", "gc" },
