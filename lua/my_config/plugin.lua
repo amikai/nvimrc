@@ -103,13 +103,6 @@ require("lazy").setup({
         end,
     },
     {
-        "ronakg/quickr-cscope.vim",
-        init = function()
-            require('my_config.plugin.quickr-cscope').setup()
-        end,
-    },
-
-    {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
     },
