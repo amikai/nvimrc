@@ -10,7 +10,6 @@ return {
         },
         config = function()
             local fn = vim.fn
-            local autocmd = vim.api.nvim_create_autocmd
             local lspconfig = require("lspconfig")
 
             -- Change diagnostic signs.
@@ -28,62 +27,7 @@ return {
             }
             -- }}}
 
-            local custom_attach = function(client, bufnr)
-                local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-
-
-                -- See https://github.com/redhat-developer/yaml-language-server/issues/486
-                if client.name == "yamlls" then
-                    client.server_capabilities.documentFormattingProvider = true
-                end
-
-                km("n", "gd", vim.lsp.buf.definition)
-                km("n", "K", vim.lsp.buf.hover)
-                -- km("n", "<C-k>", vim.lsp.buf.signature_help)
-                km("n", "gR", vim.lsp.buf.rename)
-                km("n", "gr", vim.lsp.buf.references)
-                km("n", "[d", vim.diagnostic.goto_prev)
-                km("n", "]d", vim.diagnostic.goto_next)
-                km("n", "gi", vim.lsp.buf.implementation)
-                km("n", "gD", vim.lsp.buf.declaration)
-
-                km("n", "<leader>ca", vim.lsp.buf.code_action)
-                km("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-                km("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
-                km("n", "<leader>wl", function()
-                    vim.pretty_print(vim.lsp.buf.list_workspace_folders())
-                end)
-
-                if client.server_capabilities.documentFormattingProvider then
-                    km("n", "<F3>", vim.lsp.buf.format)
-                end
-
-                if client.server_capabilities.documentRangeFormattingProvider then
-                    -- FIXME
-                    -- km("x", "<F3>", vim.lsp.buf.range_formatting)
-                end
-
-
-                -- auto format on save
-                local fmt_fts = { "rust", "lua" }
-                if client.server_capabilities.documentFormattingProvider then
-                    autocmd("BufWritePre", {
-                        buffer = 0,
-                        callback = function()
-                            for _, ft in ipairs(fmt_fts) do
-                                if vim.o.ft == ft then
-                                    vim.lsp.buf.format()
-                                end
-                            end
-                        end
-                    })
-                end
-
-
-
-                local msg = string.format("Language server %s started!", client.name)
-                vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
-            end
+            local custom_attach = require("my_config.utils").common_lsp_attach
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
