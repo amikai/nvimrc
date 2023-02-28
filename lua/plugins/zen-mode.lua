@@ -26,7 +26,7 @@ return {
     {
         "folke/twilight.nvim",
         keys = {
-            { "<F26>", "<cmd>Twilight<cr>", mode = "n" },
+            { "<F50>", "<cmd>Twilight<cr>", mode = "n" },
         },
         cmd = "Twilight",
         dependencies = "nvim-treesitter",

@@ -34,6 +34,7 @@ o.hidden = true
 o.report = 0
 
 km("n", "<F12>", require("my_config.utils").show_function_keymapping)
+km("n", "<F60>", require("my_config.utils").show_alt_function_keymapping)
 
 km("i", "jk", "<esc>")
 km("t", "<esc>", "<C-\\><C-n>")
