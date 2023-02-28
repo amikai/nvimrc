@@ -137,15 +137,6 @@ require("lazy").setup({
         "mizlan/iswap.nvim",
         dependencies = "nvim-treesitter",
     },
-
-    {
-        "akinsho/bufferline.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require("bufferline").setup({})
-        end,
-    },
-
     {
         "chr4/nginx.vim",
         ft = "nginx",
