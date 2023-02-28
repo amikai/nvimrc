@@ -13,10 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "lambdalisue/suda.vim",
-        cmd = { "SudaRead", "SudaWrite" },
-    },
-    {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
             require('my_config.plugin.indent-blankline').config()
