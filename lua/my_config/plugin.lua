@@ -138,30 +138,6 @@ require("lazy").setup({
         "kevinhwang91/nvim-bqf",
         ft = "qf",
     },
-
-    {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
-        init = function()
-            require('my_config.plugin.zen-mode').setup()
-        end,
-        config = function()
-            require('my_config.plugin.zen-mode').config()
-        end,
-    },
-
-    {
-        "folke/twilight.nvim",
-        cmd = "Twilight",
-        dependencies = "nvim-treesitter",
-        init = function()
-            require('my_config.plugin.twilight').setup()
-        end,
-        config = function()
-            require('my_config.plugin.twilight').config()
-        end,
-    },
-
     {
         "thinca/vim-qfreplace",
         cmd = { "Qfreplace" },
