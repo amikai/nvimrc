@@ -293,29 +293,6 @@ require("lazy").setup({
             })
         end,
     },
-    {
-        'kyazdani42/nvim-tree.lua',
-        dependencies = {
-            'kyazdani42/nvim-web-devicons',
-        },
-        init = function()
-            vim.api.nvim_set_keymap(
-                "n",
-                "<F4>",
-                "<cmd>NvimTreeToggle<cr>",
-                { silent = true }
-            )
-        end,
-        config = function()
-            require("nvim-tree").setup({
-                git = {
-                    enable = false,
-                },
-            })
-        end,
-        cmd = 'NvimTreeToggle',
-        tag = 'nightly'
-    },
 
     {
         "t9md/vim-choosewin",
