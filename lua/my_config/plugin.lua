@@ -44,17 +44,6 @@ require("lazy").setup({
         end,
     },
     { "machakann/vim-swap" },
-    {
-        'numToStr/Comment.nvim',
-        keys = {
-            { "n", "gc" },
-            { "x", "gc" },
-            { "n", "gcc" },
-        },
-        config = function()
-            require('Comment').setup()
-        end,
-    },
 
     { "tpope/vim-unimpaired" },
     {
