@@ -197,36 +197,12 @@ require("lazy").setup({
         end,
         cmd = "UndotreeToggle",
     },
-
-    {
-        {
-            "kevinhwang91/nvim-hlslens",
-            dependencies = "vim-asterisk",
-            branch = "main",
-            keys = {
-                { "n", "*" }, { "x", "*" },
-                { "n", "#" }, { "x", "#" },
-                { "n", "g*" }, { "x", "g*" },
-                { "n", "#" }, { "x", "g#" },
-                { "n", "n" }, { "n", "N" }
-            },
-            config = function()
-                require('my_config.plugin.hlslens').config()
-            end,
-
-        },
-        {
-            "haya14busa/vim-asterisk",
-        }
-    },
-
     {
         "ntpeters/vim-better-whitespace",
         init = function()
             require('my_config.plugin.vim-better-whitespace').setup()
         end,
     },
-
     {
         "ronakg/quickr-cscope.vim",
         init = function()
