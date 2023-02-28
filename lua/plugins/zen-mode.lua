@@ -20,6 +20,9 @@ return {
                         list = false, -- disable whitespace characters
                     },
                 },
+                plugins = {
+                    twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
+                },
             })
         end,
     },
