@@ -13,27 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "arcticicestudio/nord-vim",
-        config = function()
-            -- vim.cmd[[colorscheme nord]]
-        end,
-    },
-    {
-        "cocopon/iceberg.vim",
-        config = function()
-            vim.cmd [[colorscheme iceberg]]
-        end,
-    },
-    {
-        "Mofiqul/vscode.nvim",
-        init = function()
-            vim.g.vscode_style = "dark"
-        end,
-        config = function()
-            -- vim.cmd([[colorscheme vscode]])
-        end,
-    },
-    {
         "folke/trouble.nvim",
         dependencies = "kyazdani42/nvim-web-devicons",
         cmd = { "Trouble", "TroubleClose", "TroubleToggle" },
