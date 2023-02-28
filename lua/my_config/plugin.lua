@@ -338,22 +338,6 @@ require("lazy").setup({
             })
         end,
     },
-
-    {
-        "simrat39/symbols-outline.nvim",
-        init = function()
-            vim.api.nvim_set_keymap(
-                "n",
-                "<F8>",
-                "<cmd>SymbolsOutline<cr>",
-                { silent = true }
-            )
-        end,
-        config = function()
-            require('my_config.plugin.symbols-outline').config()
-        end,
-    },
-
     {
         'kyazdani42/nvim-tree.lua',
         dependencies = {
