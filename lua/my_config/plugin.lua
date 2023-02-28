@@ -13,17 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "folke/trouble.nvim",
-        dependencies = "kyazdani42/nvim-web-devicons",
-        cmd = { "Trouble", "TroubleClose", "TroubleToggle" },
-        init = function()
-            require('my_config.plugin.trouble').setup()
-        end,
-        config = function()
-            require('my_config.plugin.trouble').config()
-        end,
-    },
-    {
         "lambdalisue/suda.vim",
         cmd = { "SudaRead", "SudaWrite" },
     },
