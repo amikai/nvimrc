@@ -238,15 +238,6 @@ require("lazy").setup({
             })
         end,
     },
-
-    {
-        "t9md/vim-choosewin",
-        init = function()
-            require('my_config.plugin.vim-choosewin').setup()
-        end,
-        keys = { { "n", "<Plug>(choosewin)" } },
-    },
-
     {
         "chr4/nginx.vim",
         ft = "nginx",
