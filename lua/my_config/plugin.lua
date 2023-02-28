@@ -146,15 +146,6 @@ require("lazy").setup({
             require('my_config.plugin.telescope').config()
         end,
     },
-
-    {
-        "mhinz/vim-sayonara",
-        cmd = "Sayonara",
-        init = function()
-            require('my_config.plugin.vim-sayonara').setup()
-        end
-    },
-
     {
         "Raimondi/delimitMate",
         init = function()
