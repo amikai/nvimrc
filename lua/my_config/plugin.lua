@@ -28,16 +28,6 @@ require("lazy").setup({
         cmd = { "SudaRead", "SudaWrite" },
     },
     {
-        "akinsho/toggleterm.nvim",
-        cmd = 'ToggleTerm',
-        init = function()
-            require('my_config.plugin.toggleterm').setup()
-        end,
-        config = function()
-            require("toggleterm").setup()
-        end,
-    },
-    {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
             require('my_config.plugin.indent-blankline').config()
