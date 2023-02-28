@@ -103,23 +103,10 @@ require("lazy").setup({
         },
         { "rafamadriz/friendly-snippets" },
     },
-
-
-    {
-        "simrat39/rust-tools.nvim",
-        config = [[ require("my_config.plugin.rust-tools").config() ]]
-    },
-
-    {
-        "rust-lang/rust.vim",
-        ft = "rust",
-    },
-
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make'
     },
-
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
