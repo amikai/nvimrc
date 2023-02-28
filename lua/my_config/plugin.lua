@@ -170,39 +170,6 @@ require("lazy").setup({
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
     },
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-            require('my_config.plugin.nvim-treesitter').config()
-        end,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        dependencies = "nvim-treesitter",
-        config = function()
-            require("my_config.plugin.nvim-treesitter-context").config()
-        end,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = "nvim-treesitter",
-    },
-
-    {
-        "p00f/nvim-ts-rainbow",
-        dependencies = "nvim-treesitter",
-    },
-
-    {
-        "RRethy/nvim-treesitter-endwise",
-        dependencies = "nvim-treesitter",
-        event = "InsertEnter",
-    },
-
     {
         "RRethy/vim-illuminate",
         dependencies = "nvim-treesitter",
