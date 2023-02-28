@@ -45,22 +45,6 @@ require("lazy").setup({
     },
     { "machakann/vim-swap" },
     {
-        "gbprod/substitute.nvim",
-        keys = {
-            { "n", "R" },
-            { "x", "R" },
-            { "n", "RR" },
-            { "n", "cx" },
-        },
-        config = function()
-            require("substitute").setup({})
-            vim.keymap.set("n", "R", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
-            vim.keymap.set("x", "R", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
-            vim.keymap.set("n", "RR", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
-            vim.keymap.set("n", "cx", "<cmd>lua require('substitute.exchange').operator()<cr>", { noremap = true })
-        end
-    },
-    {
         'numToStr/Comment.nvim',
         keys = {
             { "n", "gc" },
