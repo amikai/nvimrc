@@ -1,12 +1,12 @@
 return {
     {
-        'numToStr/Comment.nvim',
+        "numToStr/Comment.nvim",
         keys = {
-            { "gc",  mode = { "n", "x" } },
+            { "gc", mode = { "n", "x" } },
             { "gcc", mode = "n" },
         },
         config = function()
-            require('Comment').setup()
+            require("Comment").setup()
         end,
     },
 }

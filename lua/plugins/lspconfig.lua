@@ -31,17 +31,17 @@ return {
             fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
             -- global config for diagnostic
-            vim.diagnostic.config {
+            vim.diagnostic.config({
                 underline = false,
                 virtual_text = false,
                 signs = true,
                 severity_sort = true,
-            }
+            })
             -- }}}
 
             local custom_attach = require("my_config.utils").common_lsp_attach
 
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             lspconfig.html.setup({
                 on_attach = custom_attach,
@@ -162,5 +162,5 @@ return {
 
             lspconfig.golangci_lint_ls.setup({})
         end,
-    }
+    },
 }

@@ -15,7 +15,7 @@ require("lazy").setup({
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require('my_config.plugin.indent-blankline').config()
+            require("my_config.plugin.indent-blankline").config()
         end,
     },
     { "machakann/vim-swap" },
@@ -39,8 +39,8 @@ require("lazy").setup({
         {
             "hrsh7th/cmp-nvim-lsp",
             config = function()
-                require('my_config.plugin.nvim-cmp').config()
-            end
+                require("my_config.plugin.nvim-cmp").config()
+            end,
         },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
@@ -58,7 +58,7 @@ require("lazy").setup({
                 end, { expr = true })
 
                 vim.keymap.set("i", "<C-K>", function()
-                    if vim.fn["vsnip#jumpable"]( -1) == 1 then
+                    if vim.fn["vsnip#jumpable"](-1) == 1 then
                         return "<Plug>(vsnip-jump-prev)"
                     end
                     return "<C-K>"
@@ -68,23 +68,23 @@ require("lazy").setup({
         { "rafamadriz/friendly-snippets" },
     },
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make'
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
     },
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
         init = function()
-            require('my_config.plugin.telescope').setup()
+            require("my_config.plugin.telescope").setup()
         end,
         config = function()
-            require('my_config.plugin.telescope').config()
+            require("my_config.plugin.telescope").config()
         end,
     },
     {
         "Raimondi/delimitMate",
         init = function()
-            require('my_config.plugin.delimitMate').setup()
+            require("my_config.plugin.delimitMate").setup()
         end,
         event = "InsertEnter",
     },
@@ -92,14 +92,14 @@ require("lazy").setup({
     {
         "mbbill/undotree",
         init = function()
-            require('my_config.plugin.undotree').setup()
+            require("my_config.plugin.undotree").setup()
         end,
         cmd = "UndotreeToggle",
     },
     {
         "ntpeters/vim-better-whitespace",
         init = function()
-            require('my_config.plugin.vim-better-whitespace').setup()
+            require("my_config.plugin.vim-better-whitespace").setup()
         end,
     },
     {
@@ -118,7 +118,7 @@ require("lazy").setup({
         "RRethy/vim-illuminate",
         dependencies = "nvim-treesitter",
         config = function()
-            require('my_config.plugin.vim-illuminate').config()
+            require("my_config.plugin.vim-illuminate").config()
         end,
     },
 

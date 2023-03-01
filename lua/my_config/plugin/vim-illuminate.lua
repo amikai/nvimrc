@@ -2,12 +2,12 @@ local M = {}
 
 function M.config()
     -- default configuration
-    require('illuminate').configure({
+    require("illuminate").configure({
         -- providers: provider used to get references in the buffer, ordered by priority
         providers = {
-            'lsp',
-            'treesitter',
-            'regex',
+            "lsp",
+            "treesitter",
+            "regex",
         },
         delay = 100,
         filetypes_denylist = { "help", "git", "diff", "NvimTree", "vista" },
@@ -21,7 +21,7 @@ function M.config()
         -- min_count_to_highlight: minimum number of matches required to perform highlighting
         min_count_to_highlight = 1,
     })
-    require('illuminate').resume()
+    require("illuminate").resume()
 end
 
 return M

@@ -5,7 +5,7 @@ return {
             vim.g.choosewin_overlay_enable = 1
         end,
         keys = {
-            { "W", "<Plug>(choosewin)", mode = "n" }
+            { "W", "<Plug>(choosewin)", mode = "n" },
         },
     },
 }

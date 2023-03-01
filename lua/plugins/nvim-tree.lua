@@ -1,13 +1,13 @@
 return {
     {
-        'kyazdani42/nvim-tree.lua',
+        "kyazdani42/nvim-tree.lua",
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            "kyazdani42/nvim-web-devicons",
         },
-        tag = 'nightly',
-        cmd = 'NvimTreeToggle',
+        tag = "nightly",
+        cmd = "NvimTreeToggle",
         keys = {
-            { "<F4>", "<cmd>NvimTreeToggle<cr>", mode = "n", { silent = true } }
+            { "<F4>", "<cmd>NvimTreeToggle<cr>", mode = "n", { silent = true } },
         },
         config = function()
             require("nvim-tree").setup({

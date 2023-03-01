@@ -54,12 +54,15 @@ o.path = o.path .. ",**"
 o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0"
 
 -- go to original position
-autocmd("BufReadPost", { pattern = "*", callback = function()
-    local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
-    if row ~= 0 or col ~= 0 then
-        vim.api.nvim_win_set_cursor(0, { row, 0 })
-    end
-end })
+autocmd("BufReadPost", {
+    pattern = "*",
+    callback = function()
+        local row, col = unpack(vim.api.nvim_buf_get_mark(0, '"'))
+        if row ~= 0 or col ~= 0 then
+            vim.api.nvim_win_set_cursor(0, { row, 0 })
+        end
+    end,
+})
 
 -- -- center buffer around cursor when opening files
 autocmd("BufRead", { pattern = "*", command = "normal zz" })
@@ -76,7 +79,6 @@ km("n", "G", "Gzz")
 km("n", "U", "<cmd>redo<cr>")
 
 o.updatetime = 500
-
 
 -- Don't yank to default register when changing something
 km("x", "c", '"xc')
@@ -115,19 +117,23 @@ o.wildoptions = o.wildoptions .. ",pum"
 o.number = true
 
 -- Not use relative number, if not in the window
-autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" },
-    { pattern = "*", callback = function()
+autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+    pattern = "*",
+    callback = function()
         if o.number then
             vim.o.relativenumber = true
         end
-    end })
+    end,
+})
 
-autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" },
-    { pattern = "*", callback = function()
+autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+    pattern = "*",
+    callback = function()
         if o.number then
             vim.o.relativenumber = false
         end
-    end })
+    end,
+})
 
 -- Maximum width of text that is being inserted (TODO)
 -- set textwidth=80
@@ -203,12 +209,14 @@ o.shortmess = o.shortmess .. "cF"
 
 o.virtualedit = "block"
 
-autocmd({ "InsertLeave", "CompleteDone" },
-    { pattern = "*", callback = function()
+autocmd({ "InsertLeave", "CompleteDone" }, {
+    pattern = "*",
+    callback = function()
         if fn.pumvisible() == 0 then
             cmd("pclose")
         end
-    end })
+    end,
+})
 
 o.pumheight = 10
 
@@ -265,9 +273,12 @@ km("n", "<leader>t", "<cmd>tabnew<cr>")
 
 autocmd({ "CursorHold" }, { pattern = "*?", command = "syntax sync minlines=300" })
 autocmd({ "FileType" }, { pattern = "qf", command = "wincmd J" })
-autocmd({ "TextYankPost" }, { pattern = "*", callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
-end })
+autocmd({ "TextYankPost" }, {
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
+    end,
+})
 
 -- }}}
 

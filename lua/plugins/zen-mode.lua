@@ -34,7 +34,7 @@ return {
         cmd = "Twilight",
         dependencies = "nvim-treesitter",
         config = function()
-            require("twilight").setup {
+            require("twilight").setup({
                 dimming = {
                     alpha = 0.25, -- amount of dimming
                     -- we try to get the foreground from the highlight groups or fallback color
@@ -51,7 +51,7 @@ return {
                     "method",
                 },
                 exclude = {}, -- exclude these filetypes
-            }
+            })
         end,
     },
 }

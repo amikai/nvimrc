@@ -8,12 +8,12 @@ function M.setup()
 end
 
 function M.config()
-    require('telescope').setup {
+    require("telescope").setup({
         defaults = {
             file_ignore_patterns = {
                 "node_modules",
-                "vendor"
-            }
+                "vendor",
+            },
         },
         extensions = {
             fzf = {
@@ -21,10 +21,10 @@ function M.config()
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
                 case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-            }
-        }
-    }
-    require('telescope').load_extension('fzf')
+            },
+        },
+    })
+    require("telescope").load_extension("fzf")
 end
 
 return M

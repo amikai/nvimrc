@@ -9,7 +9,7 @@ return {
                         enable = true,
                     },
                 },
-            }
+            },
         },
         event = "VeryLazy",
         init = function()

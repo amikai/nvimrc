@@ -2,12 +2,12 @@ return {
 
     {
         "akinsho/toggleterm.nvim",
-        cmd = 'ToggleTerm',
+        cmd = "ToggleTerm",
         keys = {
-            { "<F1>", "<cmd>ToggleTerm<cr>", mode = { "n", "t" } }
+            { "<F1>", "<cmd>ToggleTerm<cr>", mode = { "n", "t" } },
         },
         config = function()
             require("toggleterm").setup()
-        end
+        end,
     },
 }

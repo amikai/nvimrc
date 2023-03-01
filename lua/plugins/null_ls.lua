@@ -1,5 +1,4 @@
 return {
-
     {
         "jayp0521/mason-null-ls.nvim",
         dependencies = "williamboman/mason.nvim",
@@ -10,8 +9,7 @@ return {
         },
         config = function(_, opts)
             require("mason-null-ls").setup(opts)
-        end
-
+        end,
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
@@ -22,9 +20,11 @@ return {
                     -- lua
                     null_ls.builtins.formatting.stylua.with({
                         extra_args = {
-                            '--indent-type Spaces',
-                            '--indent-width 4',
-                        }
+                            "--indent-type",
+                            "Spaces",
+                            "--indent-width",
+                            "4",
+                        },
                     }),
                     -- buf
                     null_ls.builtins.diagnostics.buf,

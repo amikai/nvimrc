@@ -24,5 +24,4 @@ return {
             require("mason-lspconfig").setup(opts)
         end,
     },
-
 }

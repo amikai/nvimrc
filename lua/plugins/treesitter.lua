@@ -40,7 +40,7 @@ return {
         config = function(_, opts)
             require("nvim-treesitter.install").prefer_git = true
             require("nvim-treesitter.configs").setup(opts)
-        end
+        end,
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
@@ -72,8 +72,8 @@ return {
                         },
                     },
                 },
-            }
-        }
+            },
+        },
     },
     {
         "p00f/nvim-ts-rainbow",
@@ -87,8 +87,8 @@ return {
                         max_file_lines = 1000,
                     },
                 },
-            }
-        }
+            },
+        },
     },
     {
         "RRethy/nvim-treesitter-endwise",
@@ -100,7 +100,7 @@ return {
                         enable = true,
                     },
                 },
-            }
+            },
         },
         event = "InsertEnter",
     },

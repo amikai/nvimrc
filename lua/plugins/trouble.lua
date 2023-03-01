@@ -4,7 +4,7 @@ return {
         dependencies = "kyazdani42/nvim-web-devicons",
         cmd = { "Trouble", "TroubleClose", "TroubleToggle" },
         keys = {
-            { "<F9>", "<cmd>TroubleToggle document_diagnostics<cr>", mode = "n" }
+            { "<F9>", "<cmd>TroubleToggle document_diagnostics<cr>", mode = "n" },
         },
         config = function()
             local km = require("my_config.utils").km
@@ -17,13 +17,7 @@ return {
                 { silent = true }
             )
 
-            km(
-                "n",
-                "]d",
-                "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>",
-                { silent = true }
-            )
+            km("n", "]d", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>", { silent = true })
         end,
     },
-
 }

@@ -48,7 +48,7 @@ M.show_function_keymapping = function()
         "<F6> undotree",
         "<F8> vista",
         "<F9> diagnostics",
-        "<F12> show msg"
+        "<F12> show msg",
     }
     print(table.concat(msgs, " | "))
 end
@@ -67,7 +67,6 @@ end
 M.common_lsp_attach = function(client, bufnr)
     local autocmd = vim.api.nvim_create_autocmd
     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-
 
     -- See https://github.com/redhat-developer/yaml-language-server/issues/486
     if client.name == "yamlls" then
