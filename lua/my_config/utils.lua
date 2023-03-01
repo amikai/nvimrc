@@ -100,24 +100,6 @@ M.common_lsp_attach = function(client, bufnr)
         -- km("x", "<F3>", vim.lsp.buf.range_formatting)
     end
 
-
-    -- auto format on save
-    local fmt_fts = { "rust", "lua" }
-    if client.server_capabilities.documentFormattingProvider then
-        autocmd("BufWritePre", {
-            buffer = 0,
-            callback = function()
-                for _, ft in ipairs(fmt_fts) do
-                    if vim.o.ft == ft then
-                        vim.lsp.buf.format()
-                    end
-                end
-            end
-        })
-    end
-
-
-
     local msg = string.format("Language server %s started!", client.name)
     vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
 end
