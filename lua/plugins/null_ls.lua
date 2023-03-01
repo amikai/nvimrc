@@ -2,7 +2,7 @@ return {
 
     {
         "jayp0521/mason-null-ls.nvim",
-        dependencies = "mason.nvim",
+        dependencies = "williamboman/mason.nvim",
         opts = {
             ensure_installed = nil,
             automatic_installation = true,

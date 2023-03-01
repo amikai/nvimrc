@@ -1,7 +1,7 @@
 return {
     {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = "mason.nvim",
+        dependencies = "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
                 "ansiblels",
