@@ -96,6 +96,9 @@ return {
                         telemetry = {
                             enable = false,
                         },
+                        format = {
+                            enable = true,
+                        },
                     },
                 },
                 capabilities = capabilities,
