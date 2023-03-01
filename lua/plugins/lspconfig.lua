@@ -8,6 +8,18 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
+        init = function()
+            local autocmd = vim.api.nvim_create_autocmd
+            autocmd("BufWritePre", {
+                callback = function()
+                    vim.lsp.buf.format({
+                        filter = function(client)
+                            return client.server_capabilities.documentFormattingProvider
+                        end,
+                    })
+                end,
+            })
+        end,
         config = function()
             local fn = vim.fn
             local lspconfig = require("lspconfig")
