@@ -19,22 +19,10 @@ require("lazy").setup({
         end,
     },
     { "machakann/vim-swap" },
-
-    { "tpope/vim-unimpaired" },
     {
         "tpope/vim-dispatch",
         cmd = { "Make", "Dispatch" },
     },
-    {
-        "tpope/vim-fugitive",
-        cmd = { "Git", "Gdiffsplit" },
-    },
-    {
-        "rbong/vim-flog",
-        dependencies = "tpope/vim-fugitive",
-        cmd = { "Flog" },
-    },
-    { "rhysd/committia.vim" },
     {
         {
             "hrsh7th/cmp-nvim-lsp",
