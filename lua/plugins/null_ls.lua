@@ -17,6 +17,9 @@ return {
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
+                    -- trailing whitespace
+                    null_ls.builtins.diagnostics.trail_space,
+                    null_ls.builtins.formatting.trim_whitespace,
                     -- lua
                     null_ls.builtins.formatting.stylua.with({
                         extra_args = {

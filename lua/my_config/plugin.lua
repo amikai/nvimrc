@@ -58,7 +58,7 @@ require("lazy").setup({
                 end, { expr = true })
 
                 vim.keymap.set("i", "<C-K>", function()
-                    if vim.fn["vsnip#jumpable"](-1) == 1 then
+                    if vim.fn["vsnip#jumpable"]( -1) == 1 then
                         return "<Plug>(vsnip-jump-prev)"
                     end
                     return "<C-K>"
@@ -95,12 +95,6 @@ require("lazy").setup({
             require("my_config.plugin.undotree").setup()
         end,
         cmd = "UndotreeToggle",
-    },
-    {
-        "ntpeters/vim-better-whitespace",
-        init = function()
-            require("my_config.plugin.vim-better-whitespace").setup()
-        end,
     },
     {
         "kevinhwang91/nvim-bqf",
