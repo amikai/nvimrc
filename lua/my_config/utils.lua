@@ -95,8 +95,7 @@ M.common_lsp_attach = function(client, bufnr)
     end
 
     if client.server_capabilities.documentRangeFormattingProvider then
-        -- FIXME
-        -- km("x", "<F3>", vim.lsp.buf.range_formatting)
+        km("x", "<F3>", vim.lsp.buf.format)
     end
 
     local msg = string.format("Language server %s started!", client.name)
