@@ -61,14 +61,6 @@ require("lazy").setup({
         end,
         event = "InsertEnter",
     },
-
-    {
-        "mbbill/undotree",
-        init = function()
-            require("my_config.plugin.undotree").setup()
-        end,
-        cmd = "UndotreeToggle",
-    },
     {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
