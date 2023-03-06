@@ -88,11 +88,6 @@ require("lazy").setup({
             require("my_config.plugin.vim-illuminate").config()
         end,
     },
-
-    {
-        "mizlan/iswap.nvim",
-        dependencies = "nvim-treesitter",
-    },
     {
         "chr4/nginx.vim",
         ft = "nginx",
