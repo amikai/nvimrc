@@ -13,12 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("my_config.plugin.indent-blankline").config()
-        end,
-    },
-    {
         "tpope/vim-dispatch",
         cmd = { "Make", "Dispatch" },
     },
