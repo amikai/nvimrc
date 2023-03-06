@@ -55,20 +55,6 @@ require("lazy").setup({
         { "rafamadriz/friendly-snippets" },
     },
     {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-        init = function()
-            require("my_config.plugin.telescope").setup()
-        end,
-        config = function()
-            require("my_config.plugin.telescope").config()
-        end,
-    },
-    {
         "Raimondi/delimitMate",
         init = function()
             require("my_config.plugin.delimitMate").setup()
