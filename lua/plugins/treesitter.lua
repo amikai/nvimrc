@@ -70,6 +70,15 @@ return {
                             },
                             include_surrounding_whitespace = true,
                         },
+                        swap = {
+                            enable = true,
+                            swap_next = {
+                                ["g>"] = "@parameter.inner",
+                            },
+                            swap_previous = {
+                                ["g<"] = "@parameter.inner",
+                            },
+                        },
                     },
                 },
             },

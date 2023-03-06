@@ -18,7 +18,6 @@ require("lazy").setup({
             require("my_config.plugin.indent-blankline").config()
         end,
     },
-    { "machakann/vim-swap" },
     {
         "tpope/vim-dispatch",
         cmd = { "Make", "Dispatch" },
