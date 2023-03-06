@@ -14,14 +14,15 @@ return {
                 use_treesitter = true,
             })
 
-            local gid = api.nvim_create_augroup("indent_blankline", { clear = true })
-            api.nvim_create_autocmd("InsertEnter", {
+            local gid = vim.api.nvim_create_augroup("indent_blankline", { clear = true })
+            local autocmd = vim.api.nvim_create_autocmd
+            autocmd("InsertEnter", {
                 pattern = "*",
                 group = gid,
                 command = "IndentBlanklineDisable",
             })
 
-            api.nvim_create_autocmd("InsertLeave", {
+            autocmd("InsertLeave", {
                 pattern = "*",
                 group = gid,
                 callback = function()
@@ -32,4 +33,5 @@ return {
             })
         end,
     },
+    vim.api.nvim_create_autocmd,
 }
