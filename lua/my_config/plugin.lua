@@ -17,45 +17,6 @@ require("lazy").setup({
         cmd = { "Make", "Dispatch" },
     },
     {
-        {
-            "hrsh7th/cmp-nvim-lsp",
-            config = function()
-                require("my_config.plugin.nvim-cmp").config()
-            end,
-        },
-        { "hrsh7th/cmp-buffer" },
-        { "hrsh7th/cmp-path" },
-        { "hrsh7th/nvim-cmp" },
-        { "hrsh7th/cmp-vsnip" },
-        {
-            "hrsh7th/vim-vsnip",
-            init = function()
-                vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/vsnippets"
-                vim.keymap.set("i", "<C-J>", function()
-                    if vim.fn["vsnip#jumpable"](1) == 1 then
-                        return "<Plug>(vsnip-expand-or-jump)"
-                    end
-                    return "<C-J>"
-                end, { expr = true })
-
-                vim.keymap.set("i", "<C-K>", function()
-                    if vim.fn["vsnip#jumpable"]( -1) == 1 then
-                        return "<Plug>(vsnip-jump-prev)"
-                    end
-                    return "<C-K>"
-                end, { expr = true })
-            end,
-        },
-        { "rafamadriz/friendly-snippets" },
-    },
-    {
-        "Raimondi/delimitMate",
-        init = function()
-            require("my_config.plugin.delimitMate").setup()
-        end,
-        event = "InsertEnter",
-    },
-    {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
     },
