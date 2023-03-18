@@ -85,7 +85,7 @@ return {
         },
     },
     {
-        "p00f/nvim-ts-rainbow",
+        "mrjones2014/nvim-ts-rainbow",
         dependencies = {
             {
                 "nvim-treesitter/nvim-treesitter",
