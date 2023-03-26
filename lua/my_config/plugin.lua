@@ -57,5 +57,8 @@ require("lazy").setup({
         "christoomey/vim-tmux-navigator",
         cond = require("my_config.utils").is_in_tmux(),
     },
+    {
+        "tpope/vim-unimpaired",
+    },
     { import = "plugins" },
 })
