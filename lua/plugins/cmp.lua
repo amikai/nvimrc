@@ -23,11 +23,11 @@ return {
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
-                            cmp.select_next_item()
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                         elseif vim.fn["vsnip#available"](1) == 1 then
                             feedkey("<Plug>(vsnip-expand-or-jump)", "")
                         elseif has_words_before() then
-                            cmp.complete()
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                         else
                             fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
                         end
@@ -35,13 +35,17 @@ return {
                     ["<S-Tab>"] = cmp.mapping(function()
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif vim.fn["vsnip#jumpable"]( -1) == 1 then
+                        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
                             feedkey("<Plug>(vsnip-jump-prev)", "")
                         end
                     end, { "i", "s" }),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"] = cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = false,
+                    }),
                 },
                 sources = cmp.config.sources({
+                    { name = "copilot" },
                     { name = "nvim_lsp" },
                     { name = "vsnip" },
                     { name = "buffer" },
@@ -49,6 +53,14 @@ return {
                     { name = "buffer" },
                 }),
             })
+
+            cmp.event:on("menu_opened", function()
+                vim.b.copilot_suggestion_hidden = true
+            end)
+
+            cmp.event:on("menu_closed", function()
+                vim.b.copilot_suggestion_hidden = false
+            end)
         end,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -60,14 +72,11 @@ return {
             {
                 "windwp/nvim-autopairs",
                 config = function()
-                    require("nvim-autopairs").setup {}
-                    local cmp = require('cmp')
-                    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-                    cmp.event:on(
-                        'confirm_done',
-                        cmp_autopairs.on_confirm_done()
-                    )
-                end
+                    require("nvim-autopairs").setup({})
+                    local cmp = require("cmp")
+                    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+                    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                end,
             },
         },
     },
