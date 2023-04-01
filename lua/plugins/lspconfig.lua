@@ -12,6 +12,10 @@ return {
             local autocmd = vim.api.nvim_create_autocmd
             autocmd("BufWritePre", {
                 callback = function()
+                    if vim.o.filetype ~= "lua" or vim.o.filetype ~= "go" or vim.o.filetype ~= "rust" then
+                        return
+                    end
+
                     vim.lsp.buf.format({
                         filter = function(client)
                             return client.server_capabilities.documentFormattingProvider
