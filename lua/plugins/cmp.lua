@@ -35,7 +35,7 @@ return {
                     ["<S-Tab>"] = cmp.mapping(function()
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                        elseif vim.fn["vsnip#jumpable"]( -1) == 1 then
                             feedkey("<Plug>(vsnip-jump-prev)", "")
                         end
                     end, { "i", "s" }),
@@ -61,6 +61,19 @@ return {
             cmp.event:on("menu_closed", function()
                 vim.b.copilot_suggestion_hidden = false
             end)
+
+            -- for creates.nvim
+            vim.api.nvim_create_autocmd("BufRead", {
+                group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
+                pattern = "Cargo.toml",
+                callback = function()
+                    cmp.setup.buffer({
+                        sources = {
+                            { name = "crates" },
+                        },
+                    })
+                end,
+            })
         end,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",

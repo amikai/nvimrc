@@ -47,4 +47,37 @@ return {
         "rust-lang/rust.vim",
         ft = "rust",
     },
+    {
+        "saecki/crates.nvim",
+        depenedencies = "nvim-lua/plenary.nvim",
+        event = { "BufRead Cargo.toml" },
+        config = function()
+            require("crates").setup({
+                popup = {
+                    autofocus = true,
+                },
+                null_ls = {
+                    enabled = true,
+                    name = "Crates",
+                },
+            })
+
+            local function show_documentation()
+                local filetype = vim.bo.filetype
+                if vim.tbl_contains({ "vim", "help" }, filetype) then
+                    vim.cmd("h " .. vim.fn.expand("<cword>"))
+                elseif vim.tbl_contains({ "man" }, filetype) then
+                    vim.cmd("Man " .. vim.fn.expand("<cword>"))
+                elseif vim.fn.expand("%:t") == "Cargo.toml" and require("crates").popup_available() then
+                    require("crates").show_popup()
+                else
+                    vim.lsp.buf.hover()
+                end
+            end
+
+            vim.keymap.set("n", "K", show_documentation, { silent = true })
+
+            -- TODO: there are a lot of features in the plugin, map it to user command make it more friendly
+        end,
+    },
 }
