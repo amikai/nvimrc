@@ -58,6 +58,14 @@ return {
             })
 
             local golangci_lint = require("go.null_ls").golangci_lint().with({
+                filter = function(diagnostic)
+                    -- Accroding https://github.com/golangci/golangci-lint/issues/2912,
+                    -- typecheck is not possible to disable. So filter it manually.
+                    if diagnostic.source:match("typecheck") then
+                        return false
+                    end
+                    return true
+                end,
                 -- See https://golangci-lint.run/usage/linters
                 extra_args = {
                     "--disable-all",
@@ -67,7 +75,6 @@ return {
                     "-E", "govet",
                     "-E", "ineffassign",
                     "-E", "staticcheck",
-                    "-D", "typecheck",
                     -- others
                     "-E", "revive",
                 },
