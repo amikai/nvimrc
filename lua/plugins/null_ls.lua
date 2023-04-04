@@ -20,15 +20,6 @@ return {
                     -- trailing whitespace
                     null_ls.builtins.diagnostics.trail_space,
                     null_ls.builtins.formatting.trim_whitespace,
-                    -- lua
-                    null_ls.builtins.formatting.stylua.with({
-                        extra_args = {
-                            "--indent-type",
-                            "Spaces",
-                            "--indent-width",
-                            "4",
-                        },
-                    }),
                     -- buf
                     null_ls.builtins.diagnostics.buf,
                     null_ls.builtins.formatting.buf,

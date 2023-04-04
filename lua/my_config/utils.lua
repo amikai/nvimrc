@@ -91,7 +91,20 @@ M.common_lsp_attach = function(client, bufnr)
     end)
 
     if client.server_capabilities.documentFormattingProvider then
-        km("n", "<F3>", vim.lsp.buf.format)
+        if vim.bo.filetype == "json" then
+            km("n", "<F3>", function()
+                vim.lsp.buf.format({
+                    formatting_options = {
+                        tabSize = vim.opt_local.softtabstop:get(),
+                        insertSpaces = vim.opt_local.expandtab:get(),
+                        trimTrailingWhitespace = true,
+                        trimFinalNewlines = true,
+                    },
+                })
+            end)
+        else
+            km("n", "<F3>", vim.lsp.buf.format)
+        end
     end
 
     if client.server_capabilities.documentRangeFormattingProvider then

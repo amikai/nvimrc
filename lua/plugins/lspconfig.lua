@@ -128,51 +128,9 @@ return {
                 capabilities = capabilities,
             })
 
-            -- see https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-            lspconfig.gopls.setup({
-                cmd = { "gopls", "serve" },
-                on_attach = function(client, bufnr)
-                    local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-                    km("n", "K", vim.lsp.buf.hover)
-                    km("n", "[d", vim.diagnostic.goto_prev)
-                    km("n", "]d", vim.diagnostic.goto_next)
-
-                    km("n", "<leader>ca", vim.lsp.buf.code_action)
-                    km("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-                    km("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
-                    km("n", "<leader>wl", function()
-                        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
-                    end)
-
-                    local msg = string.format("Language server %s started!", client.name)
-                    vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
-                end,
-                capabilities = capabilities,
-                settings = {
-                    gopls = {
-                        -- reference: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-                        gofumpt = true,
-                        semanticTokens = true,
-                        usePlaceholders = true,
-                        experimentalPostfixCompletions = true,
-                        analyses = {
-                            unusedparams = true,
-                            shadow = true,
-                        },
-                        staticcheck = true,
-                        hints = {
-                            assignVariableTypes = true,
-                            compositeLiteralFields = true,
-                            constantValues = true,
-                            functionTypeParameters = true,
-                            parameterNames = true,
-                            rangeVariableTypes = true,
-                        },
-                    },
-                },
+            lspconfig.jsonls.setup({
+                on_attach = custom_attach,
             })
-
-            lspconfig.golangci_lint_ls.setup({})
         end,
     },
 }

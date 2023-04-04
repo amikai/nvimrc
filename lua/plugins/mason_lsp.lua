@@ -16,6 +16,7 @@ return {
                 "vimls",
                 "yamlls",
                 "graphql",
+                "jsonls",
             },
             automatic_installation = true,
         },
