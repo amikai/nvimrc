@@ -29,13 +29,6 @@ require("lazy").setup({
         cmd = { "DiffviewOpen" },
     },
     {
-        "RRethy/vim-illuminate",
-        dependencies = "nvim-treesitter",
-        config = function()
-            require("my_config.plugin.vim-illuminate").config()
-        end,
-    },
-    {
         "chr4/nginx.vim",
         ft = "nginx",
     },
