@@ -67,6 +67,7 @@ return {
                     "-E", "govet",
                     "-E", "ineffassign",
                     "-E", "staticcheck",
+                    "-D", "typecheck",
                     -- others
                     "-E", "revive",
                 },
