@@ -21,7 +21,19 @@ function M.config()
         -- min_count_to_highlight: minimum number of matches required to perform highlighting
         min_count_to_highlight = 1,
     })
-    require("illuminate").resume()
+
+    vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "iceberg",
+        callback = function()
+            -- ctermfg=251 ctermbg=236 guifg=#c6c8d1 guibg=#3d425b
+            vim.api.nvim_set_hl(0, 'IlluminatedWordText', { ctermfg = 251, ctermbg = 236, fg = "#c6c8d1",
+                bg = "#3d425b" })
+            vim.api.nvim_set_hl(0, 'IlluminatedWordRead', { ctermfg = 251, ctermbg = 236, fg = "#c6c8d1",
+                bg = "#3d425b" })
+            vim.api.nvim_set_hl(0, 'IlluminatedWordWrite', { ctermfg = 251, ctermbg = 236, fg = "#c6c8d1",
+                bg = "#3d425b" })
+        end,
+    })
 end
 
 return M
