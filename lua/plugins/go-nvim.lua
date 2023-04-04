@@ -67,6 +67,7 @@ return {
                     return true
                 end,
                 -- See https://golangci-lint.run/usage/linters
+                -- TODO: convert following args to config file
                 extra_args = {
                     "--disable-all",
                     -- defualt option of golangci_lint
