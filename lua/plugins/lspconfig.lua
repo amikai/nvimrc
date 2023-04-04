@@ -128,11 +128,10 @@ return {
                 capabilities = capabilities,
             })
 
-            lspconfig.golangci_lint_ls.setup({})
-
             lspconfig.jsonls.setup({
                 on_attach = custom_attach,
             })
+
         end,
     },
 }

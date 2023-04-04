@@ -56,6 +56,23 @@ return {
                 end,
                 trouble = false,
             })
+
+            local golangci_lint = require("go.null_ls").golangci_lint().with({
+                -- See https://golangci-lint.run/usage/linters
+                extra_args = {
+                    "--disable-all",
+                    -- defualt option of golangci_lint
+                    "-E", "gosimple",
+                    "-E", "errcheck",
+                    "-E", "govet",
+                    "-E", "ineffassign",
+                    "-E", "staticcheck",
+                    -- others
+                    "-E", "revive",
+                },
+            })
+
+            require("null-ls").register(golangci_lint)
         end,
     },
 }
