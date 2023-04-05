@@ -1,6 +1,8 @@
 return {
     {
         "simrat39/rust-tools.nvim",
+        ft = "rust",
+        event = { "BufRead Cargo.toml" },
         config = function()
             local km = require("my_config.utils").km_factory({ silent = true, buffer = true })
             local rt = require("rust-tools")
@@ -40,8 +42,15 @@ return {
                     },
                 },
             })
+
+            -- format on save
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*.rs",
+                callback = function()
+                    vim.lsp.buf.format()
+                end,
+            })
         end,
-        ft = "rust",
     },
     {
         "rust-lang/rust.vim",
