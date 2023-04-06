@@ -58,7 +58,7 @@ return {
     },
     {
         "saecki/crates.nvim",
-        depenedencies = "nvim-lua/plenary.nvim",
+        dependencies = "nvim-lua/plenary.nvim",
         event = { "BufRead Cargo.toml" },
         config = function()
             require("crates").setup({

@@ -41,7 +41,7 @@ require("lazy").setup({
     {
         "hashivim/vim-terraform",
         ft = { "hcl", "terraform" },
-        setup = function()
+        init = function()
             vim.g.terraform_fmt_on_save = 1
         end,
     },
