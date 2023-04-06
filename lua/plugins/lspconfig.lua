@@ -7,6 +7,14 @@ return {
             "j-hui/fidget.nvim",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            {
+                "ray-x/lsp_signature.nvim",
+                config = function ()
+                    require("lsp_signature").setup({
+                        hint_prefix = "⚡ "
+                    })
+                end
+            }
         },
         init = function()
             local autocmd = vim.api.nvim_create_autocmd
