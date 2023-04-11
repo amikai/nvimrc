@@ -30,7 +30,7 @@ return {
                 lsp_codelens = false,
                 lsp_gofumpt = true,
                 lsp_diag_virtual_text = { space = 0, prefix = "" },
-                lsp_diag_signs = false,
+                lsp_diag_signs = true,
                 lsp_keymaps = function()
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
 
