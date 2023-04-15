@@ -5,12 +5,12 @@ return {
         config = function()
             require("lualine").setup({
                 sections = {
-                    lualine_a = {'%f'},
-                    lualine_b = {'branch'},
-                    lualine_c = {},
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = {'%f'},
                     lualine_x = {},
-                    lualine_y = { 'progress' },
-                    lualine_z = { 'location' }
+                    lualine_y = {'progress'},
+                    lualine_z = {'location'},
                 },
                 extensions = {
                     "nvim-tree",
@@ -21,6 +21,11 @@ return {
                     "trouble",
                     "lazy",
                     "man",
+                },
+                options = {
+                    theme = "auto",
+                    section_separators = { left = '', right = '' },
+                    component_separators = { left = '', right = '' },
                 },
             })
         end,
