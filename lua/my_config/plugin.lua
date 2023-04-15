@@ -60,5 +60,8 @@ require("lazy").setup({
             require("todo-comments").setup {}
         end
     },
+    {
+        "christianrondeau/vim-base64",
+    },
     { import = "plugins" },
 })
