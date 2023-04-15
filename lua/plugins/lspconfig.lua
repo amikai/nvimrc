@@ -138,6 +138,12 @@ return {
 
             lspconfig.jsonls.setup({
                 on_attach = custom_attach,
+                capabilities = capabilities,
+            })
+
+            lspconfig.tsserver.setup({
+                on_attach = custom_attach,
+                capabilities = capabilities,
             })
         end,
     },

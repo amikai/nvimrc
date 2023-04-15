@@ -17,6 +17,7 @@ return {
                 "yamlls",
                 "graphql",
                 "jsonls",
+                "tsserver",
             },
             automatic_installation = true,
         },
