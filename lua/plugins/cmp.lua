@@ -1,7 +1,7 @@
 return {
     {
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
+        event = { "InsertEnter", "CmdlineEnter" },
         config = function()
             local has_words_before = function()
                 local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -74,6 +74,29 @@ return {
                     })
                 end,
             })
+
+            -- auto completion in search mode
+            cmp.setup.cmdline('/', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
+
+            -- auto completion in cmd mode
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                }, {
+                    {
+                        name = 'cmdline',
+                        option = {
+                            ignore_cmds = { 'Man', '!' }
+                        }
+                    }
+                })
+            })
         end,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -82,6 +105,7 @@ return {
             "hrsh7th/cmp-vsnip",
             "rafamadriz/friendly-snippets",
             "hrsh7th/vim-vsnip",
+            "hrsh7th/cmp-cmdline",
             {
                 "windwp/nvim-autopairs",
                 config = function()
