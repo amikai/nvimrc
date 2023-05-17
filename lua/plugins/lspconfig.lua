@@ -9,7 +9,7 @@ return {
             "williamboman/mason-lspconfig.nvim",
             {
                 "ray-x/lsp_signature.nvim",
-                config = function ()
+                config = function()
                     require("lsp_signature").setup({
                         hint_prefix = "⚡ "
                     })
@@ -81,7 +81,11 @@ return {
                 settings = {
                     yaml = {
                         schemas = {
-                            kubernetes = "*.k8s.yaml",
+                            kubernetes = "*.yaml",
+                            ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                            ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                            ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+                            ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
                         },
                     },
                 },
