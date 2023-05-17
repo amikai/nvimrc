@@ -78,6 +78,7 @@ return {
                     "-E", "staticcheck",
                     -- others
                     "-E", "revive",
+                    "-E", "bodyclose",
                 },
             })
 
