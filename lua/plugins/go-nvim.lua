@@ -8,11 +8,7 @@ return {
             "folke/trouble.nvim",
             "jose-elias-alvarez/null-ls.nvim",
         },
-        event = { "CmdlineEnter" },
-        ft = { "go", "gomod" },
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-        init = function()
-        end,
         config = function()
             local format_sync_grp = vim.api.nvim_create_augroup("GoImport", { clear = true })
             vim.api.nvim_create_autocmd("BufWritePre", {
@@ -31,8 +27,11 @@ return {
                 lsp_gofumpt = true,
                 lsp_diag_virtual_text = { space = 0, prefix = "" },
                 lsp_diag_signs = true,
+                lsp_inlay_hints = {
+                    enable = true,
+                },
                 lsp_keymaps = function()
-                    local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
+                    local km = require("my_config.utils").km_factory({ silent = true })
 
                     km("n", "gd", vim.lsp.buf.definition)
                     km("n", "K", vim.lsp.buf.hover)
