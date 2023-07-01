@@ -62,17 +62,6 @@ require("lazy").setup({
     },
     {
         "vim-scripts/vis",
-        config = function()
-            vim.keymap.set('n', "[[b", "V:B !base64<cr>")
-            vim.keymap.set('n', "]]b", "V:B !base64 -d<cr>")
-            vim.keymap.set('v', "[b", "<cmd>B !base64<cr>")
-            vim.keymap.set('v', "]b", "<cmd>B !base64 -d<cr>")
-
-            vim.keymap.set('n', "[[d", "V:B !defang<cr>")
-            vim.keymap.set('n', "]]d", "V:B !defang -d<cr>")
-            vim.keymap.set('v', "[d", "<cmd>B !defang<cr>")
-            vim.keymap.set('v', "]d", "<cmd>B !defang -d<cr>")
-        end
     },
     {
         "christianrondeau/vim-base64",
