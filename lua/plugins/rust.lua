@@ -1,8 +1,6 @@
 return {
     {
         "simrat39/rust-tools.nvim",
-        ft = "rust",
-        event = { "BufRead Cargo.toml" },
         config = function()
             local km = require("my_config.utils").km_factory({ silent = true, buffer = true })
             local rt = require("rust-tools")
