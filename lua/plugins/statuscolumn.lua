@@ -9,7 +9,7 @@ return {
                     { sign = { name = { "Diagnostic" }, maxwidth = 1, auto = true } },
                     { text = { builtin.lnumfunc } },
                     { text = { " " } },
-                    { sign = { name = { "GitSigns" }, maxwidth = 1, colwidth = 1, auto = false } },
+                    { sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true } },
                 }
             })
         end
