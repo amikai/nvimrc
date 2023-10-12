@@ -26,6 +26,7 @@ return {
                 "lua",
                 "proto",
                 "graphql",
+                "typescript",
             },
             highlight = {
                 enable = true,
