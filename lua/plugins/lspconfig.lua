@@ -149,6 +149,13 @@ return {
                 on_attach = custom_attach,
                 capabilities = capabilities,
             })
+
+            lspconfig.helm_ls.setup({
+                filetypes = {"helm"},
+                cmd = {"helm_ls", "serve"},
+                on_attach = custom_attach,
+                capabilities = capabilities,
+            })
         end,
     },
 }

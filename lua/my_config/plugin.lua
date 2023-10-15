@@ -66,5 +66,8 @@ require("lazy").setup({
     {
         "christianrondeau/vim-base64",
     },
+    {
+        "towolf/vim-helm"
+    },
     { import = "plugins" },
 })

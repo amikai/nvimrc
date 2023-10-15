@@ -18,6 +18,7 @@ return {
                 "graphql",
                 "jsonls",
                 "tsserver",
+                "helm_ls"
             },
             automatic_installation = true,
         },
