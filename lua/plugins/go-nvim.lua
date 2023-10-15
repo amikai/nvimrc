@@ -1,6 +1,7 @@
 return {
     {
         "ray-x/go.nvim",
+        ft = {"go", 'gomod'},
         dependencies = { -- optional packages
             "ray-x/guihua.lua",
             "neovim/nvim-lspconfig",
