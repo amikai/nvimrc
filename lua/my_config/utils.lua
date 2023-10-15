@@ -39,7 +39,7 @@ M.toggle_diagnostic_window = function()
 end
 
 M.show_function_keymapping = function()
-    msgs = {
+    local msgs = {
         "<F1> term",
         "<F2> focus",
         "<F3> codefmt",
@@ -54,7 +54,7 @@ M.show_function_keymapping = function()
 end
 
 M.show_alt_function_keymapping = function()
-    msgs = {
+    local msgs = {
         "<A-F2> focus",
     }
     print(table.concat(msgs, " | "))
@@ -65,7 +65,6 @@ M.in_git_repo = function()
 end
 
 M.common_lsp_attach = function(client, bufnr)
-    local autocmd = vim.api.nvim_create_autocmd
     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
 
     -- See https://github.com/redhat-developer/yaml-language-server/issues/486
