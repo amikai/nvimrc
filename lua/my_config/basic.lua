@@ -51,7 +51,7 @@ o.fileformats = "unix,dos,mac"
 
 o.path = o.path .. ",**"
 
-o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0"
+o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0,linematch:256"
 
 -- -- center buffer around cursor when opening files
 autocmd("BufRead", { pattern = "*", command = "normal zz" })
