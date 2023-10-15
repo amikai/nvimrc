@@ -40,7 +40,7 @@ return {
                         end
                     end, { "i", "s" }),
                     ["<CR>"] = cmp.mapping.confirm({
-                        behavior = cmp.ConfirmBehavior.Replace,
+                        behavior = cmp.ConfirmBehavior.Insert,
                         select = false,
                     }),
                 },
