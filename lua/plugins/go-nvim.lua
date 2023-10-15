@@ -7,7 +7,7 @@ return {
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
             "folke/trouble.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
+            "null-ls",
         },
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
         config = function()

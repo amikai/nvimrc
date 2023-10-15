@@ -12,7 +12,8 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
+        name = "null-ls",
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({
