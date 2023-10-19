@@ -1,7 +1,7 @@
 return {
     {
         "ray-x/go.nvim",
-        ft = {"go", 'gomod'},
+        ft = { "go", 'gomod' },
         dependencies = { -- optional packages
             "ray-x/guihua.lua",
             "neovim/nvim-lspconfig",
@@ -21,13 +21,13 @@ return {
             })
 
             require("go").setup({
-                lsp_cfg = true,
                 goimport = "goimports",
                 gofmt = "gofumpt",
                 lsp_codelens = false,
                 lsp_gofumpt = true,
+                luasnip = true,
                 diagnostic = {
-                 -- set diagnostic to false to disable vim.diagnostic setup
+                    -- set diagnostic to false to disable vim.diagnostic setup
                     hdlr = false, -- hook lsp diag handler
                     underline = true,
                     -- virtual text setup
@@ -35,35 +35,15 @@ return {
                     signs = true,
                     update_in_insert = false,
                 },
+                -- lsp keybinding is delegate to lspzero
+                lsp_keymaps = false,
                 lsp_inlay_hints = {
                     enable = false,
                 },
-                lsp_keymaps = function()
-                    local km = require("my_config.utils").km_factory({ silent = true })
-
-                    km("n", "gd", vim.lsp.buf.definition)
-                    km("n", "K", vim.lsp.buf.hover)
-                    -- km("n", "<C-k>", vim.lsp.buf.signature_help)
-                    km("n", "gR", vim.lsp.buf.rename)
-                    km("n", "gr", vim.lsp.buf.references)
-                    km("n", "[d", vim.diagnostic.goto_prev)
-                    km("n", "]d", vim.diagnostic.goto_next)
-                    km("n", "gi", vim.lsp.buf.implementation)
-                    km("n", "gt", vim.lsp.buf.type_definition)
-                    km("n", "gD", vim.lsp.buf.declaration)
-
-                    km("n", "<leader>ca", vim.lsp.buf.code_action)
-                    km("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-                    km("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
-                    km("n", "<leader>wl", function()
-                        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
-                    end)
-
-                    km("n", "<F3>", require("go.format").goimport)
-                end,
                 trouble = false,
             })
 
+            local km = require("my_config.utils").km_factory({ silent = true })
             local golangci_lint = require("go.null_ls").golangci_lint().with({
                 filter = function(diagnostic)
                     -- Accroding https://github.com/golangci/golangci-lint/issues/2912,
