@@ -89,6 +89,8 @@ km("v", "K", ":m '<-2<cr>gv=gv")
 km("v", "<", "<gv")
 km("v", ">", ">gv")
 
+-- Set the status lien to global
+go.laststatus=3
 
 -- -- }}}
 
