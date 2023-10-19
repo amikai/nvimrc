@@ -89,8 +89,6 @@ km("v", "K", ":m '<-2<cr>gv=gv")
 km("v", "<", "<gv")
 km("v", ">", ">gv")
 
--- Sign column
-o.signcolumn = "auto:2"
 
 -- -- }}}
 
