@@ -283,4 +283,22 @@ km("c", "<M-f>", "<S-Right>")
 
 -- }}}
 
+
+vim.keymap.set('n', '=q', function()
+    vim.diagnostic.setqflist({ open = false })
+
+    -- if qf window is not present, return winid is zero
+    local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
+    local action = qf_winid > 0 and 'cclose' or 'copen'
+    vim.cmd('botright ' .. action)
+end, { noremap = true })
+
+vim.keymap.set('n', '=l', function()
+    vim.diagnostic.setloclist({ open = false })
+    local win = vim.api.nvim_get_current_win()
+    local qf_winid = vim.fn.getloclist(win, { winid = 0 }).winid
+    local action = qf_winid > 0 and 'lclose' or 'lopen'
+    vim.cmd(action)
+end, { noremap = true })
+
 -- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
