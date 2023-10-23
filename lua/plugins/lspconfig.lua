@@ -188,6 +188,12 @@ return {
                     end
                 end
 
+                -- See https://github.com/redhat-developer/yaml-language-server/issues/486
+                if client.name == "yamlls" then
+                    client.server_capabilities.documentFormattingProvider = true
+                end
+
+
                 local function show_documentation()
                     local filetype = vim.bo.filetype
                     local path = vim.api.nvim_buf_get_name(bufnr)

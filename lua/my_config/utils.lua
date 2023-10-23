@@ -21,21 +21,7 @@ function M.executable(name)
     if vim.fn.executable(name) > 0 then
         return true
     end
-
     return false
-end
-
-M.toggle_diagnostic_window = function()
-    local winnr = vim.fn.winnr()
-    local locwin_open = vim.fn.getloclist(0, { winid = 0 }).winid ~= 0
-    if locwin_open then
-        vim.cmd("lclose")
-    else
-        vim.diagnostic.setloclist({ open = true })
-        vim.cmd("wincmd J")
-        vim.cmd("5wincmd _")
-    end
-    vim.cmd(string.format("%swincmd w", winnr))
 end
 
 M.show_function_keymapping = function()
@@ -62,56 +48,6 @@ end
 
 M.in_git_repo = function()
     return vim.fn.system("git rev-parse --is-inside-work-tree") == "true\n"
-end
-
-M.common_lsp_attach = function(client, bufnr)
-    local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-
-    -- See https://github.com/redhat-developer/yaml-language-server/issues/486
-    if client.name == "yamlls" then
-        client.server_capabilities.documentFormattingProvider = true
-    end
-
-    km("n", "gd", vim.lsp.buf.definition)
-    km("n", "K", vim.lsp.buf.hover)
-    -- km("n", "<C-k>", vim.lsp.buf.signature_help)
-    km("n", "gR", vim.lsp.buf.rename)
-    km("n", "gr", vim.lsp.buf.references)
-    km("n", "[d", vim.diagnostic.goto_prev)
-    km("n", "]d", vim.diagnostic.goto_next)
-    km("n", "gi", vim.lsp.buf.implementation)
-    km("n", "gD", vim.lsp.buf.declaration)
-
-    km("n", "<leader>ca", vim.lsp.buf.code_action)
-    km("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
-    km("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
-    km("n", "<leader>wl", function()
-        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
-    end)
-
-    if client.server_capabilities.documentFormattingProvider then
-        if vim.bo.filetype == "json" then
-            km("n", "<F3>", function()
-                vim.lsp.buf.format({
-                    formatting_options = {
-                        tabSize = vim.opt_local.softtabstop:get(),
-                        insertSpaces = vim.opt_local.expandtab:get(),
-                        trimTrailingWhitespace = true,
-                        trimFinalNewlines = true,
-                    },
-                })
-            end)
-        else
-            km("n", "<F3>", vim.lsp.buf.format)
-        end
-    end
-
-    if client.server_capabilities.documentRangeFormattingProvider then
-        km("x", "<F3>", vim.lsp.buf.format)
-    end
-
-    local msg = string.format("Language server %s started!", client.name)
-    vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
 end
 
 return M
