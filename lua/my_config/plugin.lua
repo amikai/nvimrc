@@ -21,18 +21,9 @@ require("lazy").setup({
         ft = "qf",
     },
     {
-        "thinca/vim-qfreplace",
-        cmd = { "Qfreplace" },
-    },
-    {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
     },
-    {
-        "chr4/nginx.vim",
-        ft = "nginx",
-    },
-
     {
         "pearofducks/ansible-vim",
         ft = { "yaml.ansible", "ansible_hosts" },
@@ -45,7 +36,6 @@ require("lazy").setup({
             vim.g.terraform_fmt_on_save = 1
         end,
     },
-
     {
         "christoomey/vim-tmux-navigator",
         cond = require("my_config.utils").is_in_tmux(),
