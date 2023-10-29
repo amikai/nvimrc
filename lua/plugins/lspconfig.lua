@@ -287,6 +287,46 @@ return {
                             end,
                         })
                     end,
+                    pylsp = function()
+                        -- Don't forget to PylspInstall python-lsp-ruff pyls-isort
+                        require('lspconfig').pylsp.setup {
+                            settings = {
+                                pylsp = {
+                                    plugins = {
+                                        -- formatter options
+                                        black = { enabled = false },
+                                        rope_autoimport = { enabled = true },
+                                        autopep8 = { enabled = false },
+                                        yapf = { enabled = false },
+                                        -- linter options
+                                        pylint = { enabled = false },
+                                        ruff = {
+                                            enabled = true,
+                                            select = {
+                                                -- See ruff linter
+                                                "E", "F", "PL"
+                                            }
+                                        },
+                                        pyflakes = { enabled = false },
+                                        pycodestyle = { enabled = false },
+                                        -- type checker
+                                        pylsp_mypy = {
+                                            enabled = true,
+                                            report_progress = true,
+                                            live_mode = false
+                                        },
+                                        -- auto-completion options
+                                        jedi_completion = { fuzzy = true },
+                                        -- import sorting
+                                        isort = { enabled = true },
+                                    },
+                                },
+                            },
+                            flags = {
+                                debounce_text_changes = 200,
+                            },
+                        }
+                    end
                 },
                 automatic_installation = true,
             })
