@@ -294,12 +294,14 @@ return {
                                 pylsp = {
                                     plugins = {
                                         -- formatter options
-                                        black = { enabled = false },
                                         rope_autoimport = { enabled = true },
                                         autopep8 = { enabled = false },
                                         yapf = { enabled = false },
                                         -- linter options
                                         pylint = { enabled = false },
+                                        -- python-lsp-ruff doesn't support format now, so using black instead
+                                        -- See detail in https://github.com/python-lsp/python-lsp-ruff/issues/53
+                                        black = { enabled = true },
                                         ruff = {
                                             enabled = true,
                                             select = {
