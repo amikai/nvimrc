@@ -301,7 +301,7 @@ return {
                                         pylint = { enabled = false },
                                         -- python-lsp-ruff doesn't support format now, so using black instead
                                         -- See detail in https://github.com/python-lsp/python-lsp-ruff/issues/53
-                                        black = { enabled = true },
+                                        black = { enabled = false },
                                         ruff = {
                                             enabled = true,
                                             select = {
