@@ -20,8 +20,9 @@ return {
                 sources = {
                     -- trailing whitespace
                     null_ls.builtins.diagnostics.trail_space,
-                    null_ls.builtins.diagnostics.actionlint,
                     null_ls.builtins.formatting.trim_whitespace,
+                    -- github action
+                    null_ls.builtins.diagnostics.actionlint,
                     -- buf
                     null_ls.builtins.diagnostics.buf,
                     null_ls.builtins.formatting.buf,
