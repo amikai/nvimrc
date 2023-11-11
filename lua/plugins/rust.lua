@@ -1,7 +1,48 @@
 return {
     {
-        "simrat39/rust-tools.nvim",
-        lazy = true,
+        'mrcjkb/rustaceanvim',
+        version = '^3', -- Recommended
+        ft = { 'rust' },
+        config = function()
+            vim.g.rustaceanvim = {
+                -- Plugin configuration
+                tools = {
+                },
+                -- LSP configuration
+                server = {
+                    cmd = {
+                        "rustup",
+                        "run",
+                        "stable",
+                        "rust-analyzer",
+                    },
+                    on_attach = function(client, bufnr)
+                        -- you can also put keymaps in here
+                    end,
+                    settings = {
+                        -- rust-analyzer language server configuration
+                        ['rust-analyzer'] = {
+                            checkOnSave = {
+                                allFeatures = true,
+                                overrideCommand = {
+                                    "rustup",
+                                    "run",
+                                    "stable",
+                                    "cargo-clippy",
+                                    "--workspace",
+                                    "--message-format=json-diagnostic-rendered-ansi",
+                                    "--all-targets",
+                                    "--all-features",
+                                },
+                            },
+                        },
+                    },
+                },
+                -- DAP configuration
+                dap = {
+                },
+            }
+        end
     },
     {
         "rust-lang/rust.vim",
@@ -21,7 +62,6 @@ return {
                     name = "Crates",
                 },
             })
-
         end,
     },
 }

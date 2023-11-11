@@ -230,7 +230,6 @@ return {
                     "tsserver",
                     "helm_ls",
                     "pylsp"
-                    -- delegate rust-analyzer installation to rustup
                     -- delegate gopls, golang-lint-ci installation to go.nvim
                 },
                 handlers = {
@@ -239,53 +238,6 @@ return {
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
                         require('lspconfig').lua_ls.setup(lua_opts)
-                    end,
-                    rust_analyzer = function()
-                        -- (Optional) Configure rust-analyzer for neovim
-                        local km = require("my_config.utils").km_factory({ silent = true, buffer = true })
-                        local rt = require("rust-tools")
-
-                        rt.setup({
-                            executor = require("rust-tools.executors").quickfix,
-                            server = {
-                                cmd = {
-                                    "rustup",
-                                    "run",
-                                    "stable",
-                                    "rust-analyzer",
-                                },
-                                on_attach = function(client, bufnr)
-                                    km("n", "K", rt.hover_actions.hover_actions)
-                                    km("n", "<Leader>a", rt.code_action_group.code_action_group)
-                                end,
-                                capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                                settings = {
-                                    ["rust-analyzer"] = {
-                                        checkOnSave = {
-                                            allFeatures = true,
-                                            overrideCommand = {
-                                                "rustup",
-                                                "run",
-                                                "stable",
-                                                "cargo-clippy",
-                                                "--workspace",
-                                                "--message-format=json-diagnostic-rendered-ansi",
-                                                "--all-targets",
-                                                "--all-features",
-                                            },
-                                        },
-                                    },
-                                },
-                            },
-                        })
-
-                        -- format on save
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            pattern = "*.rs",
-                            callback = function()
-                                vim.lsp.buf.format()
-                            end,
-                        })
                     end,
                     pylsp = function()
                         -- Don't forget to PylspInstall python-lsp-ruff pyls-isort
