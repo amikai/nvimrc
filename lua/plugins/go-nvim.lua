@@ -25,6 +25,7 @@ return {
             })
 
             require("go").setup({
+                lsp_cfg = false,
                 goimport = "goimports",
                 gofmt = "gofumpt",
                 lsp_codelens = false,
@@ -46,6 +47,9 @@ return {
                 },
                 trouble = false,
             })
+
+            local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
+            require('lspconfig').gopls.setup(cfg)
 
             local km = require("my_config.utils").km_factory({ silent = true })
             local golangci_lint = require("go.null_ls").golangci_lint().with({

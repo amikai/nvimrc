@@ -233,6 +233,7 @@ return {
                     -- delegate gopls, golang-lint-ci installation to go.nvim
                 },
                 handlers = {
+                    -- gopls setting is in go.nvim
                     lsp_zero.default_setup, -- Mason will register the handler
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
