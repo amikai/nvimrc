@@ -252,8 +252,6 @@ return {
                                         yapf = { enabled = false },
                                         -- linter options
                                         pylint = { enabled = false },
-                                        -- python-lsp-ruff doesn't support format now, so using black instead
-                                        -- See detail in https://github.com/python-lsp/python-lsp-ruff/issues/53
                                         black = { enabled = false },
                                         ruff = {
                                             enabled = true,
