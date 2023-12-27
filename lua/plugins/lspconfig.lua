@@ -193,25 +193,7 @@ return {
                     client.server_capabilities.documentFormattingProvider = true
                 end
 
-
-                local function show_documentation()
-                    local filetype = vim.bo.filetype
-                    local path = vim.api.nvim_buf_get_name(bufnr)
-                    if vim.tbl_contains({ "vim", "help" }, filetype) then
-                        vim.cmd("h " .. vim.fn.expand("<cword>"))
-                    elseif vim.tbl_contains({ "man" }, filetype) then
-                        vim.cmd("Man " .. vim.fn.expand("<cword>"))
-                    elseif vim.fn.fnamemodify(path, ":t") == "Cargo.toml" and require("crates").popup_available() then
-                        -- use crates.nvim
-                        require("crates").show_popup()
-                    elseif client.server_capabilities.hoverProvider then
-                        vim.lsp.buf.hover()
-                    end
-                end
-                vim.keymap.set("n", "K", show_documentation, { buffer = bufnr })
-
-                local msg = string.format("Language server %s started!", client.name)
-                vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
             end)
 
             require('mason-lspconfig').setup({
@@ -234,7 +216,7 @@ return {
                 },
                 handlers = {
                     -- gopls setting is in go.nvim
-                    lsp_zero.default_setup, -- Mason will register the handler
+                    lsp_zero.default_setup,              -- Mason will register the handler
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
