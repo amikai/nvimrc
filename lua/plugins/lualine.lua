@@ -17,7 +17,7 @@ return {
                     "quickfix",
                     "toggleterm",
                     "fugitive",
-                    "symbols-outline",
+                    "aerial",
                     "trouble",
                     "lazy",
                     "man",
