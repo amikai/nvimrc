@@ -16,6 +16,19 @@ return {
         name = "null-ls",
         config = function()
             local null_ls = require("null-ls")
+            local helpers = require("null-ls.helpers")
+            local hurlfmt = helpers.make_builtin({
+                name = "hurlfmt",
+                method = null_ls.methods.FORMATTING,
+                filetypes = { "hurl" },
+                -- null_ls.generator creates an async source
+                -- that spawns the command with the given arguments and options
+                generator_opts = {
+                    command = "hurlfmt",
+                    to_stdin = true,
+                },
+                factory = helpers.formatter_factory,
+            })
             null_ls.setup({
                 sources = {
                     -- trailing whitespace
@@ -28,6 +41,7 @@ return {
                     null_ls.builtins.formatting.buf,
                     -- bash
                     null_ls.builtins.diagnostics.shellcheck,
+                    hurlfmt,
                 },
             })
         end,

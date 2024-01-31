@@ -301,4 +301,10 @@ vim.keymap.set('n', '=l', function()
     vim.cmd(action)
 end, { noremap = true })
 
+-- detect hurl file
+vim.filetype.add({
+    extension = {
+        hurl = 'hurl',
+    }
+})
 -- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

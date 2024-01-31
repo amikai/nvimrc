@@ -27,6 +27,7 @@ return {
                 "proto",
                 "graphql",
                 "typescript",
+                "hurl",
             },
             highlight = {
                 enable = true,
