@@ -41,6 +41,7 @@ return {
                     null_ls.builtins.formatting.buf,
                     -- bash
                     null_ls.builtins.diagnostics.shellcheck,
+                    null_ls.builtins.formatting.shfmt,
                     hurlfmt,
                 },
             })
