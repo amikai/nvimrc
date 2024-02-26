@@ -29,11 +29,25 @@ return {
                 },
                 factory = helpers.formatter_factory,
             })
+            local trim_whitespace = helpers.make_builtin({
+                name = "trim_whitespace",
+                meta = {
+                    description = "A simple wrapper around `awk` to remove trailing whitespace.",
+                },
+                method = null_ls.methods.FORMATTING,
+                filetypes = {},
+                generator_opts = {
+                    command = "awk",
+                    args = { '{ sub(/[ \t]+$/, ""); print }' },
+                    to_stdin = true,
+                },
+                factory = helpers.formatter_factory,
+            })
             null_ls.setup({
                 sources = {
                     -- trailing whitespace
                     null_ls.builtins.diagnostics.trail_space,
-                    null_ls.builtins.formatting.trim_whitespace,
+                    trim_whitespace,
                     -- github action
                     null_ls.builtins.diagnostics.actionlint,
                     -- buf
