@@ -109,25 +109,6 @@ o.wildoptions:append("pum")
 -- line number setting
 o.number = true
 
--- Not use relative number, if not in the window
-autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
-    pattern = "*",
-    callback = function()
-        if o.number then
-            vim.o.relativenumber = true
-        end
-    end,
-})
-
-autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
-    pattern = "*",
-    callback = function()
-        if o.number then
-            vim.o.relativenumber = false
-        end
-    end,
-})
-
 -- Maximum width of text that is being inserted (TODO)
 -- set textwidth=80
 -- set breakindent
