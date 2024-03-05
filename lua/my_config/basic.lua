@@ -5,7 +5,7 @@ local call = vim.call
 local km = require("my_config.utils").km_factory({ silent = true })
 
 local g = vim.g
-local o = vim.o
+local o = vim.opt
 local go = vim.go
 local bo = vim.bo
 local wo = vim.wo
@@ -47,18 +47,22 @@ o.termguicolors = true
 
 o.encoding = "utf-8"
 
-o.fileformats = "unix,dos,mac"
+o.fileformats = { "unix", "dos", "mac" }
 
-o.path = o.path .. ",**"
+o.path:append("**")
 
-o.diffopt = "filler,vertical,algorithm:patience,context:3,foldcolumn:0,linematch:256"
+o.diffopt = { "filler", "vertical", "algorithm:patience", "context:3", "foldcolumn:0", "linematch:256" }
 
 -- -- center buffer around cursor when opening files
 autocmd("BufRead", { pattern = "*", command = "normal zz" })
 
-o.grepprg = "grep -inH"
+if vim.fn.executable('rg') == 1 then
+    o.grepprg = "rg --vimgrep --no-heading --smart-case"
+else
+    o.grepprg = "grep -inH"
+end
 
-o.mouse = ""
+o.mouse = {}
 
 km("n", "j", "gj")
 km("n", "k", "gk")
@@ -79,7 +83,7 @@ km("v", "p", '"_dP`')
 km("n", "p", "p`]")
 
 -- -- Copy paste
-o.clipboard = "unnamedplus"
+o.clipboard = { "unnamedplus" }
 
 -- Move visual block
 km("v", "J", ":m '>+1<cr>gv=gv")
@@ -90,7 +94,7 @@ km("v", "<", "<gv")
 km("v", ">", ">gv")
 
 -- Set the status lien to global
-go.laststatus=3
+go.laststatus = 3
 
 -- -- }}}
 
@@ -99,8 +103,8 @@ o.scrolloff = 3
 
 -- -- Display candidates by popup menu.
 o.wildmenu = true
-o.wildmode = "full"
-o.wildoptions = o.wildoptions .. ",pum"
+o.wildmode = { "full" }
+o.wildoptions:append("pum")
 
 -- line number setting
 o.number = true
@@ -165,14 +169,14 @@ o.ignorecase = true
 o.smartcase = true
 
 -- -- Configure backspace so it acts as it should act
-o.backspace = "indent,eol,start"
-o.whichwrap = o.whichwrap .. ",<,>,h,l"
+o.backspace = { "indent", "eol", "start" }
+o.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 
 o.wrap = false
 
 -- search
 o.incsearch = true -- search as characters are entered
-o.hlsearch = true -- highlight matches
+o.hlsearch = true  -- highlight matches
 o.inccommand = "split"
 
 -- Show matching brackets when text indicator is over them
@@ -181,7 +185,7 @@ o.matchtime = 1
 
 -- -- show special character
 wo.list = true
-o.listchars = "eol:¬,tab:▸ ,trail:."
+o.listchars = { eol = "¬", tab = "▸ ", trail = "." }
 
 -- highlight current line
 wo.cursorline = true
@@ -192,9 +196,10 @@ wo.colorcolumn = "81"
 o.foldcolumn = "1"
 
 -- -- Use a popup menu to show the possible completions
-o.completeopt = "menuone,noinsert,noselect"
+o.completeopt = { "menuone", "noinsert", "noselect" }
 
-o.shortmess = o.shortmess .. "cF"
+
+o.shortmess:append({c = true, F = true})
 
 o.virtualedit = "block"
 
