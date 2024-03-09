@@ -163,8 +163,23 @@ return {
                 info = ''
             })
 
+            lsp_zero.format_mapping('<F3>', {
+                format_opts = {
+                    async = false,
+                    timeout_ms = 10000,
+                },
+                servers = {
+                    ['python'] = { 'pylsp' },
+                    ['rust_analyzer'] = { 'rust' },
+                }
+            })
             -- on_attach attach on LspAttach event, so it will attach on all server start
             lsp_zero.on_attach(function(client, bufnr)
+                require "lsp_signature".on_attach({ hint_prefix = "⚡ " }, bufnr)
+                -- delegate to go.nvim
+                if vim.api.nvim_buf_get_option(bufnr, 'filetype') == 'go' then
+                    return
+                end
                 -- see :help lsp-zero-keybindings
                 -- to learn the available actions
                 local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
@@ -177,16 +192,6 @@ return {
                 km("n", "<leader>wl", function()
                     vim.pretty_print(vim.lsp.buf.list_workspace_folders())
                 end)
-                require "lsp_signature".on_attach({ hint_prefix = "⚡ " }, bufnr)
-
-                if client.server_capabilities.documentFormattingProvider then
-                    local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-                    if ft == "go" then
-                        km("n", "<F3>", require("go.format").goimport)
-                    else
-                        km("n", '<F3>', "<Cmd>lua vim.lsp.buf.format({async = true})<CR>")
-                    end
-                end
 
                 -- See https://github.com/redhat-developer/yaml-language-server/issues/486
                 if client.name == "yamlls" then
@@ -216,7 +221,7 @@ return {
                 },
                 handlers = {
                     -- gopls setting is in go.nvim
-                    lsp_zero.default_setup,              -- Mason will register the handler
+                    lsp_zero.default_setup, -- Mason will register the handler
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
@@ -237,6 +242,7 @@ return {
                                         black = { enabled = false },
                                         ruff = {
                                             enabled = true,
+                                            formatEnabled = true,
                                             select = {
                                                 -- See ruff linter
                                                 "E", "F", "PL"

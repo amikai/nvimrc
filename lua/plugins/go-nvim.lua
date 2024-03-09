@@ -41,7 +41,47 @@ return {
                     update_in_insert = false,
                 },
                 -- lsp keybinding is delegate to lspzero
-                lsp_keymaps = false,
+                lsp_keymaps = function(bufnr)
+                    keymaps = {
+                        { key = 'gd',        func = vim.lsp.buf.definition,           desc = 'goto definition' },
+                        { key = 'K',         func = vim.lsp.buf.hover,                desc = 'hover' },
+                        { key = 'gi',        func = vim.lsp.buf.implementation,       desc = 'goto implementation' },
+                        { key = '<C-k>',     func = vim.lsp.buf.signature_help,       desc = 'signature help' },
+                        { key = '<space>wa', func = vim.lsp.buf.add_workspace_folder, desc = 'add workspace' },
+                        {
+                            key = '<space>wr',
+                            func = vim.lsp.buf.remove_workspace_folder,
+                            desc = 'remove workspace',
+                        },
+                        {
+                            key = '<space>wl',
+                            func = function()
+                                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                            end,
+                            desc = 'list workspace',
+                        },
+                        { key = 'gD',         func = vim.lsp.buf.type_definition,              desc = 'goto type definition' },
+                        { key = 'gR',         func = require('go.rename').run,                 desc = 'rename' },
+                        { key = '<leader>ca', func = require('go.codeaction').run_code_action, desc = 'code action' },
+                        {
+                            mode = 'v',
+                            key = '<leader>ca',
+                            func = require('go.codeaction').run_range_code_action,
+                            desc = 'range code action',
+                        },
+                        { key = 'gr',        func = vim.lsp.buf.references,       desc = 'references' },
+                        { key = '<F9>',      func = vim.diagnostic.open_float,    desc = 'diagnostic' },
+                        { key = '[d',        func = vim.diagnostic.goto_prev,     desc = 'diagnostic prev' },
+                        { key = ']d',        func = vim.diagnostic.goto_next,     desc = 'diagnostic next' },
+                        { key = '<leader>q', func = vim.diagnostic.setloclist,    desc = 'diagnostic loclist' },
+                        { key = '<F3>',      func = require("go.format").goimpor, desc = 'format' },
+                    }
+
+                    local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
+                    for _, keymap in pairs(keymaps) do
+                        km(keymap.mode or 'n', keymap.key, keymap.func)
+                    end
+                end,
                 lsp_inlay_hints = {
                     enable = false,
                 },
