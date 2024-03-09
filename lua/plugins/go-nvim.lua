@@ -74,6 +74,7 @@ return {
                     -- others
                     "-E", "revive",
                     "-E", "bodyclose",
+                    "-E", "prealloc",
 
                     "-E", "sloglint",
                     "-E", "loggercheck",
