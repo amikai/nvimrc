@@ -203,6 +203,7 @@ return {
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
+                    "clangd",
                     "ansiblels",
                     "pyright",
                     "dockerls",
@@ -222,6 +223,15 @@ return {
                 handlers = {
                     -- gopls setting is in go.nvim
                     lsp_zero.default_setup, -- Mason will register the handler
+                    clangd = function()
+                        require('lspconfig').clangd.setup({
+                            cmd = {
+                                "clangd",
+                                "--offset-encoding=utf-16",
+                                "--fallback-style=webkit",
+                            },
+                        })
+                    end,
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
