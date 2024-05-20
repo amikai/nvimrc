@@ -198,6 +198,15 @@ o.pumheight = 10
 -- Enables pseudo-transparency for the popup-menu
 o.pumblend = 20
 
+-- In Neovim 0.10, hl-WinSeparator is linked to hl-Normal instead of hl-VertSplit.
+-- This alteration affects my UI experience, so I'm reverting it to the original setting.
+vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = '*',
+    callback = function()
+        vim.api.nvim_set_hl(0, 'WinSeparator', { link = 'VertSplit', force = true })
+    end,
+})
+
 -- }}}
 
 -- Files, backups and undo file {{{
