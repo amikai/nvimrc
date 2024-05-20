@@ -217,7 +217,8 @@ return {
                     "jsonls",
                     "tsserver",
                     "helm_ls",
-                    "pylsp"
+                    "pylsp",
+                    "typos_lsp",
                     -- delegate gopls, golang-lint-ci installation to go.nvim
                 },
                 handlers = {
