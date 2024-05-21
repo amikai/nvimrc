@@ -71,8 +71,6 @@ return {
                         },
                         { key = 'gr',        func = vim.lsp.buf.references,       desc = 'references' },
                         { key = '<F9>',      func = vim.diagnostic.open_float,    desc = 'diagnostic' },
-                        { key = '[d',        func = vim.diagnostic.goto_prev,     desc = 'diagnostic prev' },
-                        { key = ']d',        func = vim.diagnostic.goto_next,     desc = 'diagnostic next' },
                         { key = '<leader>q', func = vim.diagnostic.setloclist,    desc = 'diagnostic loclist' },
                         { key = '<F3>',      func = require("go.format").goimpor, desc = 'format' },
                     }
