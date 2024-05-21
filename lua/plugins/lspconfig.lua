@@ -198,7 +198,6 @@ return {
                     client.server_capabilities.documentFormattingProvider = true
                 end
 
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
             end)
 
             require('mason-lspconfig').setup({
