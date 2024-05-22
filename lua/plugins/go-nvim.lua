@@ -19,14 +19,14 @@ return {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 pattern = "*.go",
                 callback = function()
-                    require("go.format").goimport()
+                    require("go.format").goimports()
                 end,
                 group = format_sync_grp,
             })
 
             require("go").setup({
                 lsp_cfg = false,
-                goimport = "goimports",
+                goimports = "goimports",
                 gofmt = "gofumpt",
                 lsp_codelens = false,
                 lsp_gofumpt = true,
@@ -44,7 +44,6 @@ return {
                 lsp_keymaps = function(bufnr)
                     keymaps = {
                         { key = 'gd',        func = vim.lsp.buf.definition,           desc = 'goto definition' },
-                        { key = 'K',         func = vim.lsp.buf.hover,                desc = 'hover' },
                         { key = 'gi',        func = vim.lsp.buf.implementation,       desc = 'goto implementation' },
                         { key = '<C-k>',     func = vim.lsp.buf.signature_help,       desc = 'signature help' },
                         { key = '<space>wa', func = vim.lsp.buf.add_workspace_folder, desc = 'add workspace' },
@@ -60,19 +59,12 @@ return {
                             end,
                             desc = 'list workspace',
                         },
-                        { key = 'gD',         func = vim.lsp.buf.type_definition,              desc = 'goto type definition' },
-                        { key = 'gR',         func = require('go.rename').run,                 desc = 'rename' },
-                        { key = '<leader>ca', func = require('go.codeaction').run_code_action, desc = 'code action' },
-                        {
-                            mode = 'v',
-                            key = '<leader>ca',
-                            func = require('go.codeaction').run_range_code_action,
-                            desc = 'range code action',
-                        },
-                        { key = 'gr',        func = vim.lsp.buf.references,       desc = 'references' },
-                        { key = '<F9>',      func = vim.diagnostic.open_float,    desc = 'diagnostic' },
-                        { key = '<leader>q', func = vim.diagnostic.setloclist,    desc = 'diagnostic loclist' },
-                        { key = '<F3>',      func = require("go.format").goimpor, desc = 'format' },
+                        { key = 'gD',        func = vim.lsp.buf.type_definition,    desc = 'goto type definition' },
+                        { key = 'gR',        func = require('go.rename').run,       desc = 'rename' },
+                        { key = 'gr',        func = vim.lsp.buf.references,         desc = 'references' },
+                        { key = '<F9>',      func = vim.diagnostic.open_float,      desc = 'diagnostic' },
+                        { key = '<leader>q', func = vim.diagnostic.setloclist,      desc = 'diagnostic loclist' },
+                        { key = '<F3>',      func = require("go.format").goimports, desc = 'format' },
                     }
 
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
