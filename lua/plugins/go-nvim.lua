@@ -42,7 +42,7 @@ return {
                 },
                 -- lsp keybinding is delegate to lspzero
                 lsp_keymaps = function(bufnr)
-                    keymaps = {
+                    local keymaps = {
                         { key = 'gd',        func = vim.lsp.buf.definition,           desc = 'goto definition' },
                         { key = 'gi',        func = vim.lsp.buf.implementation,       desc = 'goto implementation' },
                         { key = '<C-k>',     func = vim.lsp.buf.signature_help,       desc = 'signature help' },
@@ -60,10 +60,9 @@ return {
                             desc = 'list workspace',
                         },
                         { key = 'gD',        func = vim.lsp.buf.type_definition,    desc = 'goto type definition' },
-                        { key = 'gR',        func = require('go.rename').run,       desc = 'rename' },
+                        { key = 'gR',        func = vim.lsp.buf.rename,       desc = 'rename' },
                         { key = 'gr',        func = vim.lsp.buf.references,         desc = 'references' },
                         { key = '<F9>',      func = vim.diagnostic.open_float,      desc = 'diagnostic' },
-                        { key = '<leader>q', func = vim.diagnostic.setloclist,      desc = 'diagnostic loclist' },
                         { key = '<F3>',      func = require("go.format").goimports, desc = 'format' },
                     }
 
@@ -81,10 +80,9 @@ return {
             local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
             require('lspconfig').gopls.setup(cfg)
 
-            local km = require("my_config.utils").km_factory({ silent = true })
             local golangci_lint = require("go.null_ls").golangci_lint().with({
                 filter = function(diagnostic)
-                    -- Accroding https://github.com/golangci/golangci-lint/issues/2912,
+                    -- According https://github.com/golangci/golangci-lint/issues/2912,
                     -- It's not possible to disable typecheck. So filter it manually.
                     if diagnostic.source:match("typecheck") then
                         return false
@@ -92,10 +90,9 @@ return {
                     return true
                 end,
                 -- See https://golangci-lint.run/usage/linters
-                -- TODO: convert following args to config file
                 extra_args = {
                     "--disable-all",
-                    -- defualt option of golangci_lint
+                    -- default option of golangci_lint
                     "-E", "gosimple",
                     "-E", "errcheck",
                     "-E", "govet",
