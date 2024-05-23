@@ -59,11 +59,11 @@ return {
                             end,
                             desc = 'list workspace',
                         },
-                        { key = 'gD',        func = vim.lsp.buf.type_definition,    desc = 'goto type definition' },
-                        { key = 'gR',        func = vim.lsp.buf.rename,       desc = 'rename' },
-                        { key = 'gr',        func = vim.lsp.buf.references,         desc = 'references' },
-                        { key = '<F9>',      func = vim.diagnostic.open_float,      desc = 'diagnostic' },
-                        { key = '<F3>',      func = require("go.format").goimports, desc = 'format' },
+                        { key = 'gD',   func = vim.lsp.buf.type_definition,    desc = 'goto type definition' },
+                        { key = 'gR',   func = vim.lsp.buf.rename,             desc = 'rename' },
+                        { key = 'gr',   func = vim.lsp.buf.references,         desc = 'references' },
+                        { key = '<F9>', func = vim.diagnostic.open_float,      desc = 'diagnostic' },
+                        { key = '<F3>', func = require("go.format").goimports, desc = 'format' },
                     }
 
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
@@ -88,9 +88,9 @@ return {
                         return false
                     end
                     return true
-                end,
-                -- See https://golangci-lint.run/usage/linters
+                end, -- See https://golangci-lint.run/usage/linters
                 extra_args = {
+                    "--no-config",
                     "--disable-all",
                     -- default option of golangci_lint
                     "-E", "gosimple",
