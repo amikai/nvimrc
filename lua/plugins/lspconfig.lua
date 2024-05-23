@@ -192,6 +192,8 @@ return {
                 km("n", "<leader>wl", function()
                     vim.pretty_print(vim.lsp.buf.list_workspace_folders())
                 end)
+                km("n", "<F9>",vim.diagnostic.setqflist)
+
 
                 -- See https://github.com/redhat-developer/yaml-language-server/issues/486
                 if client.name == "yamlls" then

@@ -56,7 +56,6 @@ return {
                             end,
                             desc = 'list workspace',
                         },
-                        { key = '<F9>', func = vim.diagnostic.open_float,      desc = 'diagnostic' },
                         { key = '<F3>', func = require("go.format").goimports, desc = 'format' },
                     }
 
