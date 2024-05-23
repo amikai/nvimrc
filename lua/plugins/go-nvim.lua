@@ -43,9 +43,6 @@ return {
                 -- lsp keybinding is delegate to lspzero
                 lsp_keymaps = function(bufnr)
                     local keymaps = {
-                        { key = 'gd',        func = vim.lsp.buf.definition,           desc = 'goto definition' },
-                        { key = 'gi',        func = vim.lsp.buf.implementation,       desc = 'goto implementation' },
-                        { key = '<C-k>',     func = vim.lsp.buf.signature_help,       desc = 'signature help' },
                         { key = '<space>wa', func = vim.lsp.buf.add_workspace_folder, desc = 'add workspace' },
                         {
                             key = '<space>wr',
@@ -59,9 +56,6 @@ return {
                             end,
                             desc = 'list workspace',
                         },
-                        { key = 'gD',   func = vim.lsp.buf.type_definition,    desc = 'goto type definition' },
-                        { key = 'gR',   func = vim.lsp.buf.rename,             desc = 'rename' },
-                        { key = 'gr',   func = vim.lsp.buf.references,         desc = 'references' },
                         { key = '<F9>', func = vim.diagnostic.open_float,      desc = 'diagnostic' },
                         { key = '<F3>', func = require("go.format").goimports, desc = 'format' },
                     }

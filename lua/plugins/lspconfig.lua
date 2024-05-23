@@ -176,19 +176,19 @@ return {
             -- on_attach attach on LspAttach event, so it will attach on all server start
             lsp_zero.on_attach(function(client, bufnr)
                 require "lsp_signature".on_attach({ hint_prefix = "⚡ " }, bufnr)
-                -- delegate to go.nvim
-                if vim.api.nvim_buf_get_option(bufnr, 'filetype') == 'go' then
-                    return
-                end
-                -- see :help lsp-zero-keybindings
-                -- to learn the available actions
                 local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
                 lsp_zero.default_keymaps({
                     buffer = bufnr,
-                    exclude = { '<F2>', '<F4>', 'K' },
+                    exclude = {'<F2>', '<F4>', 'K', ']d', '[d' },
                 })
                 km('n', 'gR', vim.lsp.buf.rename)
                 km("n", "<leader>ca", vim.lsp.buf.code_action)
+                km("n", "]d", function()
+                    vim.diagnostic.goto_next({float = true})
+                end)
+                km("n", "]d", function()
+                    vim.diagnostic.goto_prev({float = true})
+                end)
                 km("n", "<leader>wl", function()
                     vim.pretty_print(vim.lsp.buf.list_workspace_folders())
                 end)
@@ -197,7 +197,6 @@ return {
                 if client.name == "yamlls" then
                     client.server_capabilities.documentFormattingProvider = true
                 end
-
             end)
 
             require('mason-lspconfig').setup({
