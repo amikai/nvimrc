@@ -102,9 +102,16 @@ return {
                     "-E", "revive",
                     "-E", "bodyclose",
                     "-E", "prealloc",
-
+                    "-E", "nestif",
+                    "-E", "nilerr",
+                    "-E", "nilnil",
+                    -- logger check
                     "-E", "sloglint",
                     "-E", "loggercheck",
+                    -- lint prometheus metrics name
+                    "-E", "promlinter",
+                    -- lint the usage of testify
+                    "-E", "testifylint",
                 },
             })
 
