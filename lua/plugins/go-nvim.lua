@@ -91,13 +91,6 @@ return {
                     "-E", "govet",
                     "-E", "ineffassign",
                     "-E", "staticcheck",
-                    -- others
-                    "-E", "revive",
-                    "-E", "bodyclose",
-                    "-E", "prealloc",
-                    "-E", "nestif",
-                    "-E", "nilerr",
-                    "-E", "nilnil",
                     -- logger check
                     "-E", "sloglint",
                     "-E", "loggercheck",
@@ -105,6 +98,17 @@ return {
                     "-E", "promlinter",
                     -- lint the usage of testify
                     "-E", "testifylint",
+                    -- computes the cyclomatic complexity
+                    "-E", "gocyclo",
+                    -- finds repeated strings that could be replaced by a constant.
+                    "-E", "goconst",
+                    -- others
+                    "-E", "revive",
+                    "-E", "bodyclose",
+                    "-E", "prealloc",
+                    "-E", "nestif",
+                    "-E", "nilerr",
+                    "-E", "nilnil",
                 },
             })
 
