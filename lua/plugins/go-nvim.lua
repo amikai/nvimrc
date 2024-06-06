@@ -19,6 +19,9 @@ return {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 pattern = "*.go",
                 callback = function()
+                    -- autoformat on save, golines + gofumpt
+                    require("go.format").gofmt()
+                    -- autoformat on save, goimports
                     require("go.format").goimports()
                 end,
                 group = format_sync_grp,
@@ -27,7 +30,13 @@ return {
             require("go").setup({
                 lsp_cfg = false,
                 goimports = "goimports",
-                gofmt = "gofumpt",
+                -- require("go.format").gofmt use golines
+                gofmt = "golines",
+                gofmt_args = {
+                    '--base-formatter=gofumpt',
+                    '--shorten-comments',
+                    '--max-len=100',
+                },
                 lsp_codelens = false,
                 lsp_gofumpt = true,
                 luasnip = true,
@@ -56,7 +65,7 @@ return {
                             end,
                             desc = 'list workspace',
                         },
-                        { key = '<F3>', func = require("go.format").goimports, desc = 'format' },
+                        { key = '<F3>',      func = require("go.format").goimports,   desc = 'format' },
                     }
 
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
