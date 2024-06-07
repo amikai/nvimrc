@@ -15,28 +15,8 @@ return {
         },
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
         config = function()
-            local format_sync_grp = vim.api.nvim_create_augroup("GoImport", { clear = true })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = "*.go",
-                callback = function()
-                    -- autoformat on save, golines + gofumpt
-                    require("go.format").gofmt()
-                    -- autoformat on save, goimports
-                    require("go.format").goimports()
-                end,
-                group = format_sync_grp,
-            })
-
             require("go").setup({
                 lsp_cfg = false,
-                goimports = "goimports",
-                -- require("go.format").gofmt use golines
-                gofmt = "golines",
-                gofmt_args = {
-                    '--base-formatter=gofumpt',
-                    '--shorten-comments',
-                    '--max-len=100',
-                },
                 lsp_codelens = false,
                 lsp_gofumpt = true,
                 luasnip = true,
@@ -65,7 +45,6 @@ return {
                             end,
                             desc = 'list workspace',
                         },
-                        { key = '<F3>',      func = require("go.format").goimports,   desc = 'format' },
                     }
 
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
