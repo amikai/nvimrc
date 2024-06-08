@@ -284,7 +284,12 @@ vim.diagnostic.config({
     virtual_text = true,
     sign = true,
     float = {
-        source = 'if_many'
+        format = function(diagnostic)
+            return diagnostic.message
+        end,
+        suffix = function(diagnostic)
+            return string.format(" [%s]", diagnostic.source), ""
+        end,
     },
 })
 

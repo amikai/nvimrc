@@ -51,7 +51,6 @@ return {
             end
         }
         golangcilint.parser = function(output, bufnr, cwd)
-            print("golangcilint")
             if output == '' then
                 return {}
             end

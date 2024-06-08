@@ -18,6 +18,19 @@ return {
                 lsp_cfg = false,
                 lsp_codelens = false,
                 lsp_gofumpt = true,
+                diagnostic = {
+                    underline = true,
+                    virtual_text = true,
+                    sign = true,
+                    float = {
+                        format = function(diagnostic)
+                            return diagnostic.message
+                        end,
+                        suffix = function(diagnostic)
+                            return string.format(" [%s]", diagnostic.source), ""
+                        end,
+                    },
+                },
                 luasnip = true,
                 -- lsp keybinding is delegate to lspzero
                 lsp_keymaps = function(bufnr)
