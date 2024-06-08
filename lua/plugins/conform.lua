@@ -16,7 +16,9 @@ return {
     opts = {
         -- Define your formatters
         formatters_by_ft = {
+            -- NOTE: golang related tools installed by go-nvim
             go = { "goimports", "gofumpt", "golines" },
+            -- TODO: install formatter by mason install tools
             bash = { "shfmt" },
             ["*"] = { "trim_whitespace", "trim_newlines" },
             hurl = { "hurlfmt" },

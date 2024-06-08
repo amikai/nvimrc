@@ -1,6 +1,7 @@
 return {
     "nvimdev/guard.nvim",
     -- Builtin configuration, optional
+    enabled = false,
     dependencies = {
         "nvimdev/guard-collection",
     },
