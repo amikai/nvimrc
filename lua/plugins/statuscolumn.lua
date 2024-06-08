@@ -7,7 +7,7 @@ return {
                 ft_ignore = { "NvimTree", "Outline" },
                 segments = {
                     { text = { builtin.foldfunc } },
-                    { sign = { name = { "Diagnostic" }, maxwidth = 1, auto = true } },
+                    { sign = { namespace = { "diagnostic/signs" }, maxwidth = 2, auto = true } },
                     { text = { builtin.lnumfunc } },
                     { text = { " " } },
                     { sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true } },
