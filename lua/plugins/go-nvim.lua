@@ -7,7 +7,6 @@ return {
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
             "folke/trouble.nvim",
-            "null-ls",
             -- for debugging
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
@@ -60,47 +59,6 @@ return {
 
             local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
             require('lspconfig').gopls.setup(cfg)
-
-            local golangci_lint = require("go.null_ls").golangci_lint().with({
-                filter = function(diagnostic)
-                    -- According https://github.com/golangci/golangci-lint/issues/2912,
-                    -- It's not possible to disable typecheck. So filter it manually.
-                    if diagnostic.source:match("typecheck") then
-                        return false
-                    end
-                    return true
-                end, -- See https://golangci-lint.run/usage/linters
-                extra_args = {
-                    "--no-config",
-                    "--disable-all",
-                    -- default option of golangci_lint
-                    "-E", "gosimple",
-                    "-E", "errcheck",
-                    "-E", "govet",
-                    "-E", "ineffassign",
-                    "-E", "staticcheck",
-                    -- logger check
-                    "-E", "sloglint",
-                    "-E", "loggercheck",
-                    -- lint prometheus metrics name
-                    "-E", "promlinter",
-                    -- lint the usage of testify
-                    "-E", "testifylint",
-                    -- computes the cyclomatic complexity
-                    "-E", "gocyclo",
-                    -- finds repeated strings that could be replaced by a constant.
-                    "-E", "goconst",
-                    -- others
-                    "-E", "revive",
-                    "-E", "bodyclose",
-                    "-E", "prealloc",
-                    "-E", "nestif",
-                    "-E", "nilerr",
-                    "-E", "nilnil",
-                },
-            })
-
-            require("null-ls").register(golangci_lint)
         end,
     },
 }
