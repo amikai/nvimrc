@@ -28,6 +28,7 @@ return {
                 "graphql",
                 "typescript",
                 "hurl",
+                "vimdoc",
             },
             highlight = {
                 enable = true,
