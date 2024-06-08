@@ -297,7 +297,7 @@ km("n", "]d", function()
     vim.diagnostic.goto_next({ float = true })
 end)
 
-km("n", "]d", function()
+km("n", "[d", function()
     vim.diagnostic.goto_prev({ float = true })
 end)
 
