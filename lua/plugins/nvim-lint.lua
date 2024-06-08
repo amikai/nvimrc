@@ -70,7 +70,6 @@ return {
                 if item.Pos and item.FromLinter ~= 'typecheck' then
                     table.insert(diagnostics, {
                         lnum = item.Pos.Line > 0 and item.Pos.Line - 1 or 0,
-                        code = item.FromLinter,
                         col = item.Pos.Column > 0 and item.Pos.Column - 1 or 0,
                         end_lnum = item.Pos.Line > 0 and item.Pos.Line - 1 or 0,
                         end_col = item.Pos.Column > 0 and item.Pos.Column - 1 or 0,
