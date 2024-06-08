@@ -19,15 +19,6 @@ return {
                 lsp_codelens = false,
                 lsp_gofumpt = true,
                 luasnip = true,
-                diagnostic = {
-                    -- set diagnostic to false to disable vim.diagnostic setup
-                    hdlr = false, -- hook lsp diag handler
-                    underline = true,
-                    -- virtual text setup
-                    virtual_text = { space = 0, prefix = '■' },
-                    signs = true,
-                    update_in_insert = false,
-                },
                 -- lsp keybinding is delegate to lspzero
                 lsp_keymaps = function(bufnr)
                     local keymaps = {

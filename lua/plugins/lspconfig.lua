@@ -144,14 +144,6 @@ return {
             "ray-x/lsp_signature.nvim",
         },
         config = function()
-            vim.diagnostic.config({
-                underline = false,
-                virtual_text = true,
-                signs = true,
-                severity_sort = true,
-            })
-
-
             -- This is where all the LSP shenanigans will live
             local lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()
@@ -179,20 +171,13 @@ return {
                 local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
                 lsp_zero.default_keymaps({
                     buffer = bufnr,
-                    exclude = {'<F2>', '<F4>', 'K', ']d', '[d' },
+                    exclude = { '<F2>', '<F4>', 'K', ']d', '[d' },
                 })
                 km('n', 'gR', vim.lsp.buf.rename)
                 km("n", "<leader>ca", vim.lsp.buf.code_action)
-                km("n", "]d", function()
-                    vim.diagnostic.goto_next({float = true})
-                end)
-                km("n", "]d", function()
-                    vim.diagnostic.goto_prev({float = true})
-                end)
                 km("n", "<leader>wl", function()
                     vim.pretty_print(vim.lsp.buf.list_workspace_folders())
                 end)
-                km("n", "<F9>",vim.diagnostic.setqflist)
 
 
                 -- See https://github.com/redhat-developer/yaml-language-server/issues/486

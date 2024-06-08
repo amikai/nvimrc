@@ -278,6 +278,23 @@ km("c", "<M-f>", "<S-Right>")
 
 -- }}}
 
+--- diagnstic setting {{{
+vim.diagnostic.config({
+    underline = true,
+    virtual_text = true,
+    sign = true,
+    float = {
+        source = 'if_many'
+    },
+})
+
+km("n", "]d", function()
+    vim.diagnostic.goto_next({ float = true })
+end)
+
+km("n", "]d", function()
+    vim.diagnostic.goto_prev({ float = true })
+end)
 
 vim.keymap.set('n', '=q', function()
     vim.diagnostic.setqflist({ open = false })
@@ -295,6 +312,7 @@ vim.keymap.set('n', '=l', function()
     local action = qf_winid > 0 and 'lclose' or 'lopen'
     vim.cmd(action)
 end, { noremap = true })
+--- }}}
 
 -- detect hurl file
 vim.filetype.add({
@@ -302,4 +320,5 @@ vim.filetype.add({
         hurl = 'hurl',
     }
 })
+
 -- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :

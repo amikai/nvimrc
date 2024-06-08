@@ -30,10 +30,8 @@ M.show_function_keymapping = function()
         "<F2> focus",
         "<F3> codefmt",
         "<F4> file",
-        "<F5> whitespace",
         "<F6> undotree",
-        "<F8> vista",
-        "<F9> diagnostics",
+        "<F8> symbol",
         "<F12> show msg",
     }
     print(table.concat(msgs, " | "))
