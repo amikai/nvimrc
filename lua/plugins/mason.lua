@@ -18,6 +18,7 @@ return {
                     "shfmt",
                     "shellcheck",
                     "jsonlint",
+                    "commitlint"
                 },
                 auto_update = true,
                 run_on_start = true,

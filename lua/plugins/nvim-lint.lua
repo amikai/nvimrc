@@ -4,8 +4,8 @@ return {
         local lint = require('lint')
         lint.linters_by_ft = {
             go = { 'golangcilint' },
-            json = { 'jsonlint' }
-            -- TODO: add gitlint
+            json = { 'jsonlint' },
+            gitcommit = { 'commitlint' },
         }
 
         -- golangci-lint config copy from https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
@@ -85,6 +85,11 @@ return {
             end
             return diagnostics
         end
+
+        local commitlint = lint.linters.commitlint
+        -- .commitlintrc.yaml is the config file of commitlint,
+        -- See https://github.com/conventional-changelog/commitlint?tab=readme-ov-file#config
+        commitlint.args = { '--config', vim.env.HOME .. "/" .. ".commitlintrc.yaml" }
 
         vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
             callback = function()
