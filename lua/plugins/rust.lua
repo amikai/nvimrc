@@ -20,10 +20,15 @@ return {
                         -- you can also put keymaps in here
                     end,
                     settings = {
-                        -- rust-analyzer language server configuration
+                        -- See https://rust-analyzer.github.io/manual.html
                         ['rust-analyzer'] = {
-                            checkOnSave = {
-                                allFeatures = true,
+                            imports = {
+                                granularity = {
+                                    group = "module",
+                                },
+                                prefix = "crate",
+                            },
+                            check = {
                                 overrideCommand = {
                                     "rustup",
                                     "run",
@@ -35,6 +40,7 @@ return {
                                     "--all-features",
                                 },
                             },
+                            checkOnSave = true,
                         },
                     },
                 },
