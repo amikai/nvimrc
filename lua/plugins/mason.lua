@@ -17,6 +17,7 @@ return {
                     -- https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#dependencies
                     "shfmt",
                     "shellcheck",
+                    "jsonlint",
                 },
                 auto_update = true,
                 run_on_start = true,

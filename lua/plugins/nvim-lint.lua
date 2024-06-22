@@ -3,7 +3,8 @@ return {
     config = function(_, _)
         local lint = require('lint')
         lint.linters_by_ft = {
-            go = { 'golangcilint' }
+            go = { 'golangcilint' },
+            json = { 'jsonlint' }
         }
 
         -- golangci-lint config copy from https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
