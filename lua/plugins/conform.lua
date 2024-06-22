@@ -17,7 +17,7 @@ return {
         -- Define your formatters
         formatters_by_ft = {
             -- NOTE: golang related tools installed by go-nvim
-            go = { "goimports", "gofumpt", "golines" },
+            go = { "goimports", "gofumpt" },
             -- TODO: install formatter by mason install tools
             bash = { "shfmt" },
             ["*"] = { "trim_whitespace", "trim_newlines" },
@@ -26,9 +26,6 @@ return {
         -- Set up format-on-save
         format_on_save = { timeout_ms = 500, lsp_fallback = true },
         formatters = {
-            golines = {
-                prepend_args = { "--shorten-comments", "--max-len=100" },
-            },
             hurlfmt = {
                 inherit = false,
                 command = "hurlfmt",
