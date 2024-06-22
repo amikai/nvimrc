@@ -10,11 +10,6 @@ return {
         end,
     },
     {
-        'williamboman/mason.nvim',
-        lazy = false,
-        config = true,
-    },
-    {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         dependencies = {
@@ -140,7 +135,12 @@ return {
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
-            "williamboman/mason-lspconfig.nvim",
+            {
+                "williamboman/mason-lspconfig.nvim",
+                dependencies = {
+                    'williamboman/mason.nvim'
+                }
+            },
             "ray-x/lsp_signature.nvim",
         },
         config = function()

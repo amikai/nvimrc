@@ -82,9 +82,6 @@ return {
             return diagnostics
         end
 
-        -- TODO: install actionlint and golangci-lint by mason-installer
-        -- TODO: add trail space linter
-
         vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
             callback = function()
                 require("lint").try_lint()
