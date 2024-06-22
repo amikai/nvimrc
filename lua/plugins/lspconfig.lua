@@ -225,6 +225,7 @@ return {
                     end,
                     pylsp = function()
                         -- Don't forget to PylspInstall python-lsp-ruff pyls-isort
+                        -- See the setting in https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
                         require('lspconfig').pylsp.setup {
                             settings = {
                                 pylsp = {
