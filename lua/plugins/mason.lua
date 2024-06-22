@@ -12,8 +12,11 @@ return {
         config = function()
             require('mason-tool-installer').setup {
                 ensure_installed = {
-                    "shfmt",
                     "actionlint",
+                    -- bashls recommend using shfmt and shellcheck as dependencies
+                    -- https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#dependencies
+                    "shfmt",
+                    "shellcheck",
                 },
                 auto_update = true,
                 run_on_start = true,

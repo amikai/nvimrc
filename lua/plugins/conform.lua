@@ -18,7 +18,9 @@ return {
         formatters_by_ft = {
             -- NOTE: golang related tools installed by go-nvim
             go = { "goimports", "gofumpt" },
-            bash = { "shfmt" },
+            -- if shfmt not set here, will fallback to lsp. bashls use shfmt as default formatter,
+            -- See the detail: here https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#dependencies
+            -- bash = { "shfmt" },
             ["*"] = { "trim_whitespace", "trim_newlines" },
             hurl = { "hurlfmt" },
         },
