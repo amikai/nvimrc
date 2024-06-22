@@ -5,6 +5,7 @@ return {
         lint.linters_by_ft = {
             go = { 'golangcilint' },
             json = { 'jsonlint' }
+            -- TODO: add gitlint
         }
 
         -- golangci-lint config copy from https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
