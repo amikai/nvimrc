@@ -52,6 +52,8 @@ return {
                 return vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
             end
         }
+        -- The reason for copying the parser implementation is to ignore the
+        -- typecheck linter, which gives useless diagnostics.
         golangcilint.parser = function(output, bufnr, cwd)
             if output == '' then
                 return {}
