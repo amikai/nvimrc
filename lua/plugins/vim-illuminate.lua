@@ -10,7 +10,7 @@ return {
                 "regex",
             },
             delay = 100,
-            filetypes_denylist = { "help", "git", "diff", "NvimTree", "vista", "Outline" },
+            filetypes_denylist = { "help", "git", "diff", "NvimTree", "aerial" },
             -- large_file_cutoff: number of lines at which to use large_file_config
             -- The `under_cursor` option is disabled when this cutoff is hit
             large_file_cutoff = 2000,

@@ -4,7 +4,7 @@ return {
         config = function()
             local builtin = require("statuscol.builtin")
             require("statuscol").setup({
-                ft_ignore = { "NvimTree", "Outline" },
+                ft_ignore = { "NvimTree", "aerial" },
                 segments = {
                     { text = { builtin.foldfunc } },
                     { sign = { namespace = { "diagnostic/signs" }, maxwidth = 2, auto = true } },
