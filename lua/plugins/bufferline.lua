@@ -13,8 +13,8 @@ return {
                             separator = true
                         },
                         {
-                            filetype = "Outline",
-                            text = "Outliner",
+                            filetype = "aerial",
+                            text = "Symbol Outline",
                             text_align = "center",
                             separator = true
                         }
