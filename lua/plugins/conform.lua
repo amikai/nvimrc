@@ -21,6 +21,7 @@ return {
             -- if shfmt not set here, will fallback to lsp. bashls use shfmt as default formatter,
             -- See the detail: here https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#dependencies
             -- bash = { "shfmt" },
+            graphql = { "prettier" },
             ["*"] = { "trim_whitespace", "trim_newlines" },
             hurl = { "hurlfmt" },
         },
