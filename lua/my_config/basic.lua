@@ -182,7 +182,7 @@ o.foldcolumn = "1"
 o.completeopt = { "menuone", "noinsert", "noselect" }
 
 
-o.shortmess:append({c = true, F = true})
+o.shortmess:append({ c = true, F = true })
 
 o.virtualedit = "block"
 
