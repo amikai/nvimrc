@@ -96,6 +96,8 @@ km("v", ">", ">gv")
 -- Set the status lien to global
 go.laststatus = 3
 
+-- Add angle brackets to match pair
+o.matchpairs:prepend { "<:>" }
 -- -- }}}
 
 -- -- Vim user interface {{{
