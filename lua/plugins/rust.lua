@@ -2,22 +2,25 @@ return {
     {
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
-        ft = { 'rust' },
-        config = function()
+        lazy = false,   -- This plugin is already lazy
+        setup = function()
             vim.g.rustaceanvim = {
                 -- Plugin configuration
                 tools = {
+                    enable_nextest = true,
+                    enable_clippy = true,
+                    reload_workspace_from_cargo_toml = true,
                 },
                 -- LSP configuration
                 server = {
-                    cmd = {
-                        "rustup",
-                        "run",
-                        "stable",
-                        "rust-analyzer",
-                    },
-                    on_attach = function(client, bufnr)
-                        -- you can also put keymaps in here
+                    cmd = function()
+                        -- use mason to manage the installation of rust-analyzer
+                        local mason_registry = require('mason-registry')
+                        local ra_binary = mason_registry.is_installed('rust-analyzer')
+                            -- This may need to be tweaked, depending on the operating system.
+                            and mason_registry.get_package('rust-analyzer'):get_install_path() .. "/rust-analyzer"
+                            or "rust-analyzer"
+                        return { ra_binary } -- You can add args to the list, such as '--log-file'
                     end,
                     settings = {
                         -- See https://rust-analyzer.github.io/manual.html
@@ -27,18 +30,6 @@ return {
                                     group = "module",
                                 },
                                 prefix = "crate",
-                            },
-                            check = {
-                                overrideCommand = {
-                                    "rustup",
-                                    "run",
-                                    "stable",
-                                    "cargo-clippy",
-                                    "--workspace",
-                                    "--message-format=json-diagnostic-rendered-ansi",
-                                    "--all-targets",
-                                    "--all-features",
-                                },
                             },
                             checkOnSave = true,
                         },

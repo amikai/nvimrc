@@ -194,11 +194,13 @@ return {
                     "helm_ls",
                     "pylsp",
                     "typos_lsp",
+                    "rust_analyzer"
                     -- delegate gopls, golang-lint-ci installation to go.nvim
                 },
                 handlers = {
                     -- gopls setting is in go.nvim
-                    lsp_zero.default_setup, -- Mason will register the handler
+                    lsp_zero.default_setup,             -- Mason will register the handler
+                    ["rust_analyzer"] = function() end, -- delegate the handle to rustaceanvim
                     clangd = function()
                         require('lspconfig').clangd.setup({
                             cmd = {
