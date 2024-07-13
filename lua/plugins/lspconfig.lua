@@ -155,16 +155,6 @@ return {
                 info = ''
             })
 
-            lsp_zero.format_mapping('<F3>', {
-                format_opts = {
-                    async = false,
-                    timeout_ms = 10000,
-                },
-                servers = {
-                    ['python'] = { 'pylsp' },
-                    ['rust_analyzer'] = { 'rust' },
-                }
-            })
             -- on_attach attach on LspAttach event, so it will attach on all server start
             lsp_zero.on_attach(function(client, bufnr)
                 require "lsp_signature".on_attach({ hint_prefix = "⚡ " }, bufnr)
