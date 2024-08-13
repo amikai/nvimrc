@@ -22,8 +22,8 @@ return {
             -- See the detail: here https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#dependencies
             -- bash = { "shfmt" },
             graphql = { "prettier" },
-            ["*"] = { "trim_whitespace", "trim_newlines" },
             hurl = { "hurlfmt" },
+            ["*"] = { "trim_whitespace", "trim_newlines" },
         },
         -- Set up format-on-save
         format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -38,6 +38,6 @@ return {
     },
     init = function()
         -- If you want the formatexpr, here is the place to set it
-        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        -- vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
 }

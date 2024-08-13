@@ -112,7 +112,7 @@ o.wildoptions:append("pum")
 o.number = true
 
 -- Maximum width of text that is being inserted (TODO)
--- set textwidth=80
+o.textwidth = 80
 -- set breakindent
 -- set formatoptions=
 
