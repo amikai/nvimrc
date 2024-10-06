@@ -190,7 +190,7 @@ return {
                     "yamlls",
                     "graphql",
                     "jsonls",
-                    "tsserver",
+                    "ts_ls",
                     "helm_ls",
                     "pylsp",
                     "typos_lsp",
