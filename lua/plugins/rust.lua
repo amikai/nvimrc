@@ -3,9 +3,6 @@ return {
         'mrcjkb/rustaceanvim',
         version = '^5', -- Recommended
         lazy = false,   -- This plugin is already lazy
-        init = function()
-            vim.g.rustaceanvim.server.load_vscode_settings = 0
-        end,
         setup = function()
             vim.g.rustaceanvim = {
                 -- Plugin configuration
@@ -16,6 +13,8 @@ return {
                 },
                 -- LSP configuration
                 server = {
+                    -- disable loading vscode settings
+                    load_vscode_settings = 0,
                     on_attach = function(client, bufnr)
                         local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
                         local lsp_zero = require('lsp-zero')
