@@ -1,8 +1,11 @@
 return {
     {
         'mrcjkb/rustaceanvim',
-        version = '^4', -- Recommended
+        version = '^5', -- Recommended
         lazy = false,   -- This plugin is already lazy
+        init = function()
+            vim.g.rustaceanvim.server.load_vscode_settings = 0
+        end,
         setup = function()
             vim.g.rustaceanvim = {
                 -- Plugin configuration
@@ -13,7 +16,24 @@ return {
                 },
                 -- LSP configuration
                 server = {
+                    on_attach = function(client, bufnr)
+                        local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
+                        local lsp_zero = require('lsp-zero')
+
+                        km('n', 'gR', vim.lsp.buf.rename)
+                        km("n", "<leader>ca", vim.lsp.buf.code_action)
+                        km("n", "<leader>wl", function()
+                            vim.pretty_print(vim.lsp.buf.list_workspace_folders())
+                        end)
+                        lsp_zero.default_keymaps({
+                            buffer = bufnr,
+                            -- When set to preserve_mappings to true,lsp-zero will not
+                            -- override your existing keybindings.
+                            preserve_mappings = true
+                        })
+                    end,
                     cmd = function()
+                        -- NOTE: copy from https://github.com/mrcjkb/rustaceanvim/blob/master/doc/mason.txt
                         -- use mason to manage the installation of rust-analyzer
                         local mason_registry = require('mason-registry')
                         local ra_binary = mason_registry.is_installed('rust-analyzer')
