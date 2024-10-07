@@ -15,7 +15,7 @@ return {
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
         config = function()
             require("go").setup({
-                lsp_cfg = false,
+                lsp_cfg = true,
                 lsp_codelens = false,
                 lsp_gofumpt = true,
                 diagnostic = {
@@ -32,37 +32,27 @@ return {
                     },
                 },
                 luasnip = true,
-                -- lsp keybinding is delegate to lspzero
                 lsp_keymaps = function(bufnr)
-                    local keymaps = {
-                        { key = '<space>wa', func = vim.lsp.buf.add_workspace_folder, desc = 'add workspace' },
-                        {
-                            key = '<space>wr',
-                            func = vim.lsp.buf.remove_workspace_folder,
-                            desc = 'remove workspace',
-                        },
-                        {
-                            key = '<space>wl',
-                            func = function()
-                                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                            end,
-                            desc = 'list workspace',
-                        },
-                    }
-
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-                    for _, keymap in pairs(keymaps) do
-                        km(keymap.mode or 'n', keymap.key, keymap.func)
-                    end
+                    local lsp_zero = require('lsp-zero')
+
+                    km('n', 'gR', vim.lsp.buf.rename)
+                    km("n", "<leader>ca", vim.lsp.buf.code_action)
+                    km("n", "<leader>wl", function()
+                        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
+                    end)
+                    lsp_zero.default_keymaps({
+                        buffer = bufnr,
+                        -- When set to preserve_mappings to true,lsp-zero will not
+                        -- override your existing keybindings.
+                        preserve_mappings = true
+                    })
                 end,
                 lsp_inlay_hints = {
                     enable = false,
                 },
                 trouble = false,
             })
-
-            local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
-            require('lspconfig').gopls.setup(cfg)
         end,
     },
 }

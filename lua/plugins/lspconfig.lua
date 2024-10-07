@@ -1,16 +1,15 @@
 return {
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
+        branch = 'v4.x',
         lazy = true,
         config = false,
-        init = function()
-            vim.g.lsp_zero_extend_cmp = 0
-            vim.g.lsp_zero_extend_lspconfig = 0
-        end,
     },
     {
-        'hrsh7th/nvim-cmp',
+        -- The author of hrsh7th/nvim-cmp is currently too busy to maintain the
+        -- project. Therefore, it's advisable to use a forked version for a
+        -- better user experience.
+        'iguanacucumber/magazine.nvim',
         event = 'InsertEnter',
         dependencies = {
             "L3MON4D3/LuaSnip",
@@ -59,14 +58,14 @@ return {
         config = function()
             -- Here is where you configure the autocompletion settings.
             local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_cmp()
 
             -- And you can configure cmp even more, if you want to.
             local cmp = require('cmp')
             local cmp_action = lsp_zero.cmp_action()
+            require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
-                formatting = lsp_zero.cmp_format(),
+                formatting = lsp_zero.cmp_format({ details = true }),
                 mapping = cmp.mapping.preset.insert({
                     ["<CR>"] = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Insert,
@@ -83,6 +82,15 @@ return {
                 }, {
                     { name = "buffer" },
                 }),
+                snippet = {
+                    expand = function(args)
+                        require 'luasnip'.lsp_expand(args.body)
+                    end
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
             })
 
             cmp.event:on("menu_opened", function()
@@ -144,37 +152,29 @@ return {
             "ray-x/lsp_signature.nvim",
         },
         config = function()
-            -- This is where all the LSP shenanigans will live
             local lsp_zero = require('lsp-zero')
-            lsp_zero.extend_lspconfig()
-
-            lsp_zero.set_sign_icons({
-                error = '✗',
-                warn = '!',
-                hint = '',
-                info = ''
-            })
-
-            -- on_attach attach on LspAttach event, so it will attach on all server start
-            lsp_zero.on_attach(function(client, bufnr)
+            local lsp_attach = function(client, bufnr)
                 require "lsp_signature".on_attach({ hint_prefix = "⚡ " }, bufnr)
                 local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-                lsp_zero.default_keymaps({
-                    buffer = bufnr,
-                    exclude = { '<F2>', '<F4>', 'K', ']d', '[d' },
-                })
+
                 km('n', 'gR', vim.lsp.buf.rename)
                 km("n", "<leader>ca", vim.lsp.buf.code_action)
                 km("n", "<leader>wl", function()
-                    vim.pretty_print(vim.lsp.buf.list_workspace_folders())
+                    vim.print(vim.lsp.buf.list_workspace_folders())
                 end)
-
-
-                -- See https://github.com/redhat-developer/yaml-language-server/issues/486
-                if client.name == "yamlls" then
-                    client.server_capabilities.documentFormattingProvider = true
-                end
-            end)
+                lsp_zero.default_keymaps({
+                    buffer = bufnr,
+                    -- When set to preserve_mappings to true,lsp-zero will not
+                    -- override your existing keybindings.
+                    preserve_mappings = true
+                })
+            end
+            -- This is where all the LSP shenanigans will live
+            lsp_zero.extend_lspconfig({
+                sign_text = true,
+                lsp_attach = lsp_attach,
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            })
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
@@ -195,13 +195,14 @@ return {
                     "pylsp",
                     "typos_lsp",
                     "rust_analyzer"
-                    -- delegate gopls, golang-lint-ci installation to go.nvim
                 },
                 handlers = {
-                    -- gopls setting is in go.nvim
-                    lsp_zero.default_setup,             -- Mason will register the handler
-                    ["rust_analyzer"] = function() end, -- delegate the handle to rustaceanvim
-                    clangd = function()
+                    function(server_name)
+                        require('lspconfig')[server_name].setup({})
+                    end,
+                    ["gopls"] = lsp_zero.noop(),         -- delegate the handler to go.nvim
+                    ["rust_analyzer"] = lsp_zero.noop(), -- delegate the handle to rustaceanvim
+                    ["clangd"] = function()
                         require('lspconfig').clangd.setup({
                             cmd = {
                                 "clangd",
@@ -210,12 +211,12 @@ return {
                             },
                         })
                     end,
-                    lua_ls = function()
+                    ["lua_ls"] = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
                         require('lspconfig').lua_ls.setup(lua_opts)
                     end,
-                    pylsp = function()
+                    ["pylsp"] = function()
                         -- Don't forget to PylspInstall python-lsp-ruff pyls-isort
                         -- See the setting in https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
                         require('lspconfig').pylsp.setup {

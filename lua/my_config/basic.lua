@@ -1,13 +1,11 @@
 local cmd = vim.cmd
 local fn = vim.fn
-local call = vim.call
 
 local km = require("my_config.utils").km_factory({ silent = true })
 
 local g = vim.g
 local o = vim.opt
 local go = vim.go
-local bo = vim.bo
 local wo = vim.wo
 
 local autocmd = vim.api.nvim_create_autocmd
@@ -28,7 +26,7 @@ o.fixendofline = false
 -- -- Set to auto read when a file is changed from the outside
 o.autoread = true
 
--- -- Switch buffer without casuing error when file is edited
+-- -- Switch buffer without causing error when file is edited
 o.hidden = true
 
 o.report = 0
