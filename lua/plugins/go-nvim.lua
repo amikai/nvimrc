@@ -36,7 +36,7 @@ return {
                     local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
                     local lsp_zero = require('lsp-zero')
 
-                    km('n', 'gR', vim.lsp.buf.rename)
+                    km('n', 'gR', "<cmd>GoRename<cr>")
                     km("n", "<leader>ca", vim.lsp.buf.code_action)
                     km("n", "<leader>wl", function()
                         vim.pretty_print(vim.lsp.buf.list_workspace_folders())

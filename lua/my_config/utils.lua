@@ -32,6 +32,7 @@ M.show_function_keymapping = function()
         "<F4> file",
         "<F6> undotree",
         "<F8> symbol",
+        "<F10> chat",
         "<F12> show msg",
     }
     print(table.concat(msgs, " | "))
