@@ -1,1 +1,1 @@
-vim.api.nvim_buf_set_option_val(0, "buflisted", false)
+vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
