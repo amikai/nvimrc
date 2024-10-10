@@ -185,8 +185,8 @@ return {
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
                     end,
-                    ["gopls"] = lsp_zero.noop(),         -- delegate the handler to go.nvim
-                    ["rust_analyzer"] = lsp_zero.noop(), -- delegate the handle to rustaceanvim
+                    ["gopls"] = lsp_zero.noop,         -- delegate the handler to go.nvim
+                    ["rust_analyzer"] = lsp_zero.noop, -- delegate the handle to rustaceanvim
                     ["clangd"] = function()
                         require('lspconfig').clangd.setup({
                             cmd = {
