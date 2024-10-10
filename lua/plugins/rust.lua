@@ -35,10 +35,15 @@ return {
                         -- NOTE: copy from https://github.com/mrcjkb/rustaceanvim/blob/master/doc/mason.txt
                         -- use mason to manage the installation of rust-analyzer
                         local mason_registry = require('mason-registry')
-                        local ra_binary = mason_registry.is_installed('rust-analyzer')
-                            -- This may need to be tweaked, depending on the operating system.
-                            and require('mason.settings').current.install_root_dir .. "/bin/rust-analyzer"
-                            or "rust-analyzer"
+                        -- trim trial newline
+                        local ra_from_rustup = string.gsub(vim.fn.system("rustup which rust-analyzer"), '%s+', '')
+                        -- try to use rust-analyzer from rustup first, then from
+                        -- mason, finally from $PATH
+                        local ra_binary = (vim.fn.executable('rustup') == 1 and ra_from_rustup)
+                            or (mason_registry.is_installed('rust-analyzer')
+                                -- This may need to be tweaked, depending on the operating system.
+                                and require('mason.settings').current.install_root_dir .. "/bin/rust-analyzer"
+                            ) or "rust-analyzer"
                         return { ra_binary } -- You can add args to the list, such as '--log-file'
                     end,
                     settings = {
