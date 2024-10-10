@@ -48,6 +48,7 @@ return {
                         preserve_mappings = true
                     })
                 end,
+                gopls_cmd = { require('mason.settings').current.install_root_dir .. "/bin/gopls" },
                 lsp_inlay_hints = {
                     enable = false,
                 },
