@@ -156,7 +156,6 @@ return {
                 ensure_installed = {
                     "clangd",
                     "ansiblels",
-                    "pyright",
                     "dockerls",
                     "terraformls",
                     "html",
@@ -168,9 +167,12 @@ return {
                     "jsonls",
                     "ts_ls",
                     "helm_ls",
-                    "pylsp",
                     "typos_lsp",
-                    "rust_analyzer"
+                    "rust_analyzer",
+                    -- python
+                    "pylsp",
+                    "pyright",
+                    "pylyzer"
                 },
                 handlers = {
                     function(server_name)
