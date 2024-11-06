@@ -43,6 +43,7 @@ return {
             "-E", "nestif",
             "-E", "nilerr",
             "-E", "nilnil",
+            "-E", "gosec",
             function()
                 -- NOTE: golangci-lint must be executed from the root path where the
                 -- go.mod file is located. If the current working directory
