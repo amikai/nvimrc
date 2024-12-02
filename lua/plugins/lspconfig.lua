@@ -192,6 +192,16 @@ return {
                     ["lua_ls"] = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
+                        lua_opts["format"] = {
+                            format = {
+                                enable = true,
+                                defaultConfig = {
+                                    indent_style = "space",
+                                    indent_size = "4",
+                                }
+                            },
+
+                        }
                         require('lspconfig').lua_ls.setup(lua_opts)
                     end,
                     ["pylsp"] = function()
