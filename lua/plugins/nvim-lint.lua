@@ -20,11 +20,12 @@ return {
             '--print-linter-name=false',
             "--disable-all",
             -- default option of golangci_lint
-            "-E", "gosimple",
             "-E", "errcheck",
+            "-E", "gosimple",
             "-E", "govet",
             "-E", "ineffassign",
             "-E", "staticcheck",
+            "-E", "unused",
             -- logger check
             "-E", "sloglint",
             "-E", "loggercheck",
@@ -49,8 +50,8 @@ return {
                 -- go.mod file is located. If the current working directory
                 -- (cwd) is not the root path of the Golang project, it will
                 -- not function correctly.
-                -- NOTE: use relateive path of cwd (don't change that)
-                return vim.fn.fnamemodify(vim.fn.expand('%'), ':~:.')
+                -- NOTE: use relateive folder path of cwd (don't change that)
+                return vim.fn.fnamemodify(vim.fn.expand('%'), ':.:h')
             end
         }
         -- The reason for copying the parser implementation is to ignore the
@@ -73,15 +74,19 @@ return {
             local diagnostics = {}
             for _, item in ipairs(decoded["Issues"]) do
                 if item.Pos and item.FromLinter ~= 'typecheck' then
-                    table.insert(diagnostics, {
-                        lnum = item.Pos.Line > 0 and item.Pos.Line - 1 or 0,
-                        col = item.Pos.Column > 0 and item.Pos.Column - 1 or 0,
-                        end_lnum = item.Pos.Line > 0 and item.Pos.Line - 1 or 0,
-                        end_col = item.Pos.Column > 0 and item.Pos.Column - 1 or 0,
-                        severity = severities[item.Severity] or severities.warning,
-                        source = item.FromLinter,
-                        message = item.Text,
-                    })
+                    local curfile = vim.api.nvim_buf_get_name(bufnr)
+                    local lintedfile = cwd .. "/" .. item.Pos.Filename
+                    if curfile == lintedfile then
+                        table.insert(diagnostics, {
+                            lnum = item.Pos.Line > 0 and item.Pos.Line - 1 or 0,
+                            col = item.Pos.Column > 0 and item.Pos.Column - 1 or 0,
+                            end_lnum = item.Pos.Line > 0 and item.Pos.Line - 1 or 0,
+                            end_col = item.Pos.Column > 0 and item.Pos.Column - 1 or 0,
+                            severity = severities[item.Severity] or severities.warning,
+                            source = item.FromLinter,
+                            message = item.Text,
+                        })
+                    end
                 end
             end
             return diagnostics
