@@ -23,6 +23,7 @@ return {
             -- bash = { "shfmt" },
             graphql = { "prettier" },
             hurl = { "hurlfmt" },
+            proto = { "buf" },
             ["*"] = { "trim_whitespace", "trim_newlines" },
         },
         -- Set up format-on-save

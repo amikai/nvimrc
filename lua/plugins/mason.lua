@@ -19,7 +19,8 @@ return {
                     "shellcheck",
                     "jsonlint",
                     "commitlint",
-                    "prettier"
+                    "prettier",
+                    "buf"
                 },
                 auto_update = true,
                 run_on_start = true,
