@@ -6,10 +6,7 @@ return {
         config = false,
     },
     {
-        -- The author of hrsh7th/nvim-cmp is currently too busy to maintain the
-        -- project. Therefore, it's advisable to use a forked version for a
-        -- better user experience.
-        'iguanacucumber/magazine.nvim',
+        'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         dependencies = {
             "L3MON4D3/LuaSnip",
