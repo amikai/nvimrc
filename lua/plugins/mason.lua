@@ -20,7 +20,8 @@ return {
                     "jsonlint",
                     "commitlint",
                     "prettier",
-                    "buf"
+                    "buf",
+                    "golangci-lint"
                 },
                 auto_update = true,
                 run_on_start = true,
