@@ -88,19 +88,11 @@ return {
         },
     },
     {
-        "mrjones2014/nvim-ts-rainbow",
-        dependencies = {
-            {
-                "nvim-treesitter/nvim-treesitter",
-                opts = {
-                    rainbow = {
-                        enable = true,
-                        extended_mode = false,
-                        max_file_lines = 1000,
-                    },
-                },
-            },
-        },
+        "HiPhish/rainbow-delimiters.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require ('rainbow-delimiters.setup').setup {}
+        end
     },
     {
         "RRethy/nvim-treesitter-endwise",
@@ -114,6 +106,6 @@ return {
                 },
             },
         },
-        event = "InsertEnter",
-    },
+        event = "InsertEnter"
+    }
 }
