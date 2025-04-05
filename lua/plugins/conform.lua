@@ -6,7 +6,7 @@ return {
         {
             "<F3>",
             function()
-                require("conform").format({ async = true, lsp_fallback = true })
+                require("conform").format({ async = true })
             end,
             mode = "",
             desc = "Format buffer",
@@ -24,7 +24,8 @@ return {
             graphql = { "prettier" },
             hurl = { "hurlfmt" },
             proto = { "buf" },
-            ["_"] = { "trim_whitespace", "trim_newlines" },
+            ["_"] = { lsp_format = "first" },
+            ["*"] = { "trim_whitespace", "trim_newlines" }
         },
         -- Set up format-on-save
         format_on_save = { timeout_ms = 500, lsp_fallback = true },
