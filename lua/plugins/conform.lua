@@ -24,7 +24,7 @@ return {
             graphql = { "prettier" },
             hurl = { "hurlfmt" },
             proto = { "buf" },
-            ["*"] = { "trim_whitespace", "trim_newlines" },
+            ["_"] = { "trim_whitespace", "trim_newlines" },
         },
         -- Set up format-on-save
         format_on_save = { timeout_ms = 500, lsp_fallback = true },
