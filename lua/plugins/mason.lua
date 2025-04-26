@@ -21,7 +21,8 @@ return {
                     "commitlint",
                     "prettier",
                     "buf",
-                    "golangci-lint"
+                    "golangci-lint",
+                    "ruff"
                 },
                 auto_update = true,
                 run_on_start = true,

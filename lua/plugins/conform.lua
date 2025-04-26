@@ -23,6 +23,7 @@ return {
             -- bash = { "shfmt" },
             graphql = { "prettier" },
             hurl = { "hurlfmt" },
+            python = { "ruff_format" },
             proto = { "buf" },
             ["_"] = { lsp_format = "first" },
             ["*"] = { "trim_whitespace", "trim_newlines" }

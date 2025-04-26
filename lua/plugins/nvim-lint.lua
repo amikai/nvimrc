@@ -3,6 +3,7 @@ return {
     config = function(_, _)
         local lint = require('lint')
         lint.linters_by_ft = {
+            -- See the detail config of golangci-lint in $HOME/.golangci.yaml
             go = { 'golangcilint' },
             json = { 'jsonlint' },
             gitcommit = { 'commitlint' },
