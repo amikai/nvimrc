@@ -41,9 +41,6 @@ require("lazy").setup({
         cond = require("my_config.utils").is_in_tmux(),
     },
     {
-        "tpope/vim-unimpaired",
-    },
-    {
         "folke/todo-comments.nvim",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
