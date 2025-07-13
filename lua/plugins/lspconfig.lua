@@ -127,26 +127,9 @@ return {
         },
         config = function()
             local lsp_zero = require('lsp-zero')
-            local lsp_attach = function(client, bufnr)
-                require "lsp_signature".on_attach({ hint_prefix = "⚡ " }, bufnr)
-                local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-
-                km('n', 'gR', vim.lsp.buf.rename)
-                km("n", "<leader>ca", vim.lsp.buf.code_action)
-                km("n", "<leader>wl", function()
-                    vim.print(vim.lsp.buf.list_workspace_folders())
-                end)
-                lsp_zero.default_keymaps({
-                    buffer = bufnr,
-                    -- When set to preserve_mappings to true,lsp-zero will not
-                    -- override your existing keybindings.
-                    preserve_mappings = true
-                })
-            end
             -- This is where all the LSP shenanigans will live
             lsp_zero.extend_lspconfig({
                 sign_text = true,
-                lsp_attach = lsp_attach,
                 capabilities = require('cmp_nvim_lsp').default_capabilities(),
             })
 

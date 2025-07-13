@@ -32,22 +32,6 @@ return {
                     },
                 },
                 luasnip = true,
-                lsp_keymaps = function(bufnr)
-                    local km = require("my_config.utils").km_factory({ silent = true, buffer = bufnr })
-                    local lsp_zero = require('lsp-zero')
-
-                    km('n', 'gR', "<cmd>GoRename<cr>")
-                    km("n", "<leader>ca", vim.lsp.buf.code_action)
-                    km("n", "<leader>wl", function()
-                        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
-                    end)
-                    lsp_zero.default_keymaps({
-                        buffer = bufnr,
-                        -- When set to preserve_mappings to true,lsp-zero will not
-                        -- override your existing keybindings.
-                        preserve_mappings = true
-                    })
-                end,
                 gopls_cmd = { require('mason.settings').current.install_root_dir .. "/bin/gopls" },
                 lsp_inlay_hints = {
                     enable = false,
