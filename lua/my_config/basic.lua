@@ -293,6 +293,13 @@ vim.diagnostic.config({
     },
 })
 
+km("n", "]d", function()
+    vim.diagnostic.goto_next({ float = true })
+end)
+
+km("n", "[d", function()
+    vim.diagnostic.goto_prev({ float = true })
+end)
 
 vim.keymap.set('n', '=q', function()
     vim.diagnostic.setqflist({ open = false })
