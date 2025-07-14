@@ -25,19 +25,10 @@ return {
             hurl = { "hurlfmt" },
             python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
             proto = { "buf" },
-            ["_"] = { lsp_format = "first" },
-            ["*"] = { "trim_whitespace", "trim_newlines" }
+            ["_"] = { "trim_whitespace", "trim_newlines" }
         },
         -- Set up format-on-save
-        format_on_save = { timeout_ms = 500, lsp_fallback = true },
-        formatters = {
-            hurlfmt = {
-                inherit = false,
-                command = "hurlfmt",
-                stdin = true,
-                args = { "--no-color" },
-            }
-        },
+        format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
     },
     init = function()
         -- If you want the formatexpr, here is the place to set it
