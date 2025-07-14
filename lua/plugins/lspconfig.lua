@@ -51,13 +51,27 @@ return {
             "ray-x/lsp_signature.nvim",
         },
         config = function()
-            -- TODO: tune the pyright setting in uv project
+
+            vim.lsp.config('*', {
+                root_markers = { '.git' },
+            })
+
             vim.lsp.config.pyright = {
                 settings = {
                     python = {
-                        venvPath = vim.fn.getcwd() .. '.venv'
+                        pythonPath = require("my_config.utils").get_py_path()
                     }
-                }
+                },
+                root_markers = { 'pyproject.toml', '.venv' },
+            }
+
+            vim.lsp.config.basedpyright = {
+                settings = {
+                    python = {
+                        pythonPath = require("my_config.utils").get_py_path()
+                    }
+                },
+                root_markers = { 'pyproject.toml', '.venv' },
             }
 
             vim.lsp.config.lua_ls = {
@@ -135,7 +149,6 @@ return {
                     "pyright",
                     "basedpyright",
                     "ruff",
-                    "pylyzer"
                 },
             })
         end
