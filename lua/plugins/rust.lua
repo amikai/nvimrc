@@ -1,7 +1,7 @@
 return {
     {
         'mrcjkb/rustaceanvim',
-        version = '^5', -- Recommended
+        version = '^6', -- Recommended
         lazy = false,   -- This plugin is already lazy
         init = function()
             vim.g.rustaceanvim = {
@@ -51,10 +51,6 @@ return {
         end
     },
     {
-        "rust-lang/rust.vim",
-        ft = "rust",
-    },
-    {
         "saecki/crates.nvim",
         dependencies = "nvim-lua/plenary.nvim",
         event = { "BufRead Cargo.toml" },
@@ -62,7 +58,18 @@ return {
             require("crates").setup({
                 popup = {
                     autofocus = true,
-                }
+                },
+                completion = {
+                    crates = {
+                        enabled = true,
+                    },
+                },
+                lsp = {
+                    enabled = true,
+                    actions = true,
+                    completion = true,
+                    hover = true,
+                },
             })
         end,
     },
