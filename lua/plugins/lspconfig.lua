@@ -169,6 +169,7 @@ return {
 
             require('mason-lspconfig').setup({
                 ensure_installed = {
+                    "gopls",
                     "clangd",
                     "ansiblels",
                     "dockerls",
