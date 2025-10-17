@@ -6,7 +6,7 @@ return {
         {
             "<F3>",
             function()
-                require("conform").format({ async = true })
+                require("conform").format({ async = true, lsp_format = "fallback" })
             end,
             mode = "",
             desc = "Format buffer",
@@ -15,6 +15,7 @@ return {
     -- Everything in opts will be passed to setup()
     opts = {
         -- Define your formatters
+        log_level = vim.log.levels.DEBUG,
         formatters_by_ft = {
             -- See the detail config of golangci-lint in $HOME/.golangci.yaml
             go = { "golangci-lint" },
@@ -25,7 +26,8 @@ return {
             hurl = { "hurlfmt" },
             python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
             proto = { "buf" },
-            ["_"] = { "trim_whitespace", "trim_newlines" }
+            rust = { "rustfmt" },
+            -- ["*"] = { "trim_whitespace", "trim_newlines" }
         },
         -- Set up format-on-save
         format_on_save = { timeout_ms = 500, lsp_format = "fallback" },

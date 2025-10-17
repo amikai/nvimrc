@@ -18,6 +18,7 @@ return {
                 lsp_cfg = true,
                 lsp_codelens = false,
                 lsp_gofumpt = true,
+                lsp_keymaps = false,
                 diagnostic = {
                     underline = true,
                     virtual_text = true,
