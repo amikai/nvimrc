@@ -169,7 +169,7 @@ return {
             require('mason-lspconfig').setup({
                 -- These LSP tools will enable vim.lsp through their plugin.
                 automatic_enable = {
-                    exclude = { "rust_analyzer", "gopls" }
+                    exclude = { "rust_analyzer", "gopls", "ts_ls" }
                 },
                 ensure_installed = {
                     "gopls",
