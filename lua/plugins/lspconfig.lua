@@ -51,7 +51,6 @@ return {
             "ray-x/lsp_signature.nvim",
         },
         config = function()
-
             vim.lsp.config('*', {
                 root_markers = { '.git' },
             })
@@ -168,6 +167,10 @@ return {
             }
 
             require('mason-lspconfig').setup({
+                -- These LSP tools will enable vim.lsp through their plugin.
+                automatic_enable = {
+                    exclude = { "rust_analyzer", "gopls" }
+                },
                 ensure_installed = {
                     "gopls",
                     "clangd",
