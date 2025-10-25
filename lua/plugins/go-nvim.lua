@@ -39,6 +39,8 @@ return {
                 },
                 trouble = false,
             })
+            vim.lsp.config.gopls = require('go.lsp').config()
+            vim.lsp.enable('gopls')
         end,
     },
 }
