@@ -177,20 +177,28 @@ return {
                     "ansiblels",
                     "dockerls",
                     "terraformls",
-                    "html",
                     "bashls",
                     "lua_ls",
                     "vimls",
                     "yamlls",
                     "graphql",
                     "jsonls",
-                    "ts_ls",
                     "helm_ls",
                     "typos_lsp",
                     "rust_analyzer",
                     "pyright",
                     "basedpyright",
                     "ruff",
+                    -- front end dev
+                    "ts_ls",
+                    "html",
+                    "tailwindcss",
+                    -- Use ESLint and Biome as LSPs instead of linter command in
+                    -- nvim-lint. This setup is easier to configure because it
+                    -- supports many file types and can automatically detect
+                    -- them.
+                    "eslint",
+                    "biome"
                 },
             })
         end

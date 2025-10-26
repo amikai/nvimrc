@@ -19,10 +19,13 @@ return {
                     "shellcheck",
                     "jsonlint",
                     "commitlint",
-                    "prettier",
                     "buf",
                     "golangci-lint",
-                    "ruff"
+                    "ruff",
+                    -- for frontend dev
+                    "prettier",
+                    "biome",
+                    "eslint",
                 },
                 auto_update = true,
                 run_on_start = true,
