@@ -15,7 +15,7 @@ return {
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
         config = function()
             require("go").setup({
-                lsp_cfg = true,
+                lsp_cfg = false,
                 lsp_codelens = false,
                 lsp_gofumpt = true,
                 lsp_keymaps = false,
