@@ -63,6 +63,19 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     end,
 })
 
+-- By default the indent scope guide links to Special, which in iceberg is
+-- the same blue as the gitsigns change bar; use muted grays instead so the
+-- guides can't be confused with git change indicators.
+local function set_indent_hl()
+    vim.api.nvim_set_hl(0, "SnacksIndent", { ctermfg = 237, fg = "#2e313f" })
+    vim.api.nvim_set_hl(0, "SnacksIndentScope", { ctermfg = 242, fg = "#6b7089" })
+end
+set_indent_hl()
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "iceberg",
+    callback = set_indent_hl,
+})
+
 -- Snacks.words highlights through the standard LSP reference groups; port the
 -- old IlluminatedWord* colors for iceberg.
 local function set_reference_hl()
