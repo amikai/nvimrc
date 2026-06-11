@@ -27,10 +27,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
             -- (Default) Only show the documentation popup when manually triggered
             completion = { documentation = { auto_show = false } },
 
-            -- Signature help comes from lsp_signature.nvim (see
-            -- plugins/lsp-signature.lua), which auto-pops while the cursor
-            -- is inside the argument list.
-            signature = { enabled = false },
+            -- Show the current function signature while typing (replaces
+            -- lsp_signature.nvim).
+            signature = { enabled = true },
 
             sources = {
                 default = { "copilot", "lsp", "path", "snippets", "buffer" },
