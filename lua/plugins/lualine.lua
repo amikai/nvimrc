@@ -14,7 +14,6 @@ require("lualine").setup({
     extensions = {
         "nvim-tree",
         "quickfix",
-        "toggleterm",
         "fugitive",
         "aerial",
         "trouble",

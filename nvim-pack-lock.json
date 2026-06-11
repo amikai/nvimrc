@@ -82,10 +82,6 @@
       "rev": "23835d5ed696436f716cbfdb56a93a7850fe3b18",
       "src": "https://github.com/cocopon/iceberg.vim"
     },
-    "indent-blankline.nvim": {
-      "rev": "d28a3f70721c79e3c5f6693057ae929f3d9c0a03",
-      "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
-    },
     "lsp_signature.nvim": {
       "rev": "b7ace9ddb1640ce266012a45a672dfdaedfa5ec6",
       "src": "https://github.com/ray-x/lsp_signature.nvim"
@@ -202,9 +198,9 @@
       "src": "https://github.com/mrcjkb/rustaceanvim",
       "version": "6.0.0 - 7.0.0"
     },
-    "statuscol.nvim": {
-      "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
-      "src": "https://github.com/luukvbaal/statuscol.nvim"
+    "snacks.nvim": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "https://github.com/folke/snacks.nvim"
     },
     "substitute.nvim": {
       "rev": "0d2077398552f069abccbd964a26dd7cd26882cd",
@@ -226,10 +222,6 @@
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
-    "toggleterm.nvim": {
-      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
-      "src": "https://github.com/akinsho/toggleterm.nvim"
-    },
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
@@ -237,10 +229,6 @@
     "ts-comments.nvim": {
       "rev": "123a9fb12e7229342f807ec9e6de478b1102b041",
       "src": "https://github.com/folke/ts-comments.nvim"
-    },
-    "twilight.nvim": {
-      "rev": "664e752f4a219801265cc3fc18782b457b58c1e1",
-      "src": "https://github.com/folke/twilight.nvim"
     },
     "typescript-tools.nvim": {
       "rev": "c2f5910074103705661e9651aa841e0d7eea9932",
@@ -278,10 +266,6 @@
       "rev": "2c8525fd98e57472769d137317bca83e477858ce",
       "src": "https://github.com/towolf/vim-helm"
     },
-    "vim-illuminate": {
-      "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
-      "src": "https://github.com/RRethy/vim-illuminate"
-    },
     "vim-matchup": {
       "rev": "a2d618496223386844acb5a6763cfc3cc1357af1",
       "src": "https://github.com/andymass/vim-matchup"
@@ -289,10 +273,6 @@
     "vim-rhubarb": {
       "rev": "5496d7c94581c4c9ad7430357449bb57fc59f501",
       "src": "https://github.com/tpope/vim-rhubarb"
-    },
-    "vim-sayonara": {
-      "rev": "75c73f3cf3e96f8c09db5291970243699aadc02c",
-      "src": "https://github.com/mhinz/vim-sayonara"
     },
     "vim-terraform": {
       "rev": "520498fab16a3a11f2ae1b8cb65e0a1684bc317a",
@@ -309,10 +289,6 @@
     "yanky.nvim": {
       "rev": "020c22d0cfa60358569e49d1d7b91630f175aef0",
       "src": "https://github.com/gbprod/yanky.nvim"
-    },
-    "zen-mode.nvim": {
-      "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
-      "src": "https://github.com/folke/zen-mode.nvim"
     },
     "zenbones.nvim": {
       "rev": "239bdb9a09c8d38c752c43590d02f654ed0da2b0",
