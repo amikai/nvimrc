@@ -23,7 +23,16 @@ require("telescope").setup({
         },
     },
 })
-require("telescope").load_extension("fzf")
+-- libfzf can be missing if the install was interrupted before the PackChanged
+-- build hook ran (vim.pack treats the plugin as installed afterwards, so the
+-- hook never re-fires). Build it and retry.
+local ok = pcall(require("telescope").load_extension, "fzf")
+if not ok then
+    for _, p in ipairs(vim.pack.get({ "telescope-fzf-native.nvim" })) do
+        vim.system({ "make" }, { cwd = p.path }):wait()
+    end
+    require("telescope").load_extension("fzf")
+end
 
 km("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 km("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
