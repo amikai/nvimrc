@@ -1,7 +1,5 @@
-return {
-    {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        opts = {},
-    }
-}
+local pack = require("my_config.pack")
+
+pack.add({ pack.gh("pmizio/typescript-tools.nvim") })
+
+require("typescript-tools").setup({})

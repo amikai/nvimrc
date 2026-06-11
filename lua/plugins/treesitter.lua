@@ -1,111 +1,20 @@
-return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        lazy = false,
-        opts = {
-            ensure_installed = {
-                "c",
-                "rust",
-                "cpp",
-                "make",
-                "cmake",
-                "bash",
-                "go",
-                "gomod",
-                "gowork",
-                "html",
-                "javascript",
-                "css",
-                "scss",
-                "yaml",
-                "json",
-                "toml",
-                "dockerfile",
-                "python",
-                "vim",
-                "lua",
-                "proto",
-                "graphql",
-                "typescript",
-                "hurl",
-                "vimdoc",
-            },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-                disable = { "python" },
-            },
-            -- Indentation based on treesitter for the = operator
-            indent = {
-                enable = true,
-            },
-        },
-        config = function(_, opts)
-            require("nvim-treesitter.install").prefer_git = true
-        end,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("treesitter-context").setup({
-                enable = true,
-            })
-        end,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = {
-            {
-                "nvim-treesitter/nvim-treesitter",
-                opts = {
-                    textobjects = {
-                        select = {
-                            enable = true,
-                            lookahead = true,
-                            keymaps = {
-                                ["af"] = "@function.outer",
-                                ["if"] = "@function.inner",
-                                ["i,"] = "@parameter.inner",
-                                ["a,"] = "@parameter.outer",
-                                ["ac"] = "@comment.outer",
-                            },
-                            include_surrounding_whitespace = true,
-                        },
-                        swap = {
-                            enable = true,
-                            swap_next = {
-                                ["g>"] = "@parameter.inner",
-                            },
-                            swap_previous = {
-                                ["g<"] = "@parameter.inner",
-                            },
-                        },
-                    },
-                },
-            },
-        },
-    },
-    {
-        "HiPhish/rainbow-delimiters.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require('rainbow-delimiters.setup').setup {}
-        end
-    },
-    {
-        "RRethy/nvim-treesitter-endwise",
-        dependencies = {
-            {
-                "nvim-treesitter/nvim-treesitter",
-                opts = {
-                    endwise = {
-                        enable = true,
-                    },
-                },
-            },
-        },
-        event = "InsertEnter"
-    }
-}
+local pack = require("my_config.pack")
+local gh = pack.gh
+
+pack.add({
+    { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
+    gh("nvim-treesitter/nvim-treesitter-context"),
+    { src = gh("nvim-treesitter/nvim-treesitter-textobjects"), version = "main" },
+    gh("HiPhish/rainbow-delimiters.nvim"),
+    gh("RRethy/nvim-treesitter-endwise"),
+})
+
+pcall(function()
+    require("nvim-treesitter.install").prefer_git = true
+end)
+
+require("treesitter-context").setup({
+    enable = true,
+})
+
+require("rainbow-delimiters.setup").setup({})

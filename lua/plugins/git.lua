@@ -1,18 +1,11 @@
-return {
-    {
-        "tpope/vim-fugitive",
-        cmd = { "G", "Git", "Gdiffsplit", "GBrowse" },
-    },
-    {
-        "tpope/vim-rhubarb",
-        init = function()
-            vim.g.github_enterprise_urls = { 'https://adc.github.trendmicro.com' }
-        end,
-    },
-    {
-        "rbong/vim-flog",
-        dependencies = "tpope/vim-fugitive",
-        cmd = { "Flog" },
-    },
-    { "rhysd/committia.vim" },
-}
+local pack = require("my_config.pack")
+local gh = pack.gh
+
+vim.g.github_enterprise_urls = { "https://adc.github.trendmicro.com" }
+
+pack.add({
+    gh("tpope/vim-fugitive"),
+    gh("tpope/vim-rhubarb"),
+    gh("rbong/vim-flog"),
+    gh("rhysd/committia.vim"),
+})

@@ -1,8 +1,5 @@
-return {
-    {
-        "folke/ts-comments.nvim",
-        opts = {},
-        event = "VeryLazy",
-        enabled = vim.fn.has("nvim-0.10.0") == 1
-    }
-}
+local pack = require("my_config.pack")
+
+pack.add({ pack.gh("folke/ts-comments.nvim") })
+
+require("ts-comments").setup({})

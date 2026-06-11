@@ -1,22 +1,14 @@
-return {
-    {
-        'stevearc/aerial.nvim',
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-        keys = {
-            { "<F8>", "<cmd>AerialToggle<cr>", mode = "n" },
-        },
-        config = function()
-            require("aerial").setup({
-                layout = {
-                    min_width = 25,
-                    max_width = 25,
+local pack = require("my_config.pack")
+local km = require("my_config.utils").km_factory({ silent = true })
 
-                },
-                nerd_font = false,
-            })
-        end
+pack.add({ pack.gh("stevearc/aerial.nvim") })
+
+require("aerial").setup({
+    layout = {
+        min_width = 25,
+        max_width = 25,
     },
-}
+    nerd_font = false,
+})
+
+km("n", "<F8>", "<cmd>AerialToggle<cr>")

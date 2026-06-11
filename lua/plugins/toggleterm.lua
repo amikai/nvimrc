@@ -1,13 +1,8 @@
-return {
+local pack = require("my_config.pack")
+local km = require("my_config.utils").km_factory({ silent = true })
 
-    {
-        "akinsho/toggleterm.nvim",
-        cmd = "ToggleTerm",
-        keys = {
-            { "<F1>", "<cmd>ToggleTerm<cr>", mode = { "n", "t" } },
-        },
-        config = function()
-            require("toggleterm").setup()
-        end,
-    },
-}
+pack.add({ pack.gh("akinsho/toggleterm.nvim") })
+
+require("toggleterm").setup()
+
+km({ "n", "t" }, "<F1>", "<cmd>ToggleTerm<cr>")

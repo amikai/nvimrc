@@ -1,13 +1,10 @@
-return {
-    {
-        "gbprod/substitute.nvim",
-        keys = {
-            { "R", "<cmd>lua require('substitute').operator()<cr>", mode = { "n", "x" } },
-            { "RR", "<cmd>lua require('substitute').line()<cr>", mode = { "n" } },
-            { "cx", "<cmd>lua require('substitute.exchange').operator()<cr>", mode = { "n" } },
-        },
-        config = function()
-            require("substitute").setup({})
-        end,
-    },
-}
+local pack = require("my_config.pack")
+local km = require("my_config.utils").km_factory({ silent = true })
+
+pack.add({ pack.gh("gbprod/substitute.nvim") })
+
+require("substitute").setup({})
+
+km({ "n", "x" }, "R", "<cmd>lua require('substitute').operator()<cr>")
+km("n", "RR", "<cmd>lua require('substitute').line()<cr>")
+km("n", "cx", "<cmd>lua require('substitute.exchange').operator()<cr>")
