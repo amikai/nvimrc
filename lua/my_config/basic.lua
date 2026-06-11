@@ -6,28 +6,14 @@ local km = require("my_config.utils").km_factory({ silent = true })
 local g = vim.g
 local o = vim.opt
 local go = vim.go
-local wo = vim.wo
 
 local autocmd = vim.api.nvim_create_autocmd
 
-local term = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
 -- General {{{
-g.python_host_prog = "python"
 g.python3_host_prog = "python3"
-
-o.history = 500
 
 -- -- Do not atomically add newline at end of file
 o.fixendofline = false
-
--- -- Set to auto read when a file is changed from the outside
-o.autoread = true
-
--- -- Switch buffer without causing error when file is edited
-o.hidden = true
 
 o.report = 0
 
@@ -39,11 +25,7 @@ km("t", "<esc>", "<C-\\><C-n>")
 
 km("", "<Space>", "<nop>")
 
-g.mapleader = term("<Space>")
-
-o.termguicolors = true
-
-o.encoding = "utf-8"
+g.mapleader = " "
 
 o.fileformats = { "unix", "dos", "mac" }
 
@@ -77,7 +59,7 @@ km("n", "c", '"xc')
 
 -- After block yank and paste, move cursor to the end of operated text and don't override register
 km("v", "y", "y`]")
-km("v", "p", '"_dP`')
+km("v", "p", '"_dP`]')
 km("n", "p", "p`]")
 
 -- -- Copy paste
@@ -91,7 +73,7 @@ km("v", "K", ":m '<-2<cr>gv=gv")
 km("v", "<", "<gv")
 km("v", ">", ">gv")
 
--- Set the status lien to global
+-- Set the status line to global
 go.laststatus = 3
 
 -- Add angle brackets to match pair
@@ -100,11 +82,6 @@ o.matchpairs:prepend { "<:>" }
 
 -- -- Vim user interface {{{
 o.scrolloff = 3
-
--- -- Display candidates by popup menu.
-o.wildmenu = true
-o.wildmode = { "full" }
-o.wildoptions:append("pum")
 
 -- line number setting
 o.number = true
@@ -118,7 +95,7 @@ o.textwidth = 80
 o.cmdheight = 2
 
 -- Enables pseudo-transparency for a floating window
-wo.winblend = 20
+o.winblend = 20
 -- Set minimal width for current window.
 o.winwidth = 30
 -- Set minimal height for current window.
@@ -135,29 +112,17 @@ o.splitright = true
 -- Puts new split windows to the bottom of the current
 o.splitbelow = true
 
--- show command
-o.showcmd = true
-
-o.showmode = true
-
--- Always show current position
-o.ruler = true
-
 -- Ignore case when searching
 o.ignorecase = true
 
 -- When searching try to be smart about cases
 o.smartcase = true
 
--- -- Configure backspace so it acts as it should act
-o.backspace = { "indent", "eol", "start" }
 o.whichwrap:append({ ["<"] = true, [">"] = true, h = true, l = true })
 
 o.wrap = false
 
--- search
-o.incsearch = true -- search as characters are entered
-o.hlsearch = true  -- highlight matches
+-- Show the effects of a command incrementally in a preview split
 o.inccommand = "split"
 
 -- Show matching brackets when text indicator is over them
@@ -165,13 +130,13 @@ o.showmatch = true
 o.matchtime = 1
 
 -- -- show special character
-wo.list = true
+o.list = true
 o.listchars = { eol = "¬", tab = "▸ ", trail = "." }
 
 -- highlight current line
-wo.cursorline = true
-wo.cursorcolumn = true
-wo.colorcolumn = "81"
+o.cursorline = true
+o.cursorcolumn = true
+o.colorcolumn = "81"
 
 -- -- Add a bit extra margin to the left
 o.foldcolumn = "1"
@@ -229,11 +194,6 @@ o.softtabstop = 4
 
 -- space replace tab
 o.expandtab = true
-
-o.smarttab = true
-
--- set autoindent
--- set smartindent
 -- }}}
 
 -- Moving around, tabs, windows and buffers {{{
@@ -260,7 +220,7 @@ autocmd({ "FileType" }, { pattern = "qf", command = "wincmd J" })
 autocmd({ "TextYankPost" }, {
     pattern = "*",
     callback = function()
-        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
+        vim.hl.on_yank({ higroup = "IncSearch", timeout = 150 })
     end,
 })
 
@@ -282,7 +242,7 @@ km("c", "<M-f>", "<S-Right>")
 vim.diagnostic.config({
     underline = true,
     virtual_text = true,
-    sign = true,
+    signs = true,
     float = {
         format = function(diagnostic)
             return diagnostic.message
@@ -294,29 +254,29 @@ vim.diagnostic.config({
 })
 
 km("n", "]d", function()
-    vim.diagnostic.jump({count=1, float=true})
+    vim.diagnostic.jump({ count = 1, float = true })
 end)
 
 km("n", "[d", function()
-    vim.diagnostic.jump({count=-1, float=true})
+    vim.diagnostic.jump({ count = -1, float = true })
 end)
 
-vim.keymap.set('n', '=q', function()
+km('n', '=q', function()
     vim.diagnostic.setqflist({ open = false })
 
     -- if qf window is not present, return winid is zero
-    local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
+    local qf_winid = fn.getqflist({ winid = 0 }).winid
     local action = qf_winid > 0 and 'cclose' or 'copen'
-    vim.cmd('botright ' .. action)
-end, { noremap = true })
+    cmd('botright ' .. action)
+end)
 
-vim.keymap.set('n', '=l', function()
+km('n', '=l', function()
     vim.diagnostic.setloclist({ open = false })
     local win = vim.api.nvim_get_current_win()
-    local qf_winid = vim.fn.getloclist(win, { winid = 0 }).winid
+    local qf_winid = fn.getloclist(win, { winid = 0 }).winid
     local action = qf_winid > 0 and 'lclose' or 'lopen'
-    vim.cmd(action)
-end, { noremap = true })
+    cmd(action)
+end)
 --- }}}
 
 -- detect hurl file

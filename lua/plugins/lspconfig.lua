@@ -1,6 +1,7 @@
 return {
     {
         'saghen/blink.cmp',
+        version = '*',
         event = 'InsertEnter',
         dependencies = {
             "L3MON4D3/LuaSnip",
@@ -43,9 +44,9 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             {
-                "williamboman/mason-lspconfig.nvim",
+                "mason-org/mason-lspconfig.nvim",
                 dependencies = {
-                    'williamboman/mason.nvim'
+                    'mason-org/mason.nvim'
                 }
             },
             "ray-x/lsp_signature.nvim",
