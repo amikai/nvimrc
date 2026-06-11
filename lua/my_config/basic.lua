@@ -251,15 +251,17 @@ vim.diagnostic.config({
             return string.format(" [%s]", diagnostic.source), ""
         end,
     },
+    -- Show the float after jumping with the default ]d/[d mappings.
+    -- "float" in vim.diagnostic.JumpOpts is deprecated since 0.12.
+    jump = {
+        on_jump = function(diagnostic, bufnr)
+            if not diagnostic then
+                return
+            end
+            vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+        end,
+    },
 })
-
-km("n", "]d", function()
-    vim.diagnostic.jump({ count = 1, float = true })
-end)
-
-km("n", "[d", function()
-    vim.diagnostic.jump({ count = -1, float = true })
-end)
 
 km('n', '=q', function()
     vim.diagnostic.setqflist({ open = false })

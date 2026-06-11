@@ -31,7 +31,7 @@ return {
                 if not status then
                     -- 13 is the index where real error message starts
                     msg = msg:sub(13)
-                    vim.api.nvim_err_writeln(msg)
+                    vim.api.nvim_echo({ { msg } }, true, { err = true })
                     return
                 end
 
