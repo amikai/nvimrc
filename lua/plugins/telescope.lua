@@ -2,6 +2,16 @@ local pack = require("my_config.pack")
 local gh = pack.gh
 local km = require("my_config.utils").km_factory({ silent = true })
 
+-- Build hook (:h vim.pack-events)
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+            vim.system({ "make" }, { cwd = ev.data.path }):wait()
+        end
+    end,
+})
+
 pack.add({
     gh("nvim-telescope/telescope-fzf-native.nvim"),
     gh("nvim-telescope/telescope.nvim"),

@@ -1,6 +1,20 @@
 local pack = require("my_config.pack")
 local gh = pack.gh
 
+-- Build hook (:h vim.pack-events). Only on update: at first install the Go
+-- binaries are better installed on demand with :GoInstallBinaries.
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        if ev.data.spec.name == "go.nvim" and ev.data.kind == "update" then
+            if not ev.data.active then
+                vim.cmd.packadd("guihua.lua")
+                vim.cmd.packadd("go.nvim")
+            end
+            require("go.install").update_all_sync()
+        end
+    end,
+})
+
 -- go.nvim and friends are loaded on demand for Go files.
 pack.register({
     gh("ray-x/guihua.lua"),

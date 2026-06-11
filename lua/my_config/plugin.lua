@@ -1,60 +1,16 @@
 -- Plugins are managed by the built-in plugin manager (:h vim.pack).
 -- Each module in lua/plugins/ installs its own plugins with vim.pack.add()
--- (through the my_config.pack helpers) and configures them right after.
--- Update plugins with :lua vim.pack.update()
+-- (through the my_config.pack helpers), defines its PackChanged build hooks,
+-- and configures them right after. Update plugins with :lua vim.pack.update()
+--
+-- NOTE: when bootstrapping on a fresh machine, the very first vim.pack.add()
+-- call installs everything from the lockfile at once (:h vim.pack-lockfile),
+-- so a module's install hook may miss that initial install. Build artifacts
+-- are recovered on demand (see plugins/telescope.lua) or by the hook on the
+-- next plugin update.
 
 local pack = require("my_config.pack")
 local gh = pack.gh
-
--- Build hooks, keyed by plugin name. PackChanged autocommands must exist
--- before the vim.pack.add() call that installs the plugin, so this stays at
--- the top of this file (:h vim.pack-events).
-local build = {
-    ["telescope-fzf-native.nvim"] = function(ev)
-        vim.system({ "make" }, { cwd = ev.data.path }):wait()
-    end,
-    ["CopilotChat.nvim"] = function(ev)
-        vim.system({ "make", "tiktoken" }, { cwd = ev.data.path }):wait()
-    end,
-    ["nvim-treesitter"] = function(ev)
-        if not ev.data.active then
-            vim.cmd.packadd("nvim-treesitter")
-        end
-        vim.cmd("TSUpdate")
-    end,
-    ["go.nvim"] = function(ev)
-        -- Only on update: at first install the Go binaries are better
-        -- installed on demand with :GoInstallBinaries.
-        if ev.data.kind ~= "update" then
-            return
-        end
-        if not ev.data.active then
-            vim.cmd.packadd("guihua.lua")
-            vim.cmd.packadd("go.nvim")
-        end
-        require("go.install").update_all_sync()
-    end,
-}
-
-vim.api.nvim_create_autocmd("PackChanged", {
-    group = vim.api.nvim_create_augroup("my_config_pack_build", { clear = true }),
-    callback = function(ev)
-        if ev.data.kind == "delete" then
-            return
-        end
-        local hook = build[ev.data.spec.name]
-        if not hook then
-            return
-        end
-        local ok, err = pcall(hook, ev)
-        if not ok then
-            vim.notify(
-                string.format("Build hook for %s failed: %s", ev.data.spec.name, err),
-                vim.log.levels.WARN
-            )
-        end
-    end,
-})
 
 -- Shared libraries used by several plugin modules below.
 pack.add({

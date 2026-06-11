@@ -1,6 +1,16 @@
 local pack = require("my_config.pack")
 local km = require("my_config.utils").km_factory({})
 
+-- Build hook (:h vim.pack-events)
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == "CopilotChat.nvim" and (kind == "install" or kind == "update") then
+            vim.system({ "make", "tiktoken" }, { cwd = ev.data.path }):wait()
+        end
+    end,
+})
+
 -- CopilotChat is loaded on demand on first <F10>.
 pack.register({ pack.gh("CopilotC-Nvim/CopilotChat.nvim") })
 
