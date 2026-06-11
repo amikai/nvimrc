@@ -15,7 +15,6 @@ local gh = pack.gh
 -- Shared libraries used by several plugin modules below.
 pack.add({
     gh("nvim-lua/plenary.nvim"),
-    gh("nvim-lua/popup.nvim"),
     gh("nvim-tree/nvim-web-devicons"),
     gh("MunifTanjim/nui.nvim"),
 })
@@ -30,7 +29,6 @@ require("plugins.copilot")
 require("plugins.lspconfig")
 require("plugins.go-nvim")
 require("plugins.rust")
-require("plugins.typescript")
 require("plugins.telescope")
 require("plugins.yanky")
 require("plugins.aerial")

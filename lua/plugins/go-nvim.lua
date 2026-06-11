@@ -19,7 +19,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 pack.register({
     gh("ray-x/guihua.lua"),
     gh("ray-x/go.nvim"),
-    gh("folke/trouble.nvim"),
     -- for debugging
     gh("mfussenegger/nvim-dap"),
     gh("rcarriga/nvim-dap-ui"),
@@ -33,7 +32,6 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         pack.load({
             "guihua.lua",
-            "trouble.nvim",
             "nvim-dap",
             "nvim-dap-ui",
             "nvim-dap-virtual-text",
@@ -63,7 +61,6 @@ vim.api.nvim_create_autocmd("FileType", {
             lsp_inlay_hints = {
                 enable = false,
             },
-            trouble = false,
         })
         vim.lsp.config.gopls = require("go.lsp").config()
         vim.lsp.enable("gopls")

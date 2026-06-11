@@ -16,7 +16,6 @@ require("lualine").setup({
         "quickfix",
         "fugitive",
         "aerial",
-        "trouble",
         "man",
     },
     options = {
