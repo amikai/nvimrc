@@ -57,14 +57,39 @@ vim.lsp.config("*", {
     root_markers = { ".git" },
 })
 
-vim.lsp.config.basedpyright = {
+-- vim.lsp.config.basedpyright = {
+--     settings = {
+--         python = {
+--             pythonPath = require("my_config.utils").get_py_path(),
+--         },
+--     },
+--     root_markers = { "pyproject.toml", ".venv" },
+-- }
+
+-- delance-langserver is a Pyright/Pylance fork installed outside of mason
+-- (npm i -g @delance/runtime), so it has no entry in
+-- mason-lspconfig and must be enabled explicitly below.
+vim.lsp.config.delance = {
+    cmd = { "delance-langserver", "--stdio" },
+    filetypes = { "python" },
+    root_markers = { "pyproject.toml", ".venv" },
+    init_options = vim.empty_dict(),
     settings = {
         python = {
             pythonPath = require("my_config.utils").get_py_path(),
+            analysis = {
+                typeCheckingMode = "basic",
+                diagnosticMode = "openFilesOnly",
+                stubPath = "./typings",
+                autoSearchPaths = true,
+                extraPaths = {},
+                diagnosticSeverityOverrides = vim.empty_dict(),
+                useLibraryCodeForTypes = true,
+            },
         },
     },
-    root_markers = { "pyproject.toml", ".venv" },
 }
+vim.lsp.enable("delance")
 
 vim.lsp.config.lua_ls = {
     settings = {
@@ -141,7 +166,7 @@ require("mason-lspconfig").setup({
         "helm_ls",
         "typos_lsp",
         "rust_analyzer",
-        "basedpyright",
+        -- "basedpyright",
         "ruff",
         -- front end dev
         "vtsls",
