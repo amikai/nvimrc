@@ -33,8 +33,8 @@ return {
                 debounce_hours = 5, -- at least 5 hours between attempts to install/update
                 integrations = {
                     ['mason-lspconfig'] = true,
-                    ['mason-null-ls'] = true,
-                    ['mason-nvim-dap'] = true,
+                    ['mason-null-ls'] = false,
+                    ['mason-nvim-dap'] = false,
                 },
             }
         end,

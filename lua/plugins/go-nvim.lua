@@ -6,7 +6,6 @@ return {
             "ray-x/guihua.lua",
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
-            "folke/trouble.nvim",
             -- for debugging
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
@@ -37,7 +36,6 @@ return {
                 lsp_inlay_hints = {
                     enable = false,
                 },
-                trouble = false,
             })
             vim.lsp.config.gopls = require('go.lsp').config()
             vim.lsp.enable('gopls')

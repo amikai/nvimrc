@@ -6,7 +6,6 @@ return {
         dependencies = {
             "L3MON4D3/LuaSnip",
             "rafamadriz/friendly-snippets",
-            "fang2hou/blink-copilot",
         },
         opts = {
             -- See :h blink-cmp-config-keymap for defining your own keymap
@@ -21,18 +20,14 @@ return {
             -- (Default) Only show the documentation popup when manually triggered
             completion = { documentation = { auto_show = false } },
 
+            -- Show the current function signature while typing (replaces
+            -- lsp_signature.nvim).
+            signature = { enabled = true },
+
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
-                providers = {
-                    copilot = {
-                        name = "copilot",
-                        module = "blink-copilot",
-                        score_offset = 100,
-                        async = true,
-                    },
-                },
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
 
             fuzzy = { implementation = "prefer_rust_with_warning" }
@@ -49,68 +44,45 @@ return {
                     'mason-org/mason.nvim'
                 }
             },
-            "ray-x/lsp_signature.nvim",
         },
         config = function()
             vim.lsp.config('*', {
                 root_markers = { '.git' },
             })
 
-            vim.lsp.config.pyright = {
+            -- vim.lsp.config.basedpyright = {
+            --     settings = {
+            --         python = {
+            --             pythonPath = require("my_config.utils").get_py_path(),
+            --         },
+            --     },
+            --     root_markers = { "pyproject.toml", ".venv" },
+            -- }
+
+            -- delance-langserver is a Pyright/Pylance fork installed outside of mason
+            -- (npm i -g @delance/runtime), so it has no entry in
+            -- mason-lspconfig and must be enabled explicitly below.
+            vim.lsp.config.delance = {
                 cmd = { "delance-langserver", "--stdio" },
+                filetypes = { "python" },
+                root_markers = { "pyproject.toml", ".venv" },
+                init_options = vim.empty_dict(),
                 settings = {
-                    pyright = {
-                        -- disable import sorting and use Ruff for this
-                        disableOrganizeImports = true,
-                        disableTaggedHints = false,
-                    },
                     python = {
                         pythonPath = require("my_config.utils").get_py_path(),
                         analysis = {
+                            typeCheckingMode = "basic",
+                            diagnosticMode = "openFilesOnly",
+                            stubPath = "./typings",
                             autoSearchPaths = true,
-                            diagnosticMode = "workspace",
-                            typeCheckingMode = "standard",
+                            extraPaths = {},
+                            diagnosticSeverityOverrides = vim.empty_dict(),
                             useLibraryCodeForTypes = true,
-                            -- we can this setting below to redefine some diagnostics
-                            diagnosticSeverityOverrides = {
-                                deprecateTypingAliases = false,
-                            },
-                            -- inlay hint settings are provided by pylance?
-                            inlayHints = {
-                                callArgumentNames = "partial",
-                                functionReturnTypes = true,
-                                pytestParameters = true,
-                                variableTypes = true,
-                            },
-                        },
-                    }
-                },
-                root_markers = { 'pyproject.toml', '.venv' },
-                capabilities = {
-                    -- this will remove some of the diagnostics that duplicates those from ruff, idea taken and adapted from
-                    -- here: https://github.com/astral-sh/ruff-lsp/issues/384#issuecomment-1989619482
-                    textDocument = {
-                        publishDiagnostics = {
-                            tagSupport = {
-                                valueSet = { 2 },
-                            },
-                        },
-                        hover = {
-                            contentFormat = { "plaintext" },
-                            dynamicRegistration = true,
                         },
                     },
-                }
-            }
-
-            vim.lsp.config.basedpyright = {
-                settings = {
-                    python = {
-                        pythonPath = require("my_config.utils").get_py_path()
-                    }
                 },
-                root_markers = { 'pyproject.toml', '.venv' },
             }
+            vim.lsp.enable("delance")
 
             vim.lsp.config.lua_ls = {
                 settings = {
@@ -170,7 +142,7 @@ return {
             require('mason-lspconfig').setup({
                 -- These LSP tools will enable vim.lsp through their plugin.
                 automatic_enable = {
-                    exclude = { "rust_analyzer", "gopls", "ts_ls" }
+                    exclude = { "rust_analyzer", "gopls" }
                 },
                 ensure_installed = {
                     "gopls",
@@ -187,11 +159,10 @@ return {
                     "helm_ls",
                     "typos_lsp",
                     "rust_analyzer",
-                    "pyright",
-                    "basedpyright",
+                    -- "basedpyright",
                     "ruff",
                     -- front end dev
-                    "ts_ls",
+                    "vtsls",
                     "html",
                     "tailwindcss",
                     -- Use ESLint and Biome as LSPs instead of linter command in

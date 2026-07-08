@@ -15,10 +15,8 @@ return {
                 extensions = {
                     "nvim-tree",
                     "quickfix",
-                    "toggleterm",
                     "fugitive",
                     "aerial",
-                    "trouble",
                     "lazy",
                     "man",
                 },
