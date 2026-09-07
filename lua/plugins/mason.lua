@@ -18,7 +18,6 @@ return {
                     "shfmt",
                     "shellcheck",
                     "jsonlint",
-                    "commitlint",
                     "buf",
                     "golangci-lint",
                     "ruff",

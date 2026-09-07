@@ -6,14 +6,8 @@ return {
             -- See the detail config of golangci-lint in $HOME/.golangci.yaml
             go = { 'golangcilint' },
             json = { 'jsonlint' },
-            gitcommit = { 'commitlint' },
             proto = { 'buf_lint' }
         }
-
-        local commitlint = lint.linters.commitlint
-        -- .commitlintrc.yaml is the config file of commitlint,
-        -- See https://github.com/conventional-changelog/commitlint?tab=readme-ov-file#config
-        commitlint.args = { '--config', vim.env.HOME .. "/" .. ".commitlintrc.yaml" }
 
         vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
             callback = function()
