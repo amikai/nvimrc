@@ -277,11 +277,4 @@ km('n', '=l', function()
 end)
 --- }}}
 
--- detect hurl file
-vim.filetype.add({
-    extension = {
-        hurl = 'hurl',
-    }
-})
-
 -- vim: set foldmethod=marker tw=80 sw=4 ts=4 sts =4 sta nowrap et :
