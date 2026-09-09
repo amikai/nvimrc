@@ -38,6 +38,7 @@ return {
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
+            "b0o/schemastore.nvim",
             {
                 "mason-org/mason-lspconfig.nvim",
                 dependencies = {
@@ -89,6 +90,30 @@ return {
             -- and leave yamlls on plain yaml.
             vim.lsp.config.gh_actions_ls = {
                 filetypes = { "yaml.github" },
+            }
+
+            vim.lsp.config.jsonls = {
+                settings = {
+                    json = {
+                        validate = { enable = true },
+                        format = { enable = true },
+                        schemaDownload = { enable = true },
+                        schemas = require("schemastore").json.schemas(),
+                    },
+                },
+            }
+
+            -- Disable yamlls built-in SchemaStore; it conflicts with schemastore.nvim.
+            vim.lsp.config.yamlls = {
+                settings = {
+                    yaml = {
+                        schemaStore = {
+                            enable = false,
+                            url = "",
+                        },
+                        schemas = require("schemastore").yaml.schemas(),
+                    },
+                },
             }
 
             vim.lsp.config.lua_ls = {
