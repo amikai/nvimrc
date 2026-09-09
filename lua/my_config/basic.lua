@@ -10,24 +10,6 @@ local go = vim.go
 local autocmd = vim.api.nvim_create_autocmd
 
 -- General {{{
-g.python3_host_prog = "python3"
-
--- Point Neovim's Node.js provider at the node managed by fnm, using fnm's
--- "default" version regardless of the directory Neovim was launched from (or
--- any project-local .nvmrc/.node-version). Ask fnm itself where that node lives
--- rather than guessing its layout.
-if vim.fn.executable("fnm") == 1 then
-    local out = vim.fn.system({ "fnm", "exec", "--using=default", "which", "node" })
-    if vim.v.shell_error ~= 0 then
-        vim.notify("fnm: failed to resolve default node: " .. vim.trim(out), vim.log.levels.ERROR)
-    else
-        local node_path = vim.trim(out)
-        if node_path ~= "" then
-            g.node_host_prog = node_path
-        end
-    end
-end
-
 -- -- Do not atomically add newline at end of file
 o.fixendofline = false
 
@@ -73,10 +55,8 @@ o.updatetime = 500
 km("x", "c", '"xc')
 km("n", "c", '"xc')
 
--- After block yank and paste, move cursor to the end of operated text and don't override register
+-- After block yank, move cursor to the end of yanked text
 km("v", "y", "y`]")
-km("v", "p", '"_dP`]')
-km("n", "p", "p`]")
 
 -- -- Copy paste
 o.clipboard = { "unnamedplus" }

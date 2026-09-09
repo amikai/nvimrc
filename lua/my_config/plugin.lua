@@ -78,5 +78,10 @@ require("lazy").setup({
     {
         "towolf/vim-helm"
     },
+    {
+        'nemanjamalesija/smart-paste.nvim',
+        event = 'VeryLazy',
+        config = true,
+    },
     { import = "plugins" },
 })
