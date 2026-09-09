@@ -30,6 +30,18 @@ return {
                 "typescript",
                 "hurl",
                 "vimdoc",
+                "comment",
+                "git_config",
+                "gitignore",
+                "gosum",
+                "gotmpl",
+                "hcl",
+                "markdown",
+                "markdown_inline",
+                "regex",
+                "sql",
+                "terraform",
+                "tsx",
             },
             highlight = {
                 enable = true,
@@ -42,7 +54,28 @@ return {
             },
         },
         config = function(_, opts)
-            require("nvim-treesitter.install").prefer_git = true
+            require("nvim-treesitter").install(opts.ensure_installed)
+
+            vim.treesitter.language.register("yaml", "yaml.github")
+            vim.treesitter.language.register("yaml", "yaml.gitlab")
+
+            local disabled = {}
+            for _, ft in ipairs(opts.highlight.disable or {}) do
+                disabled[ft] = true
+            end
+
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function(args)
+                    local ft = vim.bo[args.buf].filetype
+                    if ft == "" or disabled[ft] then
+                        return
+                    end
+                    pcall(vim.treesitter.start, args.buf)
+                    if opts.indent and opts.indent.enable then
+                        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end
+                end,
+            })
         end,
     },
     {

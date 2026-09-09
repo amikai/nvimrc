@@ -84,6 +84,13 @@ return {
             }
             vim.lsp.enable("delance")
 
+            -- Default gh_actions_ls filetypes are `yaml` plus a workflow root_dir
+            -- filter. We detect workflows as `yaml.github`, so override filetypes
+            -- and leave yamlls on plain yaml.
+            vim.lsp.config.gh_actions_ls = {
+                filetypes = { "yaml.github" },
+            }
+
             vim.lsp.config.lua_ls = {
                 settings = {
                     format = {
@@ -154,6 +161,7 @@ return {
                     "lua_ls",
                     "vimls",
                     "yamlls",
+                    "gh_actions_ls",
                     "graphql",
                     "jsonls",
                     "helm_ls",
