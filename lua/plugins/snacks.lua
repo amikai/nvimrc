@@ -50,6 +50,28 @@ return {
             end)
             Snacks.toggle.dim():map("<F50>")
 
+            local gitbrowse_choices = { "repo", "branch", "file", "commit", "permalink" }
+            vim.api.nvim_create_user_command("GitBrowse", function(opts)
+                local what = opts.args ~= "" and vim.trim(opts.args) or nil
+                local browse_opts = {
+                    what = what,
+                }
+                if opts.range ~= 0 then
+                    browse_opts.line_start = opts.line1
+                    browse_opts.line_end = opts.line2
+                end
+                Snacks.gitbrowse(browse_opts)
+            end, {
+                desc = "Git Browse with Snacks.nvim",
+                nargs = "?",
+                range = true,
+                complete = function(arg_lead)
+                    return vim.tbl_filter(function(item)
+                        return vim.startswith(item, arg_lead)
+                    end, gitbrowse_choices)
+                end,
+            })
+
             -- Show indent guides only while inserting, as the old indent-blankline
             -- autocommands did.
             local gid = vim.api.nvim_create_augroup("my_config_snacks_indent", { clear = true })
