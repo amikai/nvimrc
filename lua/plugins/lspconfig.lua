@@ -8,8 +8,12 @@ return {
             "rafamadriz/friendly-snippets",
         },
         opts = {
-            -- See :h blink-cmp-config-keymap for defining your own keymap
-            keymap = { preset = 'enter' },
+            -- See :h blink-cmp-config-keymap for defining your own keymap.
+            -- super-tab: <Tab> accepts the selected item (or jumps to the next
+            -- snippet placeholder while a snippet is active), <S-Tab> jumps
+            -- backward. <CR> is left unmapped so it keeps inserting a newline
+            -- through nvim-autopairs.
+            keymap = { preset = 'super-tab' },
 
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
