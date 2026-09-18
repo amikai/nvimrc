@@ -55,6 +55,16 @@ return {
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
+                providers = {
+                    -- blink blocks the menu until every synchronous provider
+                    -- answers, and the default budget is 2000ms. delance needs
+                    -- several seconds for the first completion in a project
+                    -- with large dependencies, which delayed the whole menu.
+                    -- Treat the LSP provider as asynchronous after 200ms so the
+                    -- fast sources render immediately and slower server results
+                    -- merge in when they arrive.
+                    lsp = { timeout_ms = 200 },
+                },
             },
 
             fuzzy = { implementation = "prefer_rust_with_warning" }
