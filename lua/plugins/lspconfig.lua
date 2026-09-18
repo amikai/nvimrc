@@ -17,11 +17,15 @@ return {
         },
         opts = {
             -- See :h blink-cmp-config-keymap for defining your own keymap.
-            -- super-tab: <Tab> accepts the selected item (or jumps to the next
-            -- snippet placeholder while a snippet is active), <S-Tab> jumps
-            -- backward. <CR> is left unmapped so it keeps inserting a newline
-            -- through nvim-autopairs.
-            keymap = { preset = 'super-tab' },
+            -- <Tab> walks down the completion list like <C-n>, then jumps
+            -- snippet placeholders when the menu is closed, then falls back to
+            -- a literal tab. <S-Tab> is the mirror image. <CR> accepts, which
+            -- comes from the `enter` preset.
+            keymap = {
+                preset = 'enter',
+                ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+                ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+            },
 
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -29,8 +33,15 @@ return {
                 nerd_font_variant = 'mono'
             },
 
-            -- (Default) Only show the documentation popup when manually triggered
-            completion = { documentation = { auto_show = false } },
+            completion = {
+                -- (Default) Only show the documentation popup when manually triggered
+                documentation = { auto_show = false },
+
+                -- Nothing is selected until <Tab> or <C-n> moves onto an item,
+                -- and moving does not write the item into the buffer, so <CR>
+                -- inserts a newline until a candidate is actually chosen.
+                list = { selection = { preselect = false, auto_insert = false } },
+            },
 
             -- Show the current function signature while typing (replaces
             -- lsp_signature.nvim).
