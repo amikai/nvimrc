@@ -4,8 +4,16 @@ return {
         version = '*',
         event = 'InsertEnter',
         dependencies = {
-            "L3MON4D3/LuaSnip",
-            "rafamadriz/friendly-snippets",
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = { "rafamadriz/friendly-snippets" },
+                config = function()
+                    -- blink's `luasnip` preset reads the LuaSnip registry instead
+                    -- of the friendly-snippets JSON files, so the VSCode-style
+                    -- snippets have to be registered with LuaSnip explicitly.
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                end,
+            },
         },
         opts = {
             -- See :h blink-cmp-config-keymap for defining your own keymap.
@@ -27,6 +35,10 @@ return {
             -- Show the current function signature while typing (replaces
             -- lsp_signature.nvim).
             signature = { enabled = true },
+
+            -- Expand and jump with LuaSnip rather than vim.snippet, so <Tab>
+            -- and <S-Tab> walk the placeholders of LuaSnip-registered snippets.
+            snippets = { preset = 'luasnip' },
 
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
