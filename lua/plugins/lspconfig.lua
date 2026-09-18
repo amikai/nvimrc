@@ -194,8 +194,7 @@ return {
                     "rust_analyzer",
                     -- "basedpyright",
                     "ruff",
-                    -- Rust-based Python type checkers, evaluated alongside delance.
-                    "ty",
+                    -- Rust-based Python type checker, evaluated alongside delance.
                     "pyrefly",
                     -- front end dev
                     "vtsls",
