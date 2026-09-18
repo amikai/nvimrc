@@ -34,8 +34,16 @@ return {
             },
 
             completion = {
-                -- (Default) Only show the documentation popup when manually triggered
-                documentation = { auto_show = false },
+                -- Open the documentation window beside the menu shortly after
+                -- an item is selected, lspsaga style. <C-space> still toggles
+                -- it by hand, and the window prefers the east side of the menu.
+                -- Only this window gets a border; the menu keeps its gutter,
+                -- which blink disables whenever the menu border is not 'none'.
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 100,
+                    window = { border = 'rounded' },
+                },
 
                 -- Nothing is selected until <Tab> or <C-n> moves onto an item,
                 -- and moving does not write the item into the buffer, so <CR>
